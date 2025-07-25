@@ -5,9 +5,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, Phone, Mail } from 'lucide-react'
 
+interface CompanyData {
+    phone: string
+}
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const [companyData, setCompanyData] = useState<CompanyData>({
+        phone: '(480) 255-5887'
+    })
 
     useEffect(() => {
         const handleScroll = () => {
@@ -16,6 +23,13 @@ const Navbar = () => {
 
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    useEffect(() => {
+        fetch('/api/admin/company')
+            .then(res => res.json())
+            .then(data => setCompanyData(data))
+            .catch(console.error)
     }, [])
 
     const navigation = [
@@ -64,7 +78,7 @@ const Navbar = () => {
                     <div className="hidden lg:flex items-center space-x-4">
                         <div className="flex items-center space-x-2 text-sm text-gray-600">
                             <Phone className="w-4 h-4" />
-                            <span>(555) 123-4567</span>
+                            <span>{companyData.phone}</span>
                         </div>
                         <Link
                             href="/contact"
@@ -103,7 +117,7 @@ const Navbar = () => {
                         <div className="border-t border-gray-200 pt-3 mt-3">
                             <div className="flex items-center space-x-2 px-3 py-2 text-sm text-gray-600">
                                 <Phone className="w-4 h-4" />
-                                <span>(555) 123-4567</span>
+                                <span>{companyData.phone}</span>
                             </div>
                             <Link
                                 href="/contact"

@@ -47,7 +47,8 @@
     "size": 189000,
     "uploadDate": "2025-07-25",
     "description": "Elegant master bedroom with custom built-ins",
-    "uploadedAt": "2025-07-25T16:40:30.741Z"
+    "uploadedAt": "2025-07-25T16:40:30.741Z",
+    "updatedAt": "2025-07-25T17:35:55.505Z"
   },
   {
     "id": "6",
@@ -58,5 +59,15 @@
     "uploadDate": "2025-07-25",
     "description": "Beautiful outdoor patio with covered seating area",
     "uploadedAt": "2025-07-25T16:40:30.741Z"
+  },
+  {
+    "id": "1753464095829",
+    "name": "favicon.svg",
+    "url": "/uploads/1753464095829-favicon.svg",
+    "category": "Uncategorized",
+    "size": 834,
+    "uploadDate": "2025-07-25",
+    "description": "",
+    "uploadedAt": "2025-07-25T17:21:35.832Z"
   }
 ]

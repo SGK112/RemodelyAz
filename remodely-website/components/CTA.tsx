@@ -2,9 +2,26 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import { ArrowRight, Phone, Mail } from 'lucide-react'
 
+interface CompanyData {
+    phone: string
+    email: string
+}
+
 const CTA = () => {
+    const [companyData, setCompanyData] = useState<CompanyData>({
+        phone: '(480) 255-5887',
+        email: 'help.remodely@gmail.com'
+    })
+
+    useEffect(() => {
+        fetch('/api/admin/company')
+            .then(res => res.json())
+            .then(data => setCompanyData(data))
+            .catch(console.error)
+    }, [])
     return (
         <section className="py-20 bg-navy-800">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -36,12 +53,12 @@ const CTA = () => {
                         <div className="flex items-center space-x-4 text-white">
                             <div className="flex items-center space-x-2">
                                 <Phone className="w-5 h-5" />
-                                <span className="text-lg font-medium">(555) 123-4567</span>
+                                <span className="text-lg font-medium">{companyData.phone}</span>
                             </div>
                             <div className="text-primary-200">or</div>
                             <div className="flex items-center space-x-2">
                                 <Mail className="w-5 h-5" />
-                                <span className="text-lg font-medium">info@remodely.ai.com</span>
+                                <span className="text-lg font-medium">{companyData.email}</span>
                             </div>
                         </div>
                     </div>

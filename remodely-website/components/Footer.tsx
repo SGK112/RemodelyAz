@@ -2,10 +2,31 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
 import { Facebook, Twitter, Instagram, Linkedin, Phone, Mail, MapPin } from 'lucide-react'
+
+interface CompanyData {
+    name: string
+    phone: string
+    email: string
+    address: string
+}
 
 const Footer = () => {
     const currentYear = new Date().getFullYear()
+    const [companyData, setCompanyData] = useState<CompanyData>({
+        name: 'REMODELY LLC',
+        phone: '(480) 255-5887',
+        email: 'help.remodely@gmail.com',
+        address: '15464 W Aster Dr, Surprise, AZ 85379'
+    })
+
+    useEffect(() => {
+        fetch('/api/admin/company')
+            .then(res => res.json())
+            .then(data => setCompanyData(data))
+            .catch(console.error)
+    }, [])
 
     const links = {
         services: [
@@ -100,17 +121,16 @@ const Footer = () => {
                         <div className="space-y-3">
                             <div className="flex items-center space-x-3">
                                 <Phone className="w-5 h-5 text-primary-400" />
-                                <span className="text-gray-300">(555) 123-4567</span>
+                                <span className="text-gray-300">{companyData.phone}</span>
                             </div>
                             <div className="flex items-center space-x-3">
                                 <Mail className="w-5 h-5 text-primary-400" />
-                                <span className="text-gray-300">info@remodely.ai.com</span>
+                                <span className="text-gray-300">{companyData.email}</span>
                             </div>
                             <div className="flex items-start space-x-3">
                                 <MapPin className="w-5 h-5 text-primary-400 mt-1" />
                                 <span className="text-gray-300">
-                                    123 Remodeling Ave<br />
-                                    Design City, DC 12345
+                                    {companyData.address}
                                 </span>
                             </div>
                         </div>
@@ -130,7 +150,7 @@ const Footer = () => {
                 <div className="border-t border-gray-800 mt-12 pt-8">
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <div className="text-gray-300 text-sm mb-4 md:mb-0">
-                            © {currentYear} REMODELY. All rights reserved.
+                            © {currentYear} {companyData.name}. All rights reserved.
                         </div>
                         <div className="flex space-x-6 text-sm">
                             <Link href="/privacy" className="text-gray-300 hover:text-white transition-colors">

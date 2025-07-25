@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react'
@@ -15,11 +15,29 @@ interface FormData {
     propertyType: 'residential' | 'commercial'
 }
 
+interface CompanyData {
+    phone: string
+    email: string
+    address: string
+}
+
 const ContactPage = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const [companyData, setCompanyData] = useState<CompanyData>({
+        phone: '(480) 255-5887',
+        email: 'help.remodely@gmail.com',
+        address: '15464 W Aster Dr, Surprise, AZ 85379'
+    })
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>()
+
+    useEffect(() => {
+        fetch('/api/admin/company')
+            .then(res => res.json())
+            .then(data => setCompanyData(data))
+            .catch(console.error)
+    }, [])
 
     const onSubmit = async (data: FormData) => {
         setIsSubmitting(true)
@@ -116,7 +134,7 @@ const ContactPage = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
-                                        <p className="text-gray-600">(555) 123-4567</p>
+                                        <p className="text-gray-600">{companyData.phone}</p>
                                         <p className="text-sm text-gray-500">Available 24/7 for emergencies</p>
                                     </div>
                                 </div>
@@ -127,7 +145,7 @@ const ContactPage = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
-                                        <p className="text-gray-600">info@remodely.ai.com</p>
+                                        <p className="text-gray-600">{companyData.email}</p>
                                         <p className="text-sm text-gray-500">We'll respond within 24 hours</p>
                                     </div>
                                 </div>
@@ -139,8 +157,7 @@ const ContactPage = () => {
                                     <div>
                                         <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
                                         <p className="text-gray-600">
-                                            123 Remodeling Ave<br />
-                                            Design City, DC 12345
+                                            {companyData.address}
                                         </p>
                                     </div>
                                 </div>
