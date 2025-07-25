@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "name": "Modern Kitchen Renovation",
+    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Kitchen",
+    "size": 245000,
+    "uploadDate": "2025-07-25",
+    "description": "Beautiful modern kitchen with white cabinets and quartz countertops",
+    "uploadedAt": "2025-07-25T16:40:30.741Z"
+  },
+  {
+    "id": "2",
+    "name": "Luxury Bathroom Remodel",
+    "url": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Bathroom",
+    "size": 198000,
+    "uploadDate": "2025-07-25",
+    "description": "Spa-like bathroom with walk-in shower and dual vanities",
+    "uploadedAt": "2025-07-25T16:40:30.741Z"
+  },
+  {
+    "id": "3",
+    "name": "Contemporary Living Room",
+    "url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Living Room",
+    "size": 220000,
+    "uploadDate": "2025-07-25",
+    "description": "Open concept living room with modern furnishings",
+    "uploadedAt": "2025-07-25T16:40:30.741Z"
+  },
+  {
+    "id": "4",
+    "name": "Commercial Office Space",
+    "url": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Commercial",
+    "size": 275000,
+    "uploadDate": "2025-07-25",
+    "description": "Modern commercial office renovation with glass partitions",
+    "uploadedAt": "2025-07-25T16:40:30.741Z"
+  },
+  {
+    "id": "5",
+    "name": "Master Bedroom Suite",
+    "url": "https://images.unsplash.com/photo-1540518614846-7eded1aba991?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Bedroom",
+    "size": 189000,
+    "uploadDate": "2025-07-25",
+    "description": "Elegant master bedroom with custom built-ins",
+    "uploadedAt": "2025-07-25T16:40:30.741Z"
+  },
+  {
+    "id": "6",
+    "name": "Outdoor Living Space",
+    "url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "category": "Outdoor",
+    "size": 210000,
+    "uploadDate": "2025-07-25",
+    "description": "Beautiful outdoor patio with covered seating area",
+    "uploadedAt": "2025-07-25T16:40:30.741Z"
+  }
+]
