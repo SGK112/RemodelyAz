@@ -9,6 +9,9 @@
 				"run",
 				"dev"
 			],
+			"options": {
+				"cwd": "/workspaces/RemodelyAz/remodely-website"
+			},
 			"group": "build",
 			"isBackground": true,
 			"problemMatcher": []
