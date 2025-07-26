@@ -1,150 +1,150 @@
 {
-  "testimonials": [
-    {
-      "id": "linda-ullrich",
-      "name": "Linda Ullrich",
-      "rating": 5,
-      "review": "Outstanding work on our kitchen remodel! The team was professional, timely, and the quality exceeded our expectations. Our new quartz countertops and cabinets look absolutely beautiful.",
-      "project": "Kitchen Remodel",
-      "location": "Surprise, AZ",
-      "date": "2024",
-      "source": "Google Reviews",
-      "verified": true,
-      "featured": true,
-      "projectImage": "/uploads/surprise-granite/kitchen-linda-ullrich-remodel.avif"
+    "testimonials": [
+        {
+            "id": "linda-ullrich",
+            "name": "Linda Ullrich",
+            "rating": 5,
+            "review": "Outstanding work on our kitchen remodel! The team was professional, timely, and the quality exceeded our expectations. Our new quartz countertops and cabinets look absolutely beautiful.",
+            "project": "Kitchen Remodel",
+            "location": "Surprise, AZ",
+            "date": "2024",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": true,
+            "projectImage": "/uploads/surprise-granite/kitchen-linda-ullrich-remodel.avif"
+        },
+        {
+            "id": "angie-cline",
+            "name": "Angie Cline",
+            "rating": 5,
+            "review": "Fantastic experience from start to finish! The team helped us design our dream bathroom and executed it perfectly. Great communication throughout the project.",
+            "project": "Bathroom Renovation",
+            "location": "Phoenix, AZ",
+            "date": "2024",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": true
+        },
+        {
+            "id": "cheryl-wilke",
+            "name": "Cheryl Wilke",
+            "rating": 5,
+            "review": "Professional service and beautiful results! Our new granite countertops are gorgeous and the installation was flawless. Highly recommend!",
+            "project": "Countertop Installation",
+            "location": "Scottsdale, AZ",
+            "date": "2024",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": false
+        },
+        {
+            "id": "tiger-c",
+            "name": "Tiger C",
+            "rating": 5,
+            "review": "Excellent workmanship and attention to detail. The team transformed our outdated kitchen into a modern masterpiece. Worth every penny!",
+            "project": "Kitchen Remodeling",
+            "location": "Tempe, AZ",
+            "date": "2023",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": true
+        },
+        {
+            "id": "shera-southerland",
+            "name": "Shera Southerland",
+            "rating": 5,
+            "review": "Amazing customer service and quality work. They helped us through every step of our bathroom remodel. The final result is stunning!",
+            "project": "Bathroom Remodel",
+            "location": "Gilbert, AZ",
+            "date": "2024",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": false
+        },
+        {
+            "id": "joe-maltagliati",
+            "name": "Joe Maltagliati",
+            "rating": 5,
+            "review": "Top-notch service and craftsmanship! Our new quartz countertops look incredible and the installation was completed on time and within budget.",
+            "project": "Countertop Installation",
+            "location": "Mesa, AZ",
+            "date": "2023",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": false
+        },
+        {
+            "id": "carl-harris",
+            "name": "Carl Harris",
+            "rating": 5,
+            "review": "Professional team that delivers on their promises. Great quality materials and expert installation. Our kitchen renovation exceeded expectations.",
+            "project": "Kitchen Renovation",
+            "location": "Chandler, AZ",
+            "date": "2024",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": true
+        },
+        {
+            "id": "ed-lips",
+            "name": "Ed Lips",
+            "rating": 4,
+            "review": "Solid work and good communication. The team was respectful of our home and cleaned up thoroughly after each day. Happy with the results.",
+            "project": "Bathroom Renovation",
+            "location": "Glendale, AZ",
+            "date": "2023",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": false
+        },
+        {
+            "id": "yvonne-davis",
+            "name": "Yvonne Davis",
+            "rating": 5,
+            "review": "Exceptional service and beautiful craftsmanship! Our new marble countertops are gorgeous and the team was professional throughout.",
+            "project": "Countertop Installation",
+            "location": "Surprise, AZ",
+            "date": "2024",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": false
+        },
+        {
+            "id": "enna-customer",
+            "name": "Enna",
+            "rating": 5,
+            "review": "Outstanding quality and service! The team transformed our entire kitchen and the results are absolutely beautiful. Highly recommend!",
+            "project": "Kitchen Remodeling",
+            "location": "Phoenix, AZ",
+            "date": "2024",
+            "source": "Google Reviews",
+            "verified": true,
+            "featured": true
+        }
+    ],
+    "businessStats": {
+        "averageRating": 4.7,
+        "totalReviews": 146,
+        "fiveStarReviews": 134,
+        "completedProjects": "400+",
+        "yearsInBusiness": 5,
+        "serviceAreas": 10,
+        "googleBusinessProfile": "https://www.google.com/maps/place/Surprise+Granite"
     },
-    {
-      "id": "angie-cline", 
-      "name": "Angie Cline",
-      "rating": 5,
-      "review": "Fantastic experience from start to finish! The team helped us design our dream bathroom and executed it perfectly. Great communication throughout the project.",
-      "project": "Bathroom Renovation",
-      "location": "Phoenix, AZ", 
-      "date": "2024",
-      "source": "Google Reviews",
-      "verified": true,
-      "featured": true
+    "credibility": {
+        "licenseNumber": "AzRoc #327266",
+        "businessAddress": "11560 N Dysart Rd Suite 112, Surprise, AZ 85379",
+        "phone": "(602) 833-3189",
+        "website": "https://www.surprisegranite.com",
+        "businessHours": "Mon-Fri 8am-4pm, Sat 10am-2pm",
+        "serviceRadius": "Phoenix Metro Area"
     },
-    {
-      "id": "cheryl-wilke",
-      "name": "Cheryl Wilke", 
-      "rating": 5,
-      "review": "Professional service and beautiful results! Our new granite countertops are gorgeous and the installation was flawless. Highly recommend!",
-      "project": "Countertop Installation",
-      "location": "Scottsdale, AZ",
-      "date": "2024", 
-      "source": "Google Reviews",
-      "verified": true,
-      "featured": false
-    },
-    {
-      "id": "tiger-c",
-      "name": "Tiger C",
-      "rating": 5, 
-      "review": "Excellent workmanship and attention to detail. The team transformed our outdated kitchen into a modern masterpiece. Worth every penny!",
-      "project": "Kitchen Remodeling",
-      "location": "Tempe, AZ",
-      "date": "2023",
-      "source": "Google Reviews", 
-      "verified": true,
-      "featured": true
-    },
-    {
-      "id": "shera-southerland",
-      "name": "Shera Southerland",
-      "rating": 5,
-      "review": "Amazing customer service and quality work. They helped us through every step of our bathroom remodel. The final result is stunning!",
-      "project": "Bathroom Remodel", 
-      "location": "Gilbert, AZ",
-      "date": "2024",
-      "source": "Google Reviews",
-      "verified": true,
-      "featured": false
-    },
-    {
-      "id": "joe-maltagliati",
-      "name": "Joe Maltagliati",
-      "rating": 5,
-      "review": "Top-notch service and craftsmanship! Our new quartz countertops look incredible and the installation was completed on time and within budget.",
-      "project": "Countertop Installation",
-      "location": "Mesa, AZ", 
-      "date": "2023",
-      "source": "Google Reviews",
-      "verified": true,
-      "featured": false
-    },
-    {
-      "id": "carl-harris",
-      "name": "Carl Harris",
-      "rating": 5,
-      "review": "Professional team that delivers on their promises. Great quality materials and expert installation. Our kitchen renovation exceeded expectations.",
-      "project": "Kitchen Renovation",
-      "location": "Chandler, AZ",
-      "date": "2024",
-      "source": "Google Reviews", 
-      "verified": true,
-      "featured": true
-    },
-    {
-      "id": "ed-lips", 
-      "name": "Ed Lips",
-      "rating": 4,
-      "review": "Solid work and good communication. The team was respectful of our home and cleaned up thoroughly after each day. Happy with the results.",
-      "project": "Bathroom Renovation",
-      "location": "Glendale, AZ",
-      "date": "2023",
-      "source": "Google Reviews",
-      "verified": true, 
-      "featured": false
-    },
-    {
-      "id": "yvonne-davis",
-      "name": "Yvonne Davis",
-      "rating": 5,
-      "review": "Exceptional service and beautiful craftsmanship! Our new marble countertops are gorgeous and the team was professional throughout.",
-      "project": "Countertop Installation", 
-      "location": "Surprise, AZ",
-      "date": "2024",
-      "source": "Google Reviews",
-      "verified": true,
-      "featured": false
-    },
-    {
-      "id": "enna-customer",
-      "name": "Enna",
-      "rating": 5, 
-      "review": "Outstanding quality and service! The team transformed our entire kitchen and the results are absolutely beautiful. Highly recommend!",
-      "project": "Kitchen Remodeling",
-      "location": "Phoenix, AZ",
-      "date": "2024",
-      "source": "Google Reviews",
-      "verified": true,
-      "featured": true
-    }
-  ],
-  "businessStats": {
-    "averageRating": 4.7,
-    "totalReviews": 146,
-    "fiveStarReviews": 134,
-    "completedProjects": "400+",
-    "yearsInBusiness": 5,
-    "serviceAreas": 10,
-    "googleBusinessProfile": "https://www.google.com/maps/place/Surprise+Granite"
-  },
-  "credibility": {
-    "licenseNumber": "AzRoc #327266",
-    "businessAddress": "11560 N Dysart Rd Suite 112, Surprise, AZ 85379",
-    "phone": "(602) 833-3189",
-    "website": "https://www.surprisegranite.com",
-    "businessHours": "Mon-Fri 8am-4pm, Sat 10am-2pm",
-    "serviceRadius": "Phoenix Metro Area"
-  },
-  "featuredTestimonials": [
-    "linda-ullrich",
-    "angie-cline", 
-    "tiger-c",
-    "carl-harris",
-    "enna-customer"
-  ],
-  "lastUpdated": "2025-07-26T19:50:00.000Z"
+    "featuredTestimonials": [
+        "linda-ullrich",
+        "angie-cline",
+        "tiger-c",
+        "carl-harris",
+        "enna-customer"
+    ],
+    "lastUpdated": "2025-07-26T19:50:00.000Z"
 }

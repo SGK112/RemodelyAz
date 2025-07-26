@@ -16,9 +16,9 @@ interface ServiceImage {
 
 const Services = () => {
     const [serviceImages, setServiceImages] = useState<{ [key: string]: string }>({
-        kitchen: '/uploads/surprise-granite/kitchen-linda-ullrich-remodel.avif',
-        bathroom: '/uploads/partner-cabinets/partner-4-contemporary-bathroom-design.jpg',
-        commercial: '/uploads/surprise-granite/countertops-quartz-installation.webp'
+        kitchen: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
+        bathroom: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
+        commercial: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format&crop=center&q=80'
     })
 
     useEffect(() => {
@@ -29,13 +29,13 @@ const Services = () => {
                     const data = await response.json()
                     const images = data.data
                     const imageMap: { [key: string]: string } = {}
-                    
+
                     images.forEach((img: ServiceImage) => {
                         if (img.category === 'Kitchen') imageMap.kitchen = img.url
                         if (img.category === 'Bathroom') imageMap.bathroom = img.url
                         if (img.category === 'Commercial') imageMap.commercial = img.url
                     })
-                    
+
                     setServiceImages(prev => ({ ...prev, ...imageMap }))
                 }
             } catch (error) {

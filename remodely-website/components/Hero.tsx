@@ -11,8 +11,8 @@ const Hero = () => {
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/666c82cd5e8c79229b330f4b_Surprise%20Granite%20Homepage%20Hero-p-800.webp"
-                    alt="Professional Kitchen Remodeling by Remodely Arizona - Gray Cabinets with White Marble Countertops"
+                    src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80"
+                    alt="Professional Kitchen Remodeling by Remodely Arizona - Modern Kitchen with Premium Countertops and Custom Cabinetry"
                     fill
                     className="object-cover"
                     priority

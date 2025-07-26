@@ -78,9 +78,9 @@ const AboutPage = () => {
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Building on the established legacy of Surprise Granite, REMODELY Arizona brings 
-                5+ years of proven excellence in home remodeling to the Phoenix metro area. 
-                We combine innovative design, premium materials, and master craftsmanship to 
+                Building on the established legacy of Surprise Granite, REMODELY Arizona brings
+                5+ years of proven excellence in home remodeling to the Phoenix metro area.
+                We combine innovative design, premium materials, and master craftsmanship to
                 create spaces that exceed expectations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -175,27 +175,27 @@ const AboutPage = () => {
               </h2>
               <div className="space-y-6 text-gray-600 leading-relaxed">
                 <p>
-                  REMODELY Arizona is the evolution of Surprise Granite, a trusted name in home 
-                  improvement that has been serving the Phoenix metro area since 2019. What began 
-                  as a specialized countertop company has transformed into a full-service remodeling 
+                  REMODELY Arizona is the evolution of Surprise Granite, a trusted name in home
+                  improvement that has been serving the Phoenix metro area since 2019. What began
+                  as a specialized countertop company has transformed into a full-service remodeling
                   business, bringing our proven track record of excellence to every aspect of home renovation.
                 </p>
                 <p>
-                  As Surprise Granite, we built our reputation on quality craftsmanship and exceptional 
-                  customer service, earning a 4.7-star Google rating from over 146+ satisfied customers. 
-                  Our licensed contractors (AzRoc #327266) completed 400+ successful projects, establishing 
+                  As Surprise Granite, we built our reputation on quality craftsmanship and exceptional
+                  customer service, earning a 4.7-star Google rating from over 146+ satisfied customers.
+                  Our licensed contractors (AzRoc #327266) completed 400+ successful projects, establishing
                   trust throughout Surprise, Peoria, Glendale, and the greater Phoenix area.
                 </p>
                 <p>
-                  Today, as REMODELY Arizona, we've expanded our services while maintaining the same 
-                  commitment to excellence that made us successful. From our base at 11560 N Dysart Rd 
-                  Suite 112 in Surprise, we continue to transform homes with kitchen remodeling, bathroom 
+                  Today, as REMODELY Arizona, we've expanded our services while maintaining the same
+                  commitment to excellence that made us successful. From our base at 11560 N Dysart Rd
+                  Suite 112 in Surprise, we continue to transform homes with kitchen remodeling, bathroom
                   renovations, countertop installations, and comprehensive home makeovers.
                 </p>
                 <p>
-                  Every project reflects our core values: honest communication, transparent pricing, 
-                  premium materials, and the skilled craftsmanship that has earned us the trust of 
-                  hundreds of Arizona families. When you choose REMODELY Arizona, you're choosing 
+                  Every project reflects our core values: honest communication, transparent pricing,
+                  premium materials, and the skilled craftsmanship that has earned us the trust of
+                  hundreds of Arizona families. When you choose REMODELY Arizona, you're choosing
                   a company with a proven legacy of turning house dreams into beautiful realities.
                 </p>
               </div>
@@ -297,7 +297,7 @@ const AboutPage = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
                 <p className="text-primary-600 font-medium mb-4">{member.role}</p>
                 <p className="text-gray-600 mb-6 leading-relaxed">{member.bio}</p>
-                
+
                 <div className="space-y-2">
                   {member.certifications.map((cert, idx) => (
                     <span

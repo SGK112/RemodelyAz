@@ -811,6 +811,13 @@ const AdminPanel = () => {
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold text-gray-900">Image Gallery</h3>
                   <div className="flex items-center space-x-3">
+                    <a
+                      href="/admin/images"
+                      className="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors flex items-center"
+                    >
+                      <Settings className="w-4 h-4 mr-2" />
+                      Advanced Manager
+                    </a>
                     <label className="bg-accent-600 text-white px-4 py-2 rounded-lg hover:bg-accent-700 transition-colors flex items-center cursor-pointer">
                       <Upload className="w-4 h-4 mr-2" />
                       Upload Images

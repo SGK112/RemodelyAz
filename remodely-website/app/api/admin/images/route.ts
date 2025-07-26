@@ -167,8 +167,8 @@ export async function GET() {
         // Determine category based on partner and project type
         let displayCategory = 'Remodeling'
         if (image.partner_name === 'SunStone Surfaces') {
-          displayCategory = image.project_type === 'Kitchen' ? 'Kitchen' : 
-                           image.project_type === 'Bathroom' ? 'Bathroom' : 'Surfaces'
+          displayCategory = image.project_type === 'Kitchen' ? 'Kitchen' :
+            image.project_type === 'Bathroom' ? 'Bathroom' : 'Surfaces'
         } else if (image.category === 'cabinetry') {
           displayCategory = 'Cabinetry'
         }
@@ -189,7 +189,7 @@ export async function GET() {
           source: 'partner'
         }
       })
-      
+
       galleryImages = [...galleryImages, ...partnerGalleryImages]
     }
 
@@ -199,7 +199,7 @@ export async function GET() {
       galleryImages = galleryImages
         .sort(() => 0.5 - Math.random())
         .slice(0, 20)
-      
+
       return NextResponse.json(galleryImages)
     }
 
@@ -227,7 +227,7 @@ export async function GET() {
         businessCredibility: '4.7/5 stars, 400+ projects'
       },
       {
-        id: '2', 
+        id: '2',
         name: 'Premium Quartz Countertop Installation',
         url: '/uploads/surprise-granite/countertops-quartz-installation.webp',
         category: 'Kitchen',
@@ -241,7 +241,7 @@ export async function GET() {
       },
       {
         id: '3',
-        name: 'Modern Kitchen Design - Arizona Home', 
+        name: 'Modern Kitchen Design - Arizona Home',
         url: 'https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/666c82cd5e8c79229b330f4b_Surprise%20Granite%20Homepage%20Hero-p-800.webp',
         category: 'Kitchen',
         description: 'Stunning kitchen renovation featuring gray cabinets and white marble countertops - our signature work',
@@ -257,7 +257,7 @@ export async function GET() {
         name: 'Commercial Reception Desk - Premium Installation',
         url: 'https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/65b2b21191cd50564d8cf18a__lx-hausys-surprise-granite-encore-quartz_gym-reception-desk-p-800.webp',
         category: 'Commercial',
-        description: 'High-end commercial installation for gym reception desk - showcasing our commercial capabilities',  
+        description: 'High-end commercial installation for gym reception desk - showcasing our commercial capabilities',
         partner: 'Remodely Arizona',
         location: 'Arizona',
         tags: ['arizona', 'commercial', 'reception', 'quartz', 'professional'],

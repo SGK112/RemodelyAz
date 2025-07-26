@@ -91,7 +91,7 @@ class ImageManager {
    */
   getImagesByCategory(category: string): ImageData[] {
     this.loadData()
-    return this.imagesData.filter(img => 
+    return this.imagesData.filter(img =>
       img.category.toLowerCase() === category.toLowerCase()
     )
   }
@@ -137,7 +137,7 @@ class ImageManager {
 
     // Build transformation string
     const transformations = []
-    
+
     if (width || height) {
       const dimensions = [
         width && `w_${width}`,
@@ -146,13 +146,13 @@ class ImageManager {
       ].filter(Boolean).join(',')
       transformations.push(dimensions)
     }
-    
+
     transformations.push(`q_${quality}`)
     transformations.push(`f_${format}`)
 
     const baseUrl = image.url.split('/upload/')[0]
     const imagePath = image.url.split('/upload/')[1]
-    
+
     return `${baseUrl}/upload/${transformations.join(',')}/${imagePath}`
   }
 
@@ -170,8 +170,8 @@ class ImageManager {
   getGalleryProjectsByCategory(category: string): GalleryProject[] {
     this.loadData()
     if (category === 'all') return this.galleryProjects
-    
-    return this.galleryProjects.filter(project => 
+
+    return this.galleryProjects.filter(project =>
       project.category === category
     )
   }
@@ -181,18 +181,18 @@ class ImageManager {
    */
   getFallbackImages(): { [key: string]: string } {
     const fallbacks: { [key: string]: string } = {}
-    
+
     // Try to get real images first
     const kitchenImages = this.getImagesByCategory('kitchen')
     const bathroomImages = this.getImagesByCategory('bathroom')
     const commercialImages = this.getImagesByCategory('commercial')
-    
+
     // Use real images if available, otherwise fallback to demo
     fallbacks.kitchen = kitchenImages[0]?.url || 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center'
     fallbacks.bathroom = bathroomImages[0]?.url || 'https://images.unsplash.com/photo-1584622781003-d2311cc45946?w=800&h=600&fit=crop&crop=center'
     fallbacks.commercial = commercialImages[0]?.url || 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&crop=center'
     fallbacks.hero = kitchenImages[0]?.url || 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop&crop=center'
-    
+
     return fallbacks
   }
 
@@ -201,26 +201,26 @@ class ImageManager {
    */
   getComponentImages(component: 'hero' | 'services' | 'gallery' | 'testimonials', count?: number): ImageData[] {
     this.loadData()
-    
+
     switch (component) {
       case 'hero':
-        return this.imagesData.filter(img => 
-          img.category.toLowerCase().includes('featured') || 
+        return this.imagesData.filter(img =>
+          img.category.toLowerCase().includes('featured') ||
           img.category.toLowerCase().includes('hero')
         ).slice(0, count || 1)
-      
+
       case 'services':
         const categories = ['kitchen', 'bathroom', 'commercial']
-        return categories.map(category => 
+        return categories.map(category =>
           this.getImagesByCategory(category)[0]
         ).filter(Boolean).slice(0, count || 3)
-      
+
       case 'gallery':
         return this.imagesData.slice(0, count || 12)
-      
+
       case 'testimonials':
         return this.getImagesByCategory('people').slice(0, count || 6)
-      
+
       default:
         return []
     }
@@ -232,12 +232,12 @@ class ImageManager {
   searchImages(query: string): ImageData[] {
     this.loadData()
     const lowerQuery = query.toLowerCase()
-    
+
     return this.imagesData.filter(img =>
       img.name.toLowerCase().includes(lowerQuery) ||
       img.description.toLowerCase().includes(lowerQuery) ||
       img.category.toLowerCase().includes(lowerQuery) ||
-      (img.cloudinary?.tags || []).some(tag => 
+      (img.cloudinary?.tags || []).some(tag =>
         tag.toLowerCase().includes(lowerQuery)
       )
     )
@@ -248,7 +248,7 @@ class ImageManager {
    */
   getStats() {
     this.loadData()
-    
+
     const categoryStats = this.imagesData.reduce((acc, img) => {
       acc[img.category] = (acc[img.category] || 0) + 1
       return acc

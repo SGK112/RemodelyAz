@@ -9,7 +9,7 @@
   "address": {
     "street": "11560 N Dysart Rd Suite 112",
     "city": "Surprise",
-    "state": "Arizona", 
+    "state": "Arizona",
     "zip": "85379"
   },
   "businessCredentials": {
@@ -21,13 +21,13 @@
   },
   "socialMedia": {
     "facebook": "https://facebook.com/surprisegranite",
-    "instagram": "https://instagram.com/surprisegranite", 
+    "instagram": "https://instagram.com/surprisegranite",
     "linkedin": "https://linkedin.com/company/surprise-granite"
   },
   "businessHours": {
     "monday": "8:00 AM - 4:00 PM",
     "tuesday": "8:00 AM - 4:00 PM",
-    "wednesday": "8:00 AM - 4:00 PM", 
+    "wednesday": "8:00 AM - 4:00 PM",
     "thursday": "8:00 AM - 4:00 PM",
     "friday": "8:00 AM - 4:00 PM",
     "saturday": "10:00 AM - 2:00 PM",
@@ -35,12 +35,12 @@
   },
   "services": [
     "Kitchen Remodeling",
-    "Bathroom Remodeling", 
+    "Bathroom Remodeling",
     "Countertop Installation",
     "Cabinet Installation",
     "Flooring Installation",
     "Tub to Shower Conversion",
-    "Backsplash Installation", 
+    "Backsplash Installation",
     "Countertop Polish & Repair",
     "Sink Installation",
     "Tile Installation"
@@ -48,7 +48,7 @@
   "materials": [
     "Granite Countertops",
     "Quartz Countertops",
-    "Marble Countertops", 
+    "Marble Countertops",
     "Porcelain Countertops",
     "Custom Cabinetry",
     "Premium Flooring",
@@ -57,18 +57,18 @@
   "serviceAreas": [
     "Surprise",
     "Sun City",
-    "Phoenix", 
+    "Phoenix",
     "Goodyear",
     "Scottsdale",
     "Tempe",
     "Glendale",
-    "Mesa", 
+    "Mesa",
     "Gilbert",
     "Chandler"
   ],
   "rebrandingInfo": {
     "oldBrandName": "Surprise Granite",
-    "newBrandName": "Remodely Arizona", 
+    "newBrandName": "Remodely Arizona",
     "transitionDate": "2025",
     "reason": "Expanding services beyond countertops to full-service remodeling",
     "continuity": "Same quality, same team, expanded services"

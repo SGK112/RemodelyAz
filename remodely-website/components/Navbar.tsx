@@ -34,8 +34,8 @@ const Navbar = () => {
 
     const navigation = [
         { name: 'Home', href: '/' },
-        { 
-            name: 'Services', 
+        {
+            name: 'Services',
             href: '/services',
             submenu: [
                 { name: 'Kitchen Remodeling', href: '/services/kitchen' },
