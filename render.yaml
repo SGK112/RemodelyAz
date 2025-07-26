@@ -7,6 +7,10 @@ services:
     startCommand: npm run start
     envVars:
       - key: NODE_VERSION
-        value: 18
+        value: 18.17.0
       - key: NPM_CONFIG_REGISTRY
         value: https://registry.npmjs.org/
+      - key: YARN_PRODUCTION
+        value: false
+      - key: NPM_CONFIG_PRODUCTION
+        value: false
