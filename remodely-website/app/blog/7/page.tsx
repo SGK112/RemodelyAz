@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, Sun, Droplets, Mountain, Trees, Cactus, Flower } from 'lucide-react'
+import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, Sun, Droplets, Mountain, TreePine, Flower2 } from 'lucide-react'
 
 const DesertLandscapingArticle = () => {
     const article = {
@@ -20,7 +20,7 @@ const DesertLandscapingArticle = () => {
 
     const landscapeFeatures = [
         {
-            icon: Cactus,
+            icon: TreePine,
             title: "Native Plants",
             description: "Drought-resistant desert plants that thrive naturally"
         },
