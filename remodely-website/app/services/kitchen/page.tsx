@@ -42,7 +42,7 @@ const KitchenRemodeling = () => {
     {
       id: 2,
       title: 'Contemporary Kitchen Island',
-      image: 'https://images.unsplash.com/photo-1565008576874-4c5b6f54bd84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       description: 'Large island with waterfall granite countertop'
     },
     {
@@ -64,7 +64,7 @@ const KitchenRemodeling = () => {
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Back to Services */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link 
+        <Link
           href="/services"
           className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
         >
@@ -85,15 +85,15 @@ const KitchenRemodeling = () => {
               <div className="bg-accent-600 text-white text-sm font-semibold px-4 py-2 rounded-full w-fit mb-6">
                 {service.price}
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-display font-bold text-gray-900 mb-6">
                 {service.title}
               </h1>
-              
+
               <h2 className="text-2xl text-primary-600 font-semibold mb-6">
                 {service.subtitle}
               </h2>
-              
+
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 {service.description}
               </p>

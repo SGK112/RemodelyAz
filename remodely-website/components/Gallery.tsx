@@ -142,8 +142,8 @@ const Gallery = () => {
                             key={category.id}
                             onClick={() => setCurrentCategory(category.id)}
                             className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${currentCategory === category.id
-                                    ? 'bg-accent-600 text-white shadow-lg'
-                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                ? 'bg-accent-600 text-white shadow-lg'
+                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                 }`}
                         >
                             {category.name}

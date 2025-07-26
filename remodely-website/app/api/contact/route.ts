@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import dbConnect from '@/lib/mongodb'
-import { sendContactEmail, ContactFormData } from '@/lib/mailer'
+import { sendContactEmail, ContactFormData } from '@/lib/email-service'
 import mongoose from 'mongoose'
 
 // Define the contact schema

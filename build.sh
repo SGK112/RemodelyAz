@@ -22,9 +22,9 @@ npm --version
 
 # Clean install with npm
 echo "📦 Installing dependencies with npm..."
-npm ci
-
-echo "🏗️ Building with npm..."
+cd remodely-website
+npm install
 npm run build
+cd ..
 
 echo "✅ Build complete!"

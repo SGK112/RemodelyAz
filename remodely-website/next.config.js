@@ -1,18 +1,27 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: [
-            'images.unsplash.com', 
-            'plus.unsplash.com',
-            'localhost',
-            '127.0.0.1'
-        ],
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: '**',
+                hostname: 'images.unsplash.com',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'plus.unsplash.com',
+                port: '',
+                pathname: '/**',
             },
         ],
+        formats: ['image/webp', 'image/avif'],
+        minimumCacheTTL: 60,
+        dangerouslyAllowSVG: true,
+        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    },
+    experimental: {
+        optimizeCss: true,
     },
 }
 

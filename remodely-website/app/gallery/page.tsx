@@ -58,7 +58,7 @@ const GalleryPage = () => {
             id: 4,
             title: 'Rustic Modern Kitchen',
             category: 'kitchen',
-            image: 'https://images.unsplash.com/photo-1565008576874-4c5b6f54bd84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             description: 'Perfect blend of rustic charm and modern functionality with reclaimed wood elements, farmhouse sink, and contemporary appliances.',
             location: 'Austin, TX',
             date: 'December 2023',
@@ -70,7 +70,7 @@ const GalleryPage = () => {
             id: 5,
             title: 'Contemporary Guest Bath',
             category: 'bathroom',
-            image: 'https://images.unsplash.com/photo-1584622650441-44672717e54d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             description: 'Sleek contemporary bathroom design with floating vanity, geometric tiles, and premium fixtures creating a spa-like atmosphere.',
             location: 'Miami, FL',
             date: 'November 2023',
@@ -146,14 +146,14 @@ const GalleryPage = () => {
                                 key={category.id}
                                 onClick={() => setCurrentCategory(category.id)}
                                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center space-x-2 ${currentCategory === category.id
-                                        ? 'bg-accent-600 text-white shadow-lg'
-                                        : 'glass-card text-gray-700 hover:shadow-md'
+                                    ? 'bg-accent-600 text-white shadow-lg'
+                                    : 'glass-card text-gray-700 hover:shadow-md'
                                     }`}
                             >
                                 <span>{category.name}</span>
                                 <span className={`text-sm px-2 py-1 rounded-full ${currentCategory === category.id
-                                        ? 'bg-white/20'
-                                        : 'bg-gray-200 text-gray-600'
+                                    ? 'bg-white/20'
+                                    : 'bg-gray-200 text-gray-600'
                                     }`}>
                                     {category.count}
                                 </span>

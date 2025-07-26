@@ -48,7 +48,7 @@ const BathroomRemodeling = () => {
     {
       id: 3,
       title: 'Contemporary Guest Bath',
-      image: 'https://images.unsplash.com/photo-1565008576874-4c5b6f54bd84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       description: 'Compact design with premium finishes'
     }
   ]
@@ -64,7 +64,7 @@ const BathroomRemodeling = () => {
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Back to Services */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link 
+        <Link
           href="/services"
           className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
         >
@@ -85,15 +85,15 @@ const BathroomRemodeling = () => {
               <div className="bg-accent-600 text-white text-sm font-semibold px-4 py-2 rounded-full w-fit mb-6">
                 {service.price}
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-display font-bold text-gray-900 mb-6">
                 {service.title}
               </h1>
-              
+
               <h2 className="text-2xl text-primary-600 font-semibold mb-6">
                 {service.subtitle}
               </h2>
-              
+
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 {service.description}
               </p>
@@ -326,7 +326,7 @@ const BathroomRemodeling = () => {
             >
               <div className="bg-accent-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 2L13.09 8.26L20 9L15 14L16.18 21L10 17.27L3.82 21L5 14L0 9L6.91 8.26L10 2Z"/>
+                  <path d="M10 2L13.09 8.26L20 9L15 14L16.18 21L10 17.27L3.82 21L5 14L0 9L6.91 8.26L10 2Z" />
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Heat-Resistant Materials</h3>
@@ -342,7 +342,7 @@ const BathroomRemodeling = () => {
             >
               <div className="bg-primary-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                  <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Enhanced Ventilation</h3>
@@ -358,7 +358,7 @@ const BathroomRemodeling = () => {
             >
               <div className="bg-navy-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"/>
+                  <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Energy Efficiency</h3>

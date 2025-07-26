@@ -414,16 +414,16 @@ const BlogPage = () => {
                             }}
                             onClick={() => handleCategoryClick(category.name)}
                             className={`w-full flex items-center justify-between text-left transition-all py-3 px-4 rounded-lg group ${selectedCategory === category.name
-                                ? 'text-accent-600 bg-accent-50 font-semibold border border-accent-200 shadow-sm'
-                                : 'text-gray-600 hover:text-accent-600 hover:bg-accent-50 font-medium hover:font-semibold hover:border hover:border-accent-200 hover:shadow-sm'
+                              ? 'text-accent-600 bg-accent-50 font-semibold border border-accent-200 shadow-sm'
+                              : 'text-gray-600 hover:text-accent-600 hover:bg-accent-50 font-medium hover:font-semibold hover:border hover:border-accent-200 hover:shadow-sm'
                               }`}
                           >
                             <span className="transition-all">
                               {category.name}
                             </span>
                             <span className={`text-xs px-3 py-1 rounded-full font-semibold transition-all duration-200 ${selectedCategory === category.name
-                                ? 'bg-accent-600 text-white'
-                                : 'bg-gray-100 group-hover:bg-accent-600 text-gray-600 group-hover:text-white'
+                              ? 'bg-accent-600 text-white'
+                              : 'bg-gray-100 group-hover:bg-accent-600 text-gray-600 group-hover:text-white'
                               }`}>
                               {category.count}
                             </span>

@@ -10,6 +10,5 @@
     "build": "cd remodely-website && npm install && npm run build",
     "start": "cd remodely-website && npm start",
     "dev": "cd remodely-website && npm run dev"
-  },
-  "workspaces": ["remodely-website"]
+  }
 }
