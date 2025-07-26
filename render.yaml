@@ -3,8 +3,8 @@ services:
     name: remodelyaz
     env: node
     plan: free
-    buildCommand: npm ci && npm run build
-    startCommand: npm run start
+    buildCommand: ./build.sh
+    startCommand: ./start.sh
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
@@ -14,3 +14,5 @@ services:
         value: false
       - key: NPM_CONFIG_PRODUCTION
         value: false
+      - key: DISABLE_YARN
+        value: true
