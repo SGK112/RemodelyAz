@@ -69,5 +69,26 @@
     "uploadDate": "2025-07-25",
     "description": "",
     "uploadedAt": "2025-07-25T17:21:35.832Z"
+  },
+  {
+    "id": "remodely-gallery/a5oexz2npttq7qriyhov",
+    "name": "favicon.svg",
+    "url": "https://res.cloudinary.com/drrwdgggx/image/upload/v1753514957/remodely-gallery/a5oexz2npttq7qriyhov.svg",
+    "category": "Test",
+    "size": 261,
+    "uploadDate": "2025-07-26",
+    "description": "Testing Cloudinary upload",
+    "uploadedAt": "2025-07-26T07:29:18.143Z",
+    "source": "cloudinary",
+    "cloudinary": {
+      "public_id": "remodely-gallery/a5oexz2npttq7qriyhov",
+      "width": 32,
+      "height": 32,
+      "format": "svg",
+      "tags": [
+        "remodely",
+        "test"
+      ]
+    }
   }
 ]

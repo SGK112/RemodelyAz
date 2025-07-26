@@ -65,3 +65,29 @@ Thumbs.db
 # Temporary folders
 tmp/
 temp/
+
+# Project specific
+# Test files
+test-cloudinary.js
+*test*.js
+
+# Uploaded files (if you want to exclude them)
+remodely-website/public/uploads/*
+!remodely-website/public/uploads/.gitkeep
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# MongoDB data (if running locally)
+data/db/
+
+# Package manager lock files (uncomment if needed)
+# package-lock.json
+# yarn.lock
+
+# Editor directories and files
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

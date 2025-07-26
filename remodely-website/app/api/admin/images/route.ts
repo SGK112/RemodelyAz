@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
+import CloudinaryService from '@/lib/cloudinary'
 
 const DATA_DIR = path.join(process.cwd(), 'data')
 const IMAGES_FILE = path.join(DATA_DIR, 'images.json')
@@ -86,7 +87,7 @@ export async function GET() {
   try {
     const data = fs.readFileSync(IMAGES_FILE, 'utf8')
     const images = JSON.parse(data)
-    
+
     return NextResponse.json(images)
   } catch (error) {
     console.error('Error reading images:', error)
@@ -101,51 +102,104 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()
     const file = formData.get('image') as File
-    
+
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 })
     }
 
-    // Generate unique filename
-    const timestamp = Date.now()
-    const filename = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
-    const filepath = path.join(UPLOADS_DIR, filename)
-    
-    // Convert file to buffer and save
-    const bytes = await file.arrayBuffer()
-    const buffer = Buffer.from(bytes)
-    fs.writeFileSync(filepath, buffer)
-    
-    // Read existing images
+    // Get additional metadata from form
+    const category = (formData.get('category') as string) || 'Gallery'
+    const description = (formData.get('description') as string) || ''
+
+    let imageRecord: any
+    let uploadMethod = 'local'
+
+    // Check if Cloudinary is configured
+    const hasCloudinaryConfig = CloudinaryService.isAvailable()
+
+    if (hasCloudinaryConfig) {
+      try {
+        // Upload to Cloudinary
+        const bytes = await file.arrayBuffer()
+        const buffer = Buffer.from(bytes)
+        const base64 = `data:${file.type};base64,${buffer.toString('base64')}`
+
+        const cloudinaryResult = await CloudinaryService.uploadImage(base64, {
+          folder: 'remodely-gallery',
+          tags: ['remodely', category.toLowerCase()],
+          transformation: {
+            quality: 'auto',
+            format: 'auto'
+          }
+        })
+
+        imageRecord = {
+          id: cloudinaryResult.public_id,
+          name: file.name,
+          url: cloudinaryResult.secure_url,
+          category: category,
+          size: cloudinaryResult.bytes,
+          uploadDate: new Date().toISOString().split('T')[0],
+          description: description,
+          uploadedAt: new Date().toISOString(),
+          source: 'cloudinary',
+          cloudinary: {
+            public_id: cloudinaryResult.public_id,
+            width: cloudinaryResult.width,
+            height: cloudinaryResult.height,
+            format: cloudinaryResult.format,
+            folder: cloudinaryResult.folder,
+            tags: cloudinaryResult.tags
+          }
+        }
+        uploadMethod = 'cloudinary'
+      } catch (cloudinaryError) {
+        console.warn('Cloudinary upload failed, falling back to local storage:', cloudinaryError)
+        uploadMethod = 'local-fallback'
+      }
+    }
+
+    // Local storage fallback
+    if (!hasCloudinaryConfig || uploadMethod === 'local-fallback') {
+      const timestamp = Date.now()
+      const filename = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`
+      const filepath = path.join(UPLOADS_DIR, filename)
+
+      const bytes = await file.arrayBuffer()
+      const buffer = Buffer.from(bytes)
+      fs.writeFileSync(filepath, buffer)
+
+      imageRecord = {
+        id: timestamp.toString(),
+        name: file.name,
+        url: `/uploads/${filename}`,
+        category: category,
+        size: file.size,
+        uploadDate: new Date().toISOString().split('T')[0],
+        description: description,
+        uploadedAt: new Date().toISOString(),
+        source: uploadMethod === 'local-fallback' ? 'local-fallback' : 'local'
+      }
+    }
+
+    // Read existing images and add new one
     const data = fs.readFileSync(IMAGES_FILE, 'utf8')
     const images = JSON.parse(data)
-    
-    // Create new image record
-    const newImage = {
-      id: timestamp.toString(),
-      name: file.name,
-      url: `/uploads/${filename}`,
-      category: 'Uncategorized',
-      size: file.size,
-      uploadDate: new Date().toISOString().split('T')[0],
-      description: '',
-      uploadedAt: new Date().toISOString()
-    }
-    
-    images.push(newImage)
-    
+    images.push(imageRecord)
+
     // Write back to file
     fs.writeFileSync(IMAGES_FILE, JSON.stringify(images, null, 2))
-    
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Image uploaded successfully',
-      image: newImage
+
+    return NextResponse.json({
+      success: true,
+      message: `Image uploaded successfully via ${uploadMethod}`,
+      image: imageRecord,
+      uploadMethod: uploadMethod
     })
   } catch (error) {
     console.error('Error uploading image:', error)
     return NextResponse.json(
-      { error: 'Failed to upload image' },
+      { error: 'Failed to upload image', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     )
   }
@@ -154,28 +208,28 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const updatedImage = await request.json()
-    
+
     // Read existing images
     const data = fs.readFileSync(IMAGES_FILE, 'utf8')
     const images = JSON.parse(data)
-    
+
     // Find and update the image
     const imageIndex = images.findIndex((img: any) => img.id === updatedImage.id)
     if (imageIndex === -1) {
       return NextResponse.json({ error: 'Image not found' }, { status: 404 })
     }
-    
+
     images[imageIndex] = {
       ...images[imageIndex],
       ...updatedImage,
       updatedAt: new Date().toISOString()
     }
-    
+
     // Write back to file
     fs.writeFileSync(IMAGES_FILE, JSON.stringify(images, null, 2))
-    
-    return NextResponse.json({ 
-      success: true, 
+
+    return NextResponse.json({
+      success: true,
       message: 'Image updated successfully',
       image: images[imageIndex]
     })

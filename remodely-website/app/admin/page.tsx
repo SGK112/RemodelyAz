@@ -58,6 +58,15 @@ interface ImageAsset {
   size: number
   uploadDate: string
   description: string
+  source?: 'cloudinary' | 'local' | 'local-fallback' | 'unsplash'
+  cloudinary?: {
+    public_id: string
+    width: number
+    height: number
+    format: string
+    folder?: string
+    tags?: string[]
+  }
 }
 
 const AdminPanel = () => {
@@ -111,6 +120,11 @@ const AdminPanel = () => {
   const [aiPrompt, setAiPrompt] = useState('')
   const [isGenerating, setIsGenerating] = useState(false)
   const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null)
+  const [cloudinaryStatus, setCloudinaryStatus] = useState<{
+    available: boolean
+    status: string
+    cloudName?: string
+  }>({ available: false, status: 'checking' })
 
   const showNotification = (type: 'success' | 'error', message: string) => {
     setNotification({ type, message })
@@ -122,6 +136,7 @@ const AdminPanel = () => {
     loadCompanyInfo()
     loadBlogs()
     loadImages()
+    loadCloudinaryStatus()
   }, [])
 
   const loadCompanyInfo = async () => {
@@ -157,6 +172,19 @@ const AdminPanel = () => {
       }
     } catch (error) {
       console.error('Failed to load images:', error)
+    }
+  }
+
+  const loadCloudinaryStatus = async () => {
+    try {
+      const response = await fetch('/api/admin/cloudinary-status')
+      if (response.ok) {
+        const data = await response.json()
+        setCloudinaryStatus(data)
+      }
+    } catch (error) {
+      console.error('Failed to load Cloudinary status:', error)
+      setCloudinaryStatus({ available: false, status: 'error' })
     }
   }
 
@@ -258,6 +286,8 @@ const AdminPanel = () => {
       const file = files[i]
       const formData = new FormData()
       formData.append('image', file)
+      formData.append('category', 'Gallery') // Default category
+      formData.append('description', `Uploaded: ${file.name}`)
 
       try {
         const response = await fetch('/api/admin/images', {
@@ -268,7 +298,14 @@ const AdminPanel = () => {
         if (response.ok) {
           const result = await response.json()
           setImages(prev => [...prev, result.image])
-          showNotification('success', `${file.name} uploaded successfully!`)
+
+          // Show enhanced success message with upload method
+          const uploadMethod = result.uploadMethod || 'local'
+          const methodEmoji = uploadMethod === 'cloudinary' ? '☁️' : '💾'
+          showNotification('success', `${methodEmoji} ${file.name} uploaded via ${uploadMethod}!`)
+        } else {
+          const error = await response.json()
+          showNotification('error', `Failed to upload ${file.name}: ${error.error}`)
         }
       } catch (error) {
         showNotification('error', `Failed to upload ${file.name}`)
@@ -315,6 +352,7 @@ const AdminPanel = () => {
     { id: 'company', label: 'Company Info', icon: <Building className="w-5 h-5" /> },
     { id: 'blogs', label: 'Blog Posts', icon: <FileText className="w-5 h-5" /> },
     { id: 'images', label: 'Image Gallery', icon: <Camera className="w-5 h-5" /> },
+    { id: 'email', label: 'Email System', icon: <Mail className="w-5 h-5" /> },
     { id: 'settings', label: 'Settings', icon: <Settings className="w-5 h-5" /> }
   ]
 
@@ -348,8 +386,8 @@ const AdminPanel = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center py-4 px-2 border-b-2 font-medium text-sm transition-colors ${activeTab === tab.id
-                      ? 'border-accent-600 text-accent-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    ? 'border-accent-600 text-accent-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                     }`}
                 >
                   {tab.icon}
@@ -728,6 +766,48 @@ const AdminPanel = () => {
                 transition={{ duration: 0.5 }}
                 className="space-y-6"
               >
+                {/* Cloudinary Status */}
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                    <Camera className="w-5 h-5 mr-2 text-blue-600" />
+                    Image Storage Configuration
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                      <h4 className="font-semibold text-blue-800">☁️ Cloudinary</h4>
+                      <p className="text-blue-700 text-sm">Cloud image storage & optimization</p>
+                      <p className="text-xs text-blue-600 mt-1">
+                        Status: {cloudinaryStatus.available ? '✅ Configured' : cloudinaryStatus.status === 'checking' ? '🔄 Checking...' : '⚠️ Not configured'}
+                      </p>
+                      {cloudinaryStatus.available && cloudinaryStatus.cloudName && (
+                        <p className="text-xs text-blue-500 mt-1">
+                          Cloud: {cloudinaryStatus.cloudName}
+                        </p>
+                      )}
+                    </div>
+                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                      <h4 className="font-semibold text-gray-800">💾 Local Storage</h4>
+                      <p className="text-gray-700 text-sm">Fallback file storage</p>
+                      <p className="text-xs text-gray-600 mt-1">
+                        Status: ✅ Always available
+                      </p>
+                    </div>
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <h4 className="font-semibold text-green-800">📊 Auto-Optimization</h4>
+                      <p className="text-green-700 text-sm">Automatic image optimization</p>
+                      <p className="text-xs text-green-600 mt-1">
+                        Quality: Auto, Format: WebP/AVIF
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                    <p className="text-sm text-yellow-800">
+                      <strong>Setup Cloudinary:</strong> Add your CLOUDINARY_CLOUD_NAME and CLOUDINARY_API_SECRET to .env.local for cloud storage.
+                      Your API Key (947268741246623) is already configured.
+                    </p>
+                  </div>
+                </div>
+
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold text-gray-900">Image Gallery</h3>
                   <div className="flex items-center space-x-3">
@@ -847,12 +927,25 @@ const AdminPanel = () => {
                         <div className="p-4">
                           <h4 className="font-semibold text-gray-900 mb-1 truncate">{image.name}</h4>
                           <p className="text-sm text-gray-600 mb-2 line-clamp-2">{image.description || 'No description'}</p>
-                          <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
+                          <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
                             <span className="bg-gray-100 px-2 py-1 rounded">{image.category}</span>
                             <span>{(image.size / 1024).toFixed(1)} KB</span>
                           </div>
+                          <div className="flex items-center justify-between text-xs mb-3">
+                            <span className="text-gray-500">{image.uploadDate}</span>
+                            {/* Show storage source */}
+                            <span className={`px-2 py-1 rounded text-xs font-medium ${image.source === 'cloudinary'
+                              ? 'bg-blue-100 text-blue-700'
+                              : image.source === 'local-fallback'
+                                ? 'bg-yellow-100 text-yellow-700'
+                                : 'bg-gray-100 text-gray-700'
+                              }`}>
+                              {image.source === 'cloudinary' ? '☁️ Cloudinary' :
+                                image.source === 'local-fallback' ? '💾 Local (Fallback)' :
+                                  '💾 Local'}
+                            </span>
+                          </div>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-gray-500">{image.uploadDate}</span>
                             <div className="flex items-center space-x-1">
                               <button
                                 onClick={() => setEditingImage(image)}
@@ -869,6 +962,12 @@ const AdminPanel = () => {
                                 <Trash2 className="w-4 h-4" />
                               </button>
                             </div>
+                            {/* Show Cloudinary details if available */}
+                            {image.cloudinary && (
+                              <div className="text-xs text-blue-600" title={`${image.cloudinary.width}x${image.cloudinary.height} • ${image.cloudinary.format}`}>
+                                📐 {image.cloudinary.width}x{image.cloudinary.height}
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -894,6 +993,211 @@ const AdminPanel = () => {
                     </label>
                   </div>
                 )}
+              </motion.div>
+            )}
+
+            {/* Email System Tab */}
+            {activeTab === 'email' && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="space-y-6"
+              >
+                {/* Email Status Alert */}
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0">
+                      <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <div className="ml-3">
+                      <h3 className="text-sm font-medium text-yellow-800">
+                        Email System Running in Test Mode
+                      </h3>
+                      <div className="mt-2 text-sm text-yellow-700">
+                        <p>
+                          Gmail credentials are currently invalid or missing. All email tests will run in simulation mode.
+                          To enable actual email sending:
+                        </p>
+                        <ol className="mt-2 list-decimal list-inside space-y-1">
+                          <li>Generate a new Gmail App Password at <a href="https://myaccount.google.com/apppasswords" target="_blank" className="underline">Google App Passwords</a></li>
+                          <li>Update the GMAIL_APP_PASSWORD in your .env.local file</li>
+                          <li>Restart the development server</li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email Status */}
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                    <Mail className="w-5 h-5 mr-2 text-blue-600" />
+                    Email System Status
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                      <h4 className="font-semibold text-green-800">Current Provider</h4>
+                      <p className="text-green-700">Gmail SMTP</p>
+                    </div>
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                      <h4 className="font-semibold text-blue-800">From Address</h4>
+                      <p className="text-blue-700">{companyInfo.email}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Email Test Section */}
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                    <Sparkles className="w-5 h-5 mr-2 text-purple-600" />
+                    Test Email Templates
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button
+                      onClick={async () => {
+                        try {
+                          const response = await fetch('/api/email/welcome', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                              name: 'Test Customer',
+                              email: companyInfo.email
+                            })
+                          })
+                          const result = await response.json()
+                          if (result.testMode) {
+                            showNotification('success', '🧪 TEST MODE: Welcome email test successful! (No actual email sent)')
+                          } else {
+                            showNotification(result.error ? 'error' : 'success',
+                              result.error || 'Welcome email sent successfully!')
+                          }
+                        } catch (error) {
+                          showNotification('error', 'Failed to send welcome email')
+                        }
+                      }}
+                      className="flex items-center justify-center space-x-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      <Mail className="w-4 h-4" />
+                      <span>Test Welcome Email</span>
+                    </button>                    <button
+                      onClick={async () => {
+                        try {
+                          const response = await fetch('/api/email/quote', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                              name: 'Test Customer',
+                              email: companyInfo.email,
+                              projectType: 'Kitchen Remodel',
+                              estimatedCost: '$25,000 - $35,000',
+                              timeline: '6-8 weeks'
+                            })
+                          })
+                          const result = await response.json()
+                          if (result.testMode) {
+                            showNotification('success', '🧪 TEST MODE: Quote email test successful! (No actual email sent)')
+                          } else {
+                            showNotification(result.error ? 'error' : 'success',
+                              result.error || 'Quote email sent successfully!')
+                          }
+                        } catch (error) {
+                          showNotification('error', 'Failed to send quote email')
+                        }
+                      }}
+                      className="flex items-center justify-center space-x-2 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                    >
+                      <FileText className="w-4 h-4" />
+                      <span>Test Quote Email</span>
+                    </button>
+
+                    <button
+                      onClick={async () => {
+                        try {
+                          const response = await fetch('/api/contact', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                              name: 'Test Customer',
+                              email: companyInfo.email,
+                              phone: '(555) 123-4567',
+                              projectType: 'Bathroom Remodel',
+                              budget: '$15,000 - $25,000',
+                              message: 'This is a test message from the admin panel.',
+                              propertyType: 'residential'
+                            })
+                          })
+                          const result = await response.json()
+                          if (result.testMode) {
+                            showNotification('success', '🧪 TEST MODE: Contact form test successful! (No actual email sent)')
+                          } else {
+                            showNotification(result.error ? 'error' : 'success',
+                              result.error || 'Contact form email sent successfully!')
+                          }
+                        } catch (error) {
+                          showNotification('error', 'Failed to send contact email')
+                        }
+                      }}
+                      className="flex items-center justify-center space-x-2 px-4 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
+                    >
+                      <User className="w-4 h-4" />
+                      <span>Test Contact Form</span>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Email Configuration */}
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                    <Settings className="w-5 h-5 mr-2 text-gray-600" />
+                    Email Configuration
+                  </h3>
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <h4 className="font-semibold text-gray-800 mb-2">Environment Variables</h4>
+                    <div className="space-y-2 text-sm text-gray-600">
+                      <p><code className="bg-gray-200 px-2 py-1 rounded">GMAIL_USER</code> - Your Gmail address</p>
+                      <p><code className="bg-gray-200 px-2 py-1 rounded">GMAIL_APP_PASSWORD</code> - Gmail app password</p>
+                      <p><code className="bg-gray-200 px-2 py-1 rounded">FROM_EMAIL</code> - Email to send from (optional)</p>
+                      <p><code className="bg-gray-200 px-2 py-1 rounded">TO_EMAIL</code> - Email to receive notifications (optional)</p>
+                    </div>
+                  </div>
+                  <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <p className="text-sm text-blue-800">
+                      <strong>Note:</strong> Your Gmail credentials are configured in Render environment variables.
+                      All emails will be sent from your Gmail account to the configured recipient address.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Quick Actions */}
+                <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-4 flex items-center">
+                    <Wand2 className="w-5 h-5 mr-2 text-indigo-600" />
+                    Quick Actions
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a
+                      href="/email-test"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center space-x-2 px-4 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                    >
+                      <Eye className="w-4 h-4" />
+                      <span>Open Email Test Panel</span>
+                    </a>
+                    <a
+                      href="https://myaccount.google.com/apppasswords"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center space-x-2 px-4 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                    >
+                      <Settings className="w-4 h-4" />
+                      <span>Manage Gmail App Passwords</span>
+                    </a>
+                  </div>
+                </div>
               </motion.div>
             )}
 
