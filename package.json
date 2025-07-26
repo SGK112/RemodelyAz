@@ -2,6 +2,10 @@
   "name": "remodely-az-root",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "build": "cd remodely-website && npm install && npm run build",
     "start": "cd remodely-website && npm start",

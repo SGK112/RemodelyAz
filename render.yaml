@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: remodelyaz
+    env: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: NPM_CONFIG_REGISTRY
+        value: https://registry.npmjs.org/
