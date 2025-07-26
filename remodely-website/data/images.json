@@ -90,5 +90,26 @@
         "test"
       ]
     }
+  },
+  {
+    "id": "remodely-gallery/usj4rgu0k7skpq9rorje",
+    "name": "favicon.svg",
+    "url": "https://res.cloudinary.com/drrwdgggx/image/upload/v1753515727/remodely-gallery/usj4rgu0k7skpq9rorje.svg",
+    "category": "Test",
+    "size": 261,
+    "uploadDate": "2025-07-26",
+    "description": "Live test upload",
+    "uploadedAt": "2025-07-26T07:42:12.124Z",
+    "source": "cloudinary",
+    "cloudinary": {
+      "public_id": "remodely-gallery/usj4rgu0k7skpq9rorje",
+      "width": 32,
+      "height": 32,
+      "format": "svg",
+      "tags": [
+        "remodely",
+        "test"
+      ]
+    }
   }
 ]
