@@ -166,24 +166,24 @@
   {
     "id": "partner-4-contemporary-bathroom-design",
     "name": "Contemporary Bathroom Design",
-    "url": "/uploads/partner-cabinets/partner-4-contemporary-bathroom-design.jpg",
+    "url": "https://images.unsplash.com/photo-1584622781003-d2311cc45946?w=800&h=600&fit=crop&auto=format",
     "category": "Bathroom",
     "size": 145600,
     "uploadDate": "2025-07-26",
     "description": "Modern contemporary bathroom with sleek vanity and premium fixtures",
     "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "local"
+    "source": "external"
   },
   {
     "id": "partner-3-milania-bathroom-vanity",
     "name": "Milania Bathroom Vanity",
-    "url": "/uploads/partner-cabinets/partner-3-milania-bathroom-vanity.jpg",
+    "url": "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&auto=format",
     "category": "Bathroom",
     "size": 134800,
     "uploadDate": "2025-07-26",
     "description": "Elegant Milania bathroom vanity with custom storage solutions",
     "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "local"
+    "source": "external"
   },
   {
     "id": "commercial-kitchen-countertops",
