@@ -30,16 +30,45 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    /* Improve mobile performance */
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: 100%;
+}
+
 body {
     color: rgb(var(--foreground-rgb));
     background: linear-gradient(to bottom,
             transparent,
             rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+    /* Improve scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
 }
 
 a {
     color: inherit;
     text-decoration: none;
+}
+
+/* Touch-friendly focus states */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+/* Improve button touch targets on mobile */
+.touch-manipulation {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -181,4 +210,48 @@ html {
     animation: shimmer 1.5s ease-in-out infinite;
     background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
     background-size: 800px 104px;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+    /* Ensure tap targets are at least 44px */
+    button, a[role="button"], .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Improve font sizes for mobile readability */
+    h1 { font-size: clamp(1.75rem, 8vw, 3rem); }
+    h2 { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+    h3 { font-size: clamp(1.25rem, 5vw, 2rem); }
+    
+    /* Improve mobile spacing */
+    .container { padding-left: 1rem; padding-right: 1rem; }
+    
+    /* Optimize glassmorphic effects for mobile performance */
+    .glass-card, .glass-navbar {
+        backdrop-filter: blur(8px);
+    }
+    
+    /* Prevent zoom on inputs */
+    input, select, textarea {
+        font-size: 16px;
+    }
+    
+    /* Improve touch scrolling */
+    .overflow-scroll, .overflow-auto {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

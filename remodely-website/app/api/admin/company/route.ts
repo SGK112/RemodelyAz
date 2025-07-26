@@ -40,6 +40,11 @@ export async function GET() {
     const data = fs.readFileSync(COMPANY_FILE, 'utf8')
     const companyInfo = JSON.parse(data)
     
+    // Format address object as string for compatibility
+    if (companyInfo.address && typeof companyInfo.address === 'object') {
+      companyInfo.address = `${companyInfo.address.street}, ${companyInfo.address.city}, ${companyInfo.address.state} ${companyInfo.address.zip}`
+    }
+    
     return NextResponse.json(companyInfo)
   } catch (error) {
     console.error('Error reading company info:', error)

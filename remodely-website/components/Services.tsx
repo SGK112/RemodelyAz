@@ -1,51 +1,91 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Wrench, Home, Building, Palette, Clock, Shield } from 'lucide-react'
 
+interface ServiceImage {
+    id: string
+    name: string
+    url: string
+    category: string
+    description: string
+}
+
 const Services = () => {
+    const [serviceImages, setServiceImages] = useState<{ [key: string]: string }>({
+        kitchen: '/uploads/surprise-granite/kitchen-linda-ullrich-remodel.avif',
+        bathroom: '/uploads/partner-cabinets/partner-4-contemporary-bathroom-design.jpg',
+        commercial: '/uploads/surprise-granite/countertops-quartz-installation.webp'
+    })
+
+    useEffect(() => {
+        const fetchServiceImages = async () => {
+            try {
+                const response = await fetch('/api/images?component=services&count=3')
+                if (response.ok) {
+                    const data = await response.json()
+                    const images = data.data
+                    const imageMap: { [key: string]: string } = {}
+                    
+                    images.forEach((img: ServiceImage) => {
+                        if (img.category === 'Kitchen') imageMap.kitchen = img.url
+                        if (img.category === 'Bathroom') imageMap.bathroom = img.url
+                        if (img.category === 'Commercial') imageMap.commercial = img.url
+                    })
+                    
+                    setServiceImages(prev => ({ ...prev, ...imageMap }))
+                }
+            } catch (error) {
+                console.error('Error fetching service images:', error)
+            }
+        }
+
+        fetchServiceImages()
+    }, [])
+
     const services = [
         {
             id: 1,
             title: 'Kitchen Remodeling',
-            description: 'Transform your kitchen into a culinary masterpiece with modern designs, premium materials, and smart storage solutions.',
-            image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            description: 'Complete kitchen transformations featuring custom cabinetry, premium countertops, and professional installation by our Arizona experts.',
+            image: serviceImages.kitchen,
             icon: <Palette className="w-8 h-8" />,
-            features: ['Custom Cabinetry', 'Premium Countertops', 'Modern Appliances', 'Smart Lighting'],
-            price: 'Starting at $25,000'
+            features: ['Custom Cabinetry', 'Granite & Quartz Countertops', 'Backsplash Installation', 'Professional Design'],
+            price: 'Free Consultation'
         },
         {
             id: 2,
             title: 'Bathroom Remodeling',
-            description: 'Create a spa-like sanctuary with luxurious fixtures, elegant tiles, and innovative storage solutions.',
-            image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            description: 'Luxury bathroom renovations with premium fixtures, custom vanities, and spa-like features for Arizona homes.',
+            image: serviceImages.bathroom,
             icon: <Home className="w-8 h-8" />,
-            features: ['Luxury Fixtures', 'Heated Floors', 'Custom Vanities', 'Walk-in Showers'],
-            price: 'Starting at $15,000'
+            features: ['Custom Vanities', 'Tub to Shower Conversion', 'Tile Installation', 'Modern Fixtures'],
+            price: 'Free Estimate'
         },
         {
             id: 3,
-            title: 'Commercial Remodeling',
-            description: 'Enhance your business space with professional designs that boost productivity and impress clients.',
-            image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            title: 'Countertop Installation',
+            description: 'Professional installation of granite, quartz, marble, and porcelain countertops with expert fabrication and finishing.',
+            image: serviceImages.commercial,
             icon: <Building className="w-8 h-8" />,
-            features: ['Office Spaces', 'Retail Design', 'Restaurant Kitchens', 'Medical Facilities'],
-            price: 'Custom Quote'
+            features: ['Granite Countertops', 'Quartz Surfaces', 'Custom Fabrication', 'Polish & Repair'],
+            price: 'Call (602) 833-3189'
         }
     ]
 
     const features = [
         {
             icon: <Clock className="w-12 h-12" />,
-            title: 'Fast Turnaround',
-            description: 'Complete most projects within 2-4 weeks with minimal disruption to your daily routine.'
+            title: 'Professional Service',
+            description: '5+ years of Arizona remodeling experience with 400+ completed projects and expert craftsmanship.'
         },
         {
             icon: <Shield className="w-12 h-12" />,
-            title: 'Quality Guarantee',
-            description: '10-year warranty on all work with premium materials and certified craftsmanship.'
+            title: 'Licensed & Trusted',
+            description: 'AzRoc #327266 licensed contractor with 4.7★ Google rating and 146+ satisfied customer reviews.'
         },
         {
             icon: <Wrench className="w-12 h-12" />,
@@ -55,7 +95,7 @@ const Services = () => {
     ]
 
     return (
-        <section className="py-20 bg-gray-50">
+        <section className="py-16 sm:py-20 bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Section Header */}
                 <motion.div
@@ -63,15 +103,15 @@ const Services = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center mb-12 sm:mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-gray-900 mb-4 sm:mb-6">
                         Our Premium
                         <span className="block text-accent-600">
                             Remodeling Services
                         </span>
                     </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
                         From concept to completion, we deliver exceptional results that exceed expectations
                         and transform your vision into reality.
                     </p>

@@ -7,7 +7,10 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "migrate-images": "node scripts/migrate-images-to-cloudinary.js",
+        "check-setup": "node scripts/check-setup.js",
+        "check-images": "node -e \"const {imageManager} = require('./lib/image-manager.ts'); console.log(imageManager.getStats())\""
     },
     "dependencies": {
         "@types/node": "20.8.0",
@@ -15,13 +18,13 @@
         "@types/react": "18.2.31",
         "@types/react-dom": "18.2.14",
         "autoprefixer": "10.4.16",
-        "cloudinary": "^1.41.0",
+        "cloudinary": "^1.41.3",
         "clsx": "2.0.0",
-        "critters": "^0.0.20",
+        "dotenv": "^17.2.1",
         "framer-motion": "10.16.4",
         "lucide-react": "0.290.0",
         "mongodb": "6.2.0",
-        "mongoose": "7.6.3",
+        "mongoose": "^7.6.3",
         "next": "14.0.0",
         "nodemailer": "6.9.7",
         "postcss": "8.4.31",

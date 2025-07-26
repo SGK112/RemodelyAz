@@ -15,11 +15,32 @@ const poppins = Poppins({
     variable: '--font-poppins',
 })
 
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+    viewportFit: 'cover',
+    themeColor: '#3B82F6'
+}
+
 export const metadata: Metadata = {
+    metadataBase: new URL('https://www.remodely-az.com'),
     title: 'REMODELY LLC - Premium Kitchen & Bath Remodeling Arizona',
     description: 'Transform your Arizona home with REMODELY LLC\'s expert kitchen and bathroom remodeling services. Premium quality, modern designs, residential & commercial. Licensed AzRoc 327266.',
     keywords: 'kitchen remodeling Arizona, bathroom remodeling Phoenix, home renovation Surprise AZ, commercial remodeling, modern design Arizona, AzRoc 327266, REMODELY LLC',
     authors: [{ name: 'REMODELY LLC' }],
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: 'default',
+        title: 'REMODELY LLC'
+    },
+    formatDetection: {
+        telephone: true,
+        date: false,
+        address: true,
+        email: true
+    },
     openGraph: {
         title: 'REMODELY LLC - Premium Kitchen & Bath Remodeling Arizona',
         description: 'Transform your Arizona home with expert remodeling services. Licensed AzRoc 327266.',
@@ -41,7 +62,6 @@ export const metadata: Metadata = {
         description: 'Transform your Arizona home with expert remodeling services. Licensed AzRoc 327266.',
         images: ['/og-image.jpg'],
     },
-    viewport: 'width=device-width, initial-scale=1',
     robots: 'index, follow',
     icons: {
         icon: [

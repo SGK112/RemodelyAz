@@ -24,20 +24,13 @@ npm --version
 echo "📦 Installing dependencies with npm..."
 cd remodely-website
 
-# Clear any potential cache issues
-npm cache clean --force || true
-
-# Install dependencies with verbose logging
+# Install dependencies
 echo "🔧 Installing packages..."
-npm install --verbose
-
-# Verify critical dependencies are installed
-echo "🔍 Verifying dependencies..."
-npm ls cloudinary critters || echo "⚠️ Some dependencies may be missing but continuing..."
+npm install --production=false
 
 # Build with error handling
 echo "🏗️ Building application..."
-NODE_ENV=production npm run build
+npm run build
 
 cd ..
 echo "✅ Build complete!"

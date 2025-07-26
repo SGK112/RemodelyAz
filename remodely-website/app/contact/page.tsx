@@ -105,7 +105,7 @@ const ContactPage = () => {
                 >
                     <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
                         Let's Discuss Your
-                                                <span className="block text-accent-600">
+                        <span className="block text-accent-600">
                             Contact Us
                         </span>
                     </h1>

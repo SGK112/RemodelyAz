@@ -12,7 +12,7 @@ const ServicesPage = () => {
             title: 'Kitchen Remodeling',
             subtitle: 'Transform Your Culinary Space',
             description: 'Create the kitchen of your dreams with our comprehensive remodeling services. From modern minimalist designs to traditional farmhouse styles, we bring your vision to life with premium materials and expert craftsmanship.',
-            image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+            image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1000&h=750&fit=crop&crop=center',
             price: 'Starting at $25,000',
             duration: '2-4 weeks',
             features: [
@@ -38,7 +38,7 @@ const ServicesPage = () => {
             title: 'Bathroom Remodeling',
             subtitle: 'Create Your Personal Spa',
             description: 'Transform your bathroom into a luxurious retreat with our comprehensive remodeling services. Whether it\'s a powder room refresh or a complete master suite renovation, we deliver exceptional results.',
-            image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+            image: 'https://images.unsplash.com/photo-1584622781003-d2311cc45946?w=1000&h=750&fit=crop&crop=center',
             price: 'Starting at $15,000',
             duration: '1-3 weeks',
             features: [
@@ -64,7 +64,7 @@ const ServicesPage = () => {
             title: 'Commercial Remodeling',
             subtitle: 'Professional Spaces That Impress',
             description: 'Enhance your business environment with our commercial remodeling expertise. From office spaces to retail stores and restaurants, we create functional, attractive spaces that boost productivity and impress clients.',
-            image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+            image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000&h=750&fit=crop&crop=center',
             price: 'Custom Quote',
             duration: '3-8 weeks',
             features: [

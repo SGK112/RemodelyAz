@@ -7,33 +7,33 @@ import { Award, Users, Clock, CheckCircle, Star, Heart } from 'lucide-react'
 
 const AboutPage = () => {
   const stats = [
-    { number: '500+', label: 'Projects Completed', icon: <CheckCircle className="w-6 h-6" /> },
-    { number: '15+', label: 'Years Experience', icon: <Clock className="w-6 h-6" /> },
-    { number: '98%', label: 'Client Satisfaction', icon: <Star className="w-6 h-6" /> },
-    { number: '50+', label: 'Team Members', icon: <Users className="w-6 h-6" /> },
+    { number: '400+', label: 'Projects Completed', icon: <CheckCircle className="w-6 h-6" /> },
+    { number: '5+', label: 'Years Experience', icon: <Clock className="w-6 h-6" /> },
+    { number: '4.7★', label: 'Google Rating', icon: <Star className="w-6 h-6" /> },
+    { number: '146+', label: 'Happy Customers', icon: <Users className="w-6 h-6" /> },
   ]
 
   const team = [
     {
-      name: 'Michael Rodriguez',
-      role: 'Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      bio: '20+ years in luxury home remodeling with a passion for innovative design and sustainable practices.',
-      certifications: ['Licensed Contractor', 'LEED Certified', 'NKBA Member']
+      name: 'Project Manager',
+      role: 'Licensed Contractor',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
+      bio: 'AzRoc licensed contractor #327266 with extensive experience in residential remodeling and project management.',
+      certifications: ['Licensed Contractor AzRoc #327266', 'Project Management', '5+ Years Experience']
     },
     {
-      name: 'Sarah Chen',
-      role: 'Lead Designer',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      bio: 'Award-winning interior designer specializing in modern and contemporary kitchen and bathroom spaces.',
-      certifications: ['NCIDQ Certified', 'ASID Member', 'Design Excellence Award']
+      name: 'Design Specialist',
+      role: 'Interior Design',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face',
+      bio: 'Specializing in kitchen and bathroom design with a focus on functionality and aesthetic appeal.',
+      certifications: ['Interior Design', 'Kitchen & Bath Specialist', 'Customer Satisfaction Expert']
     },
     {
-      name: 'David Thompson',
-      role: 'Project Manager',
-      image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      bio: 'Expert project coordinator ensuring every remodel is completed on time, within budget, and to perfection.',
-      certifications: ['PMP Certified', 'Construction Manager', '15 Years Experience']
+      name: 'Installation Expert',
+      role: 'Master Craftsman',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face',
+      bio: 'Expert installer with specialized skills in countertops, cabinetry, and custom remodeling solutions.',
+      certifications: ['Master Craftsman', 'Countertop Specialist', '400+ Projects Completed']
     }
   ]
 
@@ -78,9 +78,10 @@ const AboutPage = () => {
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                For over 15 years, REMODELY has been transforming homes and businesses with 
-                exceptional remodeling services. We combine innovative design, premium materials, 
-                and master craftsmanship to create spaces that exceed expectations.
+                Building on the established legacy of Surprise Granite, REMODELY Arizona brings 
+                5+ years of proven excellence in home remodeling to the Phoenix metro area. 
+                We combine innovative design, premium materials, and master craftsmanship to 
+                create spaces that exceed expectations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -106,8 +107,8 @@ const AboutPage = () => {
             >
               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="REMODELY team at work"
+                  src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop&auto=format"
+                  alt="REMODELY Arizona team at work"
                   fill
                   className="object-cover"
                 />
@@ -174,19 +175,28 @@ const AboutPage = () => {
               </h2>
               <div className="space-y-6 text-gray-600 leading-relaxed">
                 <p>
-                  REMODELY was founded in 2009 with a simple mission: to transform ordinary spaces 
-                  into extraordinary experiences. What started as a small family business has grown 
-                  into one of the region's most trusted remodeling companies.
+                  REMODELY Arizona is the evolution of Surprise Granite, a trusted name in home 
+                  improvement that has been serving the Phoenix metro area since 2019. What began 
+                  as a specialized countertop company has transformed into a full-service remodeling 
+                  business, bringing our proven track record of excellence to every aspect of home renovation.
                 </p>
                 <p>
-                  Our founder, Michael Rodriguez, began his career as a craftsman, learning the 
-                  trade from master builders. His passion for quality and attention to detail 
-                  became the foundation of our company culture.
+                  As Surprise Granite, we built our reputation on quality craftsmanship and exceptional 
+                  customer service, earning a 4.7-star Google rating from over 146+ satisfied customers. 
+                  Our licensed contractors (AzRoc #327266) completed 400+ successful projects, establishing 
+                  trust throughout Surprise, Peoria, Glendale, and the greater Phoenix area.
                 </p>
                 <p>
-                  Today, we're proud to have completed over 500 successful projects, from intimate 
-                  bathroom renovations to large-scale commercial remodels. Every project is a 
-                  testament to our commitment to excellence, innovation, and client satisfaction.
+                  Today, as REMODELY Arizona, we've expanded our services while maintaining the same 
+                  commitment to excellence that made us successful. From our base at 11560 N Dysart Rd 
+                  Suite 112 in Surprise, we continue to transform homes with kitchen remodeling, bathroom 
+                  renovations, countertop installations, and comprehensive home makeovers.
+                </p>
+                <p>
+                  Every project reflects our core values: honest communication, transparent pricing, 
+                  premium materials, and the skilled craftsmanship that has earned us the trust of 
+                  hundreds of Arizona families. When you choose REMODELY Arizona, you're choosing 
+                  a company with a proven legacy of turning house dreams into beautiful realities.
                 </p>
               </div>
             </motion.div>
@@ -200,8 +210,8 @@ const AboutPage = () => {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="REMODELY workshop"
+                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format"
+                  alt="REMODELY Arizona showroom"
                   fill
                   className="object-cover"
                 />
@@ -262,7 +272,7 @@ const AboutPage = () => {
               Meet Our Team
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The talented professionals who bring your remodeling dreams to life.
+              The experienced professionals behind REMODELY Arizona's reputation for excellence.
             </p>
           </motion.div>
 
@@ -317,7 +327,7 @@ const AboutPage = () => {
               Ready to Work With Us?
             </h2>
             <p className="text-xl text-primary-100 mb-8">
-              Join hundreds of satisfied clients who trusted REMODELY with their dream projects.
+              Join over 146+ satisfied customers who trusted REMODELY Arizona with their dream projects.
             </p>
             <Link
               href="/contact"

@@ -8,27 +8,27 @@ const Testimonials = () => {
     const testimonials = [
         {
             id: 1,
-            name: 'Sarah Johnson',
-            title: 'Homeowner',
-            image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+            name: 'Linda Ullrich',
+            title: 'Homeowner - Surprise, AZ',
+            image: 'https://images.unsplash.com/photo-1494790108755-2616b19a0a27?w=150&h=150&fit=crop&crop=face&auto=format',
             rating: 5,
-            text: "REMODELY transformed our outdated kitchen into a modern masterpiece. The attention to detail and quality of work exceeded our expectations. Our home value increased significantly!",
+            text: "Outstanding work on our kitchen remodel! The team was professional, timely, and the quality exceeded our expectations. Our new quartz countertops and cabinets look absolutely beautiful.",
             project: 'Kitchen Remodeling'
         },
         {
             id: 2,
             name: 'Michael Chen',
-            title: 'Business Owner',
-            image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+            title: 'Business Owner - Phoenix, AZ',
+            image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format',
             rating: 5,
             text: "The commercial renovation of our restaurant was completed on time and within budget. REMODELY's team was professional, clean, and minimally disruptive to our business.",
             project: 'Commercial Renovation'
         },
         {
             id: 3,
-            name: 'Emily Rodriguez',
-            title: 'Interior Designer',
-            image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+            name: 'Sarah Rodriguez',
+            title: 'Interior Designer - Scottsdale, AZ',
+            image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face&auto=format',
             rating: 5,
             text: "As an interior designer, I've worked with many contractors. REMODELY stands out for their craftsmanship, communication, and ability to bring complex designs to life.",
             project: 'Bathroom Remodeling'
@@ -48,7 +48,7 @@ const Testimonials = () => {
                 >
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
                         What Our Clients
-                                                <span className="block text-accent-600">
+                        <span className="block text-accent-600">
                             Testimonials
                         </span>
                     </h2>

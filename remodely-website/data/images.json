@@ -1,104 +1,12 @@
 [
   {
-    "id": "1",
-    "name": "Modern Kitchen Renovation",
-    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "category": "Kitchen",
-    "size": 245000,
-    "uploadDate": "2025-07-25",
-    "description": "Beautiful modern kitchen with white cabinets and quartz countertops",
-    "uploadedAt": "2025-07-25T16:40:30.741Z"
-  },
-  {
-    "id": "2",
-    "name": "Luxury Bathroom Remodel",
-    "url": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "category": "Bathroom",
-    "size": 198000,
-    "uploadDate": "2025-07-25",
-    "description": "Spa-like bathroom with walk-in shower and dual vanities",
-    "uploadedAt": "2025-07-25T16:40:30.741Z"
-  },
-  {
-    "id": "3",
-    "name": "Contemporary Living Room",
-    "url": "https://images.unsplash.com/photo-1560184897-c5c8bcd75fb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "category": "Living Room",
-    "size": 220000,
-    "uploadDate": "2025-07-25",
-    "description": "Open concept living room with modern furnishings",
-    "uploadedAt": "2025-07-25T16:40:30.741Z"
-  },
-  {
-    "id": "4",
-    "name": "Commercial Office Space",
-    "url": "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "category": "Commercial",
-    "size": 275000,
-    "uploadDate": "2025-07-25",
-    "description": "Modern commercial office renovation with glass partitions",
-    "uploadedAt": "2025-07-25T16:40:30.741Z"
-  },
-  {
-    "id": "5",
-    "name": "Master Bedroom Suite",
-    "url": "https://images.unsplash.com/photo-1540518614846-7eded1aba991?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "category": "Bedroom",
-    "size": 189000,
-    "uploadDate": "2025-07-25",
-    "description": "Elegant master bedroom with custom built-ins",
-    "uploadedAt": "2025-07-25T16:40:30.741Z",
-    "updatedAt": "2025-07-25T17:35:55.505Z"
-  },
-  {
-    "id": "6",
-    "name": "Outdoor Living Space",
-    "url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    "category": "Outdoor",
-    "size": 210000,
-    "uploadDate": "2025-07-25",
-    "description": "Beautiful outdoor patio with covered seating area",
-    "uploadedAt": "2025-07-25T16:40:30.741Z"
-  },
-  {
-    "id": "1753464095829",
-    "name": "favicon.svg",
-    "url": "/uploads/1753464095829-favicon.svg",
-    "category": "Uncategorized",
-    "size": 834,
-    "uploadDate": "2025-07-25",
-    "description": "",
-    "uploadedAt": "2025-07-25T17:21:35.832Z"
-  },
-  {
-    "id": "remodely-gallery/a5oexz2npttq7qriyhov",
-    "name": "favicon.svg",
-    "url": "https://res.cloudinary.com/drrwdgggx/image/upload/v1753514957/remodely-gallery/a5oexz2npttq7qriyhov.svg",
-    "category": "Test",
-    "size": 261,
-    "uploadDate": "2025-07-26",
-    "description": "Testing Cloudinary upload",
-    "uploadedAt": "2025-07-26T07:29:18.143Z",
-    "source": "cloudinary",
-    "cloudinary": {
-      "public_id": "remodely-gallery/a5oexz2npttq7qriyhov",
-      "width": 32,
-      "height": 32,
-      "format": "svg",
-      "tags": [
-        "remodely",
-        "test"
-      ]
-    }
-  },
-  {
     "id": "remodely-gallery/usj4rgu0k7skpq9rorje",
-    "name": "favicon.svg",
+    "name": "RemodelyAz Logo",
     "url": "https://res.cloudinary.com/drrwdgggx/image/upload/v1753515727/remodely-gallery/usj4rgu0k7skpq9rorje.svg",
-    "category": "Test",
+    "category": "Brand",
     "size": 261,
     "uploadDate": "2025-07-26",
-    "description": "Live test upload",
+    "description": "RemodelyAz company logo - fast loading SVG",
     "uploadedAt": "2025-07-26T07:42:12.124Z",
     "source": "cloudinary",
     "cloudinary": {
@@ -108,8 +16,184 @@
       "format": "svg",
       "tags": [
         "remodely",
-        "test"
+        "logo"
       ]
     }
+  },
+  {
+    "id": "kitchen-linda-ullrich-remodel",
+    "name": "Linda Ullrich Kitchen Remodel",
+    "url": "/uploads/surprise-granite/kitchen-linda-ullrich-remodel.avif",
+    "category": "Kitchen",
+    "size": 245600,
+    "uploadDate": "2025-07-26",
+    "description": "Modern kitchen renovation with quartz countertops and premium finishes",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "countertops-quartz-installation",
+    "name": "Quartz Countertop Installation",
+    "url": "/uploads/surprise-granite/countertops-quartz-installation.webp",
+    "category": "Kitchen",
+    "size": 189400,
+    "uploadDate": "2025-07-26",
+    "description": "Professional quartz countertop installation with seamless finish",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-19-newport-custom-grey-luxury",
+    "name": "Newport Custom Grey Luxury Kitchen",
+    "url": "/uploads/partner-cabinets/partner-19-newport-custom-grey-luxury.jpg",
+    "category": "Kitchen",
+    "size": 156800,
+    "uploadDate": "2025-07-26",
+    "description": "Luxury kitchen with Newport custom grey cabinetry and modern design",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-21-two-tone-kitchen-design",
+    "name": "Two-Tone Kitchen Design",
+    "url": "/uploads/partner-cabinets/partner-21-two-tone-kitchen-design.jpg",
+    "category": "Kitchen",
+    "size": 178200,
+    "uploadDate": "2025-07-26",
+    "description": "Stunning two-tone kitchen design with contrasting cabinet colors",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-9-alpine-fawn-cabinetry",
+    "name": "Alpine Fawn Cabinetry",
+    "url": "/uploads/partner-cabinets/partner-9-alpine-fawn-cabinetry.png",
+    "category": "Kitchen",
+    "size": 189600,
+    "uploadDate": "2025-07-26",
+    "description": "Beautiful alpine fawn cabinetry with warm wood tones",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-7-black-milania-kitchen-transformation",
+    "name": "Black Milania Kitchen Transformation",
+    "url": "/uploads/partner-cabinets/partner-7-black-milania-kitchen-transformation.jpg",
+    "category": "Kitchen",
+    "size": 167400,
+    "uploadDate": "2025-07-26",
+    "description": "Dramatic black Milania kitchen transformation with modern styling",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-14-newport-black-kitchen",
+    "name": "Newport Black Kitchen",
+    "url": "/uploads/partner-cabinets/partner-14-newport-black-kitchen.jpg",
+    "category": "Kitchen",
+    "size": 145600,
+    "uploadDate": "2025-07-26",
+    "description": "Elegant Newport black kitchen with premium hardware and finishes",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-11-shaker-white-kitchen",
+    "name": "Shaker White Kitchen",
+    "url": "/uploads/partner-cabinets/partner-11-shaker-white-kitchen.jpg",
+    "category": "Kitchen",
+    "size": 134200,
+    "uploadDate": "2025-07-26",
+    "description": "Classic shaker white kitchen with timeless appeal",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-16-beachwood-kitchen-design",
+    "name": "Beachwood Kitchen Design",
+    "url": "/uploads/partner-cabinets/partner-16-beachwood-kitchen-design.jpg",
+    "category": "Kitchen",
+    "size": 167800,
+    "uploadDate": "2025-07-26",
+    "description": "Coastal-inspired beachwood kitchen design with natural textures",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-15-newport-grey-contemporary",
+    "name": "Newport Grey Contemporary",
+    "url": "/uploads/partner-cabinets/partner-15-newport-grey-contemporary.jpg",
+    "category": "Kitchen",
+    "size": 178900,
+    "uploadDate": "2025-07-26",
+    "description": "Contemporary Newport grey kitchen with sleek lines and modern fixtures",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-23-tahoe-ash-natural-kitchen",
+    "name": "Tahoe Ash Natural Kitchen",
+    "url": "/uploads/partner-cabinets/partner-23-tahoe-ash-natural-kitchen.jpg",
+    "category": "Kitchen",
+    "size": 189200,
+    "uploadDate": "2025-07-26",
+    "description": "Natural Tahoe ash kitchen with organic wood grain patterns",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-13-alpine-dove-white",
+    "name": "Alpine Dove White",
+    "url": "/uploads/partner-cabinets/partner-13-alpine-dove-white.png",
+    "category": "Kitchen",
+    "size": 156700,
+    "uploadDate": "2025-07-26",
+    "description": "Clean alpine dove white cabinetry with soft, elegant finish",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-18-newport-grey-island-kitchen",
+    "name": "Newport Grey Island Kitchen",
+    "url": "/uploads/partner-cabinets/partner-18-newport-grey-island-kitchen.jpg",
+    "category": "Kitchen",
+    "size": 198400,
+    "uploadDate": "2025-07-26",
+    "description": "Spacious Newport grey kitchen with large central island",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-4-contemporary-bathroom-design",
+    "name": "Contemporary Bathroom Design",
+    "url": "/uploads/partner-cabinets/partner-4-contemporary-bathroom-design.jpg",
+    "category": "Bathroom",
+    "size": 145600,
+    "uploadDate": "2025-07-26",
+    "description": "Modern contemporary bathroom with sleek vanity and premium fixtures",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "partner-3-milania-bathroom-vanity",
+    "name": "Milania Bathroom Vanity",
+    "url": "/uploads/partner-cabinets/partner-3-milania-bathroom-vanity.jpg",
+    "category": "Bathroom",
+    "size": 134800,
+    "uploadDate": "2025-07-26",
+    "description": "Elegant Milania bathroom vanity with custom storage solutions",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
+  },
+  {
+    "id": "commercial-kitchen-countertops",
+    "name": "Commercial Kitchen Countertops",
+    "url": "/uploads/surprise-granite/countertops-quartz-installation.webp",
+    "category": "Commercial",
+    "size": 189400,
+    "uploadDate": "2025-07-26",
+    "description": "Professional commercial kitchen countertop installation for businesses",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "local"
   }
 ]
