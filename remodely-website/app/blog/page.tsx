@@ -389,7 +389,7 @@ const BlogPage = () => {
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
-                className="space-y-6"
+                className="space-y-6 lg:sticky-sidebar"
               >
                 {/* Categories Section */}
                 <div className="glass-card rounded-2xl p-6 bg-white/90 backdrop-blur-sm border border-white/20 shadow-xl">

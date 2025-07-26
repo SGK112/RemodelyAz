@@ -10,7 +10,7 @@ const DesignServices = () => {
     title: 'Design Services',
     subtitle: 'Bringing Your Vision to Life',
     description: 'Our expert design team creates stunning, functional spaces tailored to your lifestyle and preferences. From initial concept to final implementation, we guide you through every design decision.',
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1562594765-f8eabfca39ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     price: 'Starting at $2,500',
     duration: '2-4 weeks',
     features: [
@@ -48,7 +48,7 @@ const DesignServices = () => {
     {
       id: 3,
       title: 'Living Room Design',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: 'https://images.unsplash.com/photo-1560184897-c5c8bcd75fb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       description: 'Open concept living space design'
     }
   ]

@@ -11,7 +11,7 @@ const Services = () => {
             id: 1,
             title: 'Kitchen Remodeling',
             description: 'Transform your kitchen into a culinary masterpiece with modern designs, premium materials, and smart storage solutions.',
-            image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             icon: <Palette className="w-8 h-8" />,
             features: ['Custom Cabinetry', 'Premium Countertops', 'Modern Appliances', 'Smart Lighting'],
             price: 'Starting at $25,000'
@@ -20,7 +20,7 @@ const Services = () => {
             id: 2,
             title: 'Bathroom Remodeling',
             description: 'Create a spa-like sanctuary with luxurious fixtures, elegant tiles, and innovative storage solutions.',
-            image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             icon: <Home className="w-8 h-8" />,
             features: ['Luxury Fixtures', 'Heated Floors', 'Custom Vanities', 'Walk-in Showers'],
             price: 'Starting at $15,000'

@@ -1,48 +1,88 @@
 # Copilot Instructions for RemodelyAz
 
 ## Project Overview
-- **RemodelyAz** is a modern, professional website for a premium kitchen and bathroom remodeling company.
-- Built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, and MongoDB (via Mongoose).
-- Features include glassmorphic UI, interactive gallery, contact form with MongoDB/email integration, SEO, and smooth animations.
+RemodelyAz is a premium remodeling company website built with **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, and hybrid data storage (MongoDB + JSON files). The project uses a **monorepo structure** with the main application in `remodely-website/` and root-level deployment scripts.
 
-## Architecture & Key Patterns
-- **App Directory Structure**: All routes/pages are in `remodely-website/app/` using Next.js App Router conventions. Subfolders (e.g., `services/`, `blog/`, `admin/`) map to site sections.
-- **API Routes**: Serverless API endpoints are in `remodely-website/app/api/`, e.g., `admin/blogs/route.ts` for blog admin APIs. Data flows from forms (frontend) to these endpoints, then to MongoDB/email.
-- **Components**: Shared React components are in `remodely-website/components/` (e.g., `Hero.tsx`, `Gallery.tsx`).
-- **Data**: Static data is in `remodely-website/data/` (e.g., `blogs.json`). Dynamic data uses MongoDB via `lib/mongodb.ts` and related hooks.
-- **Styling**: Tailwind CSS is configured in `tailwind.config.js` and used throughout. Glassmorphic effects are common (see `globals.css`).
-- **Email**: Email notifications use Nodemailer, configured in `lib/mailer.ts`.
+## Architecture & Critical Patterns
+
+### Monorepo Structure
+- **Root workspace**: Contains deployment scripts (`build.sh`, `start.sh`) and workspace configuration
+- **Main app**: All development happens in `remodely-website/` subdirectory
+- **Commands**: Always `cd remodely-website/` first, or use root-level npm scripts that handle directory changes
+
+### Data Storage Strategy (Hybrid Approach)
+- **JSON Files**: Static/semi-static content in `data/` (blogs, company info, images metadata)
+- **MongoDB**: Dynamic user data (contact forms, submissions) via `lib/mongodb.ts` with cached connections
+- **File-based Admin**: Admin operations modify JSON files directly using `lib/data-store.ts`
+- **Admin Hooks**: `lib/admin-hooks.ts` provides React hooks for admin data management
+
+### Glassmorphic Design System
+- **Custom CSS Classes**: `.btn-glassmorphic` in `globals.css` for consistent glass effects
+- **Tailwind Extensions**: Custom color palette (`primary`, `accent`, `navy`) in `tailwind.config.js`
+- **Pattern**: `bg-white/10 backdrop-blur-sm border border-white/20` for glass cards
+- **Typography**: `font-display` (Poppins) for headings, `font-sans` (Inter) for body text
 
 ## Developer Workflows
-- **Install dependencies**: `npm install` in `remodely-website/`
-- **Start dev server**: `npm run dev` (or use VS Code task: "Start Development Server")
-- **Environment setup**: Copy `.env.local.example` to `.env.local` and fill in `MONGODB_URI`, `GMAIL_USER`, `GMAIL_APP_PASSWORD`.
-- **MongoDB**: Local or Atlas instance, database name `remodely`.
-- **Gmail**: Use an App Password for email sending.
-- **Deployment**: Vercel is recommended; set env vars in dashboard.
+
+### Development Setup
+```bash
+# From root directory
+npm run dev  # Equivalent to: cd remodely-website && npm run dev
+
+# Or manually
+cd remodely-website
+npm install
+npm run dev
+```
+
+### Environment Requirements
+- **MONGODB_URI**: For contact forms and dynamic data
+- **GMAIL_USER** + **GMAIL_APP_PASSWORD**: For email notifications (requires Gmail App Password, not regular password)
+- **Database**: MongoDB collection named "remodely"
+
+### VS Code Task Integration
+- Use "Start Development Server" task instead of terminal commands
+- Task automatically handles directory navigation to `remodely-website/`
 
 ## Project-Specific Conventions
-- **Glassmorphic UI**: Use backdrop blur, translucent cards, and gradients for new UI elements.
-- **Color/Fonts**: Primary blue (`#0ea5e9`), accent orange (`#f3740c`), Poppins for headings, Inter for body.
-- **API Data Flow**: Forms POST to `/api/` endpoints, which handle validation, DB, and email.
-- **Security**: Input validation, rate limiting, CSRF, and secure headers are implemented in API routes.
-- **SEO**: Use meta tags, OpenGraph, and structured data in page components.
 
-## Integration Points
-- **MongoDB**: All dynamic content (contact, blogs, etc.) is stored in MongoDB. See `lib/mongodb.ts` and API routes.
-- **Email**: Outbound email via Nodemailer (Gmail App Password required).
-- **Analytics**: Ready for Google Analytics, Tag Manager, Facebook Pixel (see roadmap).
+### API Route Patterns
+- **Dual Storage**: APIs often write to both MongoDB AND JSON files (see `/api/admin/blogs/route.ts`)
+- **Schema Definition**: Mongoose schemas defined inline within route files (not separate models)
+- **Error Handling**: Standardized NextResponse.json error format with descriptive messages
 
-## Examples
-- **Add a new service page**: Create a new folder in `app/services/` with a `page.tsx` file.
-- **Add a new API endpoint**: Add a new folder/file in `app/api/` (see `admin/blogs/route.ts`, `admin/ai-writer/route.ts`).
-- **Add a new component**: Place in `components/` and import as needed.
-- **AI Writer**: Blog admin panel includes AI content generation via `/api/admin/ai-writer` endpoint with mock content templates.
+### Component Architecture
+- **Motion Components**: Heavy use of Framer Motion with consistent timing patterns (0.8s duration, staggered delays)
+- **Dynamic Content**: Components fetch from `/api/admin/*` endpoints for real-time updates
+- **Responsive Patterns**: Mobile-first design with `sm:`, `md:`, `lg:` breakpoints
 
-## References
-- See `remodely-website/README.md` for full setup, deployment, and roadmap details.
-- For design conventions, review `globals.css` and `tailwind.config.js`.
+### SEO & Metadata
+- **Comprehensive Meta**: Each page includes OpenGraph, Twitter cards, and structured data
+- **Company Branding**: Licensed contractor (AzRoc #327266) for credibility
+- **Location Focus**: Arizona-specific optimization for local SEO
 
----
+## Integration Points & Data Flow
 
-If you are unsure about a workflow or pattern, check the `README.md` files or ask for clarification.
+### Contact Form Workflow
+1. Form submission → `/api/contact/route.ts`
+2. Validates + saves to MongoDB Contact collection
+3. Sends email notification via Nodemailer
+4. Returns success/error response
+
+### Admin Content Management
+1. Admin pages use `lib/admin-hooks.ts` for data fetching
+2. Updates POST to `/api/admin/*` endpoints
+3. APIs update both JSON files AND database when applicable
+4. Real-time updates without page refresh
+
+### Build & Deployment
+- **Render.com**: Uses `render.yaml` with custom build/start scripts
+- **Build Process**: `./build.sh` → `cd remodely-website && npm install && npm run build`
+- **Start Process**: `./start.sh` → `cd remodely-website && npm start`
+- **Node Version**: Locked to 18.17.0 for deployment consistency
+
+## Key Files & Examples
+- **Glassmorphic Styling**: Check `components/Hero.tsx` badge component and `globals.css` button classes
+- **API Pattern**: Study `/api/contact/route.ts` for MongoDB integration
+- **Admin Pattern**: Review `/api/admin/blogs/route.ts` for JSON file management
+- **Data Management**: See `lib/data-store.ts` for file operations and `lib/admin-hooks.ts` for React patterns

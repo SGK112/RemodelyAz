@@ -10,7 +10,7 @@ const BathroomRemodeling = () => {
     title: 'Bathroom Remodeling',
     subtitle: 'Create Your Personal Spa',
     description: 'Transform your bathroom into a luxurious retreat with our comprehensive remodeling services. Whether it\'s a powder room refresh or a complete master suite renovation, we deliver exceptional results.',
-    image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     price: 'Starting at $15,000',
     duration: '1-3 weeks',
     features: [

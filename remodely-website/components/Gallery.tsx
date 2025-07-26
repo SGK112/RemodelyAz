@@ -21,7 +21,7 @@ const Gallery = () => {
             id: 1,
             title: 'Modern Luxury Kitchen',
             category: 'kitchen',
-            image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             description: 'Complete kitchen transformation with custom cabinetry and marble countertops',
             location: 'Beverly Hills, CA'
         },
@@ -29,7 +29,7 @@ const Gallery = () => {
             id: 2,
             title: 'Spa-Inspired Master Bath',
             category: 'bathroom',
-            image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             description: 'Luxurious bathroom with walk-in shower and heated floors',
             location: 'Manhattan, NY'
         },
@@ -45,7 +45,7 @@ const Gallery = () => {
             id: 4,
             title: 'Rustic Modern Kitchen',
             category: 'kitchen',
-            image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             description: 'Blend of rustic charm and modern functionality',
             location: 'Austin, TX'
         },
@@ -53,7 +53,7 @@ const Gallery = () => {
             id: 5,
             title: 'Contemporary Guest Bath',
             category: 'bathroom',
-            image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             description: 'Sleek design with premium fixtures and lighting',
             location: 'Miami, FL'
         },
@@ -69,7 +69,7 @@ const Gallery = () => {
             id: 7,
             title: 'Luxury Master Kitchen',
             category: 'kitchen',
-            image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             description: 'Elegant kitchen with marble island and premium appliances',
             location: 'San Francisco, CA'
         },
@@ -77,7 +77,7 @@ const Gallery = () => {
             id: 8,
             title: 'Modern Powder Room',
             category: 'bathroom',
-            image: 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+            image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
             description: 'Compact bathroom with geometric tiles and floating vanity',
             location: 'Seattle, WA'
         },

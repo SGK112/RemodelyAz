@@ -10,7 +10,7 @@ const KitchenRemodeling = () => {
     title: 'Kitchen Remodeling',
     subtitle: 'Transform Your Culinary Space',
     description: 'Create the kitchen of your dreams with our comprehensive remodeling services. From modern minimalist designs to traditional farmhouse styles, we bring your vision to life with premium materials and expert craftsmanship.',
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
     price: 'Starting at $25,000',
     duration: '2-4 weeks',
     features: [

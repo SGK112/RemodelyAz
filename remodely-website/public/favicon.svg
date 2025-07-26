@@ -1,5 +1,7 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="32" height="32" rx="6" fill="#E97626"/>
-  <path d="M8 10H24V12H22V20H24V22H8V20H10V12H8V10ZM12 12V20H14V16H18V20H20V12H12ZM16 14V14.5H16V14Z" fill="white"/>
-  <rect x="14" y="14" width="4" height="2" fill="#E97626"/>
+  <!-- Background rounded rectangle to match navbar w-10 h-10 bg-accent-600 rounded-lg -->
+  <rect width="32" height="32" rx="6" fill="#ea580c"/>
+  
+  <!-- Letter R - simple text to match navbar -->
+  <text x="16" y="24" text-anchor="middle" fill="white" font-family="Poppins, sans-serif" font-size="20" font-weight="700">R</text>
 </svg>
