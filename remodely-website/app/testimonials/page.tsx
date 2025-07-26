@@ -156,7 +156,7 @@ const TestimonialsPage = () => {
                         Ready to Create Your Success Story?
                     </h2>
                     <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                        Join our satisfied clients and transform your space with REMODELY. 
+                        Join our satisfied clients and transform your space with REMODELY.
                         Schedule a consultation to discuss your remodeling project.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">

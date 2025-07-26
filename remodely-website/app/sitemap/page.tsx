@@ -85,7 +85,7 @@ const SitemapPage = () => {
                         Site Map
                     </h1>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Navigate through all pages and sections of the REMODELY website. 
+                        Navigate through all pages and sections of the REMODELY website.
                         Find everything you need to know about our kitchen and bathroom remodeling services.
                     </p>
                 </motion.div>
@@ -113,7 +113,7 @@ const SitemapPage = () => {
                         Need Help Finding Something?
                     </h2>
                     <p className="text-gray-600 mb-6">
-                        If you can't find what you're looking for, please don't hesitate to contact us. 
+                        If you can't find what you're looking for, please don't hesitate to contact us.
                         Our team is here to help you with any questions about our services or website.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
@@ -139,10 +139,10 @@ const SitemapPage = () => {
                     transition={{ duration: 0.8, delay: 0.7 }}
                     className="text-center mt-12 text-gray-500 text-sm"
                 >
-                    Last updated: {new Date().toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
+                    Last updated: {new Date().toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
                     })}
                 </motion.div>
             </div>
