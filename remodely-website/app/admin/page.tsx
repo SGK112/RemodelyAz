@@ -3,15 +3,15 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { 
-  Building, 
-  FileText, 
-  Camera, 
-  Settings, 
-  Save, 
-  Upload, 
-  Edit3, 
-  Trash2, 
+import {
+  Building,
+  FileText,
+  Camera,
+  Settings,
+  Save,
+  Upload,
+  Edit3,
+  Trash2,
   Plus,
   Eye,
   Calendar,
@@ -19,7 +19,9 @@ import {
   Mail,
   Phone,
   MapPin,
-  Globe
+  Globe,
+  Sparkles,
+  Wand2
 } from 'lucide-react'
 
 interface CompanyInfo {
@@ -80,7 +82,7 @@ const AdminPanel = () => {
       slug: 'cooling-solutions-arizona-homes',
       excerpt: 'Discover the best cooling solutions to keep your Arizona home comfortable during extreme heat.',
       content: 'Full article content here...',
-      image: '/images/blog/cooling-solutions.jpg',
+      image: 'https://images.unsplash.com/photo-1582719371507-31ad96e7b3e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       category: 'Home Improvement',
       date: '2024-07-20',
       author: 'REMODELY Team',
@@ -92,7 +94,7 @@ const AdminPanel = () => {
       slug: 'monsoon-proofing-arizona-home',
       excerpt: 'Protect your home from Arizona\'s monsoon season with these essential tips.',
       content: 'Full article content here...',
-      image: '/images/blog/monsoon-prep.jpg',
+      image: 'https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       category: 'Seasonal Tips',
       date: '2024-07-18',
       author: 'REMODELY Team',
@@ -105,7 +107,10 @@ const AdminPanel = () => {
 
   const [editingBlog, setEditingBlog] = useState<BlogPost | null>(null)
   const [showImageUpload, setShowImageUpload] = useState(false)
-  const [notification, setNotification] = useState<{type: 'success' | 'error', message: string} | null>(null)
+  const [showAIWriter, setShowAIWriter] = useState(false)
+  const [aiPrompt, setAiPrompt] = useState('')
+  const [isGenerating, setIsGenerating] = useState(false)
+  const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null)
 
   const showNotification = (type: 'success' | 'error', message: string) => {
     setNotification({ type, message })
@@ -205,6 +210,46 @@ const AdminPanel = () => {
     }
   }
 
+  const generateAIContent = async () => {
+    if (!aiPrompt.trim()) {
+      showNotification('error', 'Please enter a prompt for the AI writer')
+      return
+    }
+
+    setIsGenerating(true)
+    try {
+      const response = await fetch('/api/admin/ai-writer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: aiPrompt,
+          category: editingBlog?.category || 'Home Improvement'
+        })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        if (editingBlog) {
+          setEditingBlog({
+            ...editingBlog,
+            title: data.title || editingBlog.title,
+            excerpt: data.excerpt || editingBlog.excerpt,
+            content: data.content || editingBlog.content
+          })
+        }
+        setShowAIWriter(false)
+        setAiPrompt('')
+        showNotification('success', 'AI content generated successfully!')
+      } else {
+        throw new Error('Failed to generate content')
+      }
+    } catch (error) {
+      showNotification('error', 'Failed to generate AI content')
+    } finally {
+      setIsGenerating(false)
+    }
+  }
+
   const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files
     if (!files) return
@@ -213,13 +258,13 @@ const AdminPanel = () => {
       const file = files[i]
       const formData = new FormData()
       formData.append('image', file)
-      
+
       try {
         const response = await fetch('/api/admin/images', {
           method: 'POST',
           body: formData
         })
-        
+
         if (response.ok) {
           const result = await response.json()
           setImages(prev => [...prev, result.image])
@@ -229,7 +274,7 @@ const AdminPanel = () => {
         showNotification('error', `Failed to upload ${file.name}`)
       }
     }
-    
+
     // Reset file input
     event.target.value = ''
   }
@@ -241,7 +286,7 @@ const AdminPanel = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedImage)
       })
-      
+
       if (response.ok) {
         setImages(images => images.map(img => img.id === updatedImage.id ? updatedImage : img))
         setEditingImage(null)
@@ -277,9 +322,8 @@ const AdminPanel = () => {
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Notification */}
       {notification && (
-        <div className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg ${
-          notification.type === 'success' ? 'bg-green-500' : 'bg-red-500'
-        } text-white`}>
+        <div className={`fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg ${notification.type === 'success' ? 'bg-green-500' : 'bg-red-500'
+          } text-white`}>
           {notification.message}
         </div>
       )}
@@ -303,11 +347,10 @@ const AdminPanel = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center py-4 px-2 border-b-2 font-medium text-sm transition-colors ${
-                    activeTab === tab.id
+                  className={`flex items-center py-4 px-2 border-b-2 font-medium text-sm transition-colors ${activeTab === tab.id
                       ? 'border-accent-600 text-accent-600'
                       : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                  }`}
+                    }`}
                 >
                   {tab.icon}
                   <span className="ml-2">{tab.label}</span>
@@ -333,7 +376,7 @@ const AdminPanel = () => {
                     <input
                       type="text"
                       value={companyInfo.name}
-                      onChange={(e) => setCompanyInfo({...companyInfo, name: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, name: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
                   </div>
@@ -345,7 +388,7 @@ const AdminPanel = () => {
                     <input
                       type="text"
                       value={companyInfo.tagline}
-                      onChange={(e) => setCompanyInfo({...companyInfo, tagline: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, tagline: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
                   </div>
@@ -356,7 +399,7 @@ const AdminPanel = () => {
                     </label>
                     <textarea
                       value={companyInfo.description}
-                      onChange={(e) => setCompanyInfo({...companyInfo, description: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, description: e.target.value })}
                       rows={4}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
@@ -370,7 +413,7 @@ const AdminPanel = () => {
                     <input
                       type="text"
                       value={companyInfo.address}
-                      onChange={(e) => setCompanyInfo({...companyInfo, address: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, address: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
                   </div>
@@ -383,7 +426,7 @@ const AdminPanel = () => {
                     <input
                       type="tel"
                       value={companyInfo.phone}
-                      onChange={(e) => setCompanyInfo({...companyInfo, phone: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, phone: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
                   </div>
@@ -396,7 +439,7 @@ const AdminPanel = () => {
                     <input
                       type="email"
                       value={companyInfo.email}
-                      onChange={(e) => setCompanyInfo({...companyInfo, email: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, email: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
                   </div>
@@ -409,7 +452,7 @@ const AdminPanel = () => {
                     <input
                       type="url"
                       value={companyInfo.website}
-                      onChange={(e) => setCompanyInfo({...companyInfo, website: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, website: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
                   </div>
@@ -421,7 +464,7 @@ const AdminPanel = () => {
                     <input
                       type="text"
                       value={companyInfo.license}
-                      onChange={(e) => setCompanyInfo({...companyInfo, license: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, license: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
                   </div>
@@ -433,7 +476,7 @@ const AdminPanel = () => {
                     <input
                       type="text"
                       value={companyInfo.founded}
-                      onChange={(e) => setCompanyInfo({...companyInfo, founded: e.target.value})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, founded: e.target.value })}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
                   </div>
@@ -444,7 +487,7 @@ const AdminPanel = () => {
                     </label>
                     <textarea
                       value={companyInfo.services.join('\n')}
-                      onChange={(e) => setCompanyInfo({...companyInfo, services: e.target.value.split('\n').filter(s => s.trim())})}
+                      onChange={(e) => setCompanyInfo({ ...companyInfo, services: e.target.value.split('\n').filter(s => s.trim()) })}
                       rows={6}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                     />
@@ -503,7 +546,7 @@ const AdminPanel = () => {
                         <input
                           type="text"
                           value={editingBlog.title}
-                          onChange={(e) => setEditingBlog({...editingBlog, title: e.target.value, slug: e.target.value.toLowerCase().replace(/\s+/g, '-')})}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, title: e.target.value, slug: e.target.value.toLowerCase().replace(/\s+/g, '-') })}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                         />
                       </div>
@@ -514,7 +557,7 @@ const AdminPanel = () => {
                         </label>
                         <select
                           value={editingBlog.category}
-                          onChange={(e) => setEditingBlog({...editingBlog, category: e.target.value})}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, category: e.target.value })}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                         >
                           <option value="">Select Category</option>
@@ -534,7 +577,7 @@ const AdminPanel = () => {
                         <input
                           type="text"
                           value={editingBlog.author}
-                          onChange={(e) => setEditingBlog({...editingBlog, author: e.target.value})}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, author: e.target.value })}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                         />
                       </div>
@@ -546,7 +589,7 @@ const AdminPanel = () => {
                         <input
                           type="date"
                           value={editingBlog.date}
-                          onChange={(e) => setEditingBlog({...editingBlog, date: e.target.value})}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, date: e.target.value })}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                         />
                       </div>
@@ -558,7 +601,7 @@ const AdminPanel = () => {
                         <input
                           type="url"
                           value={editingBlog.image}
-                          onChange={(e) => setEditingBlog({...editingBlog, image: e.target.value})}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, image: e.target.value })}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                           placeholder="https://example.com/image.jpg"
                         />
@@ -570,21 +613,31 @@ const AdminPanel = () => {
                         </label>
                         <textarea
                           value={editingBlog.excerpt}
-                          onChange={(e) => setEditingBlog({...editingBlog, excerpt: e.target.value})}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, excerpt: e.target.value })}
                           rows={3}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                         />
                       </div>
 
                       <div className="lg:col-span-2">
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Content
-                        </label>
+                        <div className="flex items-center justify-between mb-2">
+                          <label className="block text-sm font-medium text-gray-700">
+                            Content
+                          </label>
+                          <button
+                            onClick={() => setShowAIWriter(true)}
+                            className="inline-flex items-center px-3 py-1 text-xs font-medium text-purple-700 bg-purple-100 border border-purple-300 rounded-full hover:bg-purple-200 transition-colors"
+                          >
+                            <Sparkles className="w-3 h-3 mr-1" />
+                            AI Writer
+                          </button>
+                        </div>
                         <textarea
                           value={editingBlog.content}
-                          onChange={(e) => setEditingBlog({...editingBlog, content: e.target.value})}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, content: e.target.value })}
                           rows={10}
                           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
+                          placeholder="Write your blog content here or use the AI Writer to generate content..."
                         />
                       </div>
 
@@ -593,7 +646,7 @@ const AdminPanel = () => {
                           <input
                             type="checkbox"
                             checked={editingBlog.published}
-                            onChange={(e) => setEditingBlog({...editingBlog, published: e.target.checked})}
+                            onChange={(e) => setEditingBlog({ ...editingBlog, published: e.target.checked })}
                             className="rounded border-gray-300 text-accent-600 shadow-sm focus:border-accent-300 focus:ring focus:ring-accent-200 focus:ring-opacity-50"
                           />
                           <span className="ml-2 text-sm text-gray-700">Published</span>
@@ -625,9 +678,8 @@ const AdminPanel = () => {
                           <div className="flex-1">
                             <div className="flex items-center space-x-2 mb-2">
                               <h4 className="text-lg font-semibold text-gray-900">{post.title}</h4>
-                              <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                                post.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
-                              }`}>
+                              <span className={`px-2 py-1 rounded-full text-xs font-semibold ${post.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
+                                }`}>
                                 {post.published ? 'Published' : 'Draft'}
                               </span>
                             </div>
@@ -705,7 +757,7 @@ const AdminPanel = () => {
                           <input
                             type="text"
                             value={editingImage.name}
-                            onChange={(e) => setEditingImage({...editingImage, name: e.target.value})}
+                            onChange={(e) => setEditingImage({ ...editingImage, name: e.target.value })}
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                           />
                         </div>
@@ -716,7 +768,7 @@ const AdminPanel = () => {
                           </label>
                           <select
                             value={editingImage.category}
-                            onChange={(e) => setEditingImage({...editingImage, category: e.target.value})}
+                            onChange={(e) => setEditingImage({ ...editingImage, category: e.target.value })}
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                           >
                             <option value="Kitchen">Kitchen</option>
@@ -737,7 +789,7 @@ const AdminPanel = () => {
                           </label>
                           <textarea
                             value={editingImage.description}
-                            onChange={(e) => setEditingImage({...editingImage, description: e.target.value})}
+                            onChange={(e) => setEditingImage({ ...editingImage, description: e.target.value })}
                             rows={4}
                             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
                             placeholder="Describe this image..."
@@ -875,6 +927,74 @@ const AdminPanel = () => {
           </div>
         </div>
       </div>
+
+      {/* AI Writer Modal */}
+      {showAIWriter && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg max-w-md w-full p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center">
+                <Wand2 className="w-5 h-5 text-purple-600 mr-2" />
+                <h3 className="text-lg font-semibold text-gray-900">AI Content Writer</h3>
+              </div>
+              <button
+                onClick={() => setShowAIWriter(false)}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  What would you like to write about?
+                </label>
+                <textarea
+                  value={aiPrompt}
+                  onChange={(e) => setAiPrompt(e.target.value)}
+                  rows={4}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                  placeholder="e.g., 'Write a blog post about summer kitchen renovation tips for Arizona homeowners'"
+                />
+              </div>
+
+              <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
+                <p className="text-sm text-purple-700">
+                  <Sparkles className="w-4 h-4 inline mr-1" />
+                  The AI will generate a title, excerpt, and full content based on your prompt.
+                </p>
+              </div>
+
+              <div className="flex justify-end space-x-3">
+                <button
+                  onClick={() => setShowAIWriter(false)}
+                  className="px-4 py-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={generateAIContent}
+                  disabled={isGenerating || !aiPrompt.trim()}
+                  className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isGenerating ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Generating...
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-4 h-4 mr-2" />
+                      Generate Content
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
