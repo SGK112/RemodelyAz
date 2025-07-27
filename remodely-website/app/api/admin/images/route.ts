@@ -154,7 +154,7 @@ export async function GET() {
     if (fs.existsSync(IMAGES_FILE)) {
       const data = fs.readFileSync(IMAGES_FILE, 'utf8')
       const images = JSON.parse(data)
-      
+
       if (images && images.length > 0) {
         return NextResponse.json({
           success: true,

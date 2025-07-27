@@ -29,9 +29,8 @@ export default function Navbar() {
     ]
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${
-            scrolled ? 'bg-accent-500/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-        }`}>
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-accent-500/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+            }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-14">
                     {/* Logo */}
@@ -58,11 +57,10 @@ export default function Navbar() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className={`transition-colors duration-200 ${
-                                    scrolled 
-                                        ? 'text-white hover:text-accent-200' 
+                                className={`transition-colors duration-200 ${scrolled
+                                        ? 'text-white hover:text-accent-200'
                                         : 'text-accent-600 hover:text-accent-800'
-                                }`}
+                                    }`}
                             >
                                 {item.name}
                             </Link>
@@ -74,11 +72,10 @@ export default function Navbar() {
                         {/* CTA Button */}
                         <Link
                             href="/contact"
-                            className={`hidden sm:inline-flex px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                                scrolled 
-                                    ? 'bg-white text-accent-600 hover:bg-accent-50' 
+                            className={`hidden sm:inline-flex px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${scrolled
+                                    ? 'bg-white text-accent-600 hover:bg-accent-50'
                                     : 'bg-accent-600 text-white hover:bg-accent-500'
-                            }`}
+                                }`}
                         >
                             Get Quote
                         </Link>
@@ -100,11 +97,10 @@ export default function Navbar() {
 
             {/* Mobile Navigation */}
             {isOpen && (
-                <div className={`lg:hidden backdrop-blur-md border-t border-white/20 ${
-                    scrolled 
-                        ? 'bg-accent-500/95' 
+                <div className={`lg:hidden backdrop-blur-md border-t border-white/20 ${scrolled
+                        ? 'bg-accent-500/95'
                         : 'bg-accent-600/95'
-                }`}>
+                    }`}>
                     <div className="px-4 py-4 space-y-2">
                         {navigation.map((item) => (
                             <Link
@@ -116,7 +112,7 @@ export default function Navbar() {
                                 {item.name}
                             </Link>
                         ))}
-                        
+
                         {/* Mobile CTA */}
                         <div className="pt-3 border-t border-white/20">
                             <Link

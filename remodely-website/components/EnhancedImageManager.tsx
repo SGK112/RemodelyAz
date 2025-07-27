@@ -100,11 +100,11 @@ const EnhancedImageManager: React.FC = () => {
             if (response.ok) {
                 const result = await response.json()
                 console.log('API result:', result)
-                
+
                 // Handle wrapped response format {success: true, data: [...]}
                 const data = result.success && result.data ? result.data : result
                 console.log('Images data received:', Array.isArray(data) ? data.length : 'not array', 'images')
-                
+
                 if (Array.isArray(data)) {
                     setImages(data)
                 } else {
@@ -355,8 +355,8 @@ const EnhancedImageManager: React.FC = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -50, scale: 0.9 }}
                         className={`fixed top-6 right-6 z-50 p-4 rounded-xl shadow-2xl backdrop-blur-sm border ${notification.type === 'success'
-                                ? 'bg-emerald-500/90 border-emerald-400/50 text-white'
-                                : 'bg-red-500/90 border-red-400/50 text-white'
+                            ? 'bg-emerald-500/90 border-emerald-400/50 text-white'
+                            : 'bg-red-500/90 border-red-400/50 text-white'
                             }`}
                     >
                         <div className="flex items-center space-x-3">
@@ -409,8 +409,8 @@ const EnhancedImageManager: React.FC = () => {
                         <button
                             onClick={() => setViewMode('grid')}
                             className={`p-2 rounded-md transition-colors ${viewMode === 'grid'
-                                    ? 'bg-white text-green-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-800'
+                                ? 'bg-white text-green-600 shadow-sm'
+                                : 'text-gray-600 hover:text-gray-800'
                                 }`}
                         >
                             <Grid className="w-4 h-4" />
@@ -418,8 +418,8 @@ const EnhancedImageManager: React.FC = () => {
                         <button
                             onClick={() => setViewMode('list')}
                             className={`p-2 rounded-md transition-colors ${viewMode === 'list'
-                                    ? 'bg-white text-green-600 shadow-sm'
-                                    : 'text-gray-600 hover:text-gray-800'
+                                ? 'bg-white text-green-600 shadow-sm'
+                                : 'text-gray-600 hover:text-gray-800'
                                 }`}
                         >
                             <List className="w-4 h-4" />
@@ -494,8 +494,8 @@ const EnhancedImageManager: React.FC = () => {
 
             {/* Images Grid/List */}
             <div className={`${viewMode === 'grid'
-                    ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'
-                    : 'space-y-4'
+                ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'
+                : 'space-y-4'
                 }`}>
                 {filteredImages.length === 0 && !loading && (
                     <div className="col-span-full text-center py-12">
@@ -552,10 +552,10 @@ const EnhancedImageManager: React.FC = () => {
                                         {/* Source Badge */}
                                         <div className="absolute top-3 right-3">
                                             <span className={`px-2 py-1 rounded-full text-xs font-medium ${image.source === 'cloudinary'
-                                                    ? 'bg-blue-100 text-blue-800'
-                                                    : image.source === 'local'
-                                                        ? 'bg-green-100 text-green-800'
-                                                        : 'bg-gray-100 text-gray-800'
+                                                ? 'bg-blue-100 text-blue-800'
+                                                : image.source === 'local'
+                                                    ? 'bg-green-100 text-green-800'
+                                                    : 'bg-gray-100 text-gray-800'
                                                 }`}>
                                                 {image.source === 'cloudinary' ? '☁️' : image.source === 'local' ? '💾' : '🔗'}
                                             </span>
@@ -680,10 +680,10 @@ const EnhancedImageManager: React.FC = () => {
 
                                         <div className="flex items-center space-x-2">
                                             <span className={`px-2 py-1 rounded-full text-xs font-medium ${image.source === 'cloudinary'
-                                                    ? 'bg-blue-100 text-blue-800'
-                                                    : image.source === 'local'
-                                                        ? 'bg-green-100 text-green-800'
-                                                        : 'bg-gray-100 text-gray-800'
+                                                ? 'bg-blue-100 text-blue-800'
+                                                : image.source === 'local'
+                                                    ? 'bg-green-100 text-green-800'
+                                                    : 'bg-gray-100 text-gray-800'
                                                 }`}>
                                                 {image.source}
                                             </span>

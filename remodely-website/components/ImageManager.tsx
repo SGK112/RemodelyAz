@@ -318,10 +318,10 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
                     {/* File Upload with Drag & Drop */}
                     <div
                         className={`border-2 border-dashed rounded-lg p-6 text-center transition-all duration-200 ${dragActive
-                                ? 'border-accent-500 bg-accent-50'
-                                : uploading
-                                    ? 'border-blue-300 bg-blue-50'
-                                    : 'border-gray-300 hover:border-accent-400'
+                            ? 'border-accent-500 bg-accent-50'
+                            : uploading
+                                ? 'border-blue-300 bg-blue-50'
+                                : 'border-gray-300 hover:border-accent-400'
                             }`}
                         onDragEnter={handleDragIn}
                         onDragLeave={handleDragOut}

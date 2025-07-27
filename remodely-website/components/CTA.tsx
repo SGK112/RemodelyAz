@@ -37,7 +37,7 @@ const CTA = () => {
                         <span className="block">Remodel Today</span>
                     </h2>
                     <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                        Contact us for a free consultation and personalized quote. 
+                        Contact us for a free consultation and personalized quote.
                         Let's bring your vision to life with expert craftsmanship.
                     </p>
 
@@ -58,10 +58,10 @@ const CTA = () => {
                             <div className="text-primary-200 text-sm font-medium">
                                 or contact us directly
                             </div>
-                            
+
                             {/* Phone and Email - Stacked on Mobile */}
                             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
-                                <a 
+                                <a
                                     href={`tel:${companyData.phone}`}
                                     className="flex items-center space-x-2 text-white hover:text-primary-200 transition-colors group"
                                 >
@@ -70,10 +70,10 @@ const CTA = () => {
                                     </div>
                                     <span className="text-lg font-medium">{companyData.phone}</span>
                                 </a>
-                                
+
                                 <div className="hidden md:block text-primary-200 text-sm">•</div>
-                                
-                                <a 
+
+                                <a
                                     href={`mailto:${companyData.email}`}
                                     className="flex items-center space-x-2 text-white hover:text-primary-200 transition-colors group"
                                 >

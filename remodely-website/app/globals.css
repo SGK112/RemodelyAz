@@ -225,38 +225,57 @@ html {
 
 /* Mobile-specific optimizations */
 @media (max-width: 768px) {
+
     /* Ensure tap targets are at least 44px */
-    button, a[role="button"], .btn {
+    button,
+    a[role="button"],
+    .btn {
         min-height: 44px;
         min-width: 44px;
     }
-    
+
     /* Improve font sizes for mobile readability */
-    h1 { font-size: clamp(1.75rem, 8vw, 3rem); }
-    h2 { font-size: clamp(1.5rem, 6vw, 2.5rem); }
-    h3 { font-size: clamp(1.25rem, 5vw, 2rem); }
-    
+    h1 {
+        font-size: clamp(1.75rem, 8vw, 3rem);
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+    }
+
+    h3 {
+        font-size: clamp(1.25rem, 5vw, 2rem);
+    }
+
     /* Improve mobile spacing */
-    .container { padding-left: 1rem; padding-right: 1rem; }
-    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
     /* Optimize glassmorphic effects for mobile performance */
-    .glass-card, .glass-navbar {
+    .glass-card,
+    .glass-navbar {
         backdrop-filter: blur(8px);
     }
-    
+
     /* Prevent zoom on inputs */
-    input, select, textarea {
+    input,
+    select,
+    textarea {
         font-size: 16px;
     }
-    
+
     /* Improve touch scrolling */
-    .overflow-scroll, .overflow-auto {
+    .overflow-scroll,
+    .overflow-auto {
         -webkit-overflow-scrolling: touch;
     }
 }
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {

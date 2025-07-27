@@ -396,8 +396,8 @@ const AdminPanel = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -50, scale: 0.9 }}
             className={`fixed top-6 right-6 z-50 p-4 rounded-xl shadow-2xl backdrop-blur-sm border ${notification.type === 'success'
-                ? 'bg-emerald-500/90 border-emerald-400/50 text-white'
-                : 'bg-red-500/90 border-red-400/50 text-white'
+              ? 'bg-emerald-500/90 border-emerald-400/50 text-white'
+              : 'bg-red-500/90 border-red-400/50 text-white'
               }`}
           >
             <div className="flex items-center space-x-3">
@@ -466,8 +466,8 @@ const AdminPanel = () => {
                     whileTap={{ scale: 0.98 }}
                     onClick={() => setActiveTab(tab.id)}
                     className={`flex items-center px-6 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${activeTab === tab.id
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                        : 'text-gray-600 hover:bg-white/50 hover:text-gray-800'
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                      : 'text-gray-600 hover:bg-white/50 hover:text-gray-800'
                       }`}
                   >
                     <div className={`mr-3 ${activeTab === tab.id ? 'text-white' : 'text-gray-500'}`}>
@@ -872,8 +872,8 @@ const AdminPanel = () => {
                               <div className="flex items-center space-x-3 mb-3">
                                 <h3 className="text-xl font-bold text-gray-900">{post.title}</h3>
                                 <span className={`px-3 py-1 rounded-full text-xs font-semibold ${post.published
-                                    ? 'bg-green-100 text-green-800 border border-green-200'
-                                    : 'bg-yellow-100 text-yellow-800 border border-yellow-200'
+                                  ? 'bg-green-100 text-green-800 border border-green-200'
+                                  : 'bg-yellow-100 text-yellow-800 border border-yellow-200'
                                   }`}>
                                   {post.published ? '✓ Published' : '⏳ Draft'}
                                 </span>
