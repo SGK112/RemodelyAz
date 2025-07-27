@@ -1,34 +1,34 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import SafeImage from './SafeImage'
+import Image from 'next/image'
 import { Star, Quote } from 'lucide-react'
 
 const Testimonials = () => {
     const testimonials = [
         {
             id: 1,
-            name: 'Linda Ullrich',
-            title: 'Homeowner - Surprise, AZ',
-            image: 'https://images.unsplash.com/photo-1494790108755-2616b19a0a27?w=150&h=150&fit=crop&crop=face&auto=format',
+            name: 'Sarah Johnson',
+            title: 'Homeowner',
+            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_150,h_150,q_auto,f_webp/people_1',
             rating: 5,
-            text: "Outstanding work on our kitchen remodel! The team was professional, timely, and the quality exceeded our expectations. Our new quartz countertops and cabinets look absolutely beautiful.",
+            text: "REMODELY transformed our outdated kitchen into a modern masterpiece. The attention to detail and quality of work exceeded our expectations. Our home value increased significantly!",
             project: 'Kitchen Remodeling'
         },
         {
             id: 2,
             name: 'Michael Chen',
-            title: 'Business Owner - Phoenix, AZ',
-            image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format',
+            title: 'Business Owner',
+            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_150,h_150,q_auto,f_webp/people_2',
             rating: 5,
             text: "The commercial renovation of our restaurant was completed on time and within budget. REMODELY's team was professional, clean, and minimally disruptive to our business.",
             project: 'Commercial Renovation'
         },
         {
             id: 3,
-            name: 'Sarah Rodriguez',
-            title: 'Interior Designer - Scottsdale, AZ',
-            image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face&auto=format',
+            name: 'Emily Rodriguez',
+            title: 'Interior Designer',
+            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_150,h_150,q_auto,f_webp/people_3',
             rating: 5,
             text: "As an interior designer, I've worked with many contractors. REMODELY stands out for their craftsmanship, communication, and ability to bring complex designs to life.",
             project: 'Bathroom Remodeling'
@@ -93,12 +93,11 @@ const Testimonials = () => {
                             {/* Client Info */}
                             <div className="flex items-center">
                                 <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-                                    <SafeImage
+                                    <Image
                                         src={testimonial.image}
                                         alt={testimonial.name}
-                                        width={48}
-                                        height={48}
-                                        className="w-full h-full object-cover"
+                                        fill
+                                        className="object-cover"
                                     />
                                 </div>
                                 <div>

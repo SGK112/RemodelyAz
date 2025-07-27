@@ -25,16 +25,50 @@ export const viewport = {
 }
 
 export const metadata: Metadata = {
-    title: {
-        default: 'REMODELY - Arizona Kitchen & Bathroom Remodeling Experts',
-        template: '%s | REMODELY Arizona'
+    title: 'REMODELY LLC - Premium Kitchen & Bath Remodeling Arizona',
+    description: 'Transform your Arizona home with REMODELY LLC\'s expert kitchen and bathroom remodeling services. Premium quality, modern designs, residential & commercial. Licensed AzRoc 327266.',
+    keywords: 'kitchen remodeling Arizona, bathroom remodeling Phoenix, home renovation Surprise AZ, commercial remodeling, modern design Arizona, AzRoc 327266, REMODELY LLC',
+    authors: [{ name: 'REMODELY LLC' }],
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: 'default',
+        title: 'REMODELY LLC'
     },
-    description: 'Professional kitchen and bathroom remodeling services in Arizona. Licensed contractor (AzRoc #327266) with 400+ completed projects. Get your free consultation today.',
-    keywords: ['kitchen remodeling Arizona', 'bathroom renovation Arizona', 'countertops Arizona', 'cabinet installation', 'home remodeling Phoenix', 'licensed contractor Arizona'],
-    authors: [{ name: 'REMODELY Arizona' }],
-    creator: 'REMODELY Arizona',
-    publisher: 'REMODELY Arizona',
-    metadataBase: new URL(process.env.NODE_ENV === 'production' ? 'https://remodelyaz.onrender.com' : 'http://localhost:3000'),
+    formatDetection: {
+        telephone: true,
+        date: false,
+        address: true,
+        email: true
+    },
+    openGraph: {
+        title: 'REMODELY LLC - Premium Kitchen & Bath Remodeling Arizona',
+        description: 'Transform your Arizona home with expert remodeling services. Licensed AzRoc 327266.',
+        url: 'https://www.remodely-az.com',
+        siteName: 'REMODELY LLC',
+        images: [
+            {
+                url: '/og-image.jpg',
+                width: 1200,
+                height: 630,
+            },
+        ],
+        locale: 'en_US',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'REMODELY LLC - Premium Kitchen & Bath Remodeling Arizona',
+        description: 'Transform your Arizona home with expert remodeling services. Licensed AzRoc 327266.',
+        images: ['/og-image.jpg'],
+    },
+    robots: 'index, follow',
+    icons: {
+        icon: [
+            { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' },
+            { url: '/favicon.svg', type: 'image/svg+xml' }
+        ],
+        apple: '/favicon.svg',
+    },
 }
 
 export default function RootLayout({

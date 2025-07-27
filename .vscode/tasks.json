@@ -15,25 +15,6 @@
 			"group": "build",
 			"isBackground": true,
 			"problemMatcher": []
-		},
-		{
-			"label": "Start Admin Development Server",
-			"type": "shell",
-			"command": "./start-admin-dev.sh",
-			"options": {
-				"cwd": "/workspaces/RemodelyAz/remodely-website"
-			},
-			"group": "build",
-			"isBackground": true,
-			"problemMatcher": [],
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "new",
-				"showReuseMessage": true,
-				"clear": false
-			}
 		}
 	]
 }
