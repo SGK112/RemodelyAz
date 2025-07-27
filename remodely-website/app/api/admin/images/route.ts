@@ -197,14 +197,20 @@ export async function GET() {
         }
       })
 
-      return NextResponse.json(galleryImages)
+      return NextResponse.json({
+        success: true,
+        data: galleryImages
+      })
     }
 
     // Fallback to filesystem images if MongoDB has no data
     const data = fs.readFileSync(IMAGES_FILE, 'utf8')
     const images = JSON.parse(data)
 
-    return NextResponse.json(images)
+    return NextResponse.json({
+      success: true,
+      data: images
+    })
   } catch (error) {
     console.error('Error reading images:', error)
 
@@ -239,7 +245,10 @@ export async function GET() {
       }
     ]
 
-    return NextResponse.json(fallbackImages)
+    return NextResponse.json({
+      success: true,
+      data: fallbackImages
+    })
   }
 }
 

@@ -7,27 +7,52 @@ const DATA_DIR = path.join(process.cwd(), 'data')
 const IMAGES_FILE = path.join(DATA_DIR, 'images.json')
 const UPLOADS_DIR = path.join(process.cwd(), 'public', 'uploads')
 
+// Middleware to check admin authentication
+function checkAuth(request: NextRequest) {
+    const sessionCookie = request.cookies.get('admin-session')
+    return sessionCookie?.value === 'authenticated'
+}
+
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const imageId = params.id
+    // Check authentication
+    if (!checkAuth(request)) {
+        return NextResponse.json(
+            { success: false, message: 'Authentication required' },
+            { status: 401 }
+        )
+    }
+
+    const imageId = decodeURIComponent(params.id)
+    console.log('Deleting image with ID:', imageId)
 
     // Read existing images
     const data = fs.readFileSync(IMAGES_FILE, 'utf8')
     const images = JSON.parse(data)
 
+    console.log('Available images:', images.map((img: any) => img.id))
+
     // Find the image to delete
-    const imageToDelete = images.find((img: any) => img.id === imageId)
-    if (!imageToDelete) {
-      return NextResponse.json({ error: 'Image not found' }, { status: 404 })
+    const imageIndex = images.findIndex((img: any) => img.id === imageId)
+    console.log('Image index found:', imageIndex)
+    
+    if (imageIndex === -1) {
+      console.log('Image not found with ID:', imageId)
+      return NextResponse.json(
+        { success: false, message: `Image not found with ID: ${imageId}` },
+        { status: 404 }
+      )
     }
 
+    const targetImage = images[imageIndex]
+
     // If it's a Cloudinary image, delete from Cloudinary
-    if (imageToDelete.source === 'cloudinary' && imageToDelete.cloudinary?.public_id) {
+    if (targetImage.source === 'cloudinary' && targetImage.cloudinary?.public_id) {
       try {
-        await CloudinaryService.deleteImage(imageToDelete.cloudinary.public_id)
+        await CloudinaryService.deleteImage(targetImage.cloudinary.public_id)
       } catch (cloudinaryError) {
         console.warn('Failed to delete from Cloudinary:', cloudinaryError)
         // Continue with local deletion even if Cloudinary fails
@@ -35,8 +60,8 @@ export async function DELETE(
     }
 
     // Delete the physical file if it exists in uploads directory
-    if (imageToDelete.url.startsWith('/uploads/')) {
-      const filename = imageToDelete.url.replace('/uploads/', '')
+    if (targetImage.url && targetImage.url.startsWith('/uploads/')) {
+      const filename = targetImage.url.replace('/uploads/', '')
       const filepath = path.join(UPLOADS_DIR, filename)
       if (fs.existsSync(filepath)) {
         fs.unlinkSync(filepath)
