@@ -5,17 +5,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, Phone, Mail } from 'lucide-react'
 
-interface CompanyData {
-    phone: string
-}
-
-const Navbar = () => {
+export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
-    const [isAuthenticated, setIsAuthenticated] = useState(false)
-    const [companyData, setCompanyData] = useState<CompanyData>({
-        phone: '(480) 255-5887'
-    })
 
     useEffect(() => {
         const handleScroll = () => {
@@ -26,104 +18,78 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    useEffect(() => {
-        fetch('/api/admin/company')
-            .then(res => res.json())
-            .then(data => setCompanyData(data))
-            .catch(console.error)
-    }, [])
-
-    useEffect(() => {
-        // Check authentication status
-        const checkAuth = () => {
-            const token = sessionStorage.getItem('admin_token')
-            const authenticated = sessionStorage.getItem('admin_authenticated')
-            setIsAuthenticated(Boolean(token && authenticated === 'true'))
-        }
-
-        checkAuth()
-        // Listen for auth changes
-        window.addEventListener('storage', checkAuth)
-        return () => window.removeEventListener('storage', checkAuth)
-    }, [])
-
     const navigation = [
         { name: 'Home', href: '/' },
-        {
-            name: 'Services',
-            href: '/services',
-            submenu: [
-                { name: 'Kitchen Remodeling', href: '/services/kitchen' },
-                { name: 'Bathroom Remodeling', href: '/services/bathroom' },
-                { name: 'Commercial Remodeling', href: '/services/commercial' },
-                { name: 'Design Consultation', href: '/services/design' },
-            ]
-        },
-        { name: 'Gallery', href: '/gallery' },
         { name: 'About', href: '/about' },
+        { name: 'Services', href: '/services' },
+        { name: 'Gallery', href: '/gallery' },
         { name: 'Process', href: '/process' },
         { name: 'Blog', href: '/blog' },
         { name: 'Contact', href: '/contact' },
-        { 
-            name: isAuthenticated ? 'Admin' : 'Login', 
-            href: isAuthenticated ? '/admin' : '/admin/login' 
-        },
     ]
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass-navbar shadow-lg' : 'bg-transparent'
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-accent-500/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
             }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-14 sm:h-16">
+                <div className="flex justify-between items-center h-14">
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <Link href="/" className="flex items-center space-x-2">
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent-600 rounded-lg flex items-center justify-center">
-                                <span className="text-white font-bold text-lg sm:text-xl">R</span>
+                            <Image
+                                src="/favicon.svg"
+                                alt="RemodelyAz Logo"
+                                width={32}
+                                height={32}
+                                className="w-8 h-8"
+                            />
+                            <div className="hidden sm:block">
+                                <h1 className="text-lg font-display font-bold text-white transition-colors duration-300">
+                                    RemodelyAz
+                                </h1>
                             </div>
-                            <span className="font-display font-bold text-lg sm:text-xl text-gray-900">
-                                REMODELY
-                            </span>
                         </Link>
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:block">
-                        <div className="ml-10 flex items-baseline space-x-8">
-                            {navigation.map((item) => (
-                                <Link
-                                    key={item.name}
-                                    href={item.href}
-                                    className="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
-                                >
-                                    {item.name}
-                                </Link>
-                            ))}
-                        </div>
+                    <div className="hidden md:flex items-center space-x-8">
+                        {navigation.map((item) => (
+                            <Link
+                                key={item.name}
+                                href={item.href}
+                                className={`transition-colors duration-200 ${scrolled
+                                        ? 'text-white hover:text-accent-200'
+                                        : 'text-accent-600 hover:text-accent-800'
+                                    }`}
+                            >
+                                {item.name}
+                            </Link>
+                        ))}
                     </div>
 
-                    {/* Contact Info & CTA */}
-                    <div className="hidden lg:flex items-center space-x-4">
-                        <div className="flex items-center space-x-2 text-sm text-gray-600">
-                            <Phone className="w-4 h-4" />
-                            <span>{companyData.phone}</span>
-                        </div>
+                    {/* CTA & Mobile Menu Button */}
+                    <div className="flex items-center space-x-3">
+                        {/* CTA Button */}
                         <Link
                             href="/contact"
-                            className="bg-accent-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-accent-700 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                            className={`hidden sm:inline-flex px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${scrolled
+                                    ? 'bg-white text-accent-600 hover:bg-accent-50'
+                                    : 'bg-accent-600 text-white hover:bg-accent-500'
+                                }`}
                         >
                             Get Quote
                         </Link>
-                    </div>
 
-                    {/* Mobile menu button */}
-                    <div className="md:hidden">
+                        {/* Mobile menu button */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="text-gray-700 hover:text-primary-600 p-3 rounded-lg touch-manipulation"
-                            aria-label="Toggle mobile menu"
+                            className="lg:hidden inline-flex items-center justify-center p-2 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white text-white hover:text-white/80"
                         >
-                            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                            {isOpen ? (
+                                <X className="w-6 h-6" />
+                            ) : (
+                                <Menu className="w-6 h-6" />
+                            )}
                         </button>
                     </div>
                 </div>
@@ -131,26 +97,27 @@ const Navbar = () => {
 
             {/* Mobile Navigation */}
             {isOpen && (
-                <div className="md:hidden bg-white/95 backdrop-blur-lg border-t border-gray-200">
-                    <div className="px-4 pt-4 pb-6 space-y-2">
+                <div className={`lg:hidden backdrop-blur-md border-t border-white/20 ${scrolled
+                        ? 'bg-accent-500/95'
+                        : 'bg-accent-600/95'
+                    }`}>
+                    <div className="px-4 py-4 space-y-2">
                         {navigation.map((item) => (
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-gray-700 hover:text-primary-600 block px-4 py-3 rounded-lg text-base font-medium touch-manipulation"
+                                className="block px-3 py-2 font-medium transition-colors duration-200 text-white hover:text-accent-100"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {item.name}
                             </Link>
                         ))}
-                        <div className="border-t border-gray-200 pt-4 mt-4">
-                            <div className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-600">
-                                <Phone className="w-4 h-4" />
-                                <span>{companyData.phone}</span>
-                            </div>
+
+                        {/* Mobile CTA */}
+                        <div className="pt-3 border-t border-white/20">
                             <Link
                                 href="/contact"
-                                className="block mx-4 mt-3 bg-accent-600 text-white px-6 py-3 rounded-full text-center text-base font-medium touch-manipulation min-h-[48px] flex items-center justify-center"
+                                className="block w-full bg-white text-accent-600 hover:bg-accent-100 text-center py-2 rounded-md font-medium transition-colors duration-200"
                                 onClick={() => setIsOpen(false)}
                             >
                                 Get Quote
@@ -162,5 +129,3 @@ const Navbar = () => {
         </nav>
     )
 }
-
-export default Navbar

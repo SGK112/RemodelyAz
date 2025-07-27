@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import SafeImage from './SafeImage'
 import { Upload, Edit, Trash2, Eye, Plus, Save, X, Camera, Cloud, Check, AlertCircle } from 'lucide-react'
 
 interface ImageData {
@@ -29,6 +29,7 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
     const [uploading, setUploading] = useState(false)
     const [uploadProgress, setUploadProgress] = useState(0)
     const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null)
+    const [dragActive, setDragActive] = useState(false)
     const fileInputRef = useRef<HTMLInputElement>(null)
 
     const categories = ['all', 'Kitchen', 'Bathroom', 'Commercial', 'Brand']
@@ -53,10 +54,36 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
 
     const fetchImages = async () => {
         try {
-            const response = await fetch('/api/images')
+            console.log('Fetching images from API...')
+
+            // Try the simple images API first
+            let response = await fetch('/api/images')
+            console.log('Simple API response status:', response.status)
+
+            if (!response.ok) {
+                console.log('Simple API failed, trying admin API...')
+                response = await fetch('/api/admin/images')
+                console.log('Admin API response status:', response.status)
+            }
+
             if (response.ok) {
                 const data = await response.json()
-                setImages(data.data || [])
+                console.log('Raw API response:', data)
+                console.log('Images data received:', data.data?.length || 0, 'images')
+
+                if (data.data && Array.isArray(data.data)) {
+                    setImages(data.data)
+                    console.log('Images set successfully:', data.data.length)
+                } else if (Array.isArray(data)) {
+                    setImages(data)
+                    console.log('Images set from array:', data.length)
+                } else {
+                    console.error('Unexpected data format:', data)
+                    setImages([])
+                }
+            } else {
+                console.error('Failed to fetch images:', response.statusText)
+                showNotification('error', 'Failed to load images')
             }
         } catch (error) {
             console.error('Error fetching images:', error)
@@ -135,6 +162,7 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
 
         setUploading(true)
         setUploadProgress(0)
+        setDragActive(false)
 
         try {
             for (let i = 0; i < files.length; i++) {
@@ -151,6 +179,8 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
                 formData.append('file', file)
                 formData.append('category', selectedCategory === 'all' ? 'Kitchen' : selectedCategory)
 
+                console.log(`Uploading file ${i + 1}/${files.length}:`, file.name)
+
                 // Upload to Cloudinary via API
                 const uploadResponse = await fetch('/api/admin/images/upload', {
                     method: 'POST',
@@ -158,10 +188,13 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
                 })
 
                 if (!uploadResponse.ok) {
+                    const errorData = await uploadResponse.json().catch(() => ({}))
+                    console.error('Upload failed:', errorData)
                     throw new Error(`Failed to upload ${file.name}`)
                 }
 
                 const result = await uploadResponse.json()
+                console.log('Upload result:', result)
 
                 // Add to images list
                 setImages(prev => [...prev, result.data])
@@ -171,6 +204,9 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
             }
 
             showNotification('success', `Successfully uploaded ${files.length} image(s)!`)
+
+            // Refresh images from server to ensure consistency
+            await fetchImages()
 
             // Reset file input
             if (fileInputRef.current) {
@@ -182,6 +218,36 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
         } finally {
             setUploading(false)
             setUploadProgress(0)
+        }
+    }
+
+    // Drag and drop handlers
+    const handleDrag = (e: React.DragEvent) => {
+        e.preventDefault()
+        e.stopPropagation()
+    }
+
+    const handleDragIn = (e: React.DragEvent) => {
+        e.preventDefault()
+        e.stopPropagation()
+        if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+            setDragActive(true)
+        }
+    }
+
+    const handleDragOut = (e: React.DragEvent) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setDragActive(false)
+    }
+
+    const handleDrop = (e: React.DragEvent) => {
+        e.preventDefault()
+        e.stopPropagation()
+        setDragActive(false)
+
+        if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+            handleFileUpload(e.dataTransfer.files)
         }
     }
 
@@ -249,8 +315,19 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
 
                 {/* Upload Options */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    {/* File Upload */}
-                    <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-accent-400 transition-colors">
+                    {/* File Upload with Drag & Drop */}
+                    <div
+                        className={`border-2 border-dashed rounded-lg p-6 text-center transition-all duration-200 ${dragActive
+                            ? 'border-accent-500 bg-accent-50'
+                            : uploading
+                                ? 'border-blue-300 bg-blue-50'
+                                : 'border-gray-300 hover:border-accent-400'
+                            }`}
+                        onDragEnter={handleDragIn}
+                        onDragLeave={handleDragOut}
+                        onDragOver={handleDrag}
+                        onDrop={handleDrop}
+                    >
                         <input
                             ref={fileInputRef}
                             type="file"
@@ -259,28 +336,51 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
                             onChange={(e) => handleFileUpload(e.target.files)}
                             className="hidden"
                         />
-                        <Camera className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                        <h4 className="font-medium mb-2">Upload from Device</h4>
-                        <p className="text-sm text-gray-600 mb-4">
-                            Upload photos from your phone or computer
-                        </p>
-                        <button
-                            onClick={() => fileInputRef.current?.click()}
-                            disabled={uploading}
-                            className="bg-accent-600 text-white px-4 py-2 rounded-md hover:bg-accent-700 disabled:opacity-50 flex items-center gap-2 mx-auto"
-                        >
-                            <Upload className="w-4 h-4" />
-                            Choose Files
-                        </button>
-                        {uploading && (
-                            <div className="mt-4">
-                                <div className="bg-gray-200 rounded-full h-2">
+
+                        {uploading ? (
+                            <div className="space-y-4">
+                                <div className="animate-pulse">
+                                    <Cloud className="w-12 h-12 text-blue-500 mx-auto mb-4" />
+                                </div>
+                                <h4 className="font-medium text-blue-700">Uploading Images...</h4>
+                                <div className="bg-gray-200 rounded-full h-3 overflow-hidden">
                                     <div
-                                        className="bg-accent-600 h-2 rounded-full transition-all duration-300"
+                                        className="bg-gradient-to-r from-blue-500 to-accent-500 h-3 rounded-full transition-all duration-300 ease-out"
                                         style={{ width: `${uploadProgress}%` }}
                                     />
                                 </div>
-                                <p className="text-sm text-gray-600 mt-2">Uploading... {Math.round(uploadProgress)}%</p>
+                                <p className="text-sm text-blue-600 font-medium">
+                                    {Math.round(uploadProgress)}% Complete
+                                </p>
+                            </div>
+                        ) : dragActive ? (
+                            <div className="space-y-4">
+                                <div className="animate-bounce">
+                                    <Upload className="w-12 h-12 text-accent-500 mx-auto" />
+                                </div>
+                                <h4 className="font-medium text-accent-700">Drop your images here!</h4>
+                                <p className="text-sm text-accent-600">
+                                    Release to upload your images
+                                </p>
+                            </div>
+                        ) : (
+                            <div className="space-y-4">
+                                <Camera className="w-12 h-12 text-gray-400 mx-auto" />
+                                <h4 className="font-medium">Drag & Drop Images</h4>
+                                <p className="text-sm text-gray-600">
+                                    Drag images here or click to browse
+                                </p>
+                                <button
+                                    onClick={() => fileInputRef.current?.click()}
+                                    disabled={uploading}
+                                    className="bg-accent-600 text-white px-6 py-2 rounded-lg hover:bg-accent-700 disabled:opacity-50 flex items-center gap-2 mx-auto transition-colors duration-200"
+                                >
+                                    <Upload className="w-4 h-4" />
+                                    Choose Files
+                                </button>
+                                <p className="text-xs text-gray-500">
+                                    Supports: JPG, PNG, GIF, WebP
+                                </p>
                             </div>
                         )}
                     </div>
@@ -369,8 +469,27 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div
+            className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative"
+            onDragEnter={handleDragIn}
+            onDragLeave={handleDragOut}
+            onDragOver={handleDrag}
+            onDrop={handleDrop}
+        >
             <NotificationBar />
+
+            {/* Global Drag Overlay */}
+            {dragActive && (
+                <div className="fixed inset-0 bg-accent-500/20 backdrop-blur-sm flex items-center justify-center z-40">
+                    <div className="bg-white rounded-2xl p-8 shadow-2xl border-2 border-dashed border-accent-500 text-center">
+                        <div className="animate-bounce mb-4">
+                            <Upload className="w-16 h-16 text-accent-500 mx-auto" />
+                        </div>
+                        <h3 className="text-xl font-bold text-accent-700 mb-2">Drop Images Here!</h3>
+                        <p className="text-accent-600">Release to upload your images</p>
+                    </div>
+                </div>
+            )}
 
             {/* Header */}
             <div className="flex items-center justify-between mb-8">
@@ -385,6 +504,16 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
                     >
                         <Plus className="w-4 h-4" />
                         Add Images
+                    </button>
+                    <button
+                        onClick={() => {
+                            setLoading(true)
+                            fetchImages()
+                        }}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 flex items-center gap-2"
+                    >
+                        <Upload className="w-4 h-4" />
+                        Refresh
                     </button>
                     {onClose && (
                         <button
@@ -431,65 +560,96 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
 
             {/* Images Grid */}
             {!loading && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {filteredImages.map((image, index) => (
-                        <motion.div
-                            key={image.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-                        >
-                            {/* Image */}
-                            <div className="relative aspect-square">
-                                <Image
-                                    src={image.url}
-                                    alt={image.name}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    className="object-cover"
-                                />
-                                <div className="absolute top-2 right-2 flex gap-1">
-                                    <button
-                                        onClick={() => handleEdit(image)}
-                                        className="bg-white/90 hover:bg-white p-1.5 rounded-full shadow-sm"
-                                    >
-                                        <Edit className="w-4 h-4 text-gray-700" />
-                                    </button>
-                                    <button
-                                        onClick={() => handleDelete(image.id)}
-                                        className="bg-white/90 hover:bg-white p-1.5 rounded-full shadow-sm"
-                                    >
-                                        <Trash2 className="w-4 h-4 text-red-600" />
-                                    </button>
-                                </div>
-                                <div className="absolute bottom-2 left-2">
-                                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${image.source === 'cloudinary'
-                                        ? 'bg-blue-100 text-blue-800'
-                                        : image.source === 'external'
-                                            ? 'bg-green-100 text-green-800'
-                                            : 'bg-gray-100 text-gray-800'
-                                        }`}>
-                                        {image.source}
-                                    </span>
-                                </div>
+                <>
+                    {/* Debug Info */}
+                    <div className="mb-4 p-3 bg-gray-100 rounded-lg text-sm text-gray-600">
+                        <strong>Debug:</strong> {images.length} total images, {filteredImages.length} filtered
+                        {images.length > 0 && (
+                            <div className="mt-1">
+                                Latest image: {images[images.length - 1]?.name || 'None'}
+                                <br />
+                                Selected category: {selectedCategory}
+                                <br />
+                                Sample image URLs: {images.slice(0, 2).map(img => img.url).join(', ')}
                             </div>
+                        )}
+                        {images.length === 0 && (
+                            <div className="mt-1 text-red-600">
+                                No images loaded from API. Check console for errors.
+                            </div>
+                        )}
+                    </div>
 
-                            {/* Image Info */}
-                            <div className="p-4">
-                                <h3 className="font-semibold text-gray-900 truncate">{image.name}</h3>
-                                <p className="text-sm text-gray-600 mb-2">{image.category}</p>
-                                {image.description && (
-                                    <p className="text-xs text-gray-500 truncate">{image.description}</p>
-                                )}
-                                <div className="flex items-center justify-between mt-3 text-xs text-gray-400">
-                                    <span>{image.uploadDate}</span>
-                                    <span>{Math.round(image.size / 1024)}KB</span>
-                                </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {filteredImages.length > 0 ? (
+                            filteredImages.map((image, index) => {
+                                console.log(`Rendering image ${index}:`, image.name, image.url)
+                                return (
+                                    <motion.div
+                                        key={image.id}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+                                    >
+                                        {/* Image */}
+                                        <div className="relative aspect-square bg-gray-100">
+                                            <SafeImage
+                                                src={image.url}
+                                                alt={image.name}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                className="object-cover"
+                                                fallbackSrc="https://via.placeholder.com/400x400/f3f4f6/9ca3af?text=Image"
+                                            />
+                                            <div className="absolute top-2 right-2 flex gap-1">
+                                                <button
+                                                    onClick={() => handleEdit(image)}
+                                                    className="bg-white/90 hover:bg-white p-1.5 rounded-full shadow-sm"
+                                                >
+                                                    <Edit className="w-4 h-4 text-gray-700" />
+                                                </button>
+                                                <button
+                                                    onClick={() => handleDelete(image.id)}
+                                                    className="bg-white/90 hover:bg-white p-1.5 rounded-full shadow-sm"
+                                                >
+                                                    <Trash2 className="w-4 h-4 text-red-600" />
+                                                </button>
+                                            </div>
+                                            <div className="absolute bottom-2 left-2">
+                                                <span className={`px-2 py-1 rounded-full text-xs font-medium ${image.source === 'cloudinary'
+                                                    ? 'bg-blue-100 text-blue-800'
+                                                    : image.source === 'external'
+                                                        ? 'bg-green-100 text-green-800'
+                                                        : 'bg-gray-100 text-gray-800'
+                                                    }`}>
+                                                    {image.source}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {/* Image Info */}
+                                        <div className="p-4">
+                                            <h3 className="font-semibold text-gray-900 truncate">{image.name}</h3>
+                                            <p className="text-sm text-gray-600 mb-2">{image.category}</p>
+                                            {image.description && (
+                                                <p className="text-xs text-gray-500 truncate">{image.description}</p>
+                                            )}
+                                            <div className="flex items-center justify-between mt-3 text-xs text-gray-400">
+                                                <span>{image.uploadDate}</span>
+                                                <span>{Math.round(image.size / 1024)}KB</span>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                )
+                            })
+                        ) : (
+                            <div className="col-span-full text-center py-8 text-gray-500">
+                                No images found in {selectedCategory} category
                             </div>
-                        </motion.div>
-                    ))}
-                </div>
+                        )}
+                    </div>
+                </>
             )}
 
             {/* Empty State */}
@@ -531,7 +691,7 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
                                 <label className="block text-sm font-medium mb-1">Name</label>
                                 <input
                                     type="text"
-                                    value={editingImage.name}
+                                    value={editingImage.name || ''}
                                     onChange={(e) => setEditingImage({ ...editingImage, name: e.target.value })}
                                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-500"
                                 />
@@ -539,7 +699,7 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
                             <div>
                                 <label className="block text-sm font-medium mb-1">Category</label>
                                 <select
-                                    value={editingImage.category}
+                                    value={editingImage.category || 'Kitchen'}
                                     onChange={(e) => setEditingImage({ ...editingImage, category: e.target.value })}
                                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-500"
                                 >
@@ -551,7 +711,7 @@ const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
                             <div>
                                 <label className="block text-sm font-medium mb-1">Description</label>
                                 <textarea
-                                    value={editingImage.description}
+                                    value={editingImage.description || ''}
                                     onChange={(e) => setEditingImage({ ...editingImage, description: e.target.value })}
                                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent-500"
                                     rows={3}

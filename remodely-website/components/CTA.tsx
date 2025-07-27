@@ -33,38 +33,71 @@ const CTA = () => {
                     className="max-w-4xl mx-auto"
                 >
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-                        Ready to Transform
-                        <span className="block">Your Space?</span>
+                        Start Your Dream
+                        <span className="block">Remodel Today</span>
                     </h2>
                     <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                        Get a free consultation and quote for your dream remodeling project.
-                        Our experts are ready to bring your vision to life.
+                        Contact us for a free consultation and personalized quote.
+                        Let's bring your vision to life with expert craftsmanship.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                        <Link
-                            href="/contact"
-                            className="group bg-white text-primary-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transform hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2"
-                        >
-                            <span>Get Free Quote</span>
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </Link>
+                    <div className="space-y-6">
+                        {/* Primary CTA Button */}
+                        <div className="flex justify-center">
+                            <Link
+                                href="/contact"
+                                className="group bg-white text-primary-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transform hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2 shadow-lg"
+                            >
+                                <span>Get Free Quote</span>
+                                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </div>
 
-                        <div className="flex items-center space-x-4 text-white">
-                            <div className="flex items-center space-x-2">
-                                <Phone className="w-5 h-5" />
-                                <span className="text-lg font-medium">{companyData.phone}</span>
+                        {/* Contact Options */}
+                        <div className="space-y-4">
+                            <div className="text-primary-200 text-sm font-medium">
+                                or contact us directly
                             </div>
-                            <div className="text-primary-200">or</div>
-                            <div className="flex items-center space-x-2">
-                                <Mail className="w-5 h-5" />
-                                <span className="text-lg font-medium">{companyData.email}</span>
+
+                            {/* Phone and Email - Stacked on Mobile */}
+                            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                                <a
+                                    href={`tel:${companyData.phone}`}
+                                    className="flex items-center space-x-2 text-white hover:text-primary-200 transition-colors group"
+                                >
+                                    <div className="p-2 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors">
+                                        <Phone className="w-4 h-4" />
+                                    </div>
+                                    <span className="text-lg font-medium">{companyData.phone}</span>
+                                </a>
+
+                                <div className="hidden md:block text-primary-200 text-sm">•</div>
+
+                                <a
+                                    href={`mailto:${companyData.email}`}
+                                    className="flex items-center space-x-2 text-white hover:text-primary-200 transition-colors group"
+                                >
+                                    <div className="p-2 bg-white/10 rounded-full group-hover:bg-white/20 transition-colors">
+                                        <Mail className="w-4 h-4" />
+                                    </div>
+                                    <span className="text-lg font-medium break-all md:break-normal">{companyData.email}</span>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div className="text-primary-100 text-sm">
-                        Free consultation • No obligation • Licensed & insured
+                    <div className="text-primary-100 text-sm mt-8 space-y-2">
+                        <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+                            <span className="flex items-center">
+                                ✓ Free consultation
+                            </span>
+                            <span className="flex items-center">
+                                ✓ No obligation
+                            </span>
+                            <span className="flex items-center">
+                                ✓ Licensed & insured
+                            </span>
+                        </div>
                     </div>
                 </motion.div>
             </div>

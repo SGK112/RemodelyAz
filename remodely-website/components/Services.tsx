@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import SafeImage from './SafeImage'
 import Link from 'next/link'
 import { ArrowRight, Wrench, Home, Building, Palette, Clock, Shield } from 'lucide-react'
 
@@ -130,11 +130,12 @@ const Services = () => {
                         >
                             {/* Image */}
                             <div className="relative h-64 overflow-hidden">
-                                <Image
+                                <SafeImage
                                     src={service.image}
                                     alt={service.title}
-                                    fill
-                                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                    width={800}
+                                    height={256}
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                                 />
                                 <div className="absolute inset-0 bg-navy-900/60" />
                                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full p-3">

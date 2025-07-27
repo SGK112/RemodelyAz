@@ -1,130 +1,130 @@
 [
-  {
-    "name": "Remodely Arizona - Kitchen Remodeling",
-    "description": "Professional kitchen remodeling featuring custom countertops, cabinets, and modern design elements in Arizona.",
-    "category": "Kitchen Remodeling",
-    "tags": [
-      "kitchen",
-      "remodeling",
-      "arizona",
-      "countertops",
-      "cabinets"
-    ],
-    "imageUrl": "/uploads/surprise-granite/kitchen-65fa43101c30f8603b71061c_Linda%20Ullrich%20Kitchen%20Remodel-p-800.avif",
-    "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb2d4f9fbad10/65fa43101c30f8603b71061c_Linda%20Ullrich%20Kitchen%20Remodel-p-800.avif",
-    "source": "Surprise Granite Website",
-    "location": "Arizona",
-    "createdAt": "2025-07-26T19:16:21.395Z",
-    "isActive": true,
-    "featured": true
-  },
-  {
-    "name": "Remodely Arizona - Countertops",
-    "description": "Premium quartz and granite countertops installation showcasing elegant stone work and craftsmanship.",
-    "category": "Countertops",
-    "tags": [
-      "countertops",
-      "quartz",
-      "granite",
-      "stone",
-      "arizona"
-    ],
-    "imageUrl": "/uploads/surprise-granite/countertops-65b2b21191cd50564d8cf18a__lx-hausys-surprise-granite-encore-quartz_gym-reception-desk-p-800.webp",
-    "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/65b2b21191cd50564d8cf18a__lx-hausys-surprise-granite-encore-quartz_gym-reception-desk-p-800.webp",
-    "source": "Surprise Granite Website",
-    "location": "Arizona",
-    "createdAt": "2025-07-26T19:16:21.441Z",
-    "isActive": true,
-    "featured": false
-  },
-  {
-    "name": "Remodely Arizona - Business Credentials",
-    "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
-    "category": "Business Credentials",
-    "tags": [
-      "credentials",
-      "payment",
-      "trust",
-      "professional"
-    ],
-    "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb26f2bfbb121_mastercard.png",
-    "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb26f2bfbb121_mastercard.png",
-    "source": "Surprise Granite Website",
-    "location": "Arizona",
-    "createdAt": "2025-07-26T19:16:21.487Z",
-    "isActive": true,
-    "featured": false
-  },
-  {
-    "name": "Remodely Arizona - Business Credentials",
-    "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
-    "category": "Business Credentials",
-    "tags": [
-      "credentials",
-      "payment",
-      "trust",
-      "professional"
-    ],
-    "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb280abfbb124_discover.png",
-    "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb280abfbb124_discover.png",
-    "source": "Surprise Granite Website",
-    "location": "Arizona",
-    "createdAt": "2025-07-26T19:16:21.529Z",
-    "isActive": true,
-    "featured": false
-  },
-  {
-    "name": "Remodely Arizona - Business Credentials",
-    "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
-    "category": "Business Credentials",
-    "tags": [
-      "credentials",
-      "payment",
-      "trust",
-      "professional"
-    ],
-    "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb2b84cfbb122_amex.png",
-    "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb2b84cfbb122_amex.png",
-    "source": "Surprise Granite Website",
-    "location": "Arizona",
-    "createdAt": "2025-07-26T19:16:21.577Z",
-    "isActive": true,
-    "featured": false
-  },
-  {
-    "name": "Remodely Arizona - Business Credentials",
-    "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
-    "category": "Business Credentials",
-    "tags": [
-      "credentials",
-      "payment",
-      "trust",
-      "professional"
-    ],
-    "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb2de4ffbb123_paypal.png",
-    "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb2de4ffbb123_paypal.png",
-    "source": "Surprise Granite Website",
-    "location": "Arizona",
-    "createdAt": "2025-07-26T19:16:21.627Z",
-    "isActive": true,
-    "featured": false
-  },
-  {
-    "name": "Remodely Arizona - Business Credentials",
-    "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
-    "category": "Business Credentials",
-    "tags": [
-      "credentials",
-      "payment",
-      "trust",
-      "professional"
-    ],
-    "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb208e7fbb0ab_screened_and_approved_home_advisor_logo.png",
-    "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb208e7fbb0ab_screened_and_approved_home_advisor_logo.png",
-    "source": "Surprise Granite Website",
-    "location": "Arizona",
-    "createdAt": "2025-07-26T19:16:21.816Z",
-    "isActive": true,
-    "featured": false
-  }
+    {
+        "name": "Remodely Arizona - Kitchen Remodeling",
+        "description": "Professional kitchen remodeling featuring custom countertops, cabinets, and modern design elements in Arizona.",
+        "category": "Kitchen Remodeling",
+        "tags": [
+            "kitchen",
+            "remodeling",
+            "arizona",
+            "countertops",
+            "cabinets"
+        ],
+        "imageUrl": "/uploads/surprise-granite/kitchen-linda-ullrich-remodel.avif",
+        "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb2d4f9fbad10/65fa43101c30f8603b71061c_Linda%20Ullrich%20Kitchen%20Remodel-p-800.avif",
+        "source": "Surprise Granite Website",
+        "location": "Arizona",
+        "createdAt": "2025-07-26T19:16:21.395Z",
+        "isActive": true,
+        "featured": true
+    },
+    {
+        "name": "Remodely Arizona - Countertops",
+        "description": "Premium quartz and granite countertops installation showcasing elegant stone work and craftsmanship.",
+        "category": "Countertops",
+        "tags": [
+            "countertops",
+            "quartz",
+            "granite",
+            "stone",
+            "arizona"
+        ],
+        "imageUrl": "/uploads/surprise-granite/countertops-quartz-installation.webp",
+        "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/65b2b21191cd50564d8cf18a__lx-hausys-surprise-granite-encore-quartz_gym-reception-desk-p-800.webp",
+        "source": "Surprise Granite Website",
+        "location": "Arizona",
+        "createdAt": "2025-07-26T19:16:21.441Z",
+        "isActive": true,
+        "featured": false
+    },
+    {
+        "name": "Remodely Arizona - Business Credentials",
+        "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
+        "category": "Business Credentials",
+        "tags": [
+            "credentials",
+            "payment",
+            "trust",
+            "professional"
+        ],
+        "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb26f2bfbb121_mastercard.png",
+        "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb26f2bfbb121_mastercard.png",
+        "source": "Surprise Granite Website",
+        "location": "Arizona",
+        "createdAt": "2025-07-26T19:16:21.487Z",
+        "isActive": true,
+        "featured": false
+    },
+    {
+        "name": "Remodely Arizona - Business Credentials",
+        "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
+        "category": "Business Credentials",
+        "tags": [
+            "credentials",
+            "payment",
+            "trust",
+            "professional"
+        ],
+        "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb280abfbb124_discover.png",
+        "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb280abfbb124_discover.png",
+        "source": "Surprise Granite Website",
+        "location": "Arizona",
+        "createdAt": "2025-07-26T19:16:21.529Z",
+        "isActive": true,
+        "featured": false
+    },
+    {
+        "name": "Remodely Arizona - Business Credentials",
+        "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
+        "category": "Business Credentials",
+        "tags": [
+            "credentials",
+            "payment",
+            "trust",
+            "professional"
+        ],
+        "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb2b84cfbb122_amex.png",
+        "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb2b84cfbb122_amex.png",
+        "source": "Surprise Granite Website",
+        "location": "Arizona",
+        "createdAt": "2025-07-26T19:16:21.577Z",
+        "isActive": true,
+        "featured": false
+    },
+    {
+        "name": "Remodely Arizona - Business Credentials",
+        "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
+        "category": "Business Credentials",
+        "tags": [
+            "credentials",
+            "payment",
+            "trust",
+            "professional"
+        ],
+        "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb2de4ffbb123_paypal.png",
+        "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb2de4ffbb123_paypal.png",
+        "source": "Surprise Granite Website",
+        "location": "Arizona",
+        "createdAt": "2025-07-26T19:16:21.627Z",
+        "isActive": true,
+        "featured": false
+    },
+    {
+        "name": "Remodely Arizona - Business Credentials",
+        "description": "Trusted payment methods and professional certifications for reliable remodeling services.",
+        "category": "Business Credentials",
+        "tags": [
+            "credentials",
+            "payment",
+            "trust",
+            "professional"
+        ],
+        "imageUrl": "/uploads/surprise-granite/credibility-6456ce4476abb208e7fbb0ab_screened_and_approved_home_advisor_logo.png",
+        "originalUrl": "https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/6456ce4476abb208e7fbb0ab_screened_and_approved_home_advisor_logo.png",
+        "source": "Surprise Granite Website",
+        "location": "Arizona",
+        "createdAt": "2025-07-26T19:16:21.816Z",
+        "isActive": true,
+        "featured": false
+    }
 ]

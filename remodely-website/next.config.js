@@ -39,6 +39,8 @@ const nextConfig = {
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
         deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+        // Disable image optimization in production for Render.com compatibility
+        unoptimized: process.env.NODE_ENV === 'production',
     },
     // Disable all experimental features to prevent critters dependency
     experimental: {},
@@ -47,6 +49,8 @@ const nextConfig = {
     compiler: {
         removeConsole: process.env.NODE_ENV === 'production',
     },
+    // Production-specific optimizations for Render.com
+    output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
     // Disable CSS optimization to prevent critters requirement
     optimizeFonts: false,
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import SafeImage from '../../components/SafeImage'
 import Link from 'next/link'
 import { Award, Users, Clock, CheckCircle, Star, Heart } from 'lucide-react'
 
@@ -61,7 +61,7 @@ const AboutPage = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-accent-50 to-accent-100 pt-20">
       {/* Hero Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -106,11 +106,12 @@ const AboutPage = () => {
               className="relative"
             >
               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
-                <Image
+                <SafeImage
                   src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop&auto=format"
                   alt="REMODELY Arizona team at work"
-                  fill
-                  className="object-cover"
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-navy-900/30" />
               </div>
@@ -209,11 +210,12 @@ const AboutPage = () => {
               className="relative"
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
+                <SafeImage
                   src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&auto=format"
                   alt="REMODELY Arizona showroom"
-                  fill
-                  className="object-cover"
+                  width={800}
+                  height={600}
+                  className="w-full h-full object-cover"
                 />
               </div>
             </motion.div>
@@ -287,11 +289,12 @@ const AboutPage = () => {
                 className="glass-card rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300"
               >
                 <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
-                  <Image
+                  <SafeImage
                     src={member.image}
                     alt={member.name}
-                    fill
-                    className="object-cover"
+                    width={128}
+                    height={128}
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>

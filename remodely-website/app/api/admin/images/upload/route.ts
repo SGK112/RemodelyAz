@@ -6,22 +6,22 @@ import { jwtVerify } from 'jose'
 
 // Authentication middleware
 async function verifyAuth(request: NextRequest) {
-  try {
-    const token = request.cookies.get('admin_token')?.value
-    
-    if (!token) {
-      return false
+    try {
+        const token = request.cookies.get('admin_token')?.value
+
+        if (!token) {
+            return false
+        }
+
+        const secret = new TextEncoder().encode(
+            process.env.JWT_SECRET || 'remodely-admin-secret-key-2024'
+        )
+
+        const { payload } = await jwtVerify(token, secret)
+        return payload.admin === true
+    } catch (error) {
+        return false
     }
-
-    const secret = new TextEncoder().encode(
-      process.env.JWT_SECRET || 'remodely-admin-secret-key-2024'
-    )
-
-    const { payload } = await jwtVerify(token, secret)
-    return payload.admin === true
-  } catch (error) {
-    return false
-  }
 }
 
 export async function POST(request: NextRequest) {
@@ -103,16 +103,16 @@ export async function POST(request: NextRequest) {
             }
         } catch (cloudinaryError) {
             console.log('Cloudinary upload failed, using local storage:', cloudinaryError)
-            
+
             // Fallback to local storage
             const uploadsDir = path.join(process.cwd(), 'public', 'uploads')
             await fs.mkdir(uploadsDir, { recursive: true })
-            
+
             const fileName = `${Date.now()}-${file.name}`
             const filePath = path.join(uploadsDir, fileName)
-            
+
             await fs.writeFile(filePath, buffer)
-            
+
             imageData = {
                 id: `local-${Date.now()}`,
                 name: file.name.replace(/\.[^/.]+$/, ""),
