@@ -65,7 +65,9 @@ export default function AdminLogin() {
                     >
                         <Building className="w-8 h-8 text-blue-300" />
                     </motion.div>
-                    <h1 className="text-2xl font-bold text-white mb-2">RemodelyAz Admin</h1>
+                    <h1 className="text-2xl font-bold text-white mb-2">
+                        Remodely<span className="inline-block hover:scale-110 hover:text-accent-200 transition-all duration-500 ease-out cursor-default animate-pulse" style={{animationDuration: '3s'}}>Az</span> Admin
+                    </h1>
                     <p className="text-gray-300">Enter your password to access the admin panel</p>
                 </div>
 

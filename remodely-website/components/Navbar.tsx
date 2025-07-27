@@ -38,14 +38,14 @@ export default function Navbar() {
                         <Link href="/" className="flex items-center space-x-2">
                             <Image
                                 src="/favicon.svg"
-                                alt="RemodelyAz Logo"
+                                alt="Remodely Arizona Logo"
                                 width={32}
                                 height={32}
                                 className="w-8 h-8"
                             />
                             <div className="hidden sm:block">
                                 <h1 className="text-lg font-display font-bold text-white transition-colors duration-300">
-                                    RemodelyAz
+                                    Remodely<span className="inline-block hover:scale-110 hover:text-accent-200 transition-all duration-500 ease-out cursor-default animate-pulse" style={{animationDuration: '3s'}}>Az</span>
                                 </h1>
                             </div>
                         </Link>
