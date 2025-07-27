@@ -1,79 +1,20 @@
 {
-  "name": "Remodely Arizona",
-  "previousName": "Surprise Granite",
-  "tagline": "Premium Home Remodeling Services - Your Trusted Arizona Renovation Experts",
-  "description": "Transform your Arizona home with our expert remodeling services. Established business with 400+ completed projects, 4.7/5 star rating, and years of experience serving the Phoenix metro area.",
-  "phone": "(602) 833-3189",
-  "email": "sales@remodelyaz.com",
-  "legacyEmail": "sales@surprisegranite.com",
-  "address": {
-    "street": "11560 N Dysart Rd Suite 112",
-    "city": "Surprise",
-    "state": "Arizona",
-    "zip": "85379"
-  },
-  "businessCredentials": {
-    "googleRating": "4.7/5",
-    "totalReviews": 146,
-    "projectsCompleted": "400+",
-    "yearsInBusiness": "5+",
-    "licenseNumber": "AzRoc #327266"
-  },
-  "socialMedia": {
-    "facebook": "https://facebook.com/surprisegranite",
-    "instagram": "https://instagram.com/surprisegranite",
-    "linkedin": "https://linkedin.com/company/surprise-granite"
-  },
-  "businessHours": {
-    "monday": "8:00 AM - 4:00 PM",
-    "tuesday": "8:00 AM - 4:00 PM",
-    "wednesday": "8:00 AM - 4:00 PM",
-    "thursday": "8:00 AM - 4:00 PM",
-    "friday": "8:00 AM - 4:00 PM",
-    "saturday": "10:00 AM - 2:00 PM",
-    "sunday": "Closed"
-  },
+  "name": "REMODELY LLC",
+  "tagline": "Transforming Arizona Homes with Excellence",
+  "description": "Arizona's premier remodeling company specializing in kitchen renovations, bathroom remodels, commercial spaces, and complete home transformations.",
+  "address": "15464 W Aster Dr, Surprise, AZ 85379",
+  "phone": "(480) 255-5887",
+  "email": "help.remodely@gmail.com",
+  "website": "www.remodely.com",
+  "license": "AzRoc #327266",
+  "founded": "2023",
   "services": [
     "Kitchen Remodeling",
-    "Bathroom Remodeling",
-    "Countertop Installation",
-    "Cabinet Installation",
-    "Flooring Installation",
-    "Tub to Shower Conversion",
-    "Backsplash Installation",
-    "Countertop Polish & Repair",
-    "Sink Installation",
-    "Tile Installation"
+    "Bathroom Renovation",
+    "Commercial Remodeling",
+    "Interior Design",
+    "Home Additions",
+    "Flooring Installation"
   ],
-  "materials": [
-    "Granite Countertops",
-    "Quartz Countertops",
-    "Marble Countertops",
-    "Porcelain Countertops",
-    "Custom Cabinetry",
-    "Premium Flooring",
-    "Designer Tile"
-  ],
-  "serviceAreas": [
-    "Surprise",
-    "Sun City",
-    "Phoenix",
-    "Goodyear",
-    "Scottsdale",
-    "Tempe",
-    "Glendale",
-    "Mesa",
-    "Gilbert",
-    "Chandler"
-  ],
-  "rebrandingInfo": {
-    "oldBrandName": "Surprise Granite",
-    "newBrandName": "Remodely Arizona",
-    "transitionDate": "2025",
-    "reason": "Expanding services beyond countertops to full-service remodeling",
-    "continuity": "Same quality, same team, expanded services"
-  },
-  "license": "AzRoc #327266",
-  "founded": "2019",
-  "lastUpdated": "2025-07-26T19:45:00.000Z"
+  "lastUpdated": "2025-07-25T17:35:21.248Z"
 }

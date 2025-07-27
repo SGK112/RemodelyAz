@@ -24,7 +24,7 @@ if (!fs.existsSync(COMPANY_FILE)) {
     founded: '2009',
     services: [
       'Kitchen Remodeling',
-      'Bathroom Renovation',
+      'Bathroom Renovation', 
       'Commercial Remodeling',
       'Interior Design',
       'Home Additions',
@@ -39,12 +39,7 @@ export async function GET() {
   try {
     const data = fs.readFileSync(COMPANY_FILE, 'utf8')
     const companyInfo = JSON.parse(data)
-
-    // Format address object as string for compatibility
-    if (companyInfo.address && typeof companyInfo.address === 'object') {
-      companyInfo.address = `${companyInfo.address.street}, ${companyInfo.address.city}, ${companyInfo.address.state} ${companyInfo.address.zip}`
-    }
-
+    
     return NextResponse.json(companyInfo)
   } catch (error) {
     console.error('Error reading company info:', error)
@@ -58,16 +53,16 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const companyInfo = await request.json()
-
+    
     // Add timestamp
     companyInfo.lastUpdated = new Date().toISOString()
-
+    
     // Write to file
     fs.writeFileSync(COMPANY_FILE, JSON.stringify(companyInfo, null, 2))
-
-    return NextResponse.json({
-      success: true,
-      message: 'Company information updated successfully'
+    
+    return NextResponse.json({ 
+      success: true, 
+      message: 'Company information updated successfully' 
     })
   } catch (error) {
     console.error('Error updating company info:', error)

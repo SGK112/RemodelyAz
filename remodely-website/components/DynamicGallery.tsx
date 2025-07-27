@@ -27,7 +27,7 @@ const DynamicGalleryPage = () => {
         try {
             // Get projects from the image manager
             const allProjects = imageManager.getGalleryProjects()
-
+            
             // If no migrated projects, create some from available images
             if (allProjects.length === 0) {
                 const images = imageManager.getAllImages()
@@ -36,7 +36,7 @@ const DynamicGalleryPage = () => {
             } else {
                 setProjects(allProjects)
             }
-
+            
             // Update category counts
             const projectsByCategory = allProjects.reduce((acc, project) => {
                 acc[project.category] = (acc[project.category] || 0) + 1
@@ -47,7 +47,7 @@ const DynamicGalleryPage = () => {
                 ...cat,
                 count: cat.id === 'all' ? allProjects.length : (projectsByCategory[cat.id] || 0)
             })))
-
+            
         } catch (error) {
             console.error('Error loading gallery data:', error)
             // Fallback to static data
@@ -110,7 +110,7 @@ const DynamicGalleryPage = () => {
                 id: 1,
                 title: 'Modern Luxury Kitchen',
                 category: 'kitchen',
-                image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center',
+                image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/kitchen_modern',
                 description: 'Complete kitchen transformation featuring custom white cabinetry, marble waterfall countertops, and professional-grade appliances.',
                 location: 'Phoenix, AZ',
                 date: 'March 2024',
@@ -122,7 +122,7 @@ const DynamicGalleryPage = () => {
                 id: 2,
                 title: 'Spa-Inspired Master Bath',
                 category: 'bathroom',
-                image: 'https://images.unsplash.com/photo-1584622781003-d2311cc45946?w=800&h=600&fit=crop&crop=center',
+                image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/bathroom_luxury',
                 description: 'Luxurious master bathroom renovation with walk-in shower, freestanding tub, and heated floors.',
                 location: 'Scottsdale, AZ',
                 date: 'February 2024',
@@ -265,7 +265,6 @@ const DynamicGalleryPage = () => {
                                                 src={project.image}
                                                 alt={project.title}
                                                 fill
-                                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                                 className="object-cover group-hover:scale-110 transition-transform duration-500"
                                             />
                                             <div className="absolute inset-0 bg-navy-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -364,7 +363,6 @@ const DynamicGalleryPage = () => {
                                         src={filteredProjects[selectedImage].image}
                                         alt={filteredProjects[selectedImage].title}
                                         fill
-                                        sizes="(max-width: 1024px) 100vw, 66vw"
                                         className="object-cover"
                                     />
                                 </div>

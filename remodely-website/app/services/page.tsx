@@ -12,7 +12,7 @@ const ServicesPage = () => {
             title: 'Kitchen Remodeling',
             subtitle: 'Transform Your Culinary Space',
             description: 'Create the kitchen of your dreams with our comprehensive remodeling services. From modern minimalist designs to traditional farmhouse styles, we bring your vision to life with premium materials and expert craftsmanship.',
-            image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1000&h=750&fit=crop&crop=center',
+            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_1000,h_750,q_auto,f_webp/kitchen_modern',
             price: 'Starting at $25,000',
             duration: '2-4 weeks',
             features: [
@@ -38,7 +38,7 @@ const ServicesPage = () => {
             title: 'Bathroom Remodeling',
             subtitle: 'Create Your Personal Spa',
             description: 'Transform your bathroom into a luxurious retreat with our comprehensive remodeling services. Whether it\'s a powder room refresh or a complete master suite renovation, we deliver exceptional results.',
-            image: 'https://images.unsplash.com/photo-1584622781003-d2311cc45946?w=1000&h=750&fit=crop&crop=center',
+            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_1000,h_750,q_auto,f_webp/bathroom_luxury',
             price: 'Starting at $15,000',
             duration: '1-3 weeks',
             features: [
@@ -64,7 +64,7 @@ const ServicesPage = () => {
             title: 'Commercial Remodeling',
             subtitle: 'Professional Spaces That Impress',
             description: 'Enhance your business environment with our commercial remodeling expertise. From office spaces to retail stores and restaurants, we create functional, attractive spaces that boost productivity and impress clients.',
-            image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000&h=750&fit=crop&crop=center',
+            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_1000,h_750,q_auto,f_webp/office_modern',
             price: 'Custom Quote',
             duration: '3-8 weeks',
             features: [
@@ -111,7 +111,7 @@ const ServicesPage = () => {
     ]
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-accent-50 to-accent-100 pt-20">
+        <div className="min-h-screen bg-gray-50 pt-20">
             {/* Hero Section */}
             <section className="relative py-20 overflow-hidden">
                 <div className="absolute inset-0 bg-accent-100/30" />

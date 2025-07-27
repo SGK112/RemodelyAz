@@ -42,35 +42,7 @@ const RemodelyImageSchema = new mongoose.Schema({
   migrated_at: Date
 })
 
-// Schema for partner images
-const PartnerImageSchema = new mongoose.Schema({
-  partner_name: String,
-  partner_website: String,
-  partner_specialties: [String],
-  project_name: String,
-  project_type: String,
-  category: String,
-  material: String,
-  style: String,
-  location: String,
-  src: String,
-  alt: String,
-  tags: [String],
-  original_filename: String,
-  file_path: String,
-  imported_at: Date,
-  arizona_focused: Boolean,
-  partner_info: {
-    name: String,
-    website: String,
-    location: String,
-    phone: String,
-    specialties: [String]
-  }
-})
-
 const RemodelyImage = mongoose.models.images || mongoose.model('images', RemodelyImageSchema)
-const PartnerImage = mongoose.models.partner_images || mongoose.model('partner_images', PartnerImageSchema)
 
 // Ensure directories exist
 if (!fs.existsSync(DATA_DIR)) {
@@ -87,7 +59,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '1',
       name: 'Modern Kitchen Renovation',
-      url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center',
+      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/kitchen_1',
       category: 'Kitchen',
       size: 245000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -97,7 +69,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '2',
       name: 'Luxury Bathroom Remodel',
-      url: 'https://images.unsplash.com/photo-1584622781003-d2311cc45946?w=800&h=600&fit=crop&crop=center',
+      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/bathroom_1',
       category: 'Bathroom',
       size: 198000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -107,7 +79,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '3',
       name: 'Contemporary Living Room',
-      url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center',
+      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/living_room_1',
       category: 'Living Room',
       size: 220000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -117,7 +89,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '4',
       name: 'Commercial Office Space',
-      url: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&crop=center',
+      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/office_1',
       category: 'Commercial',
       size: 275000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -127,7 +99,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '5',
       name: 'Master Bedroom Suite',
-      url: 'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&h=600&fit=crop&crop=center',
+      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/bedroom_1',
       category: 'Bedroom',
       size: 189000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -137,7 +109,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '6',
       name: 'Outdoor Living Space',
-      url: 'https://images.unsplash.com/photo-1600047509358-9dc75507daeb?w=800&h=600&fit=crop&crop=center',
+      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/outdoor_patio',
       category: 'Outdoor',
       size: 210000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -150,140 +122,124 @@ if (!fs.existsSync(IMAGES_FILE)) {
 
 export async function GET() {
   try {
-    // First, try to read from the JSON file (contains uploaded images)
-    if (fs.existsSync(IMAGES_FILE)) {
-      const data = fs.readFileSync(IMAGES_FILE, 'utf8')
-      const images = JSON.parse(data)
-
-      if (images && images.length > 0) {
-        return NextResponse.json({
-          success: true,
-          data: images,
-          source: 'json_file'
-        })
-      }
-    }
-
-    // Connect to MongoDB for fallback partner images
+    // First try to get images from MongoDB
     await connectMongoDB()
 
-    // Get real partner images - prioritize actual photos over placeholders
-    const partnerImages = await PartnerImage.find({
-      arizona_focused: true,
-      src: { $exists: true, $ne: null }
-    }).sort({ imported_at: -1 })
+    const mongoImages = await RemodelyImage.find({
+      category: 'countertops',
+      src: { $exists: true, $ne: null },
+      alt: { $exists: true, $ne: null }
+    }).limit(10).sort({ migrated_at: -1 }) // Top 10 approach
 
-    let galleryImages: any[] = []
+    if (mongoImages && mongoImages.length > 0) {
+      // Transform MongoDB documents to gallery format
+      const galleryImages = mongoImages.map((image: any, index: number) => {
+        // Generic remodeling project names
+        const projectNames = [
+          'Modern Kitchen Renovation',
+          'Luxury Bathroom Remodel',
+          'Contemporary Living Room',
+          'Master Suite Transformation',
+          'Open Concept Kitchen',
+          'Spa-Inspired Bathroom',
+          'Custom Home Office',
+          'Elegant Dining Room',
+          'Modern Farmhouse Kitchen',
+          'Executive Bathroom Remodel',
+          'Family Room Makeover',
+          'Gourmet Kitchen Design',
+          'Master Bathroom Suite',
+          'Contemporary Home Office',
+          'Traditional Kitchen Remodel',
+          'Luxury Master Bedroom',
+          'Modern Guest Bathroom',
+          'Custom Walk-In Closet',
+          'Outdoor Living Space',
+          'Home Theater Room',
+          'Wine Cellar Design',
+          'Basement Renovation',
+          'Attic Conversion',
+          'Mudroom Addition',
+          'Laundry Room Makeover'
+        ];
 
-    // Process partner images (showcase our supplier network with real photos)
-    if (partnerImages && partnerImages.length > 0) {
-      const partnerGalleryImages = partnerImages.map((image: any) => {
-        // Determine category based on partner and project type
-        let displayCategory = 'Remodeling'
-        if (image.partner_name === 'SunStone Surfaces') {
-          displayCategory = image.project_type === 'Kitchen' ? 'Kitchen' :
-            image.project_type === 'Bathroom' ? 'Bathroom' : 'Surfaces'
-        } else if (image.category === 'cabinetry') {
-          displayCategory = 'Cabinetry'
-        }
+        // Generic remodeling descriptions
+        const descriptions = [
+          'Beautiful kitchen renovation featuring custom cabinetry and premium finishes',
+          'Stunning bathroom remodel with modern fixtures and luxurious materials',
+          'Complete home transformation with attention to every detail',
+          'Professional remodeling project showcasing quality craftsmanship',
+          'Custom renovation featuring high-end materials and expert design',
+          'Modern design meets functional living space in this renovation',
+          'Elegant home improvement with timeless appeal and style',
+          'Quality construction and beautiful finishes throughout',
+          'Sophisticated remodeling project with premium upgrades',
+          'Transform your space with expert design and construction',
+          'Professional renovation services with exceptional results',
+          'Beautiful home improvement featuring custom details',
+          'Expert design and construction for modern living',
+          'Custom remodeling solution tailored to your lifestyle',
+          'Exceptional renovation with premium materials and finishes'
+        ];
 
         return {
           id: image._id.toString(),
-          name: image.project_name,
-          url: image.src, // This should be the real image path like /uploads/partners/sunstone/...
-          category: displayCategory,
-          description: image.alt || `Professional ${image.project_type.toLowerCase()} renovation featuring ${image.partner_name} materials`,
+          name: projectNames[index % projectNames.length],
+          // Use placeholder images while actual images are being migrated
+          url: `https://picsum.photos/800/600?random=${image._id.toString().slice(-6)}`,
+          category: 'Remodeling',
+          description: descriptions[index % descriptions.length],
           material: image.material,
-          partner: image.partner_name,
-          partnerWebsite: image.partner_website,
-          location: image.location,
-          tags: [...(image.tags || []), 'arizona', 'phoenix', 'professional'],
-          uploadDate: image.imported_at ? new Date(image.imported_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
-          uploadedAt: image.imported_at || new Date().toISOString(),
-          source: 'partner'
+          brand: image.brand,
+          tags: ['remodeling', 'renovation', 'home improvement', 'design', 'construction'],
+          uploadDate: image.migrated_at ? new Date(image.migrated_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
+          uploadedAt: image.migrated_at || new Date().toISOString()
         }
       })
 
-      galleryImages = [...galleryImages, ...partnerGalleryImages]
+      return NextResponse.json(galleryImages)
     }
 
-    // If we have real partner images, return them
-    if (galleryImages.length > 0) {
-      // Shuffle for variety and limit to top 20 for performance
-      galleryImages = galleryImages
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 20)
+    // Fallback to filesystem images if MongoDB has no data
+    const data = fs.readFileSync(IMAGES_FILE, 'utf8')
+    const images = JSON.parse(data)
 
-      return NextResponse.json({
-        success: true,
-        data: galleryImages,
-        source: 'mongodb_partners'
-      })
-    }
+    return NextResponse.json(images)
   } catch (error) {
     console.error('Error reading images:', error)
 
-    // Ultimate fallback showcasing actual business work with credibility
+    // Ultimate fallback to demo images
     const fallbackImages = [
       {
         id: '1',
-        name: 'Professional Kitchen Remodel - Surprise Granite Legacy',
-        url: '/uploads/surprise-granite/kitchen-linda-ullrich-remodel.avif',
+        name: 'Modern Kitchen Renovation',
+        url: 'https://picsum.photos/800/600?random=kitchen',
         category: 'Kitchen',
-        description: 'Expert kitchen renovation from our established Arizona business - Linda Ullrich project featuring premium materials',
-        partner: 'Remodely Arizona (Legacy: Surprise Granite)',
-        location: 'Surprise, Arizona',
-        tags: ['arizona', 'surprise', 'kitchen', 'renovation', 'professional'],
+        description: 'Beautiful modern kitchen with quartz countertops',
         uploadDate: new Date().toISOString().split('T')[0],
-        uploadedAt: new Date().toISOString(),
-        businessCredibility: '4.7/5 stars, 400+ projects'
+        uploadedAt: new Date().toISOString()
       },
       {
         id: '2',
-        name: 'Premium Quartz Countertop Installation',
-        url: '/uploads/surprise-granite/countertops-quartz-installation.webp',
-        category: 'Kitchen',
-        description: 'Professional quartz countertop installation showcasing our expertise in premium surface materials',
-        partner: 'Remodely Arizona (Legacy: Surprise Granite)',
-        location: 'Phoenix Metro Area',
-        tags: ['arizona', 'countertops', 'quartz', 'professional', 'premium'],
+        name: 'Luxury Bathroom',
+        url: 'https://picsum.photos/800/600?random=bathroom',
+        category: 'Bathroom',
+        description: 'Spa-inspired bathroom renovation',
         uploadDate: new Date().toISOString().split('T')[0],
-        uploadedAt: new Date().toISOString(),
-        businessCredibility: 'Licensed contractor AzRoc #327266'
+        uploadedAt: new Date().toISOString()
       },
       {
         id: '3',
-        name: 'Modern Kitchen Design - Arizona Home',
-        url: 'https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/666c82cd5e8c79229b330f4b_Surprise%20Granite%20Homepage%20Hero-p-800.webp',
-        category: 'Kitchen',
-        description: 'Stunning kitchen renovation featuring gray cabinets and white marble countertops - our signature work',
-        partner: 'Remodely Arizona',
-        location: 'Arizona',
-        tags: ['arizona', 'kitchen', 'modern', 'cabinets', 'marble'],
-        uploadDate: new Date().toISOString().split('T')[0],
-        uploadedAt: new Date().toISOString(),
-        businessCredibility: '146+ Google Reviews'
-      },
-      {
-        id: '4',
-        name: 'Commercial Reception Desk - Premium Installation',
-        url: 'https://cdn.prod.website-files.com/6456ce4476abb25581fbad0c/65b2b21191cd50564d8cf18a__lx-hausys-surprise-granite-encore-quartz_gym-reception-desk-p-800.webp',
+        name: 'Commercial Office',
+        url: 'https://picsum.photos/800/600?random=office',
         category: 'Commercial',
-        description: 'High-end commercial installation for gym reception desk - showcasing our commercial capabilities',
-        partner: 'Remodely Arizona',
-        location: 'Arizona',
-        tags: ['arizona', 'commercial', 'reception', 'quartz', 'professional'],
+        description: 'Modern office space renovation',
         uploadDate: new Date().toISOString().split('T')[0],
-        uploadedAt: new Date().toISOString(),
-        businessCredibility: 'Commercial & Residential Expertise'
+        uploadedAt: new Date().toISOString()
       }
     ]
 
-    return NextResponse.json({
-      success: true,
-      data: fallbackImages,
-      source: 'fallback'
-    })
+    return NextResponse.json(fallbackImages)
   }
 }
 

@@ -1,8 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { X } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react'
 
 interface GalleryImage {
     id: string
@@ -10,6 +11,10 @@ interface GalleryImage {
     url: string
     category: string
     description?: string
+    material?: string
+    brand?: string
+    tags?: string[]
+    uploadDate?: string
 }
 
 const GalleryPage = () => {
@@ -17,64 +22,45 @@ const GalleryPage = () => {
     const [currentCategory, setCurrentCategory] = useState('all')
     const [images, setImages] = useState<GalleryImage[]>([])
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                console.log('Fetching images...')
-                setLoading(true)
-                setError(null)
-                
-                const response = await fetch('/api/images')
-                console.log('Response status:', response.status)
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+                const response = await fetch('/api/admin/images')
+                if (response.ok) {
+                    const imageData = await response.json()
+                    setImages(imageData)
+                } else {
+                    // Fallback images if API fails
+                    setImages([
+                        {
+                            id: '1',
+                            name: 'Modern Kitchen',
+                            url: 'https://picsum.photos/800/600?random=1',
+                            category: 'Kitchen',
+                            description: 'Beautiful modern kitchen renovation'
+                        },
+                        {
+                            id: '2',
+                            name: 'Luxury Bathroom',
+                            url: 'https://picsum.photos/800/600?random=2',
+                            category: 'Bathroom',
+                            description: 'Spa-inspired bathroom design'
+                        }
+                    ])
                 }
-                
-                const result = await response.json()
-                console.log('Result:', result)
-                
-                if (!result.success || !result.data) {
-                    throw new Error('Invalid response format')
-                }
-                
-                // Filter out brand images for gallery display
-                const galleryImages = result.data.filter((img: GalleryImage) => img.category !== 'Brand')
-                console.log('Gallery images:', galleryImages.length)
-                
-                setImages(galleryImages)
-                
             } catch (error) {
-                console.error('Error fetching images:', error)
-                setError(error instanceof Error ? error.message : 'Failed to load images')
-                
-                // Use fallback images on error
-                const fallbackImages = [
+                console.error('Failed to fetch images:', error)
+                // Use fallback on error
+                setImages([
                     {
-                        id: 'fallback-1',
-                        name: 'Modern Kitchen Remodel',
-                        url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
+                        id: '1',
+                        name: 'Modern Kitchen',
+                        url: 'https://picsum.photos/800/600?random=1',
                         category: 'Kitchen',
-                        description: 'Beautiful modern kitchen renovation with premium finishes'
-                    },
-                    {
-                        id: 'fallback-2',
-                        name: 'Luxury Bathroom Design',
-                        url: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
-                        category: 'Bathroom',
-                        description: 'Spa-inspired bathroom with modern fixtures'
-                    },
-                    {
-                        id: 'fallback-3',
-                        name: 'Commercial Kitchen',
-                        url: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
-                        category: 'Commercial',
-                        description: 'Professional commercial kitchen installation'
+                        description: 'Beautiful modern kitchen renovation'
                     }
-                ]
-                setImages(fallbackImages)
+                ])
             } finally {
                 setLoading(false)
             }
@@ -85,154 +71,229 @@ const GalleryPage = () => {
 
     const categories = [
         { id: 'all', name: 'All Projects', count: images.length },
-        { id: 'kitchen', name: 'Kitchens', count: images.filter(img => img.category.toLowerCase() === 'kitchen').length },
-        { id: 'bathroom', name: 'Bathrooms', count: images.filter(img => img.category.toLowerCase() === 'bathroom').length },
-        { id: 'commercial', name: 'Commercial', count: images.filter(img => img.category.toLowerCase() === 'commercial').length },
+        { id: 'remodeling', name: 'Remodeling', count: images.filter(img => img.category.toLowerCase().includes('remodeling')).length },
+        { id: 'kitchen', name: 'Kitchens', count: images.filter(img => img.category.toLowerCase().includes('kitchen')).length },
+        { id: 'bathroom', name: 'Bathrooms', count: images.filter(img => img.category.toLowerCase().includes('bathroom')).length },
+        { id: 'commercial', name: 'Commercial', count: images.filter(img => img.category.toLowerCase().includes('commercial')).length },
     ]
 
     const filteredImages = currentCategory === 'all'
         ? images
-        : images.filter(image => image.category.toLowerCase() === currentCategory)
+        : images.filter(image => image.category.toLowerCase().includes(currentCategory))
+
+    const nextImage = () => {
+        if (selectedImage !== null && filteredImages.length > 0) {
+            setSelectedImage((selectedImage + 1) % filteredImages.length)
+        }
+    }
+
+    const prevImage = () => {
+        if (selectedImage !== null && filteredImages.length > 0) {
+            setSelectedImage(selectedImage === 0 ? filteredImages.length - 1 : selectedImage - 1)
+        }
+    }
 
     return (
         <div className="min-h-screen bg-gray-50 pt-20">
             {/* Hero Section */}
             <section className="py-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                    <div className="mb-16">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                    >
                         <h1 className="text-4xl md:text-6xl font-display font-bold text-gray-900 mb-6">
-                            Our Project
-                            <span className="block text-accent-600">Gallery</span>
+                            Project
+                            <span className="block text-accent-600">
+                                Gallery
+                            </span>
                         </h1>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                            Explore our portfolio of stunning kitchen and bathroom transformations.
-                            Each project showcases our commitment to quality craftsmanship and innovative design.
+                        <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                            Explore our portfolio of stunning transformations. From beautiful countertops to complete remodeling projects.
                         </p>
-                    </div>
+                        <div className="bg-white/80 backdrop-blur-sm inline-block px-6 py-3 rounded-full shadow-lg">
+                            <span className="text-sm font-medium text-gray-700">
+                                {images.length} Projects Available
+                            </span>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
 
-                    {/* Category Filters */}
-                    <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {/* Category Filter */}
+            <section className="pb-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8"
+                    >
                         {categories.map((category) => (
                             <button
                                 key={category.id}
                                 onClick={() => setCurrentCategory(category.id)}
-                                className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                                    currentCategory === category.id
-                                        ? 'bg-accent-600 text-white shadow-lg'
-                                        : 'bg-white text-gray-600 hover:bg-gray-100 shadow-sm'
-                                }`}
+                                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-medium transition-all duration-300 text-sm sm:text-base ${currentCategory === category.id
+                                    ? 'bg-accent-600 text-white shadow-lg'
+                                    : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md'
+                                    }`}
                             >
-                                {category.name}
-                                <span className="ml-2 text-xs opacity-75">({category.count})</span>
+                                {category.name} ({category.count})
                             </button>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* Gallery Grid */}
             <section className="pb-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    {error && (
-                        <div className="text-center py-8 mb-8">
-                            <div className="bg-red-50 border border-red-200 rounded-lg p-4 max-w-md mx-auto">
-                                <p className="text-red-600 text-sm">API Error: {error}</p>
-                                <p className="text-red-500 text-xs mt-1">Showing fallback images</p>
-                            </div>
-                        </div>
-                    )}
-
                     {loading ? (
-                        <div className="text-center py-12">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-600 mx-auto mb-4"></div>
-                            <p className="text-gray-600">Loading gallery...</p>
+                        <div className="flex justify-center items-center py-12">
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent-600"></div>
+                            <span className="ml-3 text-gray-600">Loading gallery...</span>
                         </div>
                     ) : filteredImages.length === 0 ? (
-                        <div className="text-center py-20">
+                        <div className="text-center py-12">
                             <p className="text-gray-500 text-lg">No images found for this category.</p>
-                            <p className="text-gray-400 text-sm mt-2">Total images: {images.length}</p>
                         </div>
                     ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <motion.div
+                            layout
+                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                        >
                             {filteredImages.map((image, index) => (
-                                <div
+                                <motion.div
                                     key={image.id}
-                                    className="group cursor-pointer"
+                                    layout
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.9 }}
+                                    whileHover={{ y: -5 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="group cursor-pointer bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
                                     onClick={() => setSelectedImage(index)}
                                 >
-                                    <div className="relative aspect-square rounded-xl overflow-hidden shadow-lg bg-gray-200">
+                                    <div className="relative aspect-square overflow-hidden">
                                         <Image
                                             src={image.url}
-                                            alt={image.name}
+                                            alt={image.name || 'Gallery image'}
                                             fill
-                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                            className="object-cover group-hover:scale-110 transition-transform duration-500"
                                             onError={(e) => {
-                                                console.error('Image failed to load:', image.url)
-                                                const target = e.target as HTMLImageElement
-                                                target.style.display = 'none'
+                                                const target = e.currentTarget as HTMLImageElement;
+                                                target.src = 'https://picsum.photos/800/600?random=' + Math.floor(Math.random() * 1000);
                                             }}
+                                            unoptimized
                                         />
-                                        {/* Overlay */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                        {/* Content */}
-                                        <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                                            <h3 className="text-white font-semibold text-lg mb-1 truncate">{image.name}</h3>
-                                            <p className="text-white/80 text-sm line-clamp-2">{image.description}</p>
-                                            <div className="flex items-center justify-between mt-2">
-                                                <span className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded text-white text-xs">
-                                                    {image.category}
-                                                </span>
-                                            </div>
+                                        <div className="absolute inset-0 bg-navy-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                        <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <ExternalLink className="w-4 h-4 text-white" />
                                         </div>
                                     </div>
-                                </div>
+
+                                    <div className="p-4">
+                                        <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-accent-600 transition-colors">
+                                            {image.name}
+                                        </h3>
+                                        <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+                                            {image.description || 'Professional remodeling project'}
+                                        </p>
+                                        <div className="flex flex-wrap gap-1">
+                                            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                                                {image.category}
+                                            </span>
+                                            {image.material && (
+                                                <span className="px-2 py-1 bg-accent-100 text-accent-600 text-xs rounded-full">
+                                                    {image.material}
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                </motion.div>
                             ))}
-                        </div>
+                        </motion.div>
                     )}
                 </div>
             </section>
 
-            {/* Image Modal */}
-            {selectedImage !== null && filteredImages[selectedImage] && (
-                <div
+            {/* Lightbox Modal */}
+            {selectedImage !== null && filteredImages.length > 0 && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
                     onClick={() => setSelectedImage(null)}
                 >
-                    <div className="relative max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
-                        {/* Close Button */}
+                    <div className="relative max-w-4xl max-h-[90vh] w-full">
                         <button
                             onClick={() => setSelectedImage(null)}
-                            className="absolute -top-12 right-0 text-white hover:text-gray-300 transition-colors z-10"
+                            className="absolute top-4 right-4 z-10 bg-white/20 backdrop-blur-sm rounded-full p-2 text-white hover:bg-white/30 transition-colors"
                         >
-                            <X className="w-8 h-8" />
+                            <X className="w-6 h-6" />
                         </button>
 
-                        {/* Image */}
-                        <div className="relative aspect-video rounded-lg overflow-hidden bg-gray-900">
+                        {filteredImages.length > 1 && (
+                            <>
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        prevImage()
+                                    }}
+                                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-2 text-white hover:bg-white/30 transition-colors"
+                                >
+                                    <ChevronLeft className="w-6 h-6" />
+                                </button>
+
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        nextImage()
+                                    }}
+                                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm rounded-full p-2 text-white hover:bg-white/30 transition-colors"
+                                >
+                                    <ChevronRight className="w-6 h-6" />
+                                </button>
+                            </>
+                        )}
+
+                        <div className="relative aspect-video rounded-lg overflow-hidden">
                             <Image
                                 src={filteredImages[selectedImage].url}
-                                alt={filteredImages[selectedImage].name}
+                                alt={filteredImages[selectedImage].name || 'Gallery image'}
                                 fill
-                                sizes="(max-width: 1200px) 100vw, 1200px"
                                 className="object-cover"
+                                unoptimized
                             />
                         </div>
 
-                        {/* Image Info */}
-                        <div className="mt-6 text-white">
-                            <h2 className="text-2xl font-bold mb-2">{filteredImages[selectedImage].name}</h2>
-                            {filteredImages[selectedImage].description && (
-                                <p className="text-gray-300 mb-4">{filteredImages[selectedImage].description}</p>
-                            )}
-                            <div className="flex flex-wrap gap-2">
+                        <div className="mt-4 text-center text-white">
+                            <h3 className="text-xl font-semibold mb-2">
+                                {filteredImages[selectedImage].name}
+                            </h3>
+                            <p className="text-gray-300 mb-2">
+                                {filteredImages[selectedImage].description || 'Professional remodeling project'}
+                            </p>
+                            <div className="flex flex-wrap justify-center gap-2">
                                 <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm">
                                     {filteredImages[selectedImage].category}
                                 </span>
+                                {filteredImages[selectedImage].material && (
+                                    <span className="px-3 py-1 bg-accent-600/80 backdrop-blur-sm rounded-full text-sm">
+                                        {filteredImages[selectedImage].material}
+                                    </span>
+                                )}
+                                {filteredImages[selectedImage].brand && (
+                                    <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm">
+                                        {filteredImages[selectedImage].brand}
+                                    </span>
+                                )}
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             )}
         </div>
     )

@@ -1,91 +1,51 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import SafeImage from './SafeImage'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Wrench, Home, Building, Palette, Clock, Shield } from 'lucide-react'
 
-interface ServiceImage {
-    id: string
-    name: string
-    url: string
-    category: string
-    description: string
-}
-
 const Services = () => {
-    const [serviceImages, setServiceImages] = useState<{ [key: string]: string }>({
-        kitchen: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
-        bathroom: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
-        commercial: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format&crop=center&q=80'
-    })
-
-    useEffect(() => {
-        const fetchServiceImages = async () => {
-            try {
-                const response = await fetch('/api/images?component=services&count=3')
-                if (response.ok) {
-                    const data = await response.json()
-                    const images = data.data
-                    const imageMap: { [key: string]: string } = {}
-
-                    images.forEach((img: ServiceImage) => {
-                        if (img.category === 'Kitchen') imageMap.kitchen = img.url
-                        if (img.category === 'Bathroom') imageMap.bathroom = img.url
-                        if (img.category === 'Commercial') imageMap.commercial = img.url
-                    })
-
-                    setServiceImages(prev => ({ ...prev, ...imageMap }))
-                }
-            } catch (error) {
-                console.error('Error fetching service images:', error)
-            }
-        }
-
-        fetchServiceImages()
-    }, [])
-
     const services = [
         {
             id: 1,
             title: 'Kitchen Remodeling',
-            description: 'Complete kitchen transformations featuring custom cabinetry, premium countertops, and professional installation by our Arizona experts.',
-            image: serviceImages.kitchen,
+            description: 'Transform your kitchen into a culinary masterpiece with modern designs, premium materials, and smart storage solutions.',
+            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_auto/sample',
             icon: <Palette className="w-8 h-8" />,
-            features: ['Custom Cabinetry', 'Granite & Quartz Countertops', 'Backsplash Installation', 'Professional Design'],
-            price: 'Free Consultation'
+            features: ['Custom Cabinetry', 'Premium Countertops', 'Modern Appliances', 'Smart Lighting'],
+            price: 'Starting at $25,000'
         },
         {
             id: 2,
             title: 'Bathroom Remodeling',
-            description: 'Luxury bathroom renovations with premium fixtures, custom vanities, and spa-like features for Arizona homes.',
-            image: serviceImages.bathroom,
+            description: 'Create a spa-like sanctuary with luxurious fixtures, elegant tiles, and innovative storage solutions.',
+            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_auto/sample',
             icon: <Home className="w-8 h-8" />,
-            features: ['Custom Vanities', 'Tub to Shower Conversion', 'Tile Installation', 'Modern Fixtures'],
-            price: 'Free Estimate'
+            features: ['Luxury Fixtures', 'Heated Floors', 'Custom Vanities', 'Walk-in Showers'],
+            price: 'Starting at $15,000'
         },
         {
             id: 3,
-            title: 'Countertop Installation',
-            description: 'Professional installation of granite, quartz, marble, and porcelain countertops with expert fabrication and finishing.',
-            image: serviceImages.commercial,
+            title: 'Commercial Remodeling',
+            description: 'Enhance your business space with professional designs that boost productivity and impress clients.',
+            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_auto/sample',
             icon: <Building className="w-8 h-8" />,
-            features: ['Granite Countertops', 'Quartz Surfaces', 'Custom Fabrication', 'Polish & Repair'],
-            price: 'Call (602) 833-3189'
+            features: ['Office Spaces', 'Retail Design', 'Restaurant Kitchens', 'Medical Facilities'],
+            price: 'Custom Quote'
         }
     ]
 
     const features = [
         {
             icon: <Clock className="w-12 h-12" />,
-            title: 'Professional Service',
-            description: '5+ years of Arizona remodeling experience with 400+ completed projects and expert craftsmanship.'
+            title: 'Fast Turnaround',
+            description: 'Complete most projects within 2-4 weeks with minimal disruption to your daily routine.'
         },
         {
             icon: <Shield className="w-12 h-12" />,
-            title: 'Licensed & Trusted',
-            description: 'AzRoc #327266 licensed contractor with 4.7★ Google rating and 146+ satisfied customer reviews.'
+            title: 'Quality Guarantee',
+            description: '10-year warranty on all work with premium materials and certified craftsmanship.'
         },
         {
             icon: <Wrench className="w-12 h-12" />,
@@ -130,12 +90,11 @@ const Services = () => {
                         >
                             {/* Image */}
                             <div className="relative h-64 overflow-hidden">
-                                <SafeImage
+                                <Image
                                     src={service.image}
                                     alt={service.title}
-                                    width={800}
-                                    height={256}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                    fill
+                                    className="object-cover group-hover:scale-110 transition-transform duration-300"
                                 />
                                 <div className="absolute inset-0 bg-navy-900/60" />
                                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full p-3">
