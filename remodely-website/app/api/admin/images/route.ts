@@ -150,7 +150,21 @@ if (!fs.existsSync(IMAGES_FILE)) {
 
 export async function GET() {
   try {
-    // Connect to MongoDB
+    // First, try to read from the JSON file (contains uploaded images)
+    if (fs.existsSync(IMAGES_FILE)) {
+      const data = fs.readFileSync(IMAGES_FILE, 'utf8')
+      const images = JSON.parse(data)
+      
+      if (images && images.length > 0) {
+        return NextResponse.json({
+          success: true,
+          data: images,
+          source: 'json_file'
+        })
+      }
+    }
+
+    // Connect to MongoDB for fallback partner images
     await connectMongoDB()
 
     // Get real partner images - prioritize actual photos over placeholders
@@ -200,14 +214,12 @@ export async function GET() {
         .sort(() => 0.5 - Math.random())
         .slice(0, 20)
 
-      return NextResponse.json(galleryImages)
+      return NextResponse.json({
+        success: true,
+        data: galleryImages,
+        source: 'mongodb_partners'
+      })
     }
-
-    // Fallback to filesystem images if MongoDB has no partner data
-    const data = fs.readFileSync(IMAGES_FILE, 'utf8')
-    const images = JSON.parse(data)
-
-    return NextResponse.json(images)
   } catch (error) {
     console.error('Error reading images:', error)
 
@@ -267,7 +279,11 @@ export async function GET() {
       }
     ]
 
-    return NextResponse.json(fallbackImages)
+    return NextResponse.json({
+      success: true,
+      data: fallbackImages,
+      source: 'fallback'
+    })
   }
 }
 

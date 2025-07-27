@@ -64,10 +64,6 @@ const Navbar = () => {
         { name: 'Process', href: '/process' },
         { name: 'Blog', href: '/blog' },
         { name: 'Contact', href: '/contact' },
-        { 
-            name: isAuthenticated ? 'Admin' : 'Login', 
-            href: isAuthenticated ? '/admin' : '/admin/login' 
-        },
     ]
 
     return (

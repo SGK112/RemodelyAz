@@ -162,6 +162,9 @@ const Footer = () => {
                             <Link href="/sitemap" className="text-gray-300 hover:text-white transition-colors">
                                 Sitemap
                             </Link>
+                            <Link href="/admin/login" className="text-gray-500 hover:text-gray-300 transition-colors text-xs">
+                                Admin
+                            </Link>
                         </div>
                     </div>
                 </div>
