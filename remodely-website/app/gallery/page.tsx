@@ -22,55 +22,59 @@ const GalleryPage = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
+                console.log('Fetching images...')
                 setLoading(true)
                 setError(null)
                 
                 const response = await fetch('/api/images')
+                console.log('Response status:', response.status)
                 
                 if (!response.ok) {
                     throw new Error(`HTTP ${response.status}: ${response.statusText}`)
                 }
                 
                 const result = await response.json()
+                console.log('Result:', result)
                 
-                if (!result.success) {
-                    throw new Error(result.error || 'Failed to fetch images')
+                if (!result.success || !result.data) {
+                    throw new Error('Invalid response format')
                 }
                 
-                const imageData = result.data || []
                 // Filter out brand images for gallery display
-                const galleryImages = imageData.filter((img: GalleryImage) => img.category !== 'Brand')
+                const galleryImages = result.data.filter((img: GalleryImage) => img.category !== 'Brand')
+                console.log('Gallery images:', galleryImages.length)
                 
                 setImages(galleryImages)
                 
             } catch (error) {
-                console.error('Failed to fetch images:', error)
+                console.error('Error fetching images:', error)
                 setError(error instanceof Error ? error.message : 'Failed to load images')
                 
-                // Fallback images
-                setImages([
+                // Use fallback images on error
+                const fallbackImages = [
                     {
-                        id: '1',
+                        id: 'fallback-1',
                         name: 'Modern Kitchen Remodel',
                         url: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
                         category: 'Kitchen',
-                        description: 'Beautiful modern kitchen renovation'
+                        description: 'Beautiful modern kitchen renovation with premium finishes'
                     },
                     {
-                        id: '2',
+                        id: 'fallback-2',
                         name: 'Luxury Bathroom Design',
                         url: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
                         category: 'Bathroom',
                         description: 'Spa-inspired bathroom with modern fixtures'
                     },
                     {
-                        id: '3',
-                        name: 'Commercial Space',
+                        id: 'fallback-3',
+                        name: 'Commercial Kitchen',
                         url: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&crop=center&auto=format&q=80',
                         category: 'Commercial',
-                        description: 'Modern commercial renovation'
+                        description: 'Professional commercial kitchen installation'
                     }
-                ])
+                ]
+                setImages(fallbackImages)
             } finally {
                 setLoading(false)
             }
@@ -132,7 +136,7 @@ const GalleryPage = () => {
                     {error && (
                         <div className="text-center py-8 mb-8">
                             <div className="bg-red-50 border border-red-200 rounded-lg p-4 max-w-md mx-auto">
-                                <p className="text-red-600 text-sm">Error: {error}</p>
+                                <p className="text-red-600 text-sm">API Error: {error}</p>
                                 <p className="text-red-500 text-xs mt-1">Showing fallback images</p>
                             </div>
                         </div>
@@ -146,7 +150,7 @@ const GalleryPage = () => {
                     ) : filteredImages.length === 0 ? (
                         <div className="text-center py-20">
                             <p className="text-gray-500 text-lg">No images found for this category.</p>
-                            <p className="text-gray-400 text-sm mt-2">Total images loaded: {images.length}</p>
+                            <p className="text-gray-400 text-sm mt-2">Total images: {images.length}</p>
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -165,7 +169,8 @@ const GalleryPage = () => {
                                             className="object-cover group-hover:scale-105 transition-transform duration-300"
                                             onError={(e) => {
                                                 console.error('Image failed to load:', image.url)
-                                                e.currentTarget.style.display = 'none'
+                                                const target = e.target as HTMLImageElement
+                                                target.style.display = 'none'
                                             }}
                                         />
                                         {/* Overlay */}
