@@ -21,182 +21,6 @@
     }
   },
   {
-    "id": "kitchen-linda-ullrich-remodel",
-    "name": "Linda Ullrich Kitchen Remodel",
-    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 245600,
-    "uploadDate": "2025-07-26",
-    "description": "Modern kitchen renovation with quartz countertops and premium finishes",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "countertops-quartz-installation",
-    "name": "Quartz Countertop Installation",
-    "url": "https://images.unsplash.com/photo-1503652601-557d07733ddc?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 189400,
-    "uploadDate": "2025-07-26",
-    "description": "Professional quartz countertop installation with seamless finish",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-19-newport-custom-grey-luxury",
-    "name": "Newport Custom Grey Luxury Kitchen",
-    "url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 156800,
-    "uploadDate": "2025-07-26",
-    "description": "Luxury kitchen with Newport custom grey cabinetry and modern design",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-21-two-tone-kitchen-design",
-    "name": "Two-Tone Kitchen Design",
-    "url": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 178200,
-    "uploadDate": "2025-07-26",
-    "description": "Stunning two-tone kitchen design with contrasting cabinet colors",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-9-alpine-fawn-cabinetry",
-    "name": "Alpine Fawn Cabinetry",
-    "url": "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 189600,
-    "uploadDate": "2025-07-26",
-    "description": "Beautiful alpine fawn cabinetry with warm wood tones",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-7-black-milania-kitchen-transformation",
-    "name": "Black Milania Kitchen Transformation",
-    "url": "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 167400,
-    "uploadDate": "2025-07-26",
-    "description": "Dramatic black Milania kitchen transformation with modern styling",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-14-newport-black-kitchen",
-    "name": "Newport Black Kitchen",
-    "url": "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 145600,
-    "uploadDate": "2025-07-26",
-    "description": "Elegant Newport black kitchen with premium hardware and finishes",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-11-shaker-white-kitchen",
-    "name": "Shaker White Kitchen",
-    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 134200,
-    "uploadDate": "2025-07-26",
-    "description": "Classic shaker white kitchen with timeless appeal",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-16-beachwood-kitchen-design",
-    "name": "Beachwood Kitchen Design",
-    "url": "https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 167800,
-    "uploadDate": "2025-07-26",
-    "description": "Coastal-inspired beachwood kitchen design with natural textures",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-15-newport-grey-contemporary",
-    "name": "Newport Grey Contemporary",
-    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 178900,
-    "uploadDate": "2025-07-26",
-    "description": "Contemporary Newport grey kitchen with sleek lines and modern fixtures",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-23-tahoe-ash-natural-kitchen",
-    "name": "Tahoe Ash Natural Kitchen",
-    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 189200,
-    "uploadDate": "2025-07-26",
-    "description": "Natural Tahoe ash kitchen with organic wood grain patterns",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-13-alpine-dove-white",
-    "name": "Alpine Dove White",
-    "url": "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 156700,
-    "uploadDate": "2025-07-26",
-    "description": "Clean alpine dove white cabinetry with soft, elegant finish",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-18-newport-grey-island-kitchen",
-    "name": "Newport Grey Island Kitchen",
-    "url": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Kitchen",
-    "size": 198400,
-    "uploadDate": "2025-07-26",
-    "description": "Spacious Newport grey kitchen with large central island",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-4-contemporary-bathroom-design",
-    "name": "Contemporary Bathroom Design",
-    "url": "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Bathroom",
-    "size": 145600,
-    "uploadDate": "2025-07-26",
-    "description": "Modern contemporary bathroom with sleek vanity and premium fixtures",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "partner-3-milania-bathroom-vanity",
-    "name": "Milania Bathroom Vanity",
-    "url": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Bathroom",
-    "size": 134800,
-    "uploadDate": "2025-07-26",
-    "description": "Elegant Milania bathroom vanity with custom storage solutions",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
-    "id": "commercial-kitchen-countertops",
-    "name": "Commercial Kitchen Countertops",
-    "url": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-    "category": "Commercial",
-    "size": 189400,
-    "uploadDate": "2025-07-26",
-    "description": "Professional commercial kitchen countertop installation for businesses",
-    "uploadedAt": "2025-07-26T20:30:00.000Z",
-    "source": "external"
-  },
-  {
     "id": "remodely-gallery/r27maqon4xzxknipr5wo",
     "name": "IMG_5115.jpeg",
     "url": "https://res.cloudinary.com/drrwdgggx/image/upload/v1753588314/remodely-gallery/r27maqon4xzxknipr5wo.jpg",
@@ -363,5 +187,194 @@
         "gallery"
       ]
     }
+  },
+  {
+    "id": "luxury-kitchen-renovation-1",
+    "name": "Luxury Kitchen Renovation - Marble Island",
+    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=15",
+    "category": "Kitchen",
+    "description": "Stunning kitchen renovation featuring premium marble countertops, custom white cabinetry, and professional-grade appliances. This Arizona home transformation showcases modern luxury design.",
+    "tags": [
+      "luxury",
+      "marble",
+      "white-cabinets",
+      "modern",
+      "arizona-homes"
+    ],
+    "size": 185000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.243Z",
+    "source": "curated"
+  },
+  {
+    "id": "contemporary-kitchen-design-2",
+    "name": "Contemporary Kitchen with Quartz Countertops",
+    "url": "https://images.unsplash.com/photo-1556912498-fb7d6cf0e29f?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=10",
+    "category": "Kitchen",
+    "description": "Beautiful contemporary kitchen design with sleek quartz countertops, subway tile backsplash, and energy-efficient LED lighting throughout.",
+    "tags": [
+      "contemporary",
+      "quartz",
+      "subway-tile",
+      "LED-lighting"
+    ],
+    "size": 195000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
+  },
+  {
+    "id": "farmhouse-kitchen-remodel-3",
+    "name": "Modern Farmhouse Kitchen Transformation",
+    "url": "https://images.unsplash.com/photo-1556909193-f4de24a2c53a?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=12",
+    "category": "Kitchen",
+    "description": "Charming modern farmhouse kitchen featuring shaker-style cabinets, butcher block countertops, and vintage-inspired fixtures.",
+    "tags": [
+      "farmhouse",
+      "shaker-cabinets",
+      "butcher-block",
+      "vintage-fixtures"
+    ],
+    "size": 175000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
+  },
+  {
+    "id": "two-tone-kitchen-design-4",
+    "name": "Two-Tone Kitchen with Island",
+    "url": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=12",
+    "category": "Kitchen",
+    "description": "Sophisticated two-tone kitchen design featuring navy lower cabinets and white upper cabinets with a stunning marble waterfall island.",
+    "tags": [
+      "two-tone",
+      "navy-cabinets",
+      "marble-waterfall",
+      "island"
+    ],
+    "size": 205000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
+  },
+  {
+    "id": "spa-bathroom-renovation-1",
+    "name": "Luxury Spa-Style Bathroom",
+    "url": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=10",
+    "category": "Bathroom",
+    "description": "Elegant spa-style bathroom renovation with natural stone tiles, rainfall shower, and floating vanity design.",
+    "tags": [
+      "spa-style",
+      "natural-stone",
+      "rainfall-shower",
+      "floating-vanity"
+    ],
+    "size": 165000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
+  },
+  {
+    "id": "modern-bathroom-design-2",
+    "name": "Contemporary Master Bathroom",
+    "url": "https://images.unsplash.com/photo-1571508601382-5154b0aab507?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=12",
+    "category": "Bathroom",
+    "description": "Sleek contemporary master bathroom with dual vanities, walk-in glass shower, and premium tile work.",
+    "tags": [
+      "contemporary",
+      "dual-vanities",
+      "glass-shower",
+      "premium-tile"
+    ],
+    "size": 155000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
+  },
+  {
+    "id": "marble-bathroom-luxury-3",
+    "name": "Marble Master Bathroom Suite",
+    "url": "https://images.unsplash.com/photo-1584622781564-1d987c0c3fd0?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=8",
+    "category": "Bathroom",
+    "description": "Luxurious master bathroom featuring floor-to-ceiling marble, freestanding tub, and gold fixtures for the ultimate spa experience.",
+    "tags": [
+      "marble",
+      "freestanding-tub",
+      "gold-fixtures",
+      "luxury"
+    ],
+    "size": 225000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
+  },
+  {
+    "id": "open-concept-living-1",
+    "name": "Open Concept Living Space Renovation",
+    "url": "https://images.unsplash.com/photo-1556020685-ae41abfc9365?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=15",
+    "category": "Living Room",
+    "description": "Beautiful open concept living space renovation featuring custom built-ins, hardwood flooring, and modern lighting design.",
+    "tags": [
+      "open-concept",
+      "built-ins",
+      "hardwood",
+      "modern-lighting"
+    ],
+    "size": 210000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
+  },
+  {
+    "id": "modern-living-room-2",
+    "name": "Contemporary Living Room Design",
+    "url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=10",
+    "category": "Living Room",
+    "description": "Stylish contemporary living room with custom built-in entertainment center, recessed lighting, and premium finishes.",
+    "tags": [
+      "contemporary",
+      "built-in-entertainment",
+      "recessed-lighting",
+      "premium-finishes"
+    ],
+    "size": 190000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
+  },
+  {
+    "id": "arizona-outdoor-kitchen-1",
+    "name": "Arizona Outdoor Kitchen & Patio",
+    "url": "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=20",
+    "category": "Outdoor",
+    "description": "Custom outdoor kitchen and patio design perfect for Arizona's climate, featuring stone countertops and built-in grilling station.",
+    "tags": [
+      "outdoor-kitchen",
+      "patio",
+      "arizona-climate",
+      "stone-countertops",
+      "grilling-station"
+    ],
+    "size": 235000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
+  },
+  {
+    "id": "desert-landscape-patio-2",
+    "name": "Desert Modern Patio Design",
+    "url": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=18",
+    "category": "Outdoor",
+    "description": "Stunning desert modern patio design with fire features, native landscaping, and covered dining area ideal for Arizona living.",
+    "tags": [
+      "desert-modern",
+      "fire-features",
+      "native-landscaping",
+      "covered-dining"
+    ],
+    "size": 200000,
+    "uploadDate": "2025-07-26",
+    "uploadedAt": "2025-07-27T04:53:28.244Z",
+    "source": "curated"
   }
 ]

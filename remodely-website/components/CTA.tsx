@@ -33,12 +33,12 @@ const CTA = () => {
                     className="max-w-4xl mx-auto"
                 >
                     <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-                        Ready to Transform
-                        <span className="block">Your Space?</span>
+                        Start Your Dream
+                        <span className="block">Remodel Today</span>
                     </h2>
                     <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-                        Get a free consultation and quote for your dream remodeling project.
-                        Our experts are ready to bring your vision to life.
+                        Contact us for a free consultation and personalized quote. 
+                        Let's bring your vision to life with expert craftsmanship.
                     </p>
 
                     <div className="space-y-6">

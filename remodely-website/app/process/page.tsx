@@ -115,7 +115,7 @@ const ProcessPage = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-screen bg-gradient-to-br from-accent-50 to-accent-100 pt-20">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-navy-800/5" />
