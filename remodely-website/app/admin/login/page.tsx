@@ -6,27 +6,26 @@ import { motion } from 'framer-motion'
 import { Lock, Eye, EyeOff, Building } from 'lucide-react'
 
 // Drop-in animation component for "Az" 
-const DropInAz = () => {
+const DropInAz = ({ scrolled = false }) => {
     const [isVisible, setIsVisible] = useState(false)
-    
+
     useEffect(() => {
         const interval = setInterval(() => {
             setIsVisible(false)
             setTimeout(() => setIsVisible(true), 100)
         }, 4000)
-        
+
         // Initial animation
         setTimeout(() => setIsVisible(true), 500)
-        
+
         return () => clearInterval(interval)
     }, [])
-    
+
     return (
-        <span className={`inline-block text-accent-400 font-bold transition-all duration-700 ${
-            isVisible 
-                ? 'translate-y-0 opacity-100 rotate-0' 
+        <span className={`inline-block font-bold transition-all duration-700 text-accent-400 ${isVisible
+                ? 'translate-y-0 opacity-100 rotate-0'
                 : '-translate-y-8 opacity-0 rotate-12'
-        }`}>
+            }`}>
             Az
         </span>
     )
@@ -76,7 +75,7 @@ export default function AdminLogin() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-accent-900 to-slate-800 flex items-center justify-center p-4">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -88,9 +87,9 @@ export default function AdminLogin() {
                         initial={{ scale: 0.8 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: 0.2, duration: 0.3 }}
-                        className="inline-flex items-center justify-center w-16 h-16 bg-blue-500/20 rounded-2xl mb-4"
+                        className="inline-flex items-center justify-center w-16 h-16 bg-accent-500/20 rounded-2xl mb-4"
                     >
-                        <Building className="w-8 h-8 text-blue-300" />
+                        <Building className="w-8 h-8 text-accent-400" />
                     </motion.div>
                     <h1 className="text-2xl font-bold text-white mb-2">
                         Remodely<DropInAz /> Admin
@@ -110,7 +109,7 @@ export default function AdminLogin() {
                                 type={showPassword ? 'text' : 'password'}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                className="w-full pl-10 pr-12 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                className="w-full pl-10 pr-12 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-transparent"
                                 placeholder="Enter admin password"
                                 required
                             />
@@ -139,7 +138,7 @@ export default function AdminLogin() {
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200"
+                        className="w-full bg-accent-600 hover:bg-accent-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200"
                     >
                         {isLoading ? 'Authenticating...' : 'Access Admin Panel'}
                     </motion.button>

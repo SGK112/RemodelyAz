@@ -14,7 +14,7 @@ export const highQualityImages = [
     {
         id: "contemporary-kitchen-design-2",
         name: "Contemporary Kitchen with Quartz Countertops",
-        url: "https://images.unsplash.com/photo-1556912498-fb7d6cf0e29f?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=10",
+        url: "/uploads/partner-cabinets/partner-1-procraft-phoenix-kitchen-cabinets.jpg",
         category: "Kitchen",
         description: "Beautiful contemporary kitchen design with sleek quartz countertops, subway tile backsplash, and energy-efficient LED lighting throughout.",
         tags: ["contemporary", "quartz", "subway-tile", "LED-lighting"]
@@ -22,7 +22,7 @@ export const highQualityImages = [
     {
         id: "farmhouse-kitchen-remodel-3",
         name: "Modern Farmhouse Kitchen Transformation",
-        url: "https://images.unsplash.com/photo-1556909193-f4de24a2c53a?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=12",
+        url: "/uploads/partner-cabinets/partner-2-liberty-shaker-karmel-cabinets.jpg",
         category: "Kitchen",
         description: "Charming modern farmhouse kitchen featuring shaker-style cabinets, butcher block countertops, and vintage-inspired fixtures.",
         tags: ["farmhouse", "shaker-cabinets", "butcher-block", "vintage-fixtures"]
@@ -40,7 +40,7 @@ export const highQualityImages = [
     {
         id: "modern-bathroom-design-2",
         name: "Contemporary Master Bathroom",
-        url: "https://images.unsplash.com/photo-1571508601382-5154b0aab507?w=1200&h=800&fit=crop&crop=entropy&auto=format&q=90&sharp=15&sat=12",
+        url: "/uploads/partner-cabinets/partner-4-contemporary-bathroom-design.jpg",
         category: "Bathroom",
         description: "Sleek contemporary master bathroom with dual vanities, walk-in glass shower, and premium tile work.",
         tags: ["contemporary", "dual-vanities", "glass-shower", "premium-tile"]
