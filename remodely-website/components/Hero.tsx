@@ -47,7 +47,7 @@ const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.3 }}
                         className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-4 sm:mb-6 leading-tight"
                     >
-                        Remodely Arizona
+                        Remodely <span className="text-accent-400 hover:text-accent-300 transition-colors duration-500">Arizona</span>
                         <span className="block text-accent-500">
                             Premium Remodeling
                         </span>
