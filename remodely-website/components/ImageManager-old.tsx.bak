@@ -20,7 +20,7 @@ interface ImageManagerProps {
     onClose?: () => void
 }
 
-const ImageManager: React.FC<ImageManagerProps> = ({ onClose }) => {
+const ImageManager: React.FC<ImageManagerProps> = ({ onClose }): JSX.Element => {
     const [images, setImages] = useState<ImageData[]>([])
     const [loading, setLoading] = useState(true)
     const [editingImage, setEditingImage] = useState<ImageData | null>(null)
