@@ -12,6 +12,7 @@ interface CompanyData {
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [companyData, setCompanyData] = useState<CompanyData>({
         phone: '(480) 255-5887'
     })
@@ -32,6 +33,20 @@ const Navbar = () => {
             .catch(console.error)
     }, [])
 
+    useEffect(() => {
+        // Check authentication status
+        const checkAuth = () => {
+            const token = sessionStorage.getItem('admin_token')
+            const authenticated = sessionStorage.getItem('admin_authenticated')
+            setIsAuthenticated(Boolean(token && authenticated === 'true'))
+        }
+
+        checkAuth()
+        // Listen for auth changes
+        window.addEventListener('storage', checkAuth)
+        return () => window.removeEventListener('storage', checkAuth)
+    }, [])
+
     const navigation = [
         { name: 'Home', href: '/' },
         {
@@ -49,6 +64,10 @@ const Navbar = () => {
         { name: 'Process', href: '/process' },
         { name: 'Blog', href: '/blog' },
         { name: 'Contact', href: '/contact' },
+        { 
+            name: isAuthenticated ? 'Admin' : 'Login', 
+            href: isAuthenticated ? '/admin' : '/admin/login' 
+        },
     ]
 
     return (
