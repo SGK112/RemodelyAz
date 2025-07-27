@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
+import SafeImage from './SafeImage'
 import { ArrowRight, Star, CheckCircle } from 'lucide-react'
 
 const Hero = () => {
@@ -10,11 +10,12 @@ const Hero = () => {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
-                <Image
+                <SafeImage
                     src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80"
                     alt="Professional Kitchen Remodeling by Remodely Arizona - Modern Kitchen with Premium Countertops and Custom Cabinetry"
-                    fill
-                    className="object-cover"
+                    width={1920}
+                    height={1080}
+                    className="w-full h-full object-cover"
                     priority
                 />
                 <div className="absolute inset-0 bg-navy-900/70" />

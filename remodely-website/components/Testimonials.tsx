@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
+import SafeImage from './SafeImage'
 import { Star, Quote } from 'lucide-react'
 
 const Testimonials = () => {
@@ -93,11 +93,12 @@ const Testimonials = () => {
                             {/* Client Info */}
                             <div className="flex items-center">
                                 <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-                                    <Image
+                                    <SafeImage
                                         src={testimonial.image}
                                         alt={testimonial.name}
-                                        fill
-                                        className="object-cover"
+                                        width={48}
+                                        height={48}
+                                        className="w-full h-full object-cover"
                                     />
                                 </div>
                                 <div>

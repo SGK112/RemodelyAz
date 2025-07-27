@@ -1,199 +1,220 @@
 [
-    {
-        "id": "remodely-gallery/usj4rgu0k7skpq9rorje",
-        "name": "RemodelyAz Logo",
-        "url": "https://res.cloudinary.com/drrwdgggx/image/upload/v1753515727/remodely-gallery/usj4rgu0k7skpq9rorje.svg",
-        "category": "Brand",
-        "size": 261,
-        "uploadDate": "2025-07-26",
-        "description": "RemodelyAz company logo - fast loading SVG",
-        "uploadedAt": "2025-07-26T07:42:12.124Z",
-        "source": "cloudinary",
-        "cloudinary": {
-            "public_id": "remodely-gallery/usj4rgu0k7skpq9rorje",
-            "width": 32,
-            "height": 32,
-            "format": "svg",
-            "tags": [
-                "remodely",
-                "logo"
-            ]
-        }
-    },
-    {
-        "id": "kitchen-linda-ullrich-remodel",
-        "name": "Linda Ullrich Kitchen Remodel",
-        "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 245600,
-        "uploadDate": "2025-07-26",
-        "description": "Modern kitchen renovation with quartz countertops and premium finishes",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "countertops-quartz-installation",
-        "name": "Quartz Countertop Installation",
-        "url": "https://images.unsplash.com/photo-1503652601-557d07733ddc?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 189400,
-        "uploadDate": "2025-07-26",
-        "description": "Professional quartz countertop installation with seamless finish",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-19-newport-custom-grey-luxury",
-        "name": "Newport Custom Grey Luxury Kitchen",
-        "url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 156800,
-        "uploadDate": "2025-07-26",
-        "description": "Luxury kitchen with Newport custom grey cabinetry and modern design",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-21-two-tone-kitchen-design",
-        "name": "Two-Tone Kitchen Design",
-        "url": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 178200,
-        "uploadDate": "2025-07-26",
-        "description": "Stunning two-tone kitchen design with contrasting cabinet colors",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-9-alpine-fawn-cabinetry",
-        "name": "Alpine Fawn Cabinetry",
-        "url": "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 189600,
-        "uploadDate": "2025-07-26",
-        "description": "Beautiful alpine fawn cabinetry with warm wood tones",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-7-black-milania-kitchen-transformation",
-        "name": "Black Milania Kitchen Transformation",
-        "url": "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 167400,
-        "uploadDate": "2025-07-26",
-        "description": "Dramatic black Milania kitchen transformation with modern styling",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-14-newport-black-kitchen",
-        "name": "Newport Black Kitchen",
-        "url": "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 145600,
-        "uploadDate": "2025-07-26",
-        "description": "Elegant Newport black kitchen with premium hardware and finishes",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-11-shaker-white-kitchen",
-        "name": "Shaker White Kitchen",
-        "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 134200,
-        "uploadDate": "2025-07-26",
-        "description": "Classic shaker white kitchen with timeless appeal",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-16-beachwood-kitchen-design",
-        "name": "Beachwood Kitchen Design",
-        "url": "https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 167800,
-        "uploadDate": "2025-07-26",
-        "description": "Coastal-inspired beachwood kitchen design with natural textures",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-15-newport-grey-contemporary",
-        "name": "Newport Grey Contemporary",
-        "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 178900,
-        "uploadDate": "2025-07-26",
-        "description": "Contemporary Newport grey kitchen with sleek lines and modern fixtures",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-23-tahoe-ash-natural-kitchen",
-        "name": "Tahoe Ash Natural Kitchen",
-        "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 189200,
-        "uploadDate": "2025-07-26",
-        "description": "Natural Tahoe ash kitchen with organic wood grain patterns",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-13-alpine-dove-white",
-        "name": "Alpine Dove White",
-        "url": "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 156700,
-        "uploadDate": "2025-07-26",
-        "description": "Clean alpine dove white cabinetry with soft, elegant finish",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-18-newport-grey-island-kitchen",
-        "name": "Newport Grey Island Kitchen",
-        "url": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Kitchen",
-        "size": 198400,
-        "uploadDate": "2025-07-26",
-        "description": "Spacious Newport grey kitchen with large central island",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-4-contemporary-bathroom-design",
-        "name": "Contemporary Bathroom Design",
-        "url": "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Bathroom",
-        "size": 145600,
-        "uploadDate": "2025-07-26",
-        "description": "Modern contemporary bathroom with sleek vanity and premium fixtures",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "partner-3-milania-bathroom-vanity",
-        "name": "Milania Bathroom Vanity",
-        "url": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Bathroom",
-        "size": 134800,
-        "uploadDate": "2025-07-26",
-        "description": "Elegant Milania bathroom vanity with custom storage solutions",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
-    },
-    {
-        "id": "commercial-kitchen-countertops",
-        "name": "Commercial Kitchen Countertops",
-        "url": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
-        "category": "Commercial",
-        "size": 189400,
-        "uploadDate": "2025-07-26",
-        "description": "Professional commercial kitchen countertop installation for businesses",
-        "uploadedAt": "2025-07-26T20:30:00.000Z",
-        "source": "external"
+  {
+    "id": "remodely-gallery/usj4rgu0k7skpq9rorje",
+    "name": "RemodelyAz Logo",
+    "url": "https://res.cloudinary.com/drrwdgggx/image/upload/v1753515727/remodely-gallery/usj4rgu0k7skpq9rorje.svg",
+    "category": "Brand",
+    "size": 261,
+    "uploadDate": "2025-07-26",
+    "description": "RemodelyAz company logo - fast loading SVG",
+    "uploadedAt": "2025-07-26T07:42:12.124Z",
+    "source": "cloudinary",
+    "cloudinary": {
+      "public_id": "remodely-gallery/usj4rgu0k7skpq9rorje",
+      "width": 32,
+      "height": 32,
+      "format": "svg",
+      "tags": [
+        "remodely",
+        "logo"
+      ]
     }
+  },
+  {
+    "id": "kitchen-linda-ullrich-remodel",
+    "name": "Linda Ullrich Kitchen Remodel",
+    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 245600,
+    "uploadDate": "2025-07-26",
+    "description": "Modern kitchen renovation with quartz countertops and premium finishes",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "countertops-quartz-installation",
+    "name": "Quartz Countertop Installation",
+    "url": "https://images.unsplash.com/photo-1503652601-557d07733ddc?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 189400,
+    "uploadDate": "2025-07-26",
+    "description": "Professional quartz countertop installation with seamless finish",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-19-newport-custom-grey-luxury",
+    "name": "Newport Custom Grey Luxury Kitchen",
+    "url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 156800,
+    "uploadDate": "2025-07-26",
+    "description": "Luxury kitchen with Newport custom grey cabinetry and modern design",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-21-two-tone-kitchen-design",
+    "name": "Two-Tone Kitchen Design",
+    "url": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 178200,
+    "uploadDate": "2025-07-26",
+    "description": "Stunning two-tone kitchen design with contrasting cabinet colors",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-9-alpine-fawn-cabinetry",
+    "name": "Alpine Fawn Cabinetry",
+    "url": "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 189600,
+    "uploadDate": "2025-07-26",
+    "description": "Beautiful alpine fawn cabinetry with warm wood tones",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-7-black-milania-kitchen-transformation",
+    "name": "Black Milania Kitchen Transformation",
+    "url": "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 167400,
+    "uploadDate": "2025-07-26",
+    "description": "Dramatic black Milania kitchen transformation with modern styling",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-14-newport-black-kitchen",
+    "name": "Newport Black Kitchen",
+    "url": "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 145600,
+    "uploadDate": "2025-07-26",
+    "description": "Elegant Newport black kitchen with premium hardware and finishes",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-11-shaker-white-kitchen",
+    "name": "Shaker White Kitchen",
+    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 134200,
+    "uploadDate": "2025-07-26",
+    "description": "Classic shaker white kitchen with timeless appeal",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-16-beachwood-kitchen-design",
+    "name": "Beachwood Kitchen Design",
+    "url": "https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 167800,
+    "uploadDate": "2025-07-26",
+    "description": "Coastal-inspired beachwood kitchen design with natural textures",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-15-newport-grey-contemporary",
+    "name": "Newport Grey Contemporary",
+    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 178900,
+    "uploadDate": "2025-07-26",
+    "description": "Contemporary Newport grey kitchen with sleek lines and modern fixtures",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-23-tahoe-ash-natural-kitchen",
+    "name": "Tahoe Ash Natural Kitchen",
+    "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 189200,
+    "uploadDate": "2025-07-26",
+    "description": "Natural Tahoe ash kitchen with organic wood grain patterns",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-13-alpine-dove-white",
+    "name": "Alpine Dove White",
+    "url": "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 156700,
+    "uploadDate": "2025-07-26",
+    "description": "Clean alpine dove white cabinetry with soft, elegant finish",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-18-newport-grey-island-kitchen",
+    "name": "Newport Grey Island Kitchen",
+    "url": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Kitchen",
+    "size": 198400,
+    "uploadDate": "2025-07-26",
+    "description": "Spacious Newport grey kitchen with large central island",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-4-contemporary-bathroom-design",
+    "name": "Contemporary Bathroom Design",
+    "url": "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Bathroom",
+    "size": 145600,
+    "uploadDate": "2025-07-26",
+    "description": "Modern contemporary bathroom with sleek vanity and premium fixtures",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "partner-3-milania-bathroom-vanity",
+    "name": "Milania Bathroom Vanity",
+    "url": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Bathroom",
+    "size": 134800,
+    "uploadDate": "2025-07-26",
+    "description": "Elegant Milania bathroom vanity with custom storage solutions",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "commercial-kitchen-countertops",
+    "name": "Commercial Kitchen Countertops",
+    "url": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&crop=center&auto=format&q=80",
+    "category": "Commercial",
+    "size": 189400,
+    "uploadDate": "2025-07-26",
+    "description": "Professional commercial kitchen countertop installation for businesses",
+    "uploadedAt": "2025-07-26T20:30:00.000Z",
+    "source": "external"
+  },
+  {
+    "id": "remodely-gallery/r27maqon4xzxknipr5wo",
+    "name": "IMG_5115.jpeg",
+    "url": "https://res.cloudinary.com/drrwdgggx/image/upload/v1753588314/remodely-gallery/r27maqon4xzxknipr5wo.jpg",
+    "category": "Gallery",
+    "size": 2366566,
+    "uploadDate": "2025-07-27",
+    "description": "Uploaded: IMG_5115.jpeg",
+    "uploadedAt": "2025-07-27T03:51:56.908Z",
+    "source": "cloudinary",
+    "cloudinary": {
+      "public_id": "remodely-gallery/r27maqon4xzxknipr5wo",
+      "width": 4284,
+      "height": 5712,
+      "format": "jpg",
+      "tags": [
+        "remodely",
+        "gallery"
+      ]
+    }
+  }
 ]

@@ -189,21 +189,25 @@ const EnhancedImageManager: React.FC = () => {
           body: formData
         })
 
-        if (response.ok) {
-          const result = await response.json()
-          setImages(prev => [...prev, result.image])
+        if (!response.ok) {
+          const errorData = await response.json()
+          throw new Error(errorData.error || 'Upload failed')
         }
 
         setUploadProgress(((i + 1) / files.length) * 100)
       }
 
+      // Refresh the images list from server
+      await fetchImages()
+      
       showNotification('success', `Successfully uploaded ${files.length} image(s)!`)
       
       if (fileInputRef.current) {
         fileInputRef.current.value = ''
       }
     } catch (error) {
-      showNotification('error', 'Failed to upload images')
+      console.error('Upload error:', error)
+      showNotification('error', `Failed to upload images: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setUploading(false)
       setUploadProgress(0)
@@ -225,17 +229,20 @@ const EnhancedImageManager: React.FC = () => {
 
       if (response.ok) {
         const result = await response.json()
-        setImages(prev => prev.map(img => img.id === imageId ? result.image : img))
+        // Refresh the images list from server to ensure consistency
+        await fetchImages()
         setReplacingImage(null)
         showNotification('success', 'Image replaced successfully!')
         
         // Update any projects that use this image
         await updateProjectReferences(imageId, result.image.url)
       } else {
-        throw new Error('Failed to replace image')
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Replace failed')
       }
     } catch (error) {
-      showNotification('error', 'Failed to replace image')
+      console.error('Replace error:', error)
+      showNotification('error', `Failed to replace image: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setLoading(false)
     }
@@ -267,13 +274,17 @@ const EnhancedImageManager: React.FC = () => {
       })
 
       if (response.ok) {
-        const result = await response.json()
-        setImages(prev => prev.map(img => img.id === updatedImage.id ? result : img))
+        // Refresh the images list from server to ensure consistency
+        await fetchImages()
         setEditingImage(null)
         showNotification('success', 'Image updated successfully!')
+      } else {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Update failed')
       }
     } catch (error) {
-      showNotification('error', 'Failed to update image')
+      console.error('Update error:', error)
+      showNotification('error', `Failed to update image: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setLoading(false)
     }
@@ -291,11 +302,16 @@ const EnhancedImageManager: React.FC = () => {
       })
 
       if (response.ok) {
-        setImages(prev => prev.filter(img => img.id !== imageId))
+        // Refresh the images list from server to ensure consistency
+        await fetchImages()
         showNotification('success', 'Image deleted successfully!')
+      } else {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Delete failed')
       }
     } catch (error) {
-      showNotification('error', 'Failed to delete image')
+      console.error('Delete error:', error)
+      showNotification('error', `Failed to delete image: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setLoading(false)
     }
