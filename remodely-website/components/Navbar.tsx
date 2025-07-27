@@ -5,6 +5,79 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Menu, X, Phone, Mail } from 'lucide-react'
 
+// Typing animation component for "Az"
+const TypingAz = () => {
+    const [displayText, setDisplayText] = useState('')
+    const [isTyping, setIsTyping] = useState(true)
+    
+    useEffect(() => {
+        const text = 'Az'
+        let currentIndex = 0
+        
+        const typeInterval = setInterval(() => {
+            if (currentIndex <= text.length) {
+                setDisplayText(text.slice(0, currentIndex))
+                currentIndex++
+            } else {
+                clearInterval(typeInterval)
+                setIsTyping(false)
+                // Restart after 3 seconds
+                setTimeout(() => {
+                    setDisplayText('')
+                    currentIndex = 0
+                    setIsTyping(true)
+                    
+                    const restartInterval = setInterval(() => {
+                        if (currentIndex <= text.length) {
+                            setDisplayText(text.slice(0, currentIndex))
+                            currentIndex++
+                        } else {
+                            clearInterval(restartInterval)
+                            setIsTyping(false)
+                        }
+                    }, 300)
+                }, 3000)
+            }
+        }, 300)
+        
+        return () => clearInterval(typeInterval)
+    }, [])
+    
+    return (
+        <span className="text-accent-400 font-bold">
+            {displayText}
+            <span className={`inline-block w-0.5 h-5 bg-accent-400 ml-1 ${isTyping ? 'animate-pulse' : 'opacity-0'}`}></span>
+        </span>
+    )
+}
+
+// Drop-in animation component for "Az" 
+const DropInAz = () => {
+    const [isVisible, setIsVisible] = useState(false)
+    
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIsVisible(false)
+            setTimeout(() => setIsVisible(true), 100)
+        }, 4000)
+        
+        // Initial animation
+        setTimeout(() => setIsVisible(true), 500)
+        
+        return () => clearInterval(interval)
+    }, [])
+    
+    return (
+        <span className={`inline-block text-accent-400 font-bold transition-all duration-700 ${
+            isVisible 
+                ? 'translate-y-0 opacity-100 rotate-0' 
+                : '-translate-y-8 opacity-0 rotate-12'
+        }`}>
+            Az
+        </span>
+    )
+}
+
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
@@ -45,7 +118,8 @@ export default function Navbar() {
                             />
                             <div className="hidden sm:block">
                                 <h1 className="text-lg font-display font-bold text-white transition-colors duration-300">
-                                    Remodely<span className="inline-block hover:scale-110 hover:text-accent-200 transition-all duration-500 ease-out cursor-default animate-pulse" style={{animationDuration: '3s'}}>Az</span>
+                                    Remodely<DropInAz />
+                                    {/* Alternative: Replace <DropInAz /> with <TypingAz /> for typing effect */}
                                 </h1>
                             </div>
                         </Link>

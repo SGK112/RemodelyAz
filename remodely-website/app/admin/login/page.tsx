@@ -1,9 +1,36 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { Lock, Eye, EyeOff, Building } from 'lucide-react'
+
+// Drop-in animation component for "Az" 
+const DropInAz = () => {
+    const [isVisible, setIsVisible] = useState(false)
+    
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIsVisible(false)
+            setTimeout(() => setIsVisible(true), 100)
+        }, 4000)
+        
+        // Initial animation
+        setTimeout(() => setIsVisible(true), 500)
+        
+        return () => clearInterval(interval)
+    }, [])
+    
+    return (
+        <span className={`inline-block text-accent-400 font-bold transition-all duration-700 ${
+            isVisible 
+                ? 'translate-y-0 opacity-100 rotate-0' 
+                : '-translate-y-8 opacity-0 rotate-12'
+        }`}>
+            Az
+        </span>
+    )
+}
 
 export default function AdminLogin() {
     const [password, setPassword] = useState('')
@@ -66,7 +93,7 @@ export default function AdminLogin() {
                         <Building className="w-8 h-8 text-blue-300" />
                     </motion.div>
                     <h1 className="text-2xl font-bold text-white mb-2">
-                        Remodely<span className="inline-block hover:scale-110 hover:text-accent-200 transition-all duration-500 ease-out cursor-default animate-pulse" style={{animationDuration: '3s'}}>Az</span> Admin
+                        Remodely<DropInAz /> Admin
                     </h1>
                     <p className="text-gray-300">Enter your password to access the admin panel</p>
                 </div>
