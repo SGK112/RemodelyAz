@@ -32,28 +32,60 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        // Connect to database
-        await dbConnect()
+        let contactId = null
 
-        // Save to database
-        const contact = new Contact(body)
-        await contact.save()
-
-        // Send email notification
-        const emailResult = await sendContactEmail(body)
-
-        if (!emailResult.success) {
-            console.error('Failed to send email:', emailResult.error)
-            // Still return success if database save worked, but log the email error
+        // Try to connect to database (gracefully handle failures)
+        try {
+            const connection = await dbConnect()
+            
+            if (connection) {
+                // Save to database if MongoDB is available
+                const contact = new Contact(body)
+                const savedContact = await contact.save()
+                contactId = savedContact._id
+                console.log('Contact saved to database successfully')
+            } else {
+                console.warn('MongoDB not available, skipping database save')
+            }
+        } catch (dbError) {
+            console.error('Database save failed, continuing with email:', dbError)
+            // Continue processing even if database fails
         }
 
-        return NextResponse.json(
-            {
-                message: 'Contact form submitted successfully',
-                id: contact._id
-            },
-            { status: 200 }
-        )
+        // Send email notification (this should always work)
+        let emailSuccess = false
+        try {
+            const emailResult = await sendContactEmail(body)
+            emailSuccess = emailResult.success
+            
+            if (!emailSuccess) {
+                console.error('Failed to send email:', emailResult.error)
+            }
+        } catch (emailError) {
+            console.error('Email sending failed:', emailError)
+        }
+
+        // Return success if either database OR email worked
+        if (contactId || emailSuccess) {
+            return NextResponse.json(
+                {
+                    message: 'Contact form submitted successfully',
+                    id: contactId,
+                    emailSent: emailSuccess,
+                    databaseSaved: !!contactId
+                },
+                { status: 200 }
+            )
+        } else {
+            // Both database and email failed
+            return NextResponse.json(
+                { 
+                    error: 'Contact form submission failed. Please try again or contact us directly.',
+                    message: 'Both database and email delivery failed'
+                },
+                { status: 500 }
+            )
+        }
 
     } catch (error) {
         console.error('Contact form submission error:', error)
@@ -72,7 +104,19 @@ export async function GET(request: NextRequest) {
         const limit = parseInt(searchParams.get('limit') || '10')
         const status = searchParams.get('status')
 
-        await dbConnect()
+        // Try to connect to database
+        const connection = await dbConnect()
+        
+        if (!connection) {
+            return NextResponse.json(
+                { 
+                    error: 'Database not available',
+                    contacts: [],
+                    pagination: { page: 1, limit: 10, total: 0, pages: 0 }
+                },
+                { status: 503 }
+            )
+        }
 
         const query = status ? { status } : {}
         const skip = (page - 1) * limit
@@ -98,7 +142,11 @@ export async function GET(request: NextRequest) {
     } catch (error) {
         console.error('Error fetching contacts:', error)
         return NextResponse.json(
-            { error: 'Internal server error' },
+            { 
+                error: 'Unable to fetch contacts at this time',
+                contacts: [],
+                pagination: { page: 1, limit: 10, total: 0, pages: 0 }
+            },
             { status: 500 }
         )
     }

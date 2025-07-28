@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const KitchenTrendsArticle = () => {
     const article = {
         id: 1,
         title: '2024 Kitchen Design Trends: What\'s Hot This Year',
         excerpt: 'Discover the latest kitchen design trends that are transforming homes across the country. From smart appliances to sustainable materials, here\'s what homeowners are choosing.',
-        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.sustainable_materials,
         author: 'Sarah Chen',
         date: 'March 15, 2024',
         readTime: '8 min read',

@@ -1,68 +1,43 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { imageManager } from '@/lib/image-manager'
+import { getImageData } from '@/lib/data-store'
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const category = searchParams.get('category')
-    const component = searchParams.get('component')
-    const count = searchParams.get('count')
-    const search = searchParams.get('search')
 
-    let images
+    // Load images from data store
+    const images = getImageData()
     
-    if (search) {
-      images = imageManager.searchImages(search)
-    } else if (component) {
-      images = imageManager.getComponentImages(
-        component as 'hero' | 'services' | 'gallery' | 'testimonials',
-        count ? parseInt(count) : undefined
-      )
-    } else if (category) {
-      if (category === 'random') {
-        const allImages = imageManager.getAllImages()
-        images = allImages.sort(() => Math.random() - 0.5).slice(0, count ? parseInt(count) : 10)
-      } else {
-        images = imageManager.getImagesByCategory(category)
-      }
-    } else {
-      images = imageManager.getAllImages()
+    // Transform to unified format
+    let unifiedImages = images.map((img: any) => ({
+      id: img.id || img.name || Math.random().toString(36),
+      name: img.name || img.alt || 'Untitled',
+      url: img.url || img.src,
+      category: img.category || 'general',
+      description: img.alt || img.description || '',
+      tags: img.tags || [],
+      size: img.size || 0,
+      width: img.width || 800,
+      height: img.height || 600,
+      format: img.format || 'jpg',
+      uploadDate: img.uploadedAt || new Date().toISOString(),
+      isActive: img.isActive !== false,
+      source: img.source || 'local',
+      cloudinary: img.cloudinary
+    }))
+
+    // Filter by category if specified
+    if (category) {
+      unifiedImages = unifiedImages.filter((img: any) => img.category === category)
     }
 
-    // Limit results if count is specified
-    if (count && !search) {
-      images = images.slice(0, parseInt(count))
-    }
-
-    return NextResponse.json({
-      success: true,
-      data: images,
-      stats: imageManager.getStats()
-    })
+    return NextResponse.json(unifiedImages)
 
   } catch (error) {
     console.error('Error fetching images:', error)
     return NextResponse.json(
-      { 
-        success: false, 
-        error: 'Failed to fetch images',
-        data: []
-      },
-      { status: 500 }
-    )
-  }
-}
-
-export async function POST(request: NextRequest) {
-  try {
-    // This could handle image uploads to Cloudinary in the future
-    return NextResponse.json(
-      { error: 'Image upload not implemented yet' },
-      { status: 501 }
-    )
-  } catch (error) {
-    return NextResponse.json(
-      { error: 'Server error' },
+      { error: 'Failed to fetch images' },
       { status: 500 }
     )
   }

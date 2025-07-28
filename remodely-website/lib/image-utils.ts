@@ -1,6 +1,8 @@
 // Image Optimization Utilities for RemodelyAz
 // This file contains utility functions for image handling
 
+import { SITE_IMAGES } from './site-images'
+
 export interface ImageAsset {
     id: string
     name: string
@@ -93,10 +95,10 @@ export function generateResponsiveSrcSet(baseUrl: string): string {
  * Default image assets for the application
  */
 export const DEFAULT_IMAGES = {
-    kitchen: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    bathroom: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    kitchen: SITE_IMAGES.projects.living_room,
+    bathroom: SITE_IMAGES.projects.bathroom_luxury,
     commercial: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    blog: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    blog: SITE_IMAGES.blog.home_value,
     team: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
     hero: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80'
 } as const

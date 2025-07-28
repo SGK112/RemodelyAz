@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, CheckCircle, AlertCircle, FileText, Users } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const RemodelTimelineArticle = () => {
     const article = {
         id: 5,
         title: 'Planning Your Remodel: A Complete Timeline Guide',
         excerpt: 'Step-by-step breakdown of the remodeling process from initial consultation to project completion.',
-        image: 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.small_spaces,
         author: 'David Thompson',
         date: 'February 22, 2024',
         readTime: '9 min read',

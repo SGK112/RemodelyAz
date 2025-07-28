@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, Leaf, Heart, Eye, Wind } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const BiophilicDesignArticle = () => {
     const article = {
         id: 16,
         title: 'Biophilic Design: Bringing Nature Indoors',
         excerpt: 'Explore how incorporating natural elements into your home design can improve wellbeing and create harmonious living spaces.',
-        image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.budget_renovation,
         author: 'Dr. Emma Torres',
         date: 'April 2, 2024',
         readTime: '6 min read',

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { SITE_IMAGES } from '@/lib/site-images'
 import fs from 'fs'
 import path from 'path'
 
@@ -64,7 +65,7 @@ Proper installation is critical for optimal performance. REMODELY LLC's certifie
 - Compliance with local codes
 
 Don't let Arizona's heat overwhelm your home. Contact REMODELY LLC today for a comprehensive cooling system evaluation and upgrade your comfort while reducing energy costs.`,
-      image: 'https://images.unsplash.com/photo-1582719371507-31ad96e7b3e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.kitchen_classic,
       category: 'Home Improvement',
       date: '2024-07-20',
       author: 'REMODELY Team',
@@ -155,7 +156,7 @@ After a monsoon:
 - Address water damage immediately
 
 Don't wait for the first storm to discover vulnerabilities in your home. Contact REMODELY LLC today for a complete monsoon-proofing evaluation and protect your investment before the next storm hits.`,
-      image: 'https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.bathroom_modern,
       category: 'Seasonal Tips',
       date: '2024-07-18',
       author: 'REMODELY Team',
@@ -171,7 +172,7 @@ export async function GET() {
   try {
     const data = fs.readFileSync(BLOGS_FILE, 'utf8')
     const blogs = JSON.parse(data)
-    
+
     return NextResponse.json(blogs)
   } catch (error) {
     console.error('Error reading blogs:', error)
@@ -185,11 +186,11 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const newBlog = await request.json()
-    
+
     // Read existing blogs
     const data = fs.readFileSync(BLOGS_FILE, 'utf8')
     const blogs = JSON.parse(data)
-    
+
     // Add new blog with ID and timestamps
     const blogWithMeta = {
       ...newBlog,
@@ -197,14 +198,14 @@ export async function POST(request: NextRequest) {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     }
-    
+
     blogs.push(blogWithMeta)
-    
+
     // Write back to file
     fs.writeFileSync(BLOGS_FILE, JSON.stringify(blogs, null, 2))
-    
-    return NextResponse.json({ 
-      success: true, 
+
+    return NextResponse.json({
+      success: true,
       message: 'Blog post created successfully',
       blog: blogWithMeta
     })
@@ -220,27 +221,27 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const updatedBlog = await request.json()
-    
+
     // Read existing blogs
     const data = fs.readFileSync(BLOGS_FILE, 'utf8')
     const blogs = JSON.parse(data)
-    
+
     // Find and update the blog
     const blogIndex = blogs.findIndex((blog: any) => blog.id === updatedBlog.id)
     if (blogIndex === -1) {
       return NextResponse.json({ error: 'Blog post not found' }, { status: 404 })
     }
-    
+
     blogs[blogIndex] = {
       ...updatedBlog,
       updatedAt: new Date().toISOString()
     }
-    
+
     // Write back to file
     fs.writeFileSync(BLOGS_FILE, JSON.stringify(blogs, null, 2))
-    
-    return NextResponse.json({ 
-      success: true, 
+
+    return NextResponse.json({
+      success: true,
       message: 'Blog post updated successfully',
       blog: blogs[blogIndex]
     })

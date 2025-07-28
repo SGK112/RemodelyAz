@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const CoolingSolutionsArticle = () => {
   const article = {
     id: 8,
     title: 'Cooling Solutions: Energy-Efficient AC and Insulation for Arizona Homes',
     excerpt: 'Beat the Arizona heat with smart cooling strategies, proper insulation, and energy-efficient upgrades that reduce utility costs.',
-    image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: SITE_IMAGES.blog.cooling_solutions,
     author: 'James Wilson',
     date: 'July 15, 2024',
     readTime: '8 min read',
@@ -22,7 +23,7 @@ const CoolingSolutionsArticle = () => {
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Back to Blog */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link 
+        <Link
           href="/blog"
           className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
         >
@@ -98,7 +99,7 @@ const CoolingSolutionsArticle = () => {
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Upgrade Your Insulation: The Foundation of Efficiency</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Attic Insulation</h3>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Your attic can reach temperatures of 160°F or higher in Arizona summers. Proper insulation is crucial:
@@ -116,7 +117,7 @@ const CoolingSolutionsArticle = () => {
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">2. AC System Optimization</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Right-Sizing Your System</h3>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Many Arizona homes have oversized AC units, which cycle on and off frequently, reducing efficiency and comfort. A properly sized system should:
@@ -145,7 +146,7 @@ const CoolingSolutionsArticle = () => {
           </ul>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Window and Solar Heat Gain Control</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Window Treatments</h3>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Windows can account for 25-30% of cooling costs. Effective strategies include:
@@ -226,14 +227,14 @@ const CoolingSolutionsArticle = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex items-center justify-between border-t border-gray-200 pt-8 pb-12"
         >
-          <Link 
+          <Link
             href="/blog"
             className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
             Back to Blog
           </Link>
-          
+
           <button className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors">
             <Share2 className="w-4 h-4 mr-2" />
             Share Article

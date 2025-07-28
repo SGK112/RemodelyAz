@@ -25,7 +25,7 @@ const AboutPage = () => {
       name: 'Sarah Chen',
       role: 'Lead Designer',
       image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_400,h_400,g_face,q_auto,f_webp/people_2',
-      bio: 'Award-winning interior designer specializing in modern and contemporary kitchen and bathroom spaces.',
+      bio: 'Expert interior designer specializing in modern and contemporary kitchen and bathroom spaces.',
       certifications: ['NCIDQ Certified', 'ASID Member', 'Design Excellence Award']
     },
     {
@@ -78,8 +78,8 @@ const AboutPage = () => {
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                For over 15 years, REMODELY has been transforming homes and businesses with 
-                exceptional remodeling services. We combine innovative design, premium materials, 
+                For over 15 years, REMODELY has been transforming homes and businesses with
+                exceptional remodeling services. We combine innovative design, premium materials,
                 and master craftsmanship to create spaces that exceed expectations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -174,18 +174,18 @@ const AboutPage = () => {
               </h2>
               <div className="space-y-6 text-gray-600 leading-relaxed">
                 <p>
-                  REMODELY was founded in 2009 with a simple mission: to transform ordinary spaces 
-                  into extraordinary experiences. What started as a small family business has grown 
+                  REMODELY was founded in 2009 with a simple mission: to transform ordinary spaces
+                  into extraordinary experiences. What started as a small family business has grown
                   into one of the region's most trusted remodeling companies.
                 </p>
                 <p>
-                  Our founder, Michael Rodriguez, began his career as a craftsman, learning the 
-                  trade from master builders. His passion for quality and attention to detail 
+                  Our founder, Michael Rodriguez, began his career as a craftsman, learning the
+                  trade from master builders. His passion for quality and attention to detail
                   became the foundation of our company culture.
                 </p>
                 <p>
-                  Today, we're proud to have completed over 500 successful projects, from intimate 
-                  bathroom renovations to large-scale commercial remodels. Every project is a 
+                  Today, we're proud to have completed over 500 successful projects, from intimate
+                  bathroom renovations to large-scale commercial remodels. Every project is a
                   testament to our commitment to excellence, innovation, and client satisfaction.
                 </p>
               </div>
@@ -287,7 +287,7 @@ const AboutPage = () => {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
                 <p className="text-primary-600 font-medium mb-4">{member.role}</p>
                 <p className="text-gray-600 mb-6 leading-relaxed">{member.bio}</p>
-                
+
                 <div className="space-y-2">
                   {member.certifications.map((cert, idx) => (
                     <span

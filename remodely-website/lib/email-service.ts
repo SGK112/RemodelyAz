@@ -14,6 +14,15 @@ const EMAIL_PROVIDERS = {
             user: process.env.GMAIL_USER || 'help.remodely@gmail.com',
             pass: process.env.GMAIL_APP_PASSWORD,
         },
+        // Add these Gmail-specific options for better reliability
+        pool: true,
+        maxConnections: 1,
+        rateDelta: 20000,
+        rateLimit: 5,
+        // Gmail connection options
+        connectionTimeout: 60000,
+        greetingTimeout: 30000,
+        socketTimeout: 60000,
     },
 
     // Option 2: SendGrid (recommended for production)
@@ -106,8 +115,8 @@ export interface EmailOptions {
     attachments?: any[]
 }
 
-// Enhanced email sending function
-export const sendEmail = async (options: EmailOptions) => {
+// Enhanced email sending function with retry logic
+export const sendEmail = async (options: EmailOptions, retryCount: number = 0): Promise<any> => {
     // Test mode - skip actual email sending if no credentials
     if (!process.env.GMAIL_APP_PASSWORD) {
         console.log('🧪 TEST MODE: Email would be sent to:', options.to)
@@ -135,6 +144,21 @@ export const sendEmail = async (options: EmailOptions) => {
         return { success: true, messageId: info.messageId }
     } catch (error) {
         console.error('Email sending failed:', error)
+        
+        // Retry logic for Gmail authentication issues
+        if (retryCount < 2 && error instanceof Error) {
+            const isAuthError = error.message.includes('EAUTH') || 
+                               error.message.includes('Invalid login') ||
+                               error.message.includes('Username and Password not accepted')
+            
+            if (isAuthError) {
+                console.log(`Gmail auth failed, retrying (attempt ${retryCount + 1}/2)...`)
+                // Wait a moment before retry
+                await new Promise(resolve => setTimeout(resolve, 1000))
+                return sendEmail(options, retryCount + 1)
+            }
+        }
+        
         return { success: false, error: error instanceof Error ? error.message : 'Unknown error' }
     }
 }
@@ -149,7 +173,8 @@ export const sendContactEmail = async (data: ContactFormData) => {
         subject: template.subject(data),
         replyTo: data.email,
         html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <div style="font-family: Arial, sans-serif;
+import { SITE_IMAGES } from '@/lib/site-images' max-width: 600px; margin: 0 auto;">
                 <div style="background: linear-gradient(135deg, #E97626 0%, #1e40af 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0;">
                     <h1 style="color: white; margin: 0; font-size: 28px;">New Contact Form Submission</h1>
                     <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0;">REMODELY LLC - Premium Remodeling Services</p>
@@ -181,7 +206,7 @@ export const sendContactEmail = async (data: ContactFormData) => {
                         <p style="color: white; margin: 0; font-size: 16px;">
                             <strong>REMODELY LLC</strong><br>
                             15464 W Aster Dr, Surprise, AZ 85379<br>
-                            Phone: <a href="tel:4802555887" style="color: #E97626;">(480) 255-5887</a> | License: AzRoc 327266
+                            Phone: <a href="tel:4802555887" style="color: #E97626;">(480) 255-5887</a> | Professional Remodeling Services
                         </p>
                         <p style="color: rgba(255,255,255,0.8); margin: 15px 0 0 0; font-size: 14px;">
                             This email was sent from the REMODELY LLC website contact form.

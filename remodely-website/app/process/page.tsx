@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle, Clock, Users, Star, Phone, Calendar, Hammer, Shield, Award } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const ProcessPage = () => {
   const processSteps = [
@@ -12,7 +13,7 @@ const ProcessPage = () => {
       title: 'Initial Consultation',
       duration: '1-2 hours',
       description: 'We start with a comprehensive consultation to understand your vision, needs, and budget. Our design experts visit your space to assess the current condition and discuss your goals.',
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.blog.home_value,
       icon: <Users className="w-8 h-8" />,
       details: [
         'In-home consultation and space assessment',
@@ -27,7 +28,7 @@ const ProcessPage = () => {
       title: 'Design & Planning',
       duration: '1-2 weeks',
       description: 'Our design team creates detailed plans, 3D renderings, and material selections. We refine the design based on your feedback until it perfectly matches your vision.',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.blog.sustainable_materials,
       icon: <Star className="w-8 h-8" />,
       details: [
         'Detailed architectural and design drawings',
@@ -42,7 +43,7 @@ const ProcessPage = () => {
       title: 'Preparation & Permits',
       duration: '1-3 weeks',
       description: 'We handle all permits, order materials, and prepare your space for construction. This includes protecting your home and ensuring all necessary approvals are in place.',
-      image: 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.blog.small_spaces,
       icon: <Calendar className="w-8 h-8" />,
       details: [
         'Permit acquisition and inspections scheduling',
@@ -57,7 +58,7 @@ const ProcessPage = () => {
       title: 'Construction & Installation',
       duration: '2-8 weeks',
       description: 'Our skilled craftsmen bring your design to life with precision and attention to detail. We maintain clear communication throughout the construction process.',
-      image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.career.team_meeting,
       icon: <Hammer className="w-8 h-8" />,
       details: [
         'Demolition and structural modifications',
@@ -72,7 +73,7 @@ const ProcessPage = () => {
       title: 'Final Inspection & Handover',
       duration: '2-3 days',
       description: 'We conduct thorough quality inspections, address any final details, and ensure everything meets our high standards before presenting your completed space.',
-      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.bedroom,
       icon: <Shield className="w-8 h-8" />,
       details: [
         'Comprehensive quality inspection',
@@ -197,9 +198,8 @@ const ProcessPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                }`}
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                  }`}
               >
                 {/* Content */}
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
@@ -410,7 +410,7 @@ const ProcessPage = () => {
                 View Our Work
               </Link>
             </div>
-            
+
             {/* Contact Info */}
             <div className="mt-12 pt-8 border-t border-white/20">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-primary-100">
@@ -420,20 +420,17 @@ const ProcessPage = () => {
                 </div>
                 <div className="flex items-center justify-center">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                   </svg>
                   <span>help.remodely@gmail.com</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"/>
+                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
                   <span>Surprise, AZ 85379</span>
                 </div>
-              </div>
-              <div className="mt-4 text-sm text-primary-200">
-                AzRoc License #327266
               </div>
             </div>
           </motion.div>

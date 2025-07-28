@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, DollarSign, TrendingUp, Home } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const KitchenROIArticle = () => {
     const article = {
         id: 3,
         title: 'The ROI of Kitchen Remodeling: What to Expect',
         excerpt: 'Understanding the financial benefits of kitchen renovation and how to maximize your return on investment.',
-        image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.kitchen_trends,
         author: 'David Thompson',
         date: 'March 5, 2024',
         readTime: '7 min read',

@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const PoolDeckRenovationArticle = () => {
     const article = {
         id: 10,
         title: 'Pool Deck Renovations: Perfect for Arizona\'s Year-Round Sunshine',
         excerpt: 'Design the perfect pool area for Arizona living with heat-resistant materials, shade structures, and resort-style amenities.',
-        image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.projects.outdoor_patio,
         author: 'Robert Kim',
         date: 'July 5, 2024',
         readTime: '9 min read',

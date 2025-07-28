@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, Smartphone, Home, Zap, Settings } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const SmartHomeIntegrationArticle = () => {
     const article = {
         id: 6,
         title: 'Smart Home Integration in Modern Remodels',
         excerpt: 'How to incorporate cutting-edge technology into your kitchen and bathroom renovation projects.',
-        image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.home_value,
         author: 'Michael Rodriguez',
         date: 'February 15, 2024',
         readTime: '6 min read',

@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, DollarSign, Star, Users, Shield, Palette, Lightbulb, Ruler } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const DesignServices = () => {
   const service = {
     title: 'Design Services',
     subtitle: 'Bringing Your Vision to Life',
     description: 'Our expert design team creates stunning, functional spaces tailored to your lifestyle and preferences. From initial concept to final implementation, we guide you through every design decision.',
-    image: 'https://images.unsplash.com/photo-1562594765-f8eabfca39ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: SITE_IMAGES.projects.living_room,
     price: 'Starting at $2,500',
     duration: '2-4 weeks',
     features: [
@@ -36,19 +37,19 @@ const DesignServices = () => {
     {
       id: 1,
       title: 'Modern Kitchen Design',
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.blog.sustainable_materials,
       description: 'Contemporary kitchen with custom cabinetry'
     },
     {
       id: 2,
       title: 'Luxury Bathroom Design',
-      image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.blog.bathroom_renovation,
       description: 'Spa-inspired bathroom with premium finishes'
     },
     {
       id: 3,
       title: 'Living Room Design',
-      image: 'https://images.unsplash.com/photo-1560184897-c5c8bcd75fb4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.living_room,
       description: 'Open concept living space design'
     }
   ]

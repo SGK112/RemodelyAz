@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, DollarSign, Star, Users, Shield } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const KitchenRemodeling = () => {
   const service = {
     title: 'Kitchen Remodeling',
     subtitle: 'Transform Your Culinary Space',
     description: 'Create the kitchen of your dreams with our comprehensive remodeling services. From modern minimalist designs to traditional farmhouse styles, we bring your vision to life with premium materials and expert craftsmanship.',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: SITE_IMAGES.projects.kitchen_modern,
     price: 'Starting at $25,000',
     duration: '2-4 weeks',
     features: [
@@ -36,19 +37,19 @@ const KitchenRemodeling = () => {
     {
       id: 1,
       title: 'Modern Farmhouse Kitchen',
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.kitchen_modern,
       description: 'White shaker cabinets with quartz countertops'
     },
     {
       id: 2,
       title: 'Contemporary Kitchen Island',
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.kitchen_classic,
       description: 'Large island with waterfall granite countertop'
     },
     {
       id: 3,
       title: 'Traditional Kitchen Design',
-      image: 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.living_room,
       description: 'Cherry wood cabinets with marble backsplash'
     }
   ]

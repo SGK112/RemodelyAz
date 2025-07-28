@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, Palette, Brain, Heart, Lightbulb } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const ColorPsychologyArticle = () => {
     const article = {
         id: 17,
         title: 'Color Psychology in Home Design: Creating Mood Through Color',
         excerpt: 'Understand how different colors affect emotions and behavior to create spaces that support your desired lifestyle.',
-        image: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.projects.bathroom_luxury,
         author: 'Dr. Sofia Martinez',
         date: 'April 8, 2024',
         readTime: '7 min read',

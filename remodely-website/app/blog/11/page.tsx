@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, AlertTriangle } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const MonsoonProofArticle = () => {
   const article = {
     id: 11,
     title: 'Monsoon-Proof Your Home: Weatherproofing Tips for Arizona Residents',
     excerpt: 'Prepare your Arizona home for monsoon season with essential weatherproofing, drainage solutions, and storm-resistant upgrades.',
-    image: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: SITE_IMAGES.blog.monsoon_prep,
     author: 'Sarah Chen',
     date: 'June 30, 2024',
     readTime: '7 min read',
@@ -22,7 +23,7 @@ const MonsoonProofArticle = () => {
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Back to Blog */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link 
+        <Link
           href="/blog"
           className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
         >
@@ -105,7 +106,7 @@ const MonsoonProofArticle = () => {
           </div>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Roof and Gutter Preparation</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Roof Inspection and Maintenance</h3>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Arizona's intense UV exposure and temperature extremes can damage roofing materials. Before monsoon season:
@@ -130,7 +131,7 @@ const MonsoonProofArticle = () => {
           </ul>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Foundation and Drainage Protection</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Proper Grading</h3>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Many Arizona homes have settling issues that create improper drainage slopes:
@@ -148,7 +149,7 @@ const MonsoonProofArticle = () => {
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Window and Door Weatherproofing</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Window Maintenance</h3>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Arizona's temperature swings can compromise window seals:
@@ -166,7 +167,7 @@ const MonsoonProofArticle = () => {
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Landscaping for Storm Protection</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Tree and Plant Management</h3>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Arizona's desert landscaping requires special monsoon preparation:
@@ -184,7 +185,7 @@ const MonsoonProofArticle = () => {
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Electrical and HVAC Protection</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Electrical Safety</h3>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Monsoon storms can cause power surges and outages:
@@ -202,7 +203,7 @@ const MonsoonProofArticle = () => {
           </p>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Emergency Preparedness</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Emergency Kit</h3>
           <p className="text-gray-700 mb-4 leading-relaxed">
             Arizona monsoons can cause extended power outages:
@@ -237,7 +238,7 @@ const MonsoonProofArticle = () => {
           </div>
 
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Timeline for Preparation</h2>
-          
+
           <h3 className="text-xl font-semibold text-gray-900 mb-3">Early June (Before Season Starts)</h3>
           <ul className="list-disc pl-6 mb-4 text-gray-700">
             <li>Complete all roof and gutter maintenance</li>
@@ -311,14 +312,14 @@ const MonsoonProofArticle = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex items-center justify-between border-t border-gray-200 pt-8 pb-12"
         >
-          <Link 
+          <Link
             href="/blog"
             className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
             Back to Blog
           </Link>
-          
+
           <button className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors">
             <Share2 className="w-4 h-4 mr-2" />
             Share Article

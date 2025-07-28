@@ -90,8 +90,8 @@ const ServicesPage = () => {
     const whyChooseUs = [
         {
             icon: <Award className="w-8 h-8" />,
-            title: 'Award-Winning Design',
-            description: 'Recognized for excellence in design and craftsmanship by industry leaders.'
+            title: 'Premium Design',
+            description: 'Recognized for excellence in design and craftsmanship by satisfied customers.'
         },
         {
             icon: <Shield className="w-8 h-8" />,

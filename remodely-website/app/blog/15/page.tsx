@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, Minus, Square, Circle, Triangle } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const MinimalistDesignArticle = () => {
     const article = {
         id: 15,
         title: 'Minimalist Design: Less is More in Modern Homes',
         excerpt: 'Discover how minimalist principles create serene, functional spaces that emphasize quality over quantity.',
-        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.sustainable_materials,
         author: 'Isabella Chen',
         date: 'March 25, 2024',
         readTime: '5 min read',

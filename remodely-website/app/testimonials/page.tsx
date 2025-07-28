@@ -2,63 +2,77 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Star, Quote } from 'lucide-react'
+import { Star, Quote, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const TestimonialsPage = () => {
     const testimonials = [
         {
-            name: "Sarah Johnson",
-            location: "Scottsdale, AZ",
-            project: "Kitchen Remodel",
+            id: 1,
+            name: 'Sarah Johnson',
+            title: 'Homeowner • Phoenix, AZ',
+            image: SITE_IMAGES.people.sarah_johnson,
             rating: 5,
-            image: "https://images.unsplash.com/photo-1494790108755-2616b09c3c1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-            quote: "REMODELY transformed our outdated kitchen into a stunning modern space. The attention to detail and quality of work exceeded our expectations. The team was professional, clean, and finished on time.",
-            date: "March 2024"
+            quote: "REMODELY transformed our outdated kitchen into a modern masterpiece. The attention to detail and quality of work exceeded our expectations. Our home value increased significantly, and we couldn't be happier!",
+            project: 'Kitchen Remodeling',
+            projectDetails: 'Complete kitchen renovation with custom cabinetry, quartz countertops, and premium appliances',
+            date: 'March 2024'
         },
         {
-            name: "Michael Rodriguez",
-            location: "Phoenix, AZ",
-            project: "Master Bathroom Renovation",
+            id: 2,
+            name: 'Michael Chen',
+            title: 'Business Owner • Scottsdale, AZ',
+            image: SITE_IMAGES.people.michael_chen,
             rating: 5,
-            image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-            quote: "Our master bathroom renovation was handled with incredible professionalism. The design team listened to our needs and created a spa-like retreat. We couldn't be happier with the results.",
-            date: "February 2024"
+            quote: "The commercial renovation of our restaurant was completed on time and within budget. REMODELY's team was professional, clean, and minimally disruptive to our business operations.",
+            project: 'Commercial Renovation',
+            projectDetails: 'Full restaurant interior renovation including kitchen upgrades, dining area remodel, and ADA compliance updates',
+            date: 'February 2024'
         },
         {
-            name: "Emily Chen",
-            location: "Tempe, AZ",
-            project: "Kitchen & Dining Room",
+            id: 3,
+            name: 'Emily Rodriguez',
+            title: 'Interior Designer • Tempe, AZ',
+            image: SITE_IMAGES.people.emily_rodriguez,
             rating: 5,
-            image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-            quote: "From design to completion, REMODELY made our dream kitchen a reality. The open concept design perfectly fits our lifestyle, and the quality of materials and craftsmanship is outstanding.",
-            date: "January 2024"
+            quote: "As an interior designer, I've worked with many contractors. REMODELY stands out for their craftsmanship, communication, and ability to bring complex designs to life flawlessly.",
+            project: 'Bathroom Remodeling',
+            projectDetails: 'Luxury master bathroom with custom tile work, frameless shower, and heated floors',
+            date: 'January 2024'
         },
         {
-            name: "David Thompson",
-            location: "Mesa, AZ",
-            project: "Guest Bathroom Remodel",
+            id: 4,
+            name: 'David Wilson',
+            title: 'Homeowner • Mesa, AZ',
+            image: SITE_IMAGES.people.david_wilson,
             rating: 5,
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-            quote: "The team at REMODELY transformed our small guest bathroom into a beautiful, functional space. Their innovative solutions maximized every inch, and the modern fixtures are perfect.",
-            date: "December 2023"
+            quote: "Our whole house renovation was a massive undertaking, but REMODELY managed every detail perfectly. They coordinated all trades, stayed on schedule, and the quality is outstanding.",
+            project: 'Whole House Renovation',
+            projectDetails: 'Complete home renovation including structural changes, kitchen, bathrooms, and flooring throughout',
+            date: 'December 2023'
         },
         {
-            name: "Lisa Martinez",
-            location: "Chandler, AZ",
-            project: "Kitchen Island Addition",
+            id: 5,
+            name: 'Lisa Thompson',
+            title: 'Homeowner • Chandler, AZ',
+            image: SITE_IMAGES.people.lisa_thompson,
             rating: 5,
-            image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-            quote: "Adding a kitchen island seemed impossible in our layout, but REMODELY found a way. The new island provides extra storage and counter space while maintaining great flow throughout the kitchen.",
-            date: "November 2023"
+            quote: "The team at REMODELY turned our small, cramped bathroom into a beautiful, functional space. Their creative solutions maximized every square inch perfectly.",
+            project: 'Small Bathroom Renovation',
+            projectDetails: 'Space optimization with custom vanity, walk-in shower, and smart storage solutions',
+            date: 'November 2023'
         },
         {
-            name: "Robert Davis",
-            location: "Glendale, AZ",
-            project: "Complete Kitchen Renovation",
+            id: 6,
+            name: 'James Anderson',
+            title: 'Property Manager • Glendale, AZ',
+            image: SITE_IMAGES.people.james_anderson,
             rating: 5,
-            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-            quote: "Our 1980s kitchen needed a complete overhaul. REMODELY delivered a stunning modern kitchen that perfectly suits our family's needs. The project management was excellent throughout.",
-            date: "October 2023"
+            quote: "REMODELY has been our go-to contractor for multiple properties. Their consistency, reliability, and quality workmanship make them invaluable partners in our business.",
+            project: 'Multi-Property Renovations',
+            projectDetails: 'Ongoing renovation projects across 15+ rental properties including kitchens, bathrooms, and flooring',
+            date: 'Ongoing Partnership'
         }
     ]
 
@@ -119,7 +133,7 @@ const TestimonialsPage = () => {
                                         {testimonial.name}
                                     </h3>
                                     <p className="text-gray-600 text-sm">
-                                        {testimonial.location}
+                                        {testimonial.title}
                                     </p>
                                     <p className="text-primary-600 text-sm font-medium">
                                         {testimonial.project}

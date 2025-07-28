@@ -105,7 +105,7 @@ const ContactPage = () => {
                 >
                     <h1 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
                         Let's Discuss Your
-                                                <span className="block text-accent-600">
+                        <span className="block text-accent-600">
                             Contact Us
                         </span>
                     </h1>
@@ -182,7 +182,7 @@ const ContactPage = () => {
                                 <ul className="space-y-2 text-sm text-gray-600">
                                     <li className="flex items-center">
                                         <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                                        Licensed & Insured
+                                        Quality Assurance
                                     </li>
                                     <li className="flex items-center">
                                         <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
@@ -194,7 +194,7 @@ const ContactPage = () => {
                                     </li>
                                     <li className="flex items-center">
                                         <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                                        Award-Winning Design
+                                        Premium Design
                                     </li>
                                 </ul>
                             </div>

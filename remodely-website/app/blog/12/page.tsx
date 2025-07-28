@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const KitchenIslandArticle = () => {
     const article = {
         id: 12,
         title: 'Modern Kitchen Island Designs: Function Meets Style',
         excerpt: 'Discover the latest kitchen island trends that combine storage, seating, and workspace in one beautiful centerpiece.',
-        image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.bathroom_renovation,
         author: 'Sarah Chen',
         date: 'July 25, 2024',
         readTime: '8 min read',

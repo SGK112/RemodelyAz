@@ -50,7 +50,7 @@ const Services = () => {
         {
             icon: <Wrench className="w-12 h-12" />,
             title: 'Expert Team',
-            description: 'Licensed professionals with 15+ years of experience in luxury remodeling.'
+            description: 'Skilled professionals with 15+ years of experience in luxury remodeling.'
         }
     ]
 

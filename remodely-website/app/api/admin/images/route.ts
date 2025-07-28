@@ -59,7 +59,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '1',
       name: 'Modern Kitchen Renovation',
-      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/kitchen_1',
+      url: 'https://res.cloudinary.com/drrwdgggx/image/upload/c_fill,w_800,h_600,q_auto,f_webp/remodely-projects/kitchen-modern-1',
       category: 'Kitchen',
       size: 245000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -69,7 +69,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '2',
       name: 'Luxury Bathroom Remodel',
-      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/bathroom_1',
+      url: 'https://res.cloudinary.com/drrwdgggx/image/upload/c_fill,w_800,h_600,q_auto,f_webp/remodely-projects/bathroom-luxury-1',
       category: 'Bathroom',
       size: 198000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -79,7 +79,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '3',
       name: 'Contemporary Living Room',
-      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/living_room_1',
+      url: 'https://res.cloudinary.com/drrwdgggx/image/upload/c_fill,w_800,h_600,q_auto,f_webp/remodely-projects/living-room-1',
       category: 'Living Room',
       size: 220000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -89,7 +89,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '4',
       name: 'Commercial Office Space',
-      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/office_1',
+      url: 'https://res.cloudinary.com/drrwdgggx/image/upload/c_fill,w_800,h_600,q_auto,f_webp/remodely-projects/office-1',
       category: 'Commercial',
       size: 275000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -99,7 +99,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '5',
       name: 'Master Bedroom Suite',
-      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/bedroom_1',
+      url: 'https://res.cloudinary.com/drrwdgggx/image/upload/c_fill,w_800,h_600,q_auto,f_webp/remodely-projects/bedroom-1',
       category: 'Bedroom',
       size: 189000,
       uploadDate: new Date().toISOString().split('T')[0],
@@ -109,7 +109,7 @@ if (!fs.existsSync(IMAGES_FILE)) {
     {
       id: '6',
       name: 'Outdoor Living Space',
-      url: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/outdoor_patio',
+      url: 'https://res.cloudinary.com/drrwdgggx/image/upload/c_fill,w_800,h_600,q_auto,f_webp/remodely-projects/outdoor-patio-1',
       category: 'Outdoor',
       size: 210000,
       uploadDate: new Date().toISOString().split('T')[0],

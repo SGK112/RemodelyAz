@@ -23,8 +23,16 @@ const CTA = () => {
             .catch(console.error)
     }, [])
     return (
-        <section className="py-20 bg-navy-800">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-navy-800 relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                    backgroundSize: '60px 60px'
+                }}></div>
+            </div>
+            
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -32,39 +40,53 @@ const CTA = () => {
                     viewport={{ once: true }}
                     className="max-w-4xl mx-auto"
                 >
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-4 sm:mb-6 leading-tight">
                         Ready to Transform
-                        <span className="block">Your Space?</span>
+                        <span className="block text-accent-400">Your Space?</span>
                     </h2>
-                    <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+                    <p className="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
                         Get a free consultation and quote for your dream remodeling project.
                         Our experts are ready to bring your vision to life.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                    {/* Mobile-Optimized Contact Section */}
+                    <div className="flex flex-col gap-4 sm:gap-6 justify-center items-center mb-6 sm:mb-8">
                         <Link
                             href="/contact"
-                            className="group bg-white text-primary-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transform hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2"
+                            className="group bg-white text-blue-700 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-gray-100 transform hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl min-w-[200px] justify-center"
                         >
                             <span>Get Free Quote</span>
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                         </Link>
 
-                        <div className="flex items-center space-x-4 text-white">
-                            <div className="flex items-center space-x-2">
-                                <Phone className="w-5 h-5" />
-                                <span className="text-lg font-medium">{companyData.phone}</span>
+                        {/* Mobile-Friendly Contact Info */}
+                        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-white">
+                            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                                <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-accent-400" />
+                                <a 
+                                    href={`tel:${companyData.phone}`}
+                                    className="text-base sm:text-lg font-medium hover:text-accent-400 transition-colors"
+                                >
+                                    {companyData.phone}
+                                </a>
                             </div>
-                            <div className="text-primary-200">or</div>
-                            <div className="flex items-center space-x-2">
-                                <Mail className="w-5 h-5" />
-                                <span className="text-lg font-medium">{companyData.email}</span>
+                            
+                            <div className="text-blue-200 text-sm hidden sm:block">or</div>
+                            
+                            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-accent-400" />
+                                <a 
+                                    href={`mailto:${companyData.email}`}
+                                    className="text-base sm:text-lg font-medium hover:text-accent-400 transition-colors"
+                                >
+                                    {companyData.email}
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div className="text-primary-100 text-sm">
-                        Free consultation • No obligation • Licensed & insured
+                    <div className="text-blue-100 text-xs sm:text-sm opacity-90">
+                        Free consultation • No obligation • Professional service
                     </div>
                 </motion.div>
             </div>

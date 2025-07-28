@@ -1,30 +1,31 @@
 import nodemailer from 'nodemailer'
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.GMAIL_USER || 'help.remodely@gmail.com',
-        pass: process.env.GMAIL_APP_PASSWORD,
-    },
+  service: 'gmail',
+  auth: {
+    user: process.env.GMAIL_USER || 'help.remodely@gmail.com',
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
 })
 
 export interface ContactFormData {
-    name: string
-    email: string
-    phone?: string
-    projectType: string
-    budget: string
-    message: string
-    propertyType: 'residential' | 'commercial'
+  name: string
+  email: string
+  phone?: string
+  projectType: string
+  budget: string
+  message: string
+  propertyType: 'residential' | 'commercial'
 }
 
 export const sendContactEmail = async (data: ContactFormData) => {
-    const mailOptions = {
-        from: process.env.GMAIL_USER || 'help.remodely@gmail.com',
-        to: 'help.remodely@gmail.com',
-        subject: `New Contact Form Submission - REMODELY LLC - ${data.projectType}`,
-        html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+  const mailOptions = {
+    from: process.env.GMAIL_USER || 'help.remodely@gmail.com',
+    to: 'help.remodely@gmail.com',
+    subject: `New Contact Form Submission - REMODELY LLC - ${data.projectType}`,
+    html: `
+      <div style="font-family: Arial, sans-serif;
+import { SITE_IMAGES } from '@/lib/site-images' max-width: 600px; margin: 0 auto;">
         <h2 style="color: #E97626; border-bottom: 2px solid #E97626; padding-bottom: 10px;">
           New Contact Form Submission - REMODELY LLC
         </h2>
@@ -52,18 +53,18 @@ export const sendContactEmail = async (data: ContactFormData) => {
           <p style="color: #64748b; font-size: 14px;">
             This email was sent from the REMODELY LLC website contact form.<br>
             15464 W Aster Dr, Surprise, AZ 85379<br>
-            Phone: (480) 255-5887 | License: AzRoc 327266
+            Phone: (480) 255-5887 | Professional Remodeling Services
           </p>
         </div>
       </div>
     `,
-    }
+  }
 
-    try {
-        await transporter.sendMail(mailOptions)
-        return { success: true }
-    } catch (error) {
-        console.error('Email sending failed:', error)
-        return { success: false, error }
-    }
+  try {
+    await transporter.sendMail(mailOptions)
+    return { success: true }
+  } catch (error) {
+    console.error('Email sending failed:', error)
+    return { success: false, error }
+  }
 }

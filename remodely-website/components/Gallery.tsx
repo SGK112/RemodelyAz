@@ -23,55 +23,27 @@ const Gallery = () => {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                const response = await fetch('/api/admin/images')
+                // Try the primary gallery API
+                let response = await fetch('/api/admin/gallery')
+                
+                if (!response.ok) {
+                    // Fallback to images API
+                    response = await fetch('/api/admin/images')
+                }
+                
                 if (response.ok) {
-                    const imageData = await response.json()
-                    setImages(imageData)
+                    const data = await response.json()
+                    const galleryImages = data.images || data.data || []
+                    setImages(galleryImages)
                 } else {
-                    // Fallback to working placeholder images
-                    setImages([
-                        {
-                            id: '1',
-                            name: 'Modern Kitchen Remodel',
-                            url: 'https://picsum.photos/800/600?random=kitchen1',
-                            category: 'Kitchen',
-                            description: 'Beautiful kitchen renovation with premium finishes'
-                        },
-                        {
-                            id: '2',
-                            name: 'Luxury Bathroom',
-                            url: 'https://picsum.photos/800/600?random=bathroom1',
-                            category: 'Bathroom',
-                            description: 'Stunning bathroom remodel with modern fixtures'
-                        },
-                        {
-                            id: '3',
-                            name: 'Commercial Space',
-                            url: 'https://picsum.photos/800/600?random=office1',
-                            category: 'Commercial',
-                            description: 'Professional commercial renovation project'
-                        }
-                    ])
+                    console.error('Failed to fetch gallery images')
+                    // Set fallback images
+                    setImages(getFallbackImages())
                 }
             } catch (error) {
-                console.error('Failed to fetch images:', error)
-                // Use fallback images on error
-                setImages([
-                    {
-                        id: '1',
-                        name: 'Modern Kitchen Remodel',
-                        url: 'https://picsum.photos/800/600?random=kitchen1',
-                        category: 'Kitchen',
-                        description: 'Beautiful kitchen renovation with premium finishes'
-                    },
-                    {
-                        id: '2',
-                        name: 'Luxury Bathroom',
-                        url: 'https://picsum.photos/800/600?random=bathroom1',
-                        category: 'Bathroom',
-                        description: 'Stunning bathroom remodel with modern fixtures'
-                    }
-                ])
+                console.error('Error fetching gallery:', error)
+                // Set fallback images on error
+                setImages(getFallbackImages())
             } finally {
                 setLoading(false)
             }
@@ -79,6 +51,30 @@ const Gallery = () => {
 
         fetchImages()
     }, [])
+
+    const getFallbackImages = (): GalleryImage[] => [
+        {
+            id: 'fallback-1',
+            name: 'Modern Kitchen Renovation',
+            url: 'https://picsum.photos/800/600?random=kitchen1',
+            category: 'kitchen',
+            description: 'Beautiful modern kitchen transformation'
+        },
+        {
+            id: 'fallback-2',
+            name: 'Luxury Bathroom Remodel',
+            url: 'https://picsum.photos/800/600?random=bathroom1',
+            category: 'bathroom', 
+            description: 'Spa-inspired bathroom renovation'
+        },
+        {
+            id: 'fallback-3',
+            name: 'Commercial Office Space',
+            url: 'https://picsum.photos/800/600?random=office1',
+            category: 'commercial',
+            description: 'Modern commercial space design'
+        }
+    ]
 
     const categories = [
         { id: 'all', name: 'All Projects' },

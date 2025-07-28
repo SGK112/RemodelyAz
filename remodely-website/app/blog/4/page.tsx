@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, Leaf, Recycle, Sun, Droplets } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const SustainableMaterialsArticle = () => {
     const article = {
         id: 4,
         title: 'Sustainable Materials for Eco-Friendly Remodeling',
         excerpt: 'Explore environmentally conscious material choices that don\'t compromise on style or durability.',
-        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.sustainable_materials,
         author: 'Sarah Chen',
         date: 'February 28, 2024',
         readTime: '5 min read',

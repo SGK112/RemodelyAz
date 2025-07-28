@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, DollarSign, Star, Users, Shield, Building, Briefcase, Store } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const CommercialRemodeling = () => {
   const service = {
     title: 'Commercial Remodeling',
     subtitle: 'Professional Spaces That Impress',
     description: 'Enhance your business environment with our commercial remodeling expertise. From office spaces to retail stores and restaurants, we create functional, attractive spaces that boost productivity and impress clients.',
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: SITE_IMAGES.projects.office,
     price: 'Custom Quote',
     duration: '3-8 weeks',
     features: [
@@ -36,19 +37,19 @@ const CommercialRemodeling = () => {
     {
       id: 1,
       title: 'Modern Office Space',
-      image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.office,
       description: 'Open concept office with collaborative spaces'
     },
     {
       id: 2,
       title: 'Retail Store Design',
-      image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.blog.home_value,
       description: 'Modern retail space with premium fixtures'
     },
     {
       id: 3,
       title: 'Restaurant Interior',
-      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.bedroom,
       description: 'Contemporary dining space with custom lighting'
     }
   ]
@@ -85,7 +86,7 @@ const CommercialRemodeling = () => {
     <div className="min-h-screen bg-gray-50 pt-20">
       {/* Back to Services */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link 
+        <Link
           href="/services"
           className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
         >
@@ -106,15 +107,15 @@ const CommercialRemodeling = () => {
               <div className="bg-accent-600 text-white text-sm font-semibold px-4 py-2 rounded-full w-fit mb-6">
                 {service.price}
               </div>
-              
+
               <h1 className="text-4xl md:text-6xl font-display font-bold text-gray-900 mb-6">
                 {service.title}
               </h1>
-              
+
               <h2 className="text-2xl text-primary-600 font-semibold mb-6">
                 {service.subtitle}
               </h2>
-              
+
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 {service.description}
               </p>
@@ -395,8 +396,8 @@ const CommercialRemodeling = () => {
               <div className="bg-accent-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Licensed & Insured</h3>
-              <p className="text-gray-600">Fully licensed commercial contractors with comprehensive insurance coverage.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Quality Assurance</h3>
+              <p className="text-gray-600">Professional commercial contractors with comprehensive quality control processes.</p>
             </motion.div>
 
             <motion.div

@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import AppInitializer from '@/components/AppInitializer'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -26,8 +27,8 @@ export const viewport = {
 
 export const metadata: Metadata = {
     title: 'REMODELY LLC - Premium Kitchen & Bath Remodeling Arizona',
-    description: 'Transform your Arizona home with REMODELY LLC\'s expert kitchen and bathroom remodeling services. Premium quality, modern designs, residential & commercial. Licensed AzRoc 327266.',
-    keywords: 'kitchen remodeling Arizona, bathroom remodeling Phoenix, home renovation Surprise AZ, commercial remodeling, modern design Arizona, AzRoc 327266, REMODELY LLC',
+    description: 'Transform your Arizona home with REMODELY LLC\'s expert kitchen and bathroom remodeling services. Premium quality, modern designs, residential & commercial.',
+    keywords: 'kitchen remodeling Arizona, bathroom remodeling Phoenix, home renovation Surprise AZ, commercial remodeling, modern design Arizona, REMODELY LLC',
     authors: [{ name: 'REMODELY LLC' }],
     appleWebApp: {
         capable: true,
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     },
     openGraph: {
         title: 'REMODELY LLC - Premium Kitchen & Bath Remodeling Arizona',
-        description: 'Transform your Arizona home with expert remodeling services. Licensed AzRoc 327266.',
+        description: 'Transform your Arizona home with expert remodeling services.',
         url: 'https://www.remodely-az.com',
         siteName: 'REMODELY LLC',
         images: [
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'REMODELY LLC - Premium Kitchen & Bath Remodeling Arizona',
-        description: 'Transform your Arizona home with expert remodeling services. Licensed AzRoc 327266.',
+        description: 'Transform your Arizona home with expert remodeling services.',
         images: ['/og-image.jpg'],
     },
     robots: 'index, follow',
@@ -82,6 +83,7 @@ export default function RootLayout({
                 <meta name="theme-color" content="#E97626" />
             </head>
             <body className={`${inter.className} antialiased`}>
+                <AppInitializer />
                 <Navbar />
                 <main className="min-h-screen">
                     {children}

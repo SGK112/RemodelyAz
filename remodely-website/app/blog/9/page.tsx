@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const SouthwestStyleArticle = () => {
     const article = {
         id: 9,
         title: 'Southwest Style: Incorporating Adobe and Southwestern Design Elements',
         excerpt: 'Embrace Arizona\'s rich cultural heritage with authentic Southwestern design elements including adobe, terra cotta, and native materials.',
-        image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.projects.bedroom,
         author: 'Isabella Martinez',
         date: 'July 10, 2024',
         readTime: '6 min read',

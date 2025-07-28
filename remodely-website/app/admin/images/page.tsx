@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import ImageManager from '../../../components/ImageManager'
+import UnifiedImageManager from '../../../components/UnifiedImageManager'
+import { useImageStats } from '../../../hooks/useUnifiedImages'
 
 export default function AdminImagesPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const router = useRouter()
+    const { stats, loading: statsLoading } = useImageStats()
 
     useEffect(() => {
         const checkAuth = async () => {
@@ -15,7 +17,7 @@ export default function AdminImagesPage() {
                 const response = await fetch('/api/admin/verify', {
                     credentials: 'include'
                 })
-                
+
                 if (response.ok) {
                     setIsAuthenticated(true)
                 } else {
@@ -49,7 +51,15 @@ export default function AdminImagesPage() {
             <div className="bg-white shadow-sm border-b">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center py-4">
-                        <h1 className="text-2xl font-bold text-gray-900">Image Management</h1>
+                        <div>
+                            <h1 className="text-2xl font-bold text-gray-900">Unified Image Management</h1>
+                            {!statsLoading && stats && (
+                                <p className="text-sm text-gray-600 mt-1">
+                                    {stats.images.total} images • {stats.projects.total} projects •
+                                    {' '}{Math.round(stats.images.totalSize / 1024 / 1024)}MB total
+                                </p>
+                            )}
+                        </div>
                         <button
                             onClick={() => router.push('/admin')}
                             className="text-gray-600 hover:text-gray-900 font-medium"
@@ -59,8 +69,17 @@ export default function AdminImagesPage() {
                     </div>
                 </div>
             </div>
-            
-            <ImageManager />
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <UnifiedImageManager
+                    mode="admin"
+                    allowUpload={true}
+                    allowProjectCreation={true}
+                    showSearch={true}
+                    showFilters={true}
+                    gridColumns={4}
+                />
+            </div>
         </div>
     )
 }

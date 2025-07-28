@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, DollarSign, Star, Users, Shield } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const BathroomRemodeling = () => {
   const service = {
     title: 'Bathroom Remodeling',
     subtitle: 'Create Your Personal Spa',
     description: 'Transform your bathroom into a luxurious retreat with our comprehensive remodeling services. Whether it\'s a powder room refresh or a complete master suite renovation, we deliver exceptional results.',
-    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+    image: SITE_IMAGES.projects.bathroom_luxury,
     price: 'Starting at $15,000',
     duration: '1-3 weeks',
     features: [
@@ -36,19 +37,19 @@ const BathroomRemodeling = () => {
     {
       id: 1,
       title: 'Modern Master Bathroom',
-      image: 'https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.bathroom_modern,
       description: 'Floating vanity with geometric tile design'
     },
     {
       id: 2,
       title: 'Luxury Spa Bathroom',
-      image: 'https://images.unsplash.com/photo-1584622781564-1d987522fda9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.bathroom_luxury,
       description: 'Freestanding tub with marble surround'
     },
     {
       id: 3,
       title: 'Contemporary Guest Bath',
-      image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: SITE_IMAGES.projects.bathroom_luxury,
       description: 'Compact design with premium finishes'
     }
   ]

@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const CabinetHardwareArticle = () => {
     const article = {
         id: 13,
         title: 'Cabinet Hardware Trends: The Details That Make a Difference',
         excerpt: 'Small details create big impact. Explore the latest cabinet hardware trends that can transform your kitchen\'s look.',
-        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.sustainable_materials,
         author: 'Michael Rodriguez',
         date: 'July 18, 2024',
         readTime: '5 min read',

@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight, Sun, Droplets, Mountain, TreePine, Flower2 } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const DesertLandscapingArticle = () => {
     const article = {
         id: 7,
         title: 'Desert Landscaping: Creating Beautiful Arizona Outdoor Spaces',
         excerpt: 'Transform your outdoor areas with drought-resistant plants and stunning desert-inspired design elements.',
-        image: 'https://images.unsplash.com/photo-1571069423917-8b4b3a4c0a2e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.projects.office,
         author: 'Marcus Rivera',
         date: 'March 12, 2024',
         readTime: '6 min read',

@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const SmallBathroomArticle = () => {
     const article = {
         id: 2,
         title: 'Maximizing Small Bathroom Spaces: Expert Tips',
         excerpt: 'Learn how to make the most of your compact bathroom with clever storage solutions and space-saving design strategies.',
-        image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.bathroom_renovation,
         author: 'Michael Rodriguez',
         date: 'March 10, 2024',
         readTime: '6 min read',

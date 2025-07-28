@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Star, Quote } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const Testimonials = () => {
     const testimonials = [
@@ -10,7 +11,7 @@ const Testimonials = () => {
             id: 1,
             name: 'Sarah Johnson',
             title: 'Homeowner',
-            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_150,h_150,q_auto,f_webp/people_1',
+            image: SITE_IMAGES.people.sarah_johnson,
             rating: 5,
             text: "REMODELY transformed our outdated kitchen into a modern masterpiece. The attention to detail and quality of work exceeded our expectations. Our home value increased significantly!",
             project: 'Kitchen Remodeling'
@@ -19,7 +20,7 @@ const Testimonials = () => {
             id: 2,
             name: 'Michael Chen',
             title: 'Business Owner',
-            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_150,h_150,q_auto,f_webp/people_2',
+            image: SITE_IMAGES.people.michael_chen,
             rating: 5,
             text: "The commercial renovation of our restaurant was completed on time and within budget. REMODELY's team was professional, clean, and minimally disruptive to our business.",
             project: 'Commercial Renovation'
@@ -28,7 +29,7 @@ const Testimonials = () => {
             id: 3,
             name: 'Emily Rodriguez',
             title: 'Interior Designer',
-            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_150,h_150,q_auto,f_webp/people_3',
+            image: SITE_IMAGES.people.emily_rodriguez,
             rating: 5,
             text: "As an interior designer, I've worked with many contractors. REMODELY stands out for their craftsmanship, communication, and ability to bring complex designs to life.",
             project: 'Bathroom Remodeling'
@@ -131,8 +132,8 @@ const Testimonials = () => {
                             <div className="text-primary-100">Years Experience</div>
                         </div>
                         <div>
-                            <div className="text-4xl font-bold mb-2">50+</div>
-                            <div className="text-primary-100">Awards Won</div>
+                            <div className="text-4xl font-bold mb-2">2,500+</div>
+                            <div className="text-primary-100">Happy Clients</div>
                         </div>
                     </div>
                 </motion.div>

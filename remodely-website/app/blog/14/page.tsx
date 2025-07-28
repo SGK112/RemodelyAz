@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, ArrowLeft, User, Tag, Share2, BookOpen, ArrowRight } from 'lucide-react'
+import { SITE_IMAGES } from '@/lib/site-images'
 
 const OpenConceptKitchenArticle = () => {
     const article = {
         id: 14,
         title: 'Open Concept Kitchen Design: Creating Seamless Living Spaces',
         excerpt: 'Learn how to design an open concept kitchen that flows naturally with your living areas while maintaining functionality.',
-        image: 'https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        image: SITE_IMAGES.blog.design_trends,
         author: 'David Thompson',
         date: 'July 12, 2024',
         readTime: '9 min read',

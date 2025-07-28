@@ -61,7 +61,7 @@ const defaultCompanyData: CompanyData = {
   address: "15464 W Aster Dr, Surprise, AZ 85379",
   phone: "(480) 255-5887",
   email: "help.remodely@gmail.com",
-  license: "AzRoc License #327266",
+  license: "",
   description: "Arizona's premier remodeling company specializing in residential and commercial renovations.",
   founded: "2009",
   employees: "25+",
@@ -163,7 +163,7 @@ function readJsonFile<T>(filePath: string, defaultData: T): T {
   } catch (error) {
     console.error(`Error reading ${filePath}:`, error)
   }
-  
+
   // Create file with default data if it doesn't exist
   writeJsonFile(filePath, defaultData)
   return defaultData
@@ -219,7 +219,7 @@ export function updateBlog(id: number, updates: Partial<BlogData>): BlogData | n
   const blogs = getBlogData()
   const index = blogs.findIndex(blog => blog.id === id)
   if (index === -1) return null
-  
+
   blogs[index] = { ...blogs[index], ...updates }
   saveBlogData(blogs)
   return blogs[index]
@@ -229,7 +229,7 @@ export function deleteBlog(id: number): boolean {
   const blogs = getBlogData()
   const index = blogs.findIndex(blog => blog.id === id)
   if (index === -1) return false
-  
+
   blogs.splice(index, 1)
   saveBlogData(blogs)
   return true
@@ -247,10 +247,10 @@ export function saveImageData(data: ImageData[]): void {
 export function addImage(image: Omit<ImageData, 'id' | 'uploadedAt'>): ImageData {
   const images = getImageData()
   const newId = Date.now().toString()
-  const newImage = { 
-    ...image, 
-    id: newId, 
-    uploadedAt: new Date().toISOString() 
+  const newImage = {
+    ...image,
+    id: newId,
+    uploadedAt: new Date().toISOString()
   }
   images.push(newImage)
   saveImageData(images)
@@ -261,7 +261,7 @@ export function updateImage(id: string, updates: Partial<ImageData>): ImageData 
   const images = getImageData()
   const index = images.findIndex(img => img.id === id)
   if (index === -1) return null
-  
+
   images[index] = { ...images[index], ...updates }
   saveImageData(images)
   return images[index]
@@ -271,7 +271,7 @@ export function deleteImage(id: string): boolean {
   const images = getImageData()
   const index = images.findIndex(img => img.id === id)
   if (index === -1) return false
-  
+
   images.splice(index, 1)
   saveImageData(images)
   return true

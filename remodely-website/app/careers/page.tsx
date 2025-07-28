@@ -202,7 +202,7 @@ const CareersPage = () => {
               className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                src="https://res.cloudinary.com/drrwdgggx/image/upload/c_fill,w_800,h_600,q_auto,f_webp/remodely-career/team-meeting-1"
                 alt="REMODELY LLC Team"
                 fill
                 className="object-cover"
@@ -457,7 +457,7 @@ const CareersPage = () => {
                 Contact Us
               </Link>
             </div>
-            
+
             {/* Contact Info */}
             <div className="pt-8 border-t border-white/20">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-primary-100">
@@ -473,9 +473,6 @@ const CareersPage = () => {
                   <MapPin className="w-5 h-5 mr-2" />
                   <span>15464 W Aster Dr, Surprise, AZ 85379</span>
                 </div>
-              </div>
-              <div className="mt-4 text-sm text-primary-200">
-                REMODELY LLC • AzRoc License #327266
               </div>
             </div>
           </motion.div>
