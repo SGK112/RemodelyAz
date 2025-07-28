@@ -158,7 +158,7 @@ const Gallery = () => {
                             }}
                             className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                                 currentCategory === category.id
-                                    ? 'bg-accent text-white shadow-lg transform scale-105'
+                                    ? 'bg-accent-600 text-white shadow-lg transform scale-105'
                                     : 'bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-white hover:shadow-md border border-gray-200'
                             }`}
                         >

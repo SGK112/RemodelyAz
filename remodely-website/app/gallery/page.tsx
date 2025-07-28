@@ -6,27 +6,6 @@ import Gallery from '@/components/Gallery'
 export default function GalleryPage() {
     return (
         <div className="min-h-screen bg-white pt-16">
-            {/* Page Header */}
-            <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-center"
-                    >
-                        <h1 className="text-4xl md:text-6xl font-display font-bold text-navy mb-6">
-                            Project <span className="text-accent">Gallery</span>
-                        </h1>
-                        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            Browse our extensive portfolio of kitchen renovations, bathroom remodels, 
-                            and commercial projects throughout Arizona. See the quality and craftsmanship 
-                            that sets REMODELY LLC apart.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
-
             {/* Gallery Component */}
             <Gallery />
 
