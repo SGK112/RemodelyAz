@@ -4,14 +4,13 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, DollarSign, Star, Users, Shield } from 'lucide-react'
-import { SITE_IMAGES } from '@/lib/site-images'
 
 const KitchenRemodeling = () => {
   const service = {
     title: 'Kitchen Remodeling',
     subtitle: 'Transform Your Culinary Space',
     description: 'Create the kitchen of your dreams with our comprehensive remodeling services. From modern minimalist designs to traditional farmhouse styles, we bring your vision to life with premium materials and expert craftsmanship.',
-    image: SITE_IMAGES.projects.kitchen_modern,
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop&crop=center',
     price: 'Starting at $25,000',
     duration: '2-4 weeks',
     features: [
@@ -37,134 +36,122 @@ const KitchenRemodeling = () => {
     {
       id: 1,
       title: 'Modern Farmhouse Kitchen',
-      image: SITE_IMAGES.projects.kitchen_modern,
+      image: 'https://images.unsplash.com/photo-1556909114-8ccd5bc71b7d?w=600&h=400&fit=crop&crop=center',
       description: 'White shaker cabinets with quartz countertops'
     },
     {
       id: 2,
       title: 'Contemporary Kitchen Island',
-      image: SITE_IMAGES.projects.kitchen_classic,
+      image: 'https://images.unsplash.com/photo-1556909114-3e16c8374c59?w=600&h=400&fit=crop&crop=center',
       description: 'Large island with waterfall granite countertop'
     },
     {
       id: 3,
-      title: 'Traditional Kitchen Design',
-      image: SITE_IMAGES.projects.living_room,
-      description: 'Cherry wood cabinets with marble backsplash'
+      title: 'Luxury Kitchen Design',
+      image: 'https://images.unsplash.com/photo-1556909114-b1a8ab4fdc7c?w=600&h=400&fit=crop&crop=center',
+      description: 'Premium finishes with custom lighting'
+    },
+    {
+      id: 4,
+      title: 'Traditional Kitchen Renovation',
+      image: 'https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=600&h=400&fit=crop&crop=center',
+      description: 'Classic design with marble backsplash'
+    },
+    {
+      id: 5,
+      title: 'Open Concept Kitchen',
+      image: 'https://images.unsplash.com/photo-1556909114-97b05d0b2e87?w=600&h=400&fit=crop&crop=center',
+      description: 'Spacious layout with breakfast bar'
+    },
+    {
+      id: 6,
+      title: 'Custom Cabinet Installation',
+      image: 'https://images.unsplash.com/photo-1556909114-9c16bf7e8b2b?w=600&h=400&fit=crop&crop=center',
+      description: 'Handcrafted cabinetry with soft-close doors'
     }
   ]
 
-  const stats = [
-    { icon: <Users className="w-6 h-6" />, number: '500+', label: 'Kitchens Remodeled' },
-    { icon: <Star className="w-6 h-6" />, number: '4.9/5', label: 'Average Rating' },
-    { icon: <Shield className="w-6 h-6" />, number: '10 Year', label: 'Warranty' },
-    { icon: <Clock className="w-6 h-6" />, number: '98%', label: 'On-Time Completion' }
+  const testimonials = [
+    {
+      name: 'Sarah Johnson',
+      text: 'Our kitchen transformation exceeded all expectations. The team was professional, and the quality is outstanding.',
+      rating: 5,
+      location: 'Phoenix, AZ'
+    },
+    {
+      name: 'Michael Chen',
+      text: 'Beautiful work! They completed our kitchen remodel on time and within budget. Highly recommend!',
+      rating: 5,
+      location: 'Scottsdale, AZ'
+    }
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
-      {/* Back to Services */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link
-          href="/services"
-          className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-          Back to Services
-        </Link>
-      </div>
-
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="absolute inset-0">
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-navy-900/70" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="bg-accent-600 text-white text-sm font-semibold px-4 py-2 rounded-full w-fit mb-6">
-                {service.price}
-              </div>
+              <Link
+                href="/services"
+                className="inline-flex items-center text-accent-400 hover:text-accent-300 mb-6 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Services
+              </Link>
 
-              <h1 className="text-4xl md:text-6xl font-display font-bold text-gray-900 mb-6">
+              <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
                 {service.title}
               </h1>
-
-              <h2 className="text-2xl text-primary-600 font-semibold mb-6">
-                {service.subtitle}
-              </h2>
-
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
                 {service.description}
               </p>
 
-              <div className="flex items-center text-gray-700 mb-8">
-                <Clock className="w-5 h-5 text-primary-500 mr-2" />
-                <span className="font-medium">Typical Duration: {service.duration}</span>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contact"
-                  className="bg-accent-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-accent-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-center"
-                >
-                  Get Free Quote
-                </Link>
-                <Link
-                  href="/gallery"
-                  className="glass-card text-gray-700 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-center"
-                >
-                  View Portfolio
-                </Link>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl"
-            >
-              <Image
-                src={service.image}
-                alt={service.title}
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-navy-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 mb-4 inline-block">
-                  <div className="text-accent-400">
-                    {stat.icon}
-                  </div>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
+                <div className="flex items-center text-white">
+                  <DollarSign className="w-5 h-5 mr-2 text-accent-400" />
+                  <span className="font-semibold">{service.price}</span>
                 </div>
-                <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-primary-100">{stat.label}</div>
-              </motion.div>
-            ))}
+                <div className="flex items-center text-white">
+                  <Clock className="w-5 h-5 mr-2 text-accent-400" />
+                  <span className="font-semibold">{service.duration}</span>
+                </div>
+                <div className="flex items-center text-white">
+                  <Shield className="w-5 h-5 mr-2 text-accent-400" />
+                  <span className="font-semibold">10-Year Warranty</span>
+                </div>
+              </div>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center bg-accent-600 hover:bg-accent-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105"
+              >
+                Get Free Quote
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* What's Included Section */}
-      <section className="py-20">
+      {/* Features Section */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -173,15 +160,15 @@ const KitchenRemodeling = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
-              What's Included
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">
+              What's Included in Your Kitchen Remodel
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive kitchen remodeling service covers every aspect from design to completion.
+              Our comprehensive kitchen remodeling service covers every aspect of your renovation
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {service.features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -189,13 +176,55 @@ const KitchenRemodeling = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="glass-card rounded-2xl p-6"
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
               >
-                <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">{feature}</h3>
-                    <p className="text-gray-600 text-sm">Professional installation with premium materials and attention to detail.</p>
+                <CheckCircle className="w-8 h-8 text-accent-600 mb-4" />
+                <h3 className="font-semibold text-gray-900 mb-2">{feature}</h3>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Gallery */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">
+              Our Kitchen Remodeling Portfolio
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Browse our collection of stunning kitchen transformations
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {portfolioImages.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="aspect-[4/3] relative">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                    <p className="text-sm opacity-90">{project.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -205,7 +234,7 @@ const KitchenRemodeling = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-accent-50">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -214,11 +243,11 @@ const KitchenRemodeling = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
-              Our Process
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">
+              Our Remodeling Process
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From concept to completion, we guide you through every step of your kitchen transformation.
+              From concept to completion, we guide you through every step
             </p>
           </motion.div>
 
@@ -232,19 +261,18 @@ const KitchenRemodeling = () => {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="bg-accent-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                <div className="w-16 h-16 bg-accent-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
                   {index + 1}
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-2">{step}</h3>
-                <div className="w-8 h-1 bg-accent-600 mx-auto"></div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section className="py-20">
+      {/* Testimonials */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -253,54 +281,39 @@ const KitchenRemodeling = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
-              Recent Kitchen Projects
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-6">
+              What Our Clients Say
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See how we've transformed kitchens for Arizona homeowners.
-            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {portfolioImages.map((item, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {testimonials.map((testimonial, index) => (
               <motion.div
-                key={item.id}
+                key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 group"
+                className="bg-gray-50 rounded-2xl p-8"
               >
-                <div className="relative aspect-square">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                <div className="flex items-center mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                <p className="text-gray-700 mb-6 text-lg">"{testimonial.text}"</p>
+                <div>
+                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                  <p className="text-gray-600">{testimonial.location}</p>
                 </div>
               </motion.div>
             ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link
-              href="/gallery"
-              className="inline-flex items-center text-primary-600 font-semibold hover:text-primary-700 transition-colors"
-            >
-              View All Kitchen Projects
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-navy-800">
+      <section className="py-20 bg-accent-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -308,24 +321,25 @@ const KitchenRemodeling = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-              Ready for Your Dream Kitchen?
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
+              Ready to Transform Your Kitchen?
             </h2>
-            <p className="text-xl text-primary-100 mb-8">
-              Contact us today for a free consultation and personalized quote for your kitchen remodeling project.
+            <p className="text-xl text-accent-100 mb-8">
+              Get a free consultation and quote for your kitchen remodeling project
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="bg-accent-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-accent-700 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+                className="inline-flex items-center bg-white text-accent-600 hover:bg-gray-100 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
               >
-                Get Free Kitchen Quote
+                Get Free Quote
+                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <Link
-                href="/services"
-                className="glass-card text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300"
+                href="/gallery"
+                className="inline-flex items-center border-2 border-white text-white hover:bg-white hover:text-accent-600 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
               >
-                View All Services
+                View More Projects
               </Link>
             </div>
           </motion.div>

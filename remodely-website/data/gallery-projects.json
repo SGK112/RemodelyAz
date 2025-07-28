@@ -1,0 +1,146 @@
+[
+    {
+        "id": "kitchen-modern-white",
+        "name": "Modern White Kitchen",
+        "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+        "category": "kitchen",
+        "description": "Stunning modern kitchen with white cabinets, marble countertops, and stainless steel appliances",
+        "alt": "Modern white kitchen with marble island and pendant lighting",
+        "featured": true
+    },
+    {
+        "id": "kitchen-dark-contemporary",
+        "name": "Contemporary Dark Kitchen",
+        "url": "https://images.unsplash.com/photo-1556909114-8ccd5bc71b7d?w=800&q=80",
+        "category": "kitchen",
+        "description": "Sleek contemporary kitchen with dark cabinets and modern fixtures",
+        "alt": "Contemporary kitchen with dark cabinets and stainless appliances",
+        "featured": true
+    },
+    {
+        "id": "kitchen-traditional-wood",
+        "name": "Traditional Wood Kitchen",
+        "url": "https://images.unsplash.com/photo-1556909114-3e16c8374c59?w=800&q=80",
+        "category": "kitchen",
+        "description": "Classic kitchen renovation with rich wood cabinets and granite countertops",
+        "alt": "Traditional kitchen with wood cabinets and granite counters",
+        "featured": false
+    },
+    {
+        "id": "kitchen-open-concept",
+        "name": "Open Concept Kitchen",
+        "url": "https://images.unsplash.com/photo-1556909114-b1a8ab4fdc7c?w=800&q=80",
+        "category": "kitchen",
+        "description": "Spacious open concept kitchen with large island and breakfast bar",
+        "alt": "Open kitchen with large island connecting to living space",
+        "featured": true
+    },
+    {
+        "id": "kitchen-luxury-marble",
+        "name": "Luxury Marble Kitchen",
+        "url": "https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=800&q=80",
+        "category": "kitchen",
+        "description": "High-end kitchen featuring beautiful marble countertops and backsplash",
+        "alt": "Luxury kitchen with marble countertops and backsplash",
+        "featured": true
+    },
+    {
+        "id": "bathroom-spa-retreat",
+        "name": "Spa Bathroom Retreat",
+        "url": "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80",
+        "category": "bathroom",
+        "description": "Luxury spa-inspired bathroom with walk-in tile shower and floating vanity",
+        "alt": "Spa bathroom with walk-in shower and modern fixtures",
+        "featured": true
+    },
+    {
+        "id": "bathroom-master-suite",
+        "name": "Master Bathroom Suite",
+        "url": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
+        "category": "bathroom",
+        "description": "Elegant master bathroom featuring double vanity and premium finishes",
+        "alt": "Master bathroom with double vanity and large mirror",
+        "featured": true
+    },
+    {
+        "id": "bathroom-tile-shower",
+        "name": "Custom Tile Shower",
+        "url": "https://images.unsplash.com/photo-1585062723900-73290ac83cfd?w=800&q=80",
+        "category": "bathroom",
+        "description": "Beautiful walk-in tile shower with custom tile work and glass enclosure",
+        "alt": "Walk-in tile shower with glass doors and custom tile",
+        "featured": true
+    },
+    {
+        "id": "bathroom-modern-design",
+        "name": "Modern Bathroom Design",
+        "url": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&q=80",
+        "category": "bathroom",
+        "description": "Contemporary bathroom design with vessel sink and modern fixtures",
+        "alt": "Modern bathroom with vessel sink and wall-mounted faucet",
+        "featured": false
+    },
+    {
+        "id": "bathroom-luxury-vanity",
+        "name": "Luxury Bathroom Vanity",
+        "url": "https://images.unsplash.com/photo-1585062723878-be19e9ea9295?w=800&q=80",
+        "category": "bathroom",
+        "description": "Custom luxury vanity with marble countertop and premium hardware",
+        "alt": "Luxury bathroom vanity with marble top and gold fixtures",
+        "featured": true
+    },
+    {
+        "id": "commercial-office-modern",
+        "name": "Modern Office Renovation",
+        "url": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+        "category": "commercial",
+        "description": "Contemporary office space renovation with open floor plan",
+        "alt": "Modern office space with desks and natural lighting",
+        "featured": true
+    },
+    {
+        "id": "commercial-restaurant",
+        "name": "Restaurant Interior Design",
+        "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+        "category": "commercial",
+        "description": "Professional restaurant renovation with modern seating and lighting",
+        "alt": "Restaurant interior with contemporary design and seating",
+        "featured": true
+    },
+    {
+        "id": "commercial-retail-space",
+        "name": "Retail Space Renovation",
+        "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
+        "category": "commercial",
+        "description": "Modern retail space design with clean lines and functional layout",
+        "alt": "Contemporary retail space with display areas",
+        "featured": false
+    },
+    {
+        "id": "tile-work-shower",
+        "name": "Custom Tile Work",
+        "url": "https://images.unsplash.com/photo-1585062723891-4b7f5b2ea7b9?w=800&q=80",
+        "category": "tile",
+        "description": "Expert tile installation in walk-in shower with rainfall showerhead",
+        "alt": "Custom tile work in walk-in shower",
+        "featured": true
+    },
+    {
+        "id": "countertops-granite",
+        "name": "Granite Countertops",
+        "url": "https://images.unsplash.com/photo-1556909114-97b05d0b2e87?w=800&q=80",
+        "category": "countertops",
+        "description": "Beautiful granite countertop installation with undermount sink",
+        "alt": "Granite countertops with undermount sink and backsplash",
+        "featured": true
+    },
+    {
+        "id": "cabinets-custom-white",
+        "name": "Custom White Cabinets",
+        "url": "https://images.unsplash.com/photo-1556909114-9c16bf7e8b2b?w=800&q=80",
+        "category": "cabinets",
+        "description": "Custom white kitchen cabinets with crown molding and soft-close doors",
+        "alt": "Custom white kitchen cabinets with crown molding",
+        "featured": true
+    }
+]

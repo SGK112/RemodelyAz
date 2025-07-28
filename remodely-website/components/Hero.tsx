@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Star, CheckCircle, Play } from 'lucide-react'
-import { SITE_IMAGES } from '@/lib/site-images'
 
 const Hero = () => {
     return (
@@ -12,7 +11,7 @@ const Hero = () => {
             {/* Background Hero Image */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src={SITE_IMAGES.projects.kitchen_modern}
+                    src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&h=1080&fit=crop&crop=center"
                     alt="Luxury Kitchen Remodeling by RemodelyAz - Modern Design with Premium Finishes"
                     fill
                     className="object-cover"
@@ -33,7 +32,7 @@ const Hero = () => {
                     <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 max-w-xs">
                         <div className="relative h-32 w-full rounded-lg overflow-hidden mb-3">
                             <Image
-                                src={SITE_IMAGES.projects.bathroom_luxury}
+                                src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=400&h=300&fit=crop&crop=center"
                                 alt="Luxury Bathroom Remodel"
                                 fill
                                 className="object-cover"

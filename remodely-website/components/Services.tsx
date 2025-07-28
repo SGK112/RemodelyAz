@@ -11,7 +11,7 @@ const Services = () => {
             id: 1,
             title: 'Kitchen Remodeling',
             description: 'Transform your kitchen into a culinary masterpiece with modern designs, premium materials, and smart storage solutions.',
-            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_auto/sample',
+            image: 'https://images.unsplash.com/photo-1556909114-8ccd5bc71b7d?w=800&h=600&fit=crop&crop=center',
             icon: <Palette className="w-8 h-8" />,
             features: ['Custom Cabinetry', 'Premium Countertops', 'Modern Appliances', 'Smart Lighting'],
             price: 'Starting at $25,000'
@@ -20,7 +20,7 @@ const Services = () => {
             id: 2,
             title: 'Bathroom Remodeling',
             description: 'Create a spa-like sanctuary with luxurious fixtures, elegant tiles, and innovative storage solutions.',
-            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_auto/sample',
+            image: 'https://images.unsplash.com/photo-1585062723900-73290ac83cfd?w=800&h=600&fit=crop&crop=center',
             icon: <Home className="w-8 h-8" />,
             features: ['Luxury Fixtures', 'Heated Floors', 'Custom Vanities', 'Walk-in Showers'],
             price: 'Starting at $15,000'
@@ -29,7 +29,7 @@ const Services = () => {
             id: 3,
             title: 'Commercial Remodeling',
             description: 'Enhance your business space with professional designs that boost productivity and impress clients.',
-            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_auto/sample',
+            image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&crop=center',
             icon: <Building className="w-8 h-8" />,
             features: ['Office Spaces', 'Retail Design', 'Restaurant Kitchens', 'Medical Facilities'],
             price: 'Custom Quote'

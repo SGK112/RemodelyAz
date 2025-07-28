@@ -7,7 +7,9 @@ import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, Mail } from 'lucide-react'
 
 interface CompanyData {
+    name: string
     phone: string
+    email: string
 }
 
 const Navbar = () => {
@@ -15,7 +17,9 @@ const Navbar = () => {
     const [scrolled, setScrolled] = useState(false)
     const pathname = usePathname()
     const [companyData, setCompanyData] = useState<CompanyData>({
-        phone: '(480) 255-5887'
+        name: 'REMODELY LLC',
+        phone: '(480) 255-5887',
+        email: 'info@remodely-az.com'
     })
 
     // Define pages with dark backgrounds (only home page has dark hero)
@@ -31,10 +35,12 @@ const Navbar = () => {
     }, [])
 
     useEffect(() => {
-        fetch('/api/admin/company')
-            .then(res => res.json())
-            .then(data => setCompanyData(data))
-            .catch(console.error)
+        // Load company data from local data file instead of admin API
+        setCompanyData({
+            name: 'REMODELY LLC',
+            phone: '(623) 555-0123',
+            email: 'info@remodely-az.com'
+        })
     }, [])
 
     const navigation = [
@@ -44,7 +50,6 @@ const Navbar = () => {
         { name: 'About', href: '/about' },
         { name: 'Blog', href: '/blog' },
         { name: 'Contact', href: '/contact' },
-        { name: 'Admin', href: '/admin' },
     ]
 
     return (

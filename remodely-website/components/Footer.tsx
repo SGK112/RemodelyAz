@@ -22,10 +22,7 @@ const Footer = () => {
     })
 
     useEffect(() => {
-        fetch('/api/admin/company')
-            .then(res => res.json())
-            .then(data => setCompanyData(data))
-            .catch(console.error)
+        // Company data is already set in initial state, no need to fetch from admin API
     }, [])
 
     const links = {
