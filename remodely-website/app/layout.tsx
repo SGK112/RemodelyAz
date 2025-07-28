@@ -35,6 +35,9 @@ export const metadata: Metadata = {
         statusBarStyle: 'default',
         title: 'REMODELY LLC'
     },
+    other: {
+        'mobile-web-app-capable': 'yes'
+    },
     formatDetection: {
         telephone: true,
         date: false,

@@ -67,24 +67,28 @@ export default function UnifiedImageManager({
         ? imageManager.getProjectsByCategory(category)
         : imageManager.getAllProjects()
 
-      setImages(loadedImages)
-      setProjects(loadedProjects)
+      // Ensure we always have arrays
+      setImages(Array.isArray(loadedImages) ? loadedImages : [])
+      setProjects(Array.isArray(loadedProjects) ? loadedProjects : [])
     } catch (error) {
       console.error('Failed to load data:', error)
+      // Set empty arrays on error
+      setImages([])
+      setProjects([])
     } finally {
       setLoading(false)
     }
   }, [category])
 
-  // Filter and search logic
-  const filteredImages = images.filter(image => {
+  // Filter and search logic with safe defaults
+  const filteredImages = (Array.isArray(images) ? images : []).filter(image => {
     if (filter !== 'all' && image.category !== filter) return false
     if (searchQuery && !image.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
       !image.description.toLowerCase().includes(searchQuery.toLowerCase())) return false
     return true
   }).slice(0, maxImages)
 
-  const filteredProjects = projects.filter(project => {
+  const filteredProjects = (Array.isArray(projects) ? projects : []).filter(project => {
     if (searchQuery && !project.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
       !project.description.toLowerCase().includes(searchQuery.toLowerCase())) return false
     return true
@@ -101,7 +105,9 @@ export default function UnifiedImageManager({
       )
 
       const uploadedImages = await Promise.all(uploadPromises)
-      setImages(prev => [...uploadedImages, ...prev])
+      
+      // Reload all data to ensure consistency with server
+      await loadData()
 
       if (fileInputRef.current) {
         fileInputRef.current.value = ''
@@ -119,7 +125,10 @@ export default function UnifiedImageManager({
 
     try {
       await imageManager.deleteImage(imageId)
-      setImages(prev => prev.filter(img => img.id !== imageId))
+      
+      // Reload all data to ensure consistency with server
+      await loadData()
+      
       setSelectedImages(prev => {
         const newSet = new Set(prev)
         newSet.delete(imageId)

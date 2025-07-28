@@ -72,7 +72,23 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // TODO: Save to database/JSON file for persistence
+    // Save to data store for persistence
+    try {
+      const { addImage } = await import('@/lib/data-store')
+      const savedImage = addImage({
+        url: unifiedImage.url,
+        alt: unifiedImage.description,
+        description: unifiedImage.description,
+        category: unifiedImage.category,
+        filename: unifiedImage.name
+      })
+      
+      // Update the unified image with the saved ID
+      unifiedImage.id = savedImage.id
+    } catch (saveError) {
+      console.warn('Failed to save to data store:', saveError)
+      // Continue anyway - image is still uploaded to Cloudinary
+    }
 
     return NextResponse.json(unifiedImage)
 
