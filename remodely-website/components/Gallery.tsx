@@ -137,7 +137,7 @@ const Gallery = () => {
                             placeholder="Search projects..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-accent focus:border-transparent transition-all duration-300"
+                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                         />
                     </div>
                 </motion.div>
@@ -264,7 +264,7 @@ const Gallery = () => {
                                     setSearchTerm('')
                                     setCurrentCategory('all')
                                 }}
-                                className="text-accent hover:text-accent-600 font-medium transition-colors"
+                                className="text-accent-600 hover:text-accent-700 font-medium transition-colors"
                             >
                                 Clear filters and show all projects
                             </button>
@@ -287,7 +287,7 @@ const Gallery = () => {
                             {/* Close button */}
                             <button
                                 onClick={() => setSelectedImage(null)}
-                                className="absolute -top-16 right-0 text-white hover:text-accent transition-colors z-10 bg-black/20 backdrop-blur-sm rounded-full p-3"
+                                className="absolute -top-16 right-0 text-white hover:text-accent-400 transition-colors z-10 bg-black/20 backdrop-blur-sm rounded-full p-3"
                                 aria-label="Close gallery"
                             >
                                 <X className="w-6 h-6" />
@@ -332,7 +332,7 @@ const Gallery = () => {
                                                 e.stopPropagation()
                                                 prevImage()
                                             }}
-                                            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent transition-colors bg-black/40 hover:bg-black/60 backdrop-blur-sm rounded-full p-3"
+                                            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/40 hover:bg-black/60 backdrop-blur-sm rounded-full p-3"
                                             aria-label="Previous image"
                                         >
                                             <ChevronLeft className="w-6 h-6" />
@@ -342,7 +342,7 @@ const Gallery = () => {
                                                 e.stopPropagation()
                                                 nextImage()
                                             }}
-                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent transition-colors bg-black/40 hover:bg-black/60 backdrop-blur-sm rounded-full p-3"
+                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/40 hover:bg-black/60 backdrop-blur-sm rounded-full p-3"
                                             aria-label="Next image"
                                         >
                                             <ChevronRight className="w-6 h-6" />
