@@ -160,6 +160,11 @@ export class UnifiedImageManager {
 
   // DATA LOADING
   private async loadInitialData() {
+    // Only load data on the client side
+    if (typeof window === 'undefined') {
+      return // Skip on server-side rendering
+    }
+
     try {
       // Load images
       const imagesResponse = await fetch('/api/images')
