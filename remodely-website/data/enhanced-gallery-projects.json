@@ -1,0 +1,182 @@
+[
+    {
+        "id": "kitchen-modern-luxury",
+        "name": "Luxury Modern Kitchen",
+        "url": "https://images.unsplash.com/photo-1556909114-6eb3e793d9ae?w=800&q=80",
+        "category": "kitchen", 
+        "description": "High-end modern kitchen with quartz countertops and premium appliances",
+        "alt": "Luxury modern kitchen with quartz island and stainless steel appliances",
+        "featured": true
+    },
+    {
+        "id": "kitchen-farmhouse-style",
+        "name": "Farmhouse Kitchen Remodel",
+        "url": "https://images.unsplash.com/photo-1556909114-a8b44c944fb2?w=800&q=80",
+        "category": "kitchen",
+        "description": "Charming farmhouse kitchen with shaker cabinets and rustic elements",
+        "alt": "Farmhouse style kitchen with white cabinets and wood accents",
+        "featured": true
+    },
+    {
+        "id": "kitchen-industrial-modern",
+        "name": "Industrial Modern Kitchen",
+        "url": "https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=800&q=80",
+        "category": "kitchen",
+        "description": "Contemporary industrial kitchen with concrete counters and exposed elements",
+        "alt": "Industrial style kitchen with concrete countertops and metal fixtures",
+        "featured": true
+    },
+    {
+        "id": "kitchen-traditional-elegance",
+        "name": "Traditional Elegant Kitchen",
+        "url": "https://images.unsplash.com/photo-1556909114-97b05d0b2e87?w=800&q=80",
+        "category": "kitchen", 
+        "description": "Classic elegant kitchen with rich wood cabinets and granite surfaces",
+        "alt": "Traditional kitchen with wood cabinets and granite countertops",
+        "featured": true
+    },
+    {
+        "id": "kitchen-coastal-style",
+        "name": "Coastal Kitchen Design",
+        "url": "https://images.unsplash.com/photo-1556909114-6dda42b0c8b1?w=800&q=80",
+        "category": "kitchen",
+        "description": "Bright coastal kitchen with light colors and natural textures",
+        "alt": "Coastal style kitchen with light blue cabinets and white counters",
+        "featured": true
+    },
+    {
+        "id": "bathroom-spa-luxury",
+        "name": "Luxury Spa Bathroom",
+        "url": "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80",
+        "category": "bathroom",
+        "description": "Resort-style spa bathroom with natural stone and luxury fixtures",
+        "alt": "Luxury spa bathroom with stone walls and freestanding tub",
+        "featured": true
+    },
+    {
+        "id": "bathroom-modern-minimalist",
+        "name": "Minimalist Bathroom Design",
+        "url": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
+        "category": "bathroom",
+        "description": "Clean minimalist bathroom with floating vanity and walk-in shower",
+        "alt": "Modern minimalist bathroom with floating vanity and glass shower",
+        "featured": true
+    },
+    {
+        "id": "bathroom-master-ensuite",
+        "name": "Master Ensuite Renovation",
+        "url": "https://images.unsplash.com/photo-1585062723900-73290ac83cfd?w=800&q=80",
+        "category": "bathroom",
+        "description": "Spacious master bathroom with dual vanities and separate shower",
+        "alt": "Master bathroom with double vanity and separate shower area",
+        "featured": true
+    },
+    {
+        "id": "bathroom-vintage-modern",
+        "name": "Vintage Modern Bathroom",
+        "url": "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&q=80",
+        "category": "bathroom",
+        "description": "Charming blend of vintage elements with modern functionality",
+        "alt": "Vintage modern bathroom with clawfoot tub and subway tiles",
+        "featured": true
+    },
+    {
+        "id": "bathroom-contemporary-glass",
+        "name": "Contemporary Glass Bathroom",
+        "url": "https://images.unsplash.com/photo-1585062723878-be19e9ea9295?w=800&q=80",
+        "category": "bathroom",
+        "description": "Sleek contemporary bathroom featuring extensive glass elements",
+        "alt": "Contemporary bathroom with glass shower and modern fixtures",
+        "featured": true
+    },
+    {
+        "id": "commercial-modern-office",
+        "name": "Modern Office Space",
+        "url": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+        "category": "commercial",
+        "description": "Contemporary office renovation with open workspace design",
+        "alt": "Modern office space with open floor plan and natural lighting",
+        "featured": true
+    },
+    {
+        "id": "commercial-restaurant-design",
+        "name": "Restaurant Interior",
+        "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80", 
+        "category": "commercial",
+        "description": "Stylish restaurant interior with modern dining atmosphere",
+        "alt": "Restaurant interior with contemporary seating and lighting",
+        "featured": true
+    },
+    {
+        "id": "commercial-retail-modern",
+        "name": "Modern Retail Space",
+        "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80",
+        "category": "commercial", 
+        "description": "Clean modern retail space with functional display areas",
+        "alt": "Modern retail space with organized display areas",
+        "featured": true
+    },
+    {
+        "id": "commercial-medical-office",
+        "name": "Medical Office Design",
+        "url": "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800&q=80",
+        "category": "commercial",
+        "description": "Professional medical office with clean, calming design",
+        "alt": "Medical office interior with modern waiting area",
+        "featured": true
+    },
+    {
+        "id": "tile-work-feature-wall",
+        "name": "Feature Wall Tile Design",
+        "url": "https://images.unsplash.com/photo-1585062723891-4b7f5b2ea7b9?w=800&q=80",
+        "category": "tile",
+        "description": "Stunning feature wall with custom geometric tile pattern",
+        "alt": "Custom tile feature wall with geometric pattern",
+        "featured": true
+    },
+    {
+        "id": "tile-work-bathroom-shower",
+        "name": "Custom Shower Tilework",
+        "url": "https://images.unsplash.com/photo-1584622781474-083f83fe00ee?w=800&q=80",
+        "category": "tile",
+        "description": "Expert tile installation in luxury walk-in shower",
+        "alt": "Walk-in shower with custom tile work and glass enclosure",
+        "featured": true
+    },
+    {
+        "id": "countertops-quartz-kitchen",
+        "name": "Quartz Kitchen Countertops",
+        "url": "https://images.unsplash.com/photo-1556909114-97b05d0b2e87?w=800&q=80",
+        "category": "countertops",
+        "description": "Beautiful quartz countertop installation with waterfall edge",
+        "alt": "Quartz kitchen countertops with waterfall island edge",
+        "featured": true
+    },
+    {
+        "id": "countertops-marble-luxury",
+        "name": "Luxury Marble Counters",
+        "url": "https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=800&q=80",
+        "category": "countertops",
+        "description": "Premium marble countertops with elegant veining patterns",
+        "alt": "Luxury marble countertops with natural veining",
+        "featured": true
+    },
+    {
+        "id": "cabinets-custom-modern",
+        "name": "Custom Modern Cabinets",
+        "url": "https://images.unsplash.com/photo-1556909114-9c16bf7e8b2b?w=800&q=80",
+        "category": "cabinets",
+        "description": "Sleek modern kitchen cabinets with handleless design",
+        "alt": "Custom modern kitchen cabinets with clean lines",
+        "featured": true
+    },
+    {
+        "id": "cabinets-traditional-wood",
+        "name": "Traditional Wood Cabinets",
+        "url": "https://images.unsplash.com/photo-1556909114-b86dfdf73c8b?w=800&q=80",
+        "category": "cabinets",
+        "description": "Handcrafted traditional cabinets with raised panel doors",
+        "alt": "Traditional wood cabinets with raised panel design",
+        "featured": true
+    }
+]
