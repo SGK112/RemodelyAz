@@ -67,7 +67,7 @@ const Testimonials = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: index * 0.2 }}
                             viewport={{ once: true }}
-                            className="glass-card rounded-2xl p-8 hover:shadow-xl transition-all duration-300"
+                            className="modern-card rounded-2xl p-8 hover:shadow-xl transition-all duration-300"
                         >
                             {/* Quote Icon */}
                             <div className="bg-accent-600 rounded-full p-3 w-fit mb-6">

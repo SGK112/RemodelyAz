@@ -87,7 +87,7 @@ const Services = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: index * 0.2 }}
                             viewport={{ once: true }}
-                            className="group glass-card rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+                            className="group modern-card rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
                         >
                             {/* Image */}
                             <div className="relative h-64 overflow-hidden">
@@ -99,7 +99,7 @@ const Services = () => {
                                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 />
                                 <div className="absolute inset-0 bg-navy-900/60" />
-                                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full p-3">
+                                <div className="absolute top-4 left-4 bg-white/95 rounded-full p-3 shadow-md">
                                     <div className="text-primary-600">
                                         {service.icon}
                                     </div>
@@ -168,7 +168,7 @@ const Services = () => {
                                 viewport={{ once: true }}
                                 className="text-center"
                             >
-                                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-4 inline-block">
+                                <div className="bg-white/95 rounded-2xl p-6 mb-4 inline-block shadow-lg">
                                     <div className="text-white">
                                         {feature.icon}
                                     </div>

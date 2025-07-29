@@ -30,7 +30,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 0.8 }}
                     className="absolute top-20 right-8 hidden lg:block"
                 >
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 max-w-xs">
+                    <div className="bg-white/95 border border-gray-200 rounded-2xl p-4 max-w-xs shadow-lg">
                         <div className="relative h-32 w-full rounded-lg overflow-hidden mb-3">
                             <Image
                                 src={SITE_IMAGES.projects.bathroom_luxury}
@@ -51,7 +51,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 1 }}
                     className="absolute bottom-20 left-8 hidden lg:block"
                 >
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6">
+                    <div className="bg-white/95 border border-gray-200 rounded-2xl p-6 shadow-lg">
                         <div className="flex items-center space-x-6">
                             <div className="text-center">
                                 <div className="text-2xl font-bold text-white">500+</div>
@@ -142,7 +142,7 @@ const Hero = () => {
                     >
                         <Link
                             href="/contact"
-                            className="btn-glassmorphic bg-accent-600 hover:bg-accent-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center space-x-2 group"
+                            className="btn-modern bg-accent-600 hover:bg-accent-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center space-x-2 group"
                         >
                             <span>Start Your Project</span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -150,7 +150,7 @@ const Hero = () => {
 
                         <Link
                             href="/gallery"
-                            className="btn-glassmorphic bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 border border-white/30 flex items-center space-x-2 group"
+                            className="btn-outline-modern bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 border border-white/30 flex items-center space-x-2 group"
                         >
                             <Play className="w-5 h-5" />
                             <span>View Gallery</span>

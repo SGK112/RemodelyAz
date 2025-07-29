@@ -31,7 +31,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 0.8 }}
                     className="absolute top-20 right-8 hidden lg:block"
                 >
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 max-w-xs">
+                    <div className="bg-white/10  border border-white/20 rounded-2xl p-4 max-w-xs">
                         <div className="relative h-32 w-full rounded-lg overflow-hidden mb-3">
                             <Image
                                 src={PRODUCTION_IMAGES.bathroom_luxury}
@@ -53,7 +53,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 1 }}
                     className="absolute bottom-20 left-8 hidden lg:block"
                 >
-                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6">
+                    <div className="bg-white/10  border border-white/20 rounded-2xl p-6">
                         <div className="flex items-center space-x-6">
                             <div className="text-center">
                                 <div className="text-2xl font-bold text-white">500+</div>

@@ -56,7 +56,7 @@ const Navbar = () => {
     ]
 
     return (
-        <nav className="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100 transition-all duration-300">
+        <nav className="fixed w-full z-50 modern-navbar transition-all duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-14 sm:h-16">
                     {/* Logo */}
@@ -126,7 +126,7 @@ const Navbar = () => {
 
             {/* Mobile Navigation */}
             {isOpen && (
-                <div className="md:hidden bg-white/95 backdrop-blur-lg border-t border-gray-200">
+                <div className="md:hidden bg-white/98 border-t border-gray-200 shadow-lg">
                     <div className="px-4 pt-4 pb-6 space-y-2">
                         {navigation.map((item) => (
                             <Link

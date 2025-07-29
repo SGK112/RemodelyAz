@@ -167,12 +167,12 @@ const Gallery = () => {
                             }}
                             className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${currentCategory === category.id
                                 ? 'bg-accent-600 text-white shadow-lg transform scale-105'
-                                : 'bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-white hover:shadow-md border border-gray-200'
+                                : 'bg-white/80 shadow-md text-gray-700 hover:bg-white hover:shadow-md border border-gray-200'
                                 }`}
                         >
                             <span>{category.name}</span>
                             <span className={`text-xs px-2 py-1 rounded-full ${currentCategory === category.id
-                                ? 'bg-white/20'
+                                ? 'bg-white/95'
                                 : 'bg-gray-100'
                                 }`}>
                                 {category.count}
@@ -230,7 +230,7 @@ const Gallery = () => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                 {/* Zoom icon */}
-                                <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="absolute top-4 right-4 bg-white/95 shadow-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <ZoomIn className="w-5 h-5 text-white" />
                                 </div>
 
@@ -239,7 +239,7 @@ const Gallery = () => {
                                     <h3 className="text-lg font-display font-semibold mb-1 line-clamp-1">{image.name}</h3>
                                     <p className="text-sm opacity-90 line-clamp-2">{image.description}</p>
                                     <div className="mt-2">
-                                        <span className="inline-block px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-medium capitalize">
+                                        <span className="inline-block px-2 py-1 bg-white/95 shadow-md rounded-full text-xs font-medium capitalize">
                                             {image.category}
                                         </span>
                                     </div>
@@ -304,14 +304,14 @@ const Gallery = () => {
                             </button>
 
                             {/* Image counter */}
-                            <div className="absolute -top-16 left-0 text-white bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
+                            <div className="absolute -top-16 left-0 text-white bg-black/80 shadow-md rounded-full px-4 py-2">
                                 <span className="text-sm font-medium">
                                     {selectedImage + 1} of {filteredImages.length}
                                 </span>
                             </div>
 
                             {/* Keyboard shortcuts hint */}
-                            <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 text-white bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
+                            <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 text-white bg-black/80 shadow-md rounded-full px-4 py-2">
                                 <span className="text-xs opacity-75">
                                     Use ← → keys or ESC to close
                                 </span>
@@ -342,7 +342,7 @@ const Gallery = () => {
                                                 e.stopPropagation()
                                                 prevImage()
                                             }}
-                                            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/40 hover:bg-black/60 backdrop-blur-sm rounded-full p-3"
+                                            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/40 hover:bg-black/60 shadow-md rounded-full p-3"
                                             aria-label="Previous image"
                                         >
                                             <ChevronLeft className="w-6 h-6" />
@@ -352,7 +352,7 @@ const Gallery = () => {
                                                 e.stopPropagation()
                                                 nextImage()
                                             }}
-                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/40 hover:bg-black/60 backdrop-blur-sm rounded-full p-3"
+                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/40 hover:bg-black/60 shadow-md rounded-full p-3"
                                             aria-label="Next image"
                                         >
                                             <ChevronRight className="w-6 h-6" />
@@ -373,7 +373,7 @@ const Gallery = () => {
                                 <p className="text-lg opacity-90 mb-2">
                                     {filteredImages[selectedImage].description}
                                 </p>
-                                <span className="inline-block px-3 py-1 bg-accent/20 backdrop-blur-sm rounded-full text-sm font-medium capitalize">
+                                <span className="inline-block px-3 py-1 bg-accent/20 shadow-md rounded-full text-sm font-medium capitalize">
                                     {filteredImages[selectedImage].category}
                                 </span>
                             </motion.div>

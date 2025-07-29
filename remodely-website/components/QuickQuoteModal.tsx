@@ -89,7 +89,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-navy-900/80 backdrop-blur-md"
+                        className="absolute inset-0 bg-navy-900/80"
                         onClick={handleClose}
                     />
 
@@ -98,7 +98,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="relative bg-white/95 backdrop-blur-sm border border-white/20 rounded-2xl shadow-2xl 
+                        className="relative bg-white/98 border border-gray-200 rounded-2xl shadow-2xl 
                                  w-full max-w-lg sm:max-w-2xl max-h-[90vh] sm:max-h-[95vh] overflow-y-auto
                                  mx-auto my-auto"
                     >
@@ -156,7 +156,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                 className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
                                                          focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
                                                          transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/80 backdrop-blur-sm"
+                                                         bg-white/95"
                                                 placeholder="Your name"
                                             />
                                             {errors.name && (
@@ -180,7 +180,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                 className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
                                                          focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
                                                          transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/80 backdrop-blur-sm"
+                                                         bg-white/95"
                                                 placeholder="your@email.com"
                                             />
                                             {errors.email && (
@@ -199,7 +199,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                             className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
                                                      focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
                                                      transition-all duration-200 text-base touch-manipulation
-                                                     bg-white/80 backdrop-blur-sm"
+                                                     bg-white/95"
                                             placeholder="(602) 123-4567"
                                         />
                                     </div>
@@ -215,7 +215,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                 className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
                                                          focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
                                                          transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
+                                                         bg-white/95 appearance-none cursor-pointer"
                                             >
                                                 <option value="">Select project type</option>
                                                 <option value="kitchen-remodel">Kitchen Remodel</option>
@@ -240,7 +240,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                 className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
                                                          focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
                                                          transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
+                                                         bg-white/95 appearance-none cursor-pointer"
                                             >
                                                 <option value="">Select property type</option>
                                                 <option value="residential">Residential</option>
@@ -262,7 +262,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                 className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
                                                          focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
                                                          transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
+                                                         bg-white/95 appearance-none cursor-pointer"
                                             >
                                                 <option value="">Select timeframe</option>
                                                 <option value="asap">ASAP</option>
@@ -285,7 +285,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                 className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
                                                          focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
                                                          transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
+                                                         bg-white/95 appearance-none cursor-pointer"
                                             >
                                                 <option value="">Select budget range</option>
                                                 <option value="under-10k">Under $10,000</option>
@@ -310,7 +310,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                             className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
                                                      focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
                                                      transition-all duration-200 text-base touch-manipulation
-                                                     bg-white/80 backdrop-blur-sm resize-none"
+                                                     bg-white/95 resize-none"
                                             placeholder="Describe your project, materials preferences, and any specific requirements..."
                                         />
                                         {errors.projectDescription && (

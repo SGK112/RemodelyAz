@@ -44,7 +44,7 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                 className="fixed bottom-0 left-0 right-0 z-40 md:hidden"
             >
                 {!isMinimized ? (
-                    <div className="bg-white/95 backdrop-blur-md border-t border-gray-200 text-gray-900 p-4 shadow-2xl">
+                    <div className="bg-white/98 border-t border-gray-200 text-gray-900 p-4 shadow-2xl">
                         <div className="flex items-center justify-between mb-3">
                             <div className="flex-1">
                                 <p className="text-sm font-semibold text-gray-900">Ready to Start Your Project?</p>
@@ -112,7 +112,7 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                         </div>
                     </div>
                 ) : (
-                    <div className="bg-white/95 backdrop-blur-md border-t border-gray-200 text-gray-900 p-3 shadow-2xl">
+                    <div className="bg-white/98 border-t border-gray-200 text-gray-900 p-3 shadow-2xl">
                         <div className="flex items-center justify-center gap-3">
                             <button
                                 onClick={onQuickQuote}
