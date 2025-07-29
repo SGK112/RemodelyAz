@@ -15,7 +15,7 @@ const Services = () => {
             image: PRODUCTION_IMAGES.kitchen_modern,
             icon: <Palette className="w-8 h-8" />,
             features: ['Custom Cabinetry', 'Premium Countertops', 'Modern Appliances', 'Smart Lighting'],
-            price: 'Starting at $25,000'
+            price: 'From $180/sqft'
         },
         {
             id: 2,
@@ -24,7 +24,7 @@ const Services = () => {
             image: PRODUCTION_IMAGES.bathroom_luxury,
             icon: <Home className="w-8 h-8" />,
             features: ['Luxury Fixtures', 'Heated Floors', 'Custom Vanities', 'Walk-in Showers'],
-            price: 'Starting at $15,000'
+            price: 'From $150/sqft'
         },
         {
             id: 3,
@@ -33,7 +33,7 @@ const Services = () => {
             image: PRODUCTION_IMAGES.commercial_office,
             icon: <Building className="w-8 h-8" />,
             features: ['Office Spaces', 'Retail Design', 'Restaurant Kitchens', 'Medical Facilities'],
-            price: 'Custom Quote'
+            price: 'From $120/sqft'
         }
     ]
 
@@ -99,7 +99,7 @@ const Services = () => {
                                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 />
                                 <div className="absolute inset-0 bg-navy-900/60" />
-                                <div className="absolute top-4 left-4 bg-white/95 rounded-full p-3 shadow-md">
+                                <div className="absolute top-4 left-4 bg-white rounded-full p-3 shadow-lg border border-gray-200">
                                     <div className="text-primary-600">
                                         {service.icon}
                                     </div>
@@ -168,8 +168,8 @@ const Services = () => {
                                 viewport={{ once: true }}
                                 className="text-center"
                             >
-                                <div className="bg-white/95 rounded-2xl p-6 mb-4 inline-block shadow-lg">
-                                    <div className="text-white">
+                                <div className="bg-white rounded-2xl p-6 mb-4 inline-block shadow-lg border border-gray-200">
+                                    <div className="text-accent-600">
                                         {feature.icon}
                                     </div>
                                 </div>

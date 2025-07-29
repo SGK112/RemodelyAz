@@ -43,7 +43,7 @@ const ProcessPage = () => {
       title: 'Preparation & Permits',
       duration: '1-3 weeks',
       description: 'We handle all permits, order materials, and prepare your space for construction. This includes protecting your home and ensuring all necessary approvals are in place.',
-      image: SITE_IMAGES.blog.small_spaces,
+      image: SITE_IMAGES.career.construction_site,
       icon: <Calendar className="w-8 h-8" />,
       details: [
         'Permit acquisition and inspections scheduling',
@@ -159,7 +159,7 @@ const ProcessPage = () => {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 mb-4 inline-block">
+                <div className="bg-white rounded-2xl p-4 mb-4 inline-block shadow-lg border border-gray-200">
                   <div className="text-accent-400">
                     {stat.icon}
                   </div>
@@ -252,7 +252,7 @@ const ProcessPage = () => {
                     />
                     <div className="absolute inset-0 bg-navy-900/20" />
                     <div className="absolute top-6 left-6">
-                      <div className="bg-white/90 backdrop-blur-sm rounded-full p-3">
+                      <div className="bg-white rounded-full p-3 shadow-lg border border-gray-200">
                         <div className="text-accent-600">
                           {step.icon}
                         </div>
