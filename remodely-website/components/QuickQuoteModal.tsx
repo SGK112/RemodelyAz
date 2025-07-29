@@ -34,9 +34,20 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
         }
     }, [isOpen])
 
+    // Handle close with persistence
+    const handleClose = () => {
+        if (!isSubmitting) {
+            // Set localStorage to remember modal was dismissed for 24 hours
+            const dismissUntil = Date.now() + (24 * 60 * 60 * 1000) // 24 hours
+            localStorage.setItem('quickQuoteModalDismissed', dismissUntil.toString())
+            setIsSubmitted(false)
+            onClose()
+        }
+    }
+
     const onSubmit = async (data: QuickQuoteData) => {
         setIsSubmitting(true)
-        
+
         try {
             const response = await fetch('/api/quick-quote', {
                 method: 'POST',
@@ -70,100 +81,106 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
         }
     }
 
-    const handleClose = () => {
-        if (!isSubmitting) {
-            setIsSubmitted(false)
-            onClose()
-        }
-    }
-
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center">
-                    {/* Backdrop */}
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+                    {/* Professional Backdrop */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                        className="absolute inset-0 bg-navy-900/80 backdrop-blur-md"
                         onClick={handleClose}
                     />
-                    
-                    {/* Modal */}
+
+                    {/* Modal Container - Mobile Optimized */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                        className="relative bg-white/95 backdrop-blur-sm border border-white/20 rounded-2xl shadow-2xl 
+                                 w-full max-w-lg sm:max-w-2xl max-h-[90vh] sm:max-h-[95vh] overflow-y-auto
+                                 mx-auto my-auto"
                     >
-                        {/* Close Button */}
+                        {/* Close Button - Mobile Optimized */}
                         <button
                             onClick={handleClose}
-                            className="absolute top-4 right-4 z-10 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 
+                                     p-2 sm:p-3 rounded-full bg-white/90 hover:bg-white
+                                     border border-gray-200 hover:border-gray-300
+                                     transition-all duration-200 touch-manipulation
+                                     flex items-center justify-center"
+                            aria-label="Close modal"
                         >
-                            <X className="w-5 h-5 text-gray-600" />
+                            <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
                         </button>
 
                         {isSubmitted ? (
-                            <div className="p-8 text-center">
-                                <div className="bg-green-100 rounded-full p-6 w-fit mx-auto mb-6">
-                                    <CheckCircle className="w-12 h-12 text-green-600" />
+                            <div className="p-6 sm:p-8 text-center">
+                                <div className="bg-accent-50 border border-accent-100 rounded-2xl p-6 sm:p-8 w-fit mx-auto mb-6">
+                                    <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-accent-600 mx-auto" />
                                 </div>
-                                <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">
+                                <h3 className="text-xl sm:text-2xl font-display font-bold text-gray-900 mb-4">
                                     Quote Request Sent!
                                 </h3>
-                                <p className="text-gray-600">
+                                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                                     We'll prepare your personalized quote and get back to you within 2 hours.
                                 </p>
                             </div>
                         ) : (
-                            <div className="p-8">
-                                {/* Header */}
-                                <div className="text-center mb-8">
-                                    <div className="bg-accent-100 rounded-full p-4 w-fit mx-auto mb-4">
-                                        <Calculator className="w-8 h-8 text-accent-600" />
+                            <div className="p-4 sm:p-6 lg:p-8">
+                                {/* Header - Professional Design */}
+                                <div className="text-center mb-6 sm:mb-8">
+                                    <div className="bg-accent-50 border border-accent-100 rounded-2xl p-3 sm:p-4 w-fit mx-auto mb-4">
+                                        <Calculator className="w-6 h-6 sm:w-8 sm:h-8 text-accent-600 mx-auto" />
                                     </div>
-                                    <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">
+                                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-gray-900 mb-2">
                                         Get Your Quick Quote
-                                    </h3>
-                                    <p className="text-gray-600">
+                                    </h2>
+                                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-md mx-auto">
                                         Tell us about your project and we'll provide a personalized estimate
                                     </p>
                                 </div>
 
-                                {/* Form */}
-                                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                                {/* Form - Mobile Optimized */}
+                                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
                                     {/* Personal Info */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
                                             <label className="block text-sm font-semibold text-gray-700 mb-2">
                                                 Full Name *
                                             </label>
                                             <input
                                                 {...register('name', { required: 'Name is required' })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors"
+                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
+                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
+                                                         transition-all duration-200 text-base touch-manipulation
+                                                         bg-white/80 backdrop-blur-sm"
                                                 placeholder="Your name"
                                             />
                                             {errors.name && (
                                                 <p className="text-red-600 text-sm mt-1">{errors.name.message}</p>
                                             )}
                                         </div>
-                                        
+
                                         <div>
                                             <label className="block text-sm font-semibold text-gray-700 mb-2">
                                                 Email *
                                             </label>
                                             <input
                                                 type="email"
-                                                {...register('email', { 
+                                                {...register('email', {
                                                     required: 'Email is required',
                                                     pattern: {
                                                         value: /^\S+@\S+$/i,
                                                         message: 'Invalid email address'
                                                     }
                                                 })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors"
+                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
+                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
+                                                         transition-all duration-200 text-base touch-manipulation
+                                                         bg-white/80 backdrop-blur-sm"
                                                 placeholder="your@email.com"
                                             />
                                             {errors.email && (
@@ -179,20 +196,26 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                         <input
                                             type="tel"
                                             {...register('phone')}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors"
+                                            className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
+                                                     focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
+                                                     transition-all duration-200 text-base touch-manipulation
+                                                     bg-white/80 backdrop-blur-sm"
                                             placeholder="(602) 123-4567"
                                         />
                                     </div>
 
                                     {/* Project Details */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 gap-4">
                                         <div>
                                             <label className="block text-sm font-semibold text-gray-700 mb-2">
                                                 Project Type *
                                             </label>
                                             <select
                                                 {...register('projectType', { required: 'Project type is required' })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors"
+                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
+                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
+                                                         transition-all duration-200 text-base touch-manipulation
+                                                         bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
                                             >
                                                 <option value="">Select project type</option>
                                                 <option value="kitchen-remodel">Kitchen Remodel</option>
@@ -214,7 +237,10 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                             </label>
                                             <select
                                                 {...register('propertyType', { required: 'Property type is required' })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors"
+                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
+                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
+                                                         transition-all duration-200 text-base touch-manipulation
+                                                         bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
                                             >
                                                 <option value="">Select property type</option>
                                                 <option value="residential">Residential</option>
@@ -226,14 +252,17 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                         </div>
                                     </div>
 
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
                                             <label className="block text-sm font-semibold text-gray-700 mb-2">
                                                 Timeframe *
                                             </label>
                                             <select
                                                 {...register('timeframe', { required: 'Timeframe is required' })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors"
+                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
+                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
+                                                         transition-all duration-200 text-base touch-manipulation
+                                                         bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
                                             >
                                                 <option value="">Select timeframe</option>
                                                 <option value="asap">ASAP</option>
@@ -253,7 +282,10 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                             </label>
                                             <select
                                                 {...register('estimatedBudget', { required: 'Budget range is required' })}
-                                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors"
+                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
+                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
+                                                         transition-all duration-200 text-base touch-manipulation
+                                                         bg-white/80 backdrop-blur-sm appearance-none cursor-pointer"
                                             >
                                                 <option value="">Select budget range</option>
                                                 <option value="under-10k">Under $10,000</option>
@@ -275,7 +307,10 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                         <textarea
                                             {...register('projectDescription', { required: 'Project description is required' })}
                                             rows={4}
-                                            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-colors"
+                                            className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
+                                                     focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
+                                                     transition-all duration-200 text-base touch-manipulation
+                                                     bg-white/80 backdrop-blur-sm resize-none"
                                             placeholder="Describe your project, materials preferences, and any specific requirements..."
                                         />
                                         {errors.projectDescription && (
@@ -283,11 +318,16 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                         )}
                                     </div>
 
-                                    {/* Submit Button */}
+                                    {/* Submit Button - Professional Design */}
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full bg-accent-600 text-white py-4 px-6 rounded-xl font-semibold text-lg hover:bg-accent-700 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-2"
+                                        className="w-full bg-accent-600 hover:bg-accent-700 text-white 
+                                                 py-3 sm:py-4 px-6 rounded-xl font-semibold text-base sm:text-lg 
+                                                 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed 
+                                                 transition-all duration-300 touch-manipulation
+                                                 flex items-center justify-center space-x-2 min-h-[48px]
+                                                 border border-accent-700 hover:border-accent-800"
                                     >
                                         {isSubmitting ? (
                                             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
@@ -299,7 +339,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                         )}
                                     </button>
 
-                                    <p className="text-sm text-gray-500 text-center">
+                                    <p className="text-sm text-gray-500 text-center leading-relaxed">
                                         We'll respond with your personalized quote within 2 hours
                                     </p>
                                 </form>
