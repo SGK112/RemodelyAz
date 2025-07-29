@@ -99,6 +99,7 @@ const Testimonials = () => {
                                         alt={testimonial.name}
                                         fill
                                         className="object-cover"
+                                        sizes="48px"
                                     />
                                 </div>
                                 <div>

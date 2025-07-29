@@ -18,48 +18,48 @@ export const CLOUDINARY_CONFIG = {
 // Centralized image URLs - Using actual uploaded Cloudinary images
 export const SITE_IMAGES = {
   // Company/Brand Images
-  logo: `${CLOUDINARY_CONFIG.baseUrl}/v1753515727/remodely-gallery/usj4rgu0k7skpq9rorje.svg`,
+  logo: '/favicon.svg', // Using local favicon instead of Cloudinary
 
-  // People/Testimonials (Using actual uploaded images)  
+  // People/Testimonials - Updated with high-quality Unsplash images  
   people: {
-    sarah_johnson: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.thumbnail}/v1753662933/remodely-people/remodely-people/michael-chen.webp`, // Using Michael's image as placeholder
-    michael_chen: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.thumbnail}/v1753662933/remodely-people/remodely-people/michael-chen.webp`,
-    emily_rodriguez: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.thumbnail}/v1753662933/remodely-people/remodely-people/emily-rodriguez.webp`,
-    david_wilson: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.thumbnail}/v1753662934/remodely-people/remodely-people/david-wilson.webp`,
-    lisa_thompson: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.thumbnail}/v1753662935/remodely-people/remodely-people/lisa-thompson.webp`,
-    james_anderson: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.thumbnail}/v1753662936/remodely-people/remodely-people/james-anderson.webp`
+    sarah_johnson: 'https://images.unsplash.com/photo-1494790108755-2616b612b607?w=150&h=150&fit=crop&crop=face&q=80',
+    michael_chen: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&q=80',
+    emily_rodriguez: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face&q=80',
+    david_wilson: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face&q=80',
+    lisa_thompson: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face&q=80',
+    james_anderson: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop&crop=face&q=80'
   },
 
-  // Project Categories (Using actual uploaded images)
+  // Project Categories - Updated with high-quality Unsplash images
   projects: {
-    kitchen_modern: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.gallery}/v1753662936/remodely-projects/remodely-projects/kitchen-modern-1.webp`,
-    kitchen_classic: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.gallery}/v1753662936/remodely-projects/remodely-projects/kitchen-modern-1.webp`, // Using modern as fallback
-    bathroom_luxury: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.gallery}/v1753662938/remodely-projects/remodely-projects/bathroom-luxury-1.webp`,
-    bathroom_modern: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.gallery}/v1753662939/remodely-projects/remodely-projects/bathroom-modern-1.webp`,
-    living_room: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.gallery}/v1753662940/remodely-projects/remodely-projects/living-room-1.webp`,
-    bedroom: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.gallery}/v1753662940/remodely-projects/remodely-projects/bedroom-1.webp`,
-    office: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.gallery}/v1753662940/remodely-projects/remodely-projects/living-room-1.webp`, // Using living room as fallback
-    outdoor_patio: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.gallery}/v1753662942/remodely-projects/remodely-projects/outdoor-patio-1.webp`
+    kitchen_modern: 'https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=800&h=600&fit=crop&crop=center&q=80',
+    kitchen_classic: 'https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=800&h=600&fit=crop&crop=center&q=80',
+    bathroom_luxury: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop&crop=center&q=80',
+    bathroom_modern: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=600&fit=crop&crop=center&q=80',
+    living_room: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center&q=80',
+    bedroom: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800&h=600&fit=crop&crop=center&q=80',
+    office: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=center&q=80',
+    outdoor_patio: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=center&q=80'
   },
 
-  // Blog/Content Images (Use project images as placeholders for now)
+  // Blog/Content Images - Updated with high-quality Unsplash images
   blog: {
-    kitchen_trends: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662936/remodely-projects/remodely-projects/kitchen-modern-1.webp`,
-    bathroom_renovation: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662938/remodely-projects/remodely-projects/bathroom-luxury-1.webp`,
-    home_value: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662940/remodely-projects/remodely-projects/living-room-1.webp`,
-    sustainable_materials: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662940/remodely-projects/remodely-projects/bedroom-1.webp`,
-    small_spaces: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662939/remodely-projects/remodely-projects/bathroom-modern-1.webp`,
-    budget_renovation: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662942/remodely-projects/remodely-projects/outdoor-patio-1.webp`,
-    cooling_solutions: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662940/remodely-projects/remodely-projects/living-room-1.webp`,
-    design_trends: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662940/remodely-projects/remodely-projects/office-1.webp`,
-    smart_home: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662936/remodely-projects/remodely-projects/kitchen-modern-1.webp`,
-    monsoon_prep: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.blog}/v1753662942/remodely-projects/remodely-projects/outdoor-patio-1.webp`
+    kitchen_trends: 'https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=800&h=400&fit=crop&crop=center&q=80',
+    bathroom_renovation: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=400&fit=crop&crop=center&q=80',
+    home_value: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=400&fit=crop&crop=center&q=80',
+    sustainable_materials: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&h=400&fit=crop&crop=center&q=80',
+    small_spaces: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=400&fit=crop&crop=center&q=80',
+    budget_renovation: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=400&fit=crop&crop=center&q=80',
+    cooling_solutions: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800&h=400&fit=crop&crop=center&q=80',
+    design_trends: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=400&fit=crop&crop=center&q=80',
+    smart_home: 'https://images.unsplash.com/photo-1558618047-b8de25c93c70?w=800&h=400&fit=crop&crop=center&q=80',
+    monsoon_prep: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=400&fit=crop&crop=center&q=80'
   },
 
-  // Career/Team Images (Use project images as placeholders)
+  // Career/Team Images - Updated with high-quality Unsplash images
   career: {
-    team_meeting: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.card}/v1753662940/remodely-projects/remodely-projects/living-room-1.webp`,
-    construction_site: `${CLOUDINARY_CONFIG.baseUrl}/${CLOUDINARY_CONFIG.transformations.card}/v1753662942/remodely-projects/remodely-projects/outdoor-patio-1.webp`
+    team_meeting: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=300&fit=crop&crop=center&q=80',
+    construction_site: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop&crop=center&q=80'
   }
 }
 

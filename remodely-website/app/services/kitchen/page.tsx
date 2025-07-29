@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, DollarSign, Star, Users, Shield } from 'lucide-react'
+import { PRODUCTION_IMAGES } from '@/lib/production-images'
 
 const KitchenRemodeling = () => {
   const service = {
     title: 'Kitchen Remodeling',
     subtitle: 'Transform Your Culinary Space',
     description: 'Create the kitchen of your dreams with our comprehensive remodeling services. From modern minimalist designs to traditional farmhouse styles, we bring your vision to life with premium materials and expert craftsmanship.',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop&crop=center',
+    image: PRODUCTION_IMAGES.kitchen_modern,
     price: 'Starting at $25,000',
     duration: '2-4 weeks',
     features: [
@@ -35,39 +36,39 @@ const KitchenRemodeling = () => {
   const portfolioImages = [
     {
       id: 1,
-      title: 'Modern Farmhouse Kitchen',
-      image: 'https://images.unsplash.com/photo-1556909114-8ccd5bc71b7d?w=600&h=400&fit=crop&crop=center',
-      description: 'White shaker cabinets with quartz countertops'
+      title: 'Modern Kitchen Remodel',
+      image: PRODUCTION_IMAGES.kitchen_modern,
+      description: 'Contemporary kitchen with quartz countertops and premium finishes'
     },
     {
       id: 2,
-      title: 'Contemporary Kitchen Island',
-      image: 'https://images.unsplash.com/photo-1556909114-3e16c8374c59?w=600&h=400&fit=crop&crop=center',
-      description: 'Large island with waterfall granite countertop'
+      title: 'Classic Kitchen Design',
+      image: PRODUCTION_IMAGES.kitchen_classic,
+      description: 'Timeless kitchen design with custom cabinetry'
     },
     {
       id: 3,
-      title: 'Luxury Kitchen Design',
-      image: 'https://images.unsplash.com/photo-1556909114-b1a8ab4fdc7c?w=600&h=400&fit=crop&crop=center',
-      description: 'Premium finishes with custom lighting'
+      title: 'Small Kitchen Renovation',
+      image: PRODUCTION_IMAGES.kitchen_small,
+      description: 'Warm and inviting small kitchen transformation'
     },
     {
       id: 4,
-      title: 'Traditional Kitchen Renovation',
-      image: 'https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=600&h=400&fit=crop&crop=center',
-      description: 'Classic design with marble backsplash'
+      title: 'Arizona Kitchen Remodeling',
+      image: PRODUCTION_IMAGES.kitchen_classic,
+      description: 'Professional kitchen remodeling services in Arizona'
     },
     {
       id: 5,
-      title: 'Open Concept Kitchen',
-      image: 'https://images.unsplash.com/photo-1556909114-97b05d0b2e87?w=600&h=400&fit=crop&crop=center',
-      description: 'Spacious layout with breakfast bar'
+      title: 'Kitchen Island Design',
+      image: PRODUCTION_IMAGES.kitchen_island,
+      description: 'Custom kitchen island with ample storage and seating'
     },
     {
       id: 6,
-      title: 'Custom Cabinet Installation',
-      image: 'https://images.unsplash.com/photo-1556909114-9c16bf7e8b2b?w=600&h=400&fit=crop&crop=center',
-      description: 'Handcrafted cabinetry with soft-close doors'
+      title: 'Kitchen Backsplash',
+      image: PRODUCTION_IMAGES.kitchen_backsplash,
+      description: 'Beautiful backsplash design with premium materials'
     }
   ]
 
@@ -97,6 +98,7 @@ const KitchenRemodeling = () => {
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-navy-900/70" />
         </div>
@@ -220,6 +222,7 @@ const KitchenRemodeling = () => {
                     alt={project.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">

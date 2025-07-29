@@ -101,6 +101,7 @@ const DesertLandscapingArticle = () => {
                             alt={article.title}
                             fill
                             className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 768px"
                         />
                     </div>
                 </motion.div>

@@ -1,0 +1,180 @@
+[
+    {
+        "id": 1,
+        "title": "10 Kitchen Renovation Trends for 2024",
+        "slug": "kitchen-renovation-trends-2024",
+        "excerpt": "Discover the latest trends in kitchen design that are transforming homes across Arizona.",
+        "content": "Kitchen renovations continue to be one of the most popular home improvement projects...",
+        "author": "RemodelyAz Team",
+        "date": "2024-01-15",
+        "category": "Kitchen",
+        "tags": [
+            "kitchen",
+            "trends",
+            "2024",
+            "renovation"
+        ],
+        "image": "https://plus.unsplash.com/premium_photo-1680382578857-c331ead9ed51?w=800&h=400&fit=crop&crop=center",
+        "readTime": "5 min read"
+    },
+    {
+        "id": 2,
+        "title": "Bathroom Remodeling: Creating Your Personal Spa",
+        "slug": "bathroom-remodeling-personal-spa",
+        "excerpt": "Transform your bathroom into a luxurious spa-like retreat with these expert tips.",
+        "content": "Your bathroom should be more than just a functional space...",
+        "author": "RemodelyAz Team",
+        "date": "2024-01-10",
+        "category": "Bathroom",
+        "tags": [
+            "bathroom",
+            "spa",
+            "luxury",
+            "remodeling"
+        ],
+        "image": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=400&fit=crop&crop=center",
+        "readTime": "4 min read"
+    },
+    {
+        "id": 3,
+        "title": "Maximizing Small Kitchen Spaces",
+        "slug": "maximizing-small-kitchen-spaces",
+        "excerpt": "Learn how to make the most of your compact kitchen with smart design solutions.",
+        "content": "Small kitchens can be just as functional and beautiful as large ones...",
+        "author": "RemodelyAz Team",
+        "date": "2024-01-05",
+        "category": "Kitchen",
+        "tags": [
+            "small kitchen",
+            "space saving",
+            "design"
+        ],
+        "image": "https://images.unsplash.com/photo-1556909048-56e50c5e5462?w=800&h=400&fit=crop&crop=center",
+        "readTime": "6 min read"
+    },
+    {
+        "id": 4,
+        "title": "Choosing the Right Flooring for Your Renovation",
+        "slug": "choosing-right-flooring-renovation",
+        "excerpt": "A comprehensive guide to selecting the perfect flooring for your home renovation project.",
+        "content": "Flooring is one of the most important decisions in any renovation...",
+        "author": "RemodelyAz Team",
+        "date": "2023-12-28",
+        "category": "General",
+        "tags": [
+            "flooring",
+            "renovation",
+            "materials"
+        ],
+        "image": "https://images.unsplash.com/photo-1552321554-2b7cd0e9cfcc?w=800&h=400&fit=crop&crop=center",
+        "readTime": "7 min read"
+    },
+    {
+        "id": 5,
+        "title": "The ROI of Home Renovations in Arizona",
+        "slug": "roi-home-renovations-arizona",
+        "excerpt": "Discover which renovation projects offer the best return on investment in the Arizona market.",
+        "content": "When planning a home renovation, it's important to consider the return on investment...",
+        "author": "RemodelyAz Team",
+        "date": "2023-12-20",
+        "category": "Investment",
+        "tags": [
+            "ROI",
+            "investment",
+            "arizona",
+            "renovation"
+        ],
+        "image": "https://images.unsplash.com/photo-1552321554-7b77e2e4e7b9?w=800&h=400&fit=crop&crop=center",
+        "readTime": "5 min read"
+    },
+    {
+        "id": 6,
+        "title": "Sustainable Renovation Practices",
+        "slug": "sustainable-renovation-practices",
+        "excerpt": "Learn about eco-friendly renovation options that benefit both your home and the environment.",
+        "content": "Sustainable renovation practices are becoming increasingly important...",
+        "author": "RemodelyAz Team",
+        "date": "2023-12-15",
+        "category": "Sustainability",
+        "tags": [
+            "sustainable",
+            "eco-friendly",
+            "green",
+            "renovation"
+        ],
+        "image": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=400&fit=crop&crop=center",
+        "readTime": "4 min read"
+    },
+    {
+        "id": 7,
+        "title": "Planning Your Dream Kitchen Layout",
+        "slug": "planning-dream-kitchen-layout",
+        "excerpt": "Essential tips for designing a kitchen layout that maximizes functionality and style.",
+        "content": "The kitchen layout is the foundation of any successful kitchen renovation...",
+        "author": "RemodelyAz Team",
+        "date": "2023-12-10",
+        "category": "Kitchen",
+        "tags": [
+            "kitchen",
+            "layout",
+            "design",
+            "planning"
+        ],
+        "image": "https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=800&h=400&fit=crop&crop=center",
+        "readTime": "6 min read"
+    },
+    {
+        "id": 8,
+        "title": "Bathroom Storage Solutions That Work",
+        "slug": "bathroom-storage-solutions",
+        "excerpt": "Creative storage ideas to keep your bathroom organized and clutter-free.",
+        "content": "Effective storage is crucial for maintaining a clean, organized bathroom...",
+        "author": "RemodelyAz Team",
+        "date": "2023-12-05",
+        "category": "Bathroom",
+        "tags": [
+            "bathroom",
+            "storage",
+            "organization",
+            "solutions"
+        ],
+        "image": "https://images.unsplash.com/photo-1552321554-8b18e2e5e7b9?w=800&h=400&fit=crop&crop=center",
+        "readTime": "4 min read"
+    },
+    {
+        "id": 9,
+        "title": "Renovation Timeline: What to Expect",
+        "slug": "renovation-timeline-what-to-expect",
+        "excerpt": "A detailed breakdown of typical renovation timelines and what factors can affect them.",
+        "content": "Understanding the renovation timeline helps set proper expectations...",
+        "author": "RemodelyAz Team",
+        "date": "2023-11-28",
+        "category": "Planning",
+        "tags": [
+            "timeline",
+            "planning",
+            "renovation",
+            "expectations"
+        ],
+        "image": "https://images.unsplash.com/photo-1556909114-97b05d0b2e87?w=800&h=400&fit=crop&crop=center",
+        "readTime": "5 min read"
+    },
+    {
+        "id": 10,
+        "title": "Permits and Regulations: Arizona Home Renovations",
+        "slug": "permits-regulations-arizona-renovations",
+        "excerpt": "Navigate the permit process for your Arizona home renovation project with confidence.",
+        "content": "Understanding local permits and regulations is crucial for any renovation project...",
+        "author": "RemodelyAz Team",
+        "date": "2023-11-20",
+        "category": "Legal",
+        "tags": [
+            "permits",
+            "regulations",
+            "arizona",
+            "legal"
+        ],
+        "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=400&fit=crop&crop=center",
+        "readTime": "7 min read"
+    }
+]

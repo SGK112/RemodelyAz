@@ -59,7 +59,7 @@ export interface ServiceData {
 const defaultCompanyData: CompanyData = {
   name: "REMODELY LLC",
   address: "15464 W Aster Dr, Surprise, AZ 85379",
-  phone: "(480) 255-5887",
+  phone: "(602) 818-5834",
   email: "help.remodely@gmail.com",
   license: "",
   description: "Arizona's premier remodeling company specializing in residential and commercial renovations.",

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Facebook, Twitter, Instagram, Linkedin, Phone, Mail, MapPin } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 interface CompanyData {
     name: string
@@ -16,7 +17,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear()
     const [companyData, setCompanyData] = useState<CompanyData>({
         name: 'REMODELY LLC',
-        phone: '(480) 255-5887',
+        phone: '(602) 818-5834',
         email: 'help.remodely@gmail.com',
         address: '15464 W Aster Dr, Surprise, AZ 85379'
     })
@@ -56,7 +57,17 @@ const Footer = () => {
                             <div className="w-10 h-10 bg-accent-600 rounded-lg flex items-center justify-center">
                                 <span className="text-white font-bold text-xl">R</span>
                             </div>
-                            <span className="font-display font-bold text-xl">REMODELY</span>
+                            <div className="flex items-center space-x-1">
+                                <span className="font-display font-bold text-xl">REMODELY</span>
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.8, delay: 1.5 }}
+                                    className="ml-1 px-1.5 py-0.5 bg-accent-600 text-white rounded text-xs font-bold"
+                                >
+                                    AZ
+                                </motion.div>
+                            </div>
                         </Link>
                         <p className="text-gray-300 mb-6 leading-relaxed">
                             Transforming spaces with premium kitchen and bathroom remodeling services.

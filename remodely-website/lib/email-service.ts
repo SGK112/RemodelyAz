@@ -206,7 +206,7 @@ import { SITE_IMAGES } from '@/lib/site-images' max-width: 600px; margin: 0 auto
                         <p style="color: white; margin: 0; font-size: 16px;">
                             <strong>REMODELY LLC</strong><br>
                             15464 W Aster Dr, Surprise, AZ 85379<br>
-                            Phone: <a href="tel:4802555887" style="color: #E97626;">(480) 255-5887</a> | Professional Remodeling Services
+                            Phone: <a href="tel:6028185834" style="color: #E97626;">(602) 818-5834</a> | Professional Remodeling Services
                         </p>
                         <p style="color: rgba(255,255,255,0.8); margin: 15px 0 0 0; font-size: 14px;">
                             This email was sent from the REMODELY LLC website contact form.
@@ -256,7 +256,7 @@ export const sendWelcomeEmail = async (customerData: { name: string; email: stri
                     <div style="background: #fffbeb; padding: 20px; border-radius: 8px; margin: 25px 0; border-left: 4px solid #E97626;">
                         <p style="margin: 0; color: #374151;">
                             <strong>Questions?</strong> Reply to this email or call us at 
-                            <a href="tel:4802555887" style="color: #E97626;">(480) 255-5887</a>
+                            <a href="tel:6028185834" style="color: #E97626;">(602) 818-5834</a>
                         </p>
                     </div>
                 </div>

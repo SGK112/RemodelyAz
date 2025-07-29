@@ -5,6 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, Mail } from 'lucide-react'
+import { motion } from 'framer-motion'
+import SiteSearch from './SiteSearch'
 
 interface CompanyData {
     name: string
@@ -18,12 +20,13 @@ const Navbar = () => {
     const pathname = usePathname()
     const [companyData, setCompanyData] = useState<CompanyData>({
         name: 'REMODELY LLC',
-        phone: '(480) 255-5887',
+        phone: '(602) 818-5834',
         email: 'info@remodely-az.com'
     })
 
     // Define pages with dark backgrounds (only home page has dark hero)
     const isHomePage = pathname === '/'
+    const isBlogPage = pathname.startsWith('/blog')
 
     useEffect(() => {
         const handleScroll = () => {
@@ -53,8 +56,9 @@ const Navbar = () => {
     ]
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'glass-navbar shadow-lg' : 'bg-transparent'
-            }`}>
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${
+            scrolled || isBlogPage ? 'glass-navbar shadow-lg' : 'bg-transparent'
+        }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-14 sm:h-16">
                     {/* Logo */}
@@ -63,10 +67,21 @@ const Navbar = () => {
                             <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent-600 rounded-lg flex items-center justify-center">
                                 <span className="text-white font-bold text-lg sm:text-xl">R</span>
                             </div>
-                            <span className={`font-display font-bold text-lg sm:text-xl transition-colors duration-300 ${scrolled ? 'text-gray-900' : isHomePage ? 'text-white' : 'text-gray-900'
-                                }`}>
-                                REMODELY
-                            </span>
+                            <div className="flex items-center space-x-1">
+                                <span className={`font-display font-bold text-lg sm:text-xl transition-colors duration-300 ${
+                                    scrolled || isBlogPage ? 'text-gray-900' : isHomePage ? 'text-white' : 'text-gray-900'
+                                    }`}>
+                                    REMODELY
+                                </span>
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.8, delay: 1.5 }}
+                                    className="ml-1 px-1.5 py-0.5 rounded text-xs font-bold bg-accent-600 text-white"
+                                >
+                                    AZ
+                                </motion.div>
+                            </div>
                         </Link>
                     </div>
 
@@ -77,7 +92,8 @@ const Navbar = () => {
                                 <Link
                                     key={item.name}
                                     href={item.href}
-                                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${scrolled
+                                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                                        scrolled || isBlogPage
                                             ? 'text-gray-700 hover:text-primary-600'
                                             : isHomePage
                                                 ? 'text-white hover:text-accent-200'
@@ -92,7 +108,9 @@ const Navbar = () => {
 
                     {/* Contact Info & CTA */}
                     <div className="hidden lg:flex items-center space-x-4">
-                        <div className={`flex items-center space-x-2 text-sm transition-colors duration-300 ${scrolled ? 'text-gray-600' : isHomePage ? 'text-white' : 'text-gray-600'
+                        <SiteSearch />
+                        <div className={`flex items-center space-x-2 text-sm transition-colors duration-300 ${
+                            scrolled || isBlogPage ? 'text-gray-600' : isHomePage ? 'text-white' : 'text-gray-600'
                             }`}>
                             <Phone className="w-4 h-4" />
                             <span>{companyData.phone}</span>
@@ -109,7 +127,8 @@ const Navbar = () => {
                     <div className="md:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className={`hover:text-primary-600 p-3 rounded-lg touch-manipulation transition-colors duration-300 ${scrolled ? 'text-gray-700' : isHomePage ? 'text-white' : 'text-gray-700'
+                            className={`hover:text-primary-600 p-3 rounded-lg touch-manipulation transition-colors duration-300 ${
+                                scrolled || isBlogPage ? 'text-gray-700' : isHomePage ? 'text-white' : 'text-gray-700'
                                 }`}
                             aria-label="Toggle mobile menu"
                         >

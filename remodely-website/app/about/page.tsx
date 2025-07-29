@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Award, Users, Clock, CheckCircle, Star, Heart } from 'lucide-react'
+import { PRODUCTION_IMAGES } from '@/lib/production-images'
 
 const AboutPage = () => {
   const stats = [
@@ -15,23 +16,23 @@ const AboutPage = () => {
 
   const team = [
     {
-      name: 'Michael Rodriguez',
+      name: 'Joshua Breese',
       role: 'Founder & CEO',
-      image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_400,h_400,g_face,q_auto,f_webp/people_1',
-      bio: '20+ years in luxury home remodeling with a passion for innovative design and sustainable practices.',
-      certifications: ['Licensed Contractor', 'LEED Certified', 'NKBA Member']
+      image: PRODUCTION_IMAGES.person_1,
+      bio: 'Founder of REMODELY and owner of Surprise Granite for 7+ years. Built a reputation for quality craftsmanship and friendly service that extends to comprehensive remodeling solutions.',
+      certifications: ['Licensed Contractor #327266', 'Surprise Granite Owner', 'Remodeling Specialist']
     },
     {
       name: 'Sarah Chen',
       role: 'Lead Designer',
-      image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_400,h_400,g_face,q_auto,f_webp/people_2',
+      image: PRODUCTION_IMAGES.person_2,
       bio: 'Expert interior designer specializing in modern and contemporary kitchen and bathroom spaces.',
       certifications: ['NCIDQ Certified', 'ASID Member', 'Design Excellence Award']
     },
     {
-      name: 'David Thompson',
+      name: 'Charles Buchanan',
       role: 'Project Manager',
-      image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_400,h_400,g_face,q_auto,f_webp/people_3',
+      image: PRODUCTION_IMAGES.person_3,
       bio: 'Expert project coordinator ensuring every remodel is completed on time, within budget, and to perfection.',
       certifications: ['PMP Certified', 'Construction Manager', '15 Years Experience']
     }
@@ -78,9 +79,10 @@ const AboutPage = () => {
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                For over 15 years, REMODELY has been transforming homes and businesses with
-                exceptional remodeling services. We combine innovative design, premium materials,
-                and master craftsmanship to create spaces that exceed expectations.
+                Born from years of excellence in the countertop industry, REMODELY emerged from the 
+                expertise and reputation of Surprise Granite. Founded by Joshua Breese, who built a 
+                trusted countertop business over 7+ years, REMODELY expands that commitment to 
+                quality into full-service remodeling with the same neighborly, professional approach.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -106,10 +108,11 @@ const AboutPage = () => {
             >
               <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_800,q_auto,f_webp/office_1"
+                  src={PRODUCTION_IMAGES.team_meeting}
                   alt="REMODELY team at work"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-navy-900/30" />
               </div>
@@ -174,19 +177,22 @@ const AboutPage = () => {
               </h2>
               <div className="space-y-6 text-gray-600 leading-relaxed">
                 <p>
-                  REMODELY was founded in 2009 with a simple mission: to transform ordinary spaces
-                  into extraordinary experiences. What started as a small family business has grown
-                  into one of the region's most trusted remodeling companies.
+                  REMODELY's story begins with Surprise Granite, a successful countertop business
+                  built by Joshua Breese over seven years. Through dedication to quality 
+                  craftsmanship and genuine customer care, Surprise Granite earned a reputation
+                  for excellence in the Arizona market.
                 </p>
                 <p>
-                  Our founder, Michael Rodriguez, began his career as a craftsman, learning the
-                  trade from master builders. His passion for quality and attention to detail
-                  became the foundation of our company culture.
+                  Recognizing the need for comprehensive remodeling services that matched the same
+                  high standards, Joshua founded REMODELY to extend beyond countertops into 
+                  complete home transformations. The same neighborly approach and attention to
+                  detail that made Surprise Granite successful now drives every REMODELY project.
                 </p>
                 <p>
-                  Today, we're proud to have completed over 500 successful projects, from intimate
-                  bathroom renovations to large-scale commercial remodels. Every project is a
-                  testament to our commitment to excellence, innovation, and client satisfaction.
+                  Today, REMODELY combines the specialized expertise from years in the countertop
+                  industry with full-service remodeling capabilities. We deliver projects quickly
+                  and professionally while maintaining the friendly, personal touch that Arizona
+                  homeowners trust.
                 </p>
               </div>
             </motion.div>
@@ -200,10 +206,11 @@ const AboutPage = () => {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://res.cloudinary.com/demo/image/upload/c_fill,w_800,h_600,q_auto,f_webp/office_2"
+                  src={PRODUCTION_IMAGES.construction_work}
                   alt="REMODELY workshop"
                   fill
                   className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
             </motion.div>
@@ -282,6 +289,7 @@ const AboutPage = () => {
                     alt={member.name}
                     fill
                     className="object-cover"
+                    sizes="128px"
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>

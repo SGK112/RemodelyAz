@@ -4,13 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, DollarSign, Star, Shield, Droplets } from 'lucide-react'
+import { PRODUCTION_IMAGES } from '@/lib/production-images'
 
 const BathroomRemodeling = () => {
     const service = {
         title: 'Bathroom Remodeling',
         subtitle: 'Create Your Perfect Sanctuary',
         description: 'Transform your bathroom into a luxurious retreat with our expert remodeling services. From spa-like master baths to efficient powder rooms, we create beautiful, functional spaces.',
-        image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1200&h=800&fit=crop&crop=center',
+        image: PRODUCTION_IMAGES.bathroom_luxury,
         price: 'Starting at $15,000',
         duration: '1-3 weeks',
         features: [
@@ -35,39 +36,39 @@ const BathroomRemodeling = () => {
     const portfolioImages = [
         {
             id: 1,
-            title: 'Luxury Master Bathroom',
-            image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&h=400&fit=crop&crop=center',
-            description: 'Spa-inspired design with double vanity and marble finishes'
+            title: 'Arizona Bathroom Remodeling',
+            image: PRODUCTION_IMAGES.bathroom_luxury,
+            description: 'Professional bathroom remodeling services in Arizona'
         },
         {
             id: 2,
-            title: 'Walk-in Tile Shower',
-            image: 'https://images.unsplash.com/photo-1585062723900-73290ac83cfd?w=600&h=400&fit=crop&crop=center',
-            description: 'Custom tile work with rainfall showerhead'
+            title: 'Tub to Shower Conversion',
+            image: PRODUCTION_IMAGES.bathroom_modern,
+            description: 'Modern tub to shower conversion with premium fixtures'
         },
         {
             id: 3,
-            title: 'Modern Bathroom Design',
-            image: 'https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=600&h=400&fit=crop&crop=center',
-            description: 'Contemporary fixtures with vessel sink'
+            title: 'Luxury Bathroom Design',
+            image: PRODUCTION_IMAGES.bathroom_luxury,
+            description: 'Spa-inspired bathroom with premium materials'
         },
         {
             id: 4,
-            title: 'Custom Bathroom Vanity',
-            image: 'https://images.unsplash.com/photo-1585062723878-be19e9ea9295?w=600&h=400&fit=crop&crop=center',
-            description: 'Handcrafted vanity with premium hardware'
+            title: 'Walk-in Shower Installation',
+            image: PRODUCTION_IMAGES.bathroom_shower,
+            description: 'Custom walk-in shower with modern design'
         },
         {
             id: 5,
-            title: 'Heated Floor Installation',
-            image: 'https://images.unsplash.com/photo-1585062723891-4b7f5b2ea7b9?w=600&h=400&fit=crop&crop=center',
-            description: 'Luxurious heated flooring with beautiful tile'
+            title: 'Modern Bathroom Renovation',
+            image: PRODUCTION_IMAGES.bathroom_modern,
+            description: 'Contemporary bathroom with clean lines and functionality'
         },
         {
             id: 6,
-            title: 'Spa Bathroom Retreat',
-            image: 'https://images.unsplash.com/photo-1585062723900-8d1e15b3b6d9?w=600&h=400&fit=crop&crop=center',
-            description: 'Complete transformation into relaxing spa space'
+            title: 'Master Bathroom Remodel',
+            image: PRODUCTION_IMAGES.bathroom_luxury,
+            description: 'Complete master bathroom transformation'
         }
     ]
 
@@ -97,6 +98,7 @@ const BathroomRemodeling = () => {
                         fill
                         className="object-cover"
                         priority
+                        sizes="100vw"
                     />
                     <div className="absolute inset-0 bg-navy-900/70" />
                 </div>
@@ -220,6 +222,7 @@ const BathroomRemodeling = () => {
                                         alt={project.title}
                                         fill
                                         className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                     <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">

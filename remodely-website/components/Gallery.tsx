@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight, ZoomIn, Search } from 'lucide-react'
-import galleryProjects from '@/data/enhanced-gallery-projects.json'
+import galleryProjects from '@/data/gallery-projects.json'
 
 interface GalleryImage {
     id: string
@@ -25,8 +25,17 @@ const Gallery = () => {
     const [imageLoadErrors, setImageLoadErrors] = useState<Set<string>>(new Set())
 
     useEffect(() => {
-        // Load images from local data
-        setImages(galleryProjects as GalleryImage[])
+        // Load images from local data and convert to proper format
+        const convertedImages: GalleryImage[] = galleryProjects.map(project => ({
+            id: project.id.toString(),
+            name: project.title,
+            url: project.url,
+            category: project.category,
+            description: project.description,
+            alt: project.title,
+            featured: false
+        }))
+        setImages(convertedImages)
         setIsLoading(false)
     }, [])
 
@@ -42,12 +51,12 @@ const Gallery = () => {
 
     const filteredImages = images.filter(image => {
         const matchesCategory = currentCategory === 'all' || image.category.toLowerCase() === currentCategory.toLowerCase()
-        const matchesSearch = searchTerm === '' || 
+        const matchesSearch = searchTerm === '' ||
             image.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             image.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
             image.category.toLowerCase().includes(searchTerm.toLowerCase())
         const notErrored = !imageLoadErrors.has(image.id)
-        
+
         return matchesCategory && matchesSearch && notErrored
     })
 
@@ -118,7 +127,7 @@ const Gallery = () => {
                         Our Project <span className="text-accent">Gallery</span>
                     </h2>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Explore our portfolio of stunning kitchen renovations, bathroom remodels, 
+                        Explore our portfolio of stunning kitchen renovations, bathroom remodels,
                         and commercial projects across Arizona
                     </p>
                 </motion.div>
@@ -156,18 +165,16 @@ const Gallery = () => {
                                 setCurrentCategory(category.id)
                                 setSearchTerm('') // Clear search when changing category
                             }}
-                            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                                currentCategory === category.id
-                                    ? 'bg-accent-600 text-white shadow-lg transform scale-105'
-                                    : 'bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-white hover:shadow-md border border-gray-200'
-                            }`}
+                            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${currentCategory === category.id
+                                ? 'bg-accent-600 text-white shadow-lg transform scale-105'
+                                : 'bg-white/80 backdrop-blur-sm text-gray-700 hover:bg-white hover:shadow-md border border-gray-200'
+                                }`}
                         >
                             <span>{category.name}</span>
-                            <span className={`text-xs px-2 py-1 rounded-full ${
-                                currentCategory === category.id
-                                    ? 'bg-white/20'
-                                    : 'bg-gray-100'
-                            }`}>
+                            <span className={`text-xs px-2 py-1 rounded-full ${currentCategory === category.id
+                                ? 'bg-white/20'
+                                : 'bg-gray-100'
+                                }`}>
                                 {category.count}
                             </span>
                         </button>
@@ -221,7 +228,7 @@ const Gallery = () => {
                                     loading="lazy"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                
+
                                 {/* Zoom icon */}
                                 <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <ZoomIn className="w-5 h-5 text-white" />
@@ -243,7 +250,7 @@ const Gallery = () => {
                 </motion.div>
 
                 {filteredImages.length === 0 && (
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         className="text-center py-20"
@@ -254,7 +261,7 @@ const Gallery = () => {
                             </div>
                             <h3 className="text-xl font-semibold text-gray-900 mb-2">No projects found</h3>
                             <p className="text-gray-500 mb-4">
-                                {searchTerm 
+                                {searchTerm
                                     ? `No projects match "${searchTerm}". Try adjusting your search terms.`
                                     : `No projects found in the ${currentCategory} category.`
                                 }
@@ -292,7 +299,7 @@ const Gallery = () => {
                             >
                                 <X className="w-6 h-6" />
                             </button>
-                            
+
                             {/* Image counter */}
                             <div className="absolute -top-16 left-0 text-white bg-black/20 backdrop-blur-sm rounded-full px-4 py-2">
                                 <span className="text-sm font-medium">
@@ -306,8 +313,8 @@ const Gallery = () => {
                                     Use ← → keys or ESC to close
                                 </span>
                             </div>
-                            
-                            <motion.div 
+
+                            <motion.div
                                 key={selectedImage}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -323,7 +330,7 @@ const Gallery = () => {
                                     onClick={(e) => e.stopPropagation()}
                                     onError={() => handleImageError(filteredImages[selectedImage].id)}
                                 />
-                                
+
                                 {/* Navigation arrows */}
                                 {filteredImages.length > 1 && (
                                     <>
@@ -350,9 +357,9 @@ const Gallery = () => {
                                     </>
                                 )}
                             </motion.div>
-                            
+
                             {/* Image details */}
-                            <motion.div 
+                            <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 className="absolute bottom-0 left-0 right-0 text-white p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg"

@@ -4,6 +4,9 @@ import { Inter, Poppins } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import AppInitializer from '@/components/AppInitializer'
+import LeadEngagementWrapper from '@/components/LeadEngagementWrapper'
+import Breadcrumbs from '@/components/Breadcrumbs'
+import PerformanceOptimizer from '@/components/PerformanceOptimizer'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -87,11 +90,14 @@ export default function RootLayout({
             </head>
             <body className={`${inter.className} antialiased`}>
                 <AppInitializer />
+                <PerformanceOptimizer />
                 <Navbar />
+                <Breadcrumbs />
                 <main className="min-h-screen">
                     {children}
                 </main>
                 <Footer />
+                <LeadEngagementWrapper />
             </body>
         </html>
     )

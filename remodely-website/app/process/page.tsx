@@ -416,7 +416,7 @@ const ProcessPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-primary-100">
                 <div className="flex items-center justify-center">
                   <Phone className="w-5 h-5 mr-2" />
-                  <span>(480) 255-5887</span>
+                  <span>(602) 818-5834</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">

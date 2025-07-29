@@ -4,14 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, DollarSign, Star, Users, Shield, Palette, Lightbulb, Ruler } from 'lucide-react'
-import { SITE_IMAGES } from '@/lib/site-images'
+import { PRODUCTION_IMAGES } from '@/lib/production-images'
 
 const DesignServices = () => {
   const service = {
     title: 'Design Services',
     subtitle: 'Bringing Your Vision to Life',
     description: 'Our expert design team creates stunning, functional spaces tailored to your lifestyle and preferences. From initial concept to final implementation, we guide you through every design decision.',
-    image: SITE_IMAGES.projects.living_room,
+    image: PRODUCTION_IMAGES.design_consultation,
     price: 'Starting at $2,500',
     duration: '2-4 weeks',
     features: [
@@ -36,21 +36,39 @@ const DesignServices = () => {
   const portfolioImages = [
     {
       id: 1,
-      title: 'Modern Kitchen Design',
-      image: SITE_IMAGES.blog.sustainable_materials,
-      description: 'Contemporary kitchen with custom cabinetry'
+      title: 'Interior Design Consultation',
+      image: PRODUCTION_IMAGES.design_consultation,
+      description: 'Professional design consultation for modern spaces'
     },
     {
       id: 2,
-      title: 'Luxury Bathroom Design',
-      image: SITE_IMAGES.blog.bathroom_renovation,
-      description: 'Spa-inspired bathroom with premium finishes'
+      title: 'Custom Cabinetry Design',
+      image: PRODUCTION_IMAGES.cabinetry_services,
+      description: 'Bespoke cabinetry solutions for any space'
     },
     {
       id: 3,
-      title: 'Living Room Design',
-      image: SITE_IMAGES.projects.living_room,
-      description: 'Open concept living space design'
+      title: 'ProCraft Cabinetry',
+      image: PRODUCTION_IMAGES.procraft_cabinetry,
+      description: 'Premium cabinetry with exceptional craftsmanship'
+    },
+    {
+      id: 4,
+      title: 'Welcome Project Design',
+      image: PRODUCTION_IMAGES.welcome_hero,
+      description: 'Comprehensive design project from concept to completion'
+    },
+    {
+      id: 5,
+      title: 'Ready Design Project',
+      image: PRODUCTION_IMAGES.ready_project,
+      description: 'Completed design project showcasing attention to detail'
+    },
+    {
+      id: 6,
+      title: 'Permit & Planning',
+      image: PRODUCTION_IMAGES.permit_drawing,
+      description: 'Professional permit drawings and project planning'
     }
   ]
 

@@ -31,11 +31,11 @@ export default function GalleryPage() {
                             >
                                 Get Free Consultation
                             </a>
-                            <a
-                                href="tel:(480)255-5887"
-                                className="inline-flex items-center border-2 border-white text-white hover:bg-white hover:text-accent-600 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
+                            <a 
+                                href="tel:(602) 818-5834"
+                                className="inline-block bg-accent-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-700 transition-colors"
                             >
-                                Call Now: (480) 255-5887
+                                Call Now: (602) 818-5834
                             </a>
                         </div>
                     </motion.div>

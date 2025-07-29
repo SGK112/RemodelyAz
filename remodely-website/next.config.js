@@ -16,6 +16,12 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
+                hostname: 'plus.unsplash.com',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
                 hostname: 'picsum.photos',
                 port: '',
                 pathname: '/**',
@@ -23,6 +29,12 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'via.placeholder.com',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'cdn.prod.website-files.com',
                 port: '',
                 pathname: '/**',
             },

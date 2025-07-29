@@ -30,19 +30,13 @@ export default function BlogPostPage() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch('/api/admin/blogs')
-        if (!response.ok) throw new Error('Failed to fetch')
-        
-        const blogs: BlogPost[] = await response.json()
-        const foundPost = blogs.find(blog => 
-          blog.slug === slug || blog.id.toString() === slug
-        )
-        
-        if (!foundPost) {
+        const response = await fetch(`/api/admin/blogs/${slug}`)
+        if (!response.ok) {
           notFound()
           return
         }
         
+        const foundPost = await response.json()
         setPost(foundPost)
       } catch (error) {
         console.error('Error fetching post:', error)

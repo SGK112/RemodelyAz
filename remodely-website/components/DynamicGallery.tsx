@@ -266,6 +266,7 @@ const DynamicGalleryPage = () => {
                                                 alt={project.title}
                                                 fill
                                                 className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                                             />
                                             <div className="absolute inset-0 bg-navy-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                             <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -364,6 +365,7 @@ const DynamicGalleryPage = () => {
                                         alt={filteredProjects[selectedImage].title}
                                         fill
                                         className="object-cover"
+                                        sizes="(max-width: 1024px) 100vw, 66vw"
                                     />
                                 </div>
                             </div>

@@ -52,7 +52,7 @@ export function ensureDataFiles() {
         tagline: "Transforming Arizona Homes with Excellence",
         description: "Arizona's premier remodeling company specializing in kitchen renovations, bathroom remodels, commercial spaces, and complete home transformations.",
         address: "15464 W Aster Dr, Surprise, AZ 85379",
-        phone: "(480) 255-5887",
+        phone: "(602) 818-5834",
         email: "help.remodely@gmail.com",
         website: "www.remodely.com",
         license: "AzRoc #327266",

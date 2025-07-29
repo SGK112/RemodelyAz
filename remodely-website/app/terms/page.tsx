@@ -135,7 +135,7 @@ const TermsPage = () => {
                         <div className="bg-gray-50 p-4 rounded-lg mt-4">
                             <p className="text-gray-700"><strong>REMODELY LLC</strong></p>
                             <p className="text-gray-700">15464 W Aster Dr, Surprise, AZ 85379</p>
-                            <p className="text-gray-700">Phone: (480) 255-5887</p>
+                            <p className="text-gray-700">Phone: (602) 818-5834</p>
                             <p className="text-gray-700">Email: help.remodely@gmail.com</p>
                         </div>
                     </section>

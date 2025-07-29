@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle, Star, Clock, Shield, Award } from 'lucide-react'
+import { PRODUCTION_IMAGES } from '@/lib/production-images'
 
 const ServicesPage = () => {
     const services = [
@@ -12,7 +13,7 @@ const ServicesPage = () => {
             title: 'Kitchen Remodeling',
             subtitle: 'Transform Your Culinary Space',
             description: 'Create the kitchen of your dreams with our comprehensive remodeling services. From modern minimalist designs to traditional farmhouse styles, we bring your vision to life with premium materials and expert craftsmanship.',
-            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_1000,h_750,q_auto,f_webp/kitchen_modern',
+            image: PRODUCTION_IMAGES.kitchen_modern,
             price: 'Starting at $25,000',
             duration: '2-4 weeks',
             features: [
@@ -38,7 +39,7 @@ const ServicesPage = () => {
             title: 'Bathroom Remodeling',
             subtitle: 'Create Your Personal Spa',
             description: 'Transform your bathroom into a luxurious retreat with our comprehensive remodeling services. Whether it\'s a powder room refresh or a complete master suite renovation, we deliver exceptional results.',
-            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_1000,h_750,q_auto,f_webp/bathroom_luxury',
+            image: PRODUCTION_IMAGES.bathroom_luxury,
             price: 'Starting at $15,000',
             duration: '1-3 weeks',
             features: [
@@ -64,7 +65,7 @@ const ServicesPage = () => {
             title: 'Commercial Remodeling',
             subtitle: 'Professional Spaces That Impress',
             description: 'Enhance your business environment with our commercial remodeling expertise. From office spaces to retail stores and restaurants, we create functional, attractive spaces that boost productivity and impress clients.',
-            image: 'https://res.cloudinary.com/demo/image/upload/c_fill,w_1000,h_750,q_auto,f_webp/office_modern',
+            image: PRODUCTION_IMAGES.commercial_office,
             price: 'Custom Quote',
             duration: '3-8 weeks',
             features: [
@@ -209,6 +210,7 @@ const ServicesPage = () => {
                                         alt={service.title}
                                         fill
                                         className="object-cover hover:scale-105 transition-transform duration-500"
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                     />
                                     <div className="absolute inset-0 bg-navy-900/30" />
                                 </div>

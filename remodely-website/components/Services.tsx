@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Wrench, Home, Building, Palette, Clock, Shield } from 'lucide-react'
+import { PRODUCTION_IMAGES } from '@/lib/production-images'
 
 const Services = () => {
     const services = [
@@ -11,7 +12,7 @@ const Services = () => {
             id: 1,
             title: 'Kitchen Remodeling',
             description: 'Transform your kitchen into a culinary masterpiece with modern designs, premium materials, and smart storage solutions.',
-            image: 'https://images.unsplash.com/photo-1556909114-8ccd5bc71b7d?w=800&h=600&fit=crop&crop=center',
+            image: PRODUCTION_IMAGES.kitchen_modern,
             icon: <Palette className="w-8 h-8" />,
             features: ['Custom Cabinetry', 'Premium Countertops', 'Modern Appliances', 'Smart Lighting'],
             price: 'Starting at $25,000'
@@ -20,7 +21,7 @@ const Services = () => {
             id: 2,
             title: 'Bathroom Remodeling',
             description: 'Create a spa-like sanctuary with luxurious fixtures, elegant tiles, and innovative storage solutions.',
-            image: 'https://images.unsplash.com/photo-1585062723900-73290ac83cfd?w=800&h=600&fit=crop&crop=center',
+            image: PRODUCTION_IMAGES.bathroom_luxury,
             icon: <Home className="w-8 h-8" />,
             features: ['Luxury Fixtures', 'Heated Floors', 'Custom Vanities', 'Walk-in Showers'],
             price: 'Starting at $15,000'
@@ -29,7 +30,7 @@ const Services = () => {
             id: 3,
             title: 'Commercial Remodeling',
             description: 'Enhance your business space with professional designs that boost productivity and impress clients.',
-            image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&crop=center',
+            image: PRODUCTION_IMAGES.commercial_office,
             icon: <Building className="w-8 h-8" />,
             features: ['Office Spaces', 'Retail Design', 'Restaurant Kitchens', 'Medical Facilities'],
             price: 'Custom Quote'
@@ -72,8 +73,8 @@ const Services = () => {
                         </span>
                     </h2>
                     <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-                        From concept to completion, we deliver exceptional results that exceed expectations
-                        and transform your vision into reality.
+                        Built on 7+ years of countertop expertise, REMODELY delivers complete home transformations 
+                        with the same quality craftsmanship and neighborly service Arizona homeowners trust.
                     </p>
                 </motion.div>
 
@@ -95,6 +96,7 @@ const Services = () => {
                                     alt={service.title}
                                     fill
                                     className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 />
                                 <div className="absolute inset-0 bg-navy-900/60" />
                                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full p-3">

@@ -10,7 +10,7 @@ const galleryProjects = JSON.parse(fs.readFileSync(galleryPath, 'utf8'));
 async function checkImageUrl(url) {
     return new Promise((resolve) => {
         const client = url.startsWith('https:') ? https : http;
-        
+
         const req = client.request(url, { method: 'HEAD' }, (res) => {
             resolve({
                 url,
@@ -18,7 +18,7 @@ async function checkImageUrl(url) {
                 valid: res.statusCode === 200
             });
         });
-        
+
         req.on('error', () => {
             resolve({
                 url,
@@ -26,7 +26,7 @@ async function checkImageUrl(url) {
                 valid: false
             });
         });
-        
+
         req.setTimeout(5000, () => {
             req.destroy();
             resolve({
@@ -35,16 +35,16 @@ async function checkImageUrl(url) {
                 valid: false
             });
         });
-        
+
         req.end();
     });
 }
 
 async function checkAllImages() {
     console.log('Checking gallery images...\n');
-    
+
     const results = [];
-    
+
     for (const project of galleryProjects) {
         console.log(`Checking: ${project.name}`);
         const result = await checkImageUrl(project.url);
@@ -53,21 +53,21 @@ async function checkAllImages() {
             name: project.name,
             category: project.category
         });
-        
+
         if (result.valid) {
             console.log(`✅ ${result.status} - ${project.name}`);
         } else {
             console.log(`❌ ${result.status} - ${project.name}`);
         }
     }
-    
+
     console.log('\n--- Summary ---');
     const valid = results.filter(r => r.valid);
     const invalid = results.filter(r => !r.valid);
-    
+
     console.log(`✅ Valid images: ${valid.length}`);
     console.log(`❌ Invalid images: ${invalid.length}`);
-    
+
     if (invalid.length > 0) {
         console.log('\nInvalid images:');
         invalid.forEach(img => {

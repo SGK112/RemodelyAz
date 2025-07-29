@@ -53,7 +53,7 @@ import { SITE_IMAGES } from '@/lib/site-images' max-width: 600px; margin: 0 auto
           <p style="color: #64748b; font-size: 14px;">
             This email was sent from the REMODELY LLC website contact form.<br>
             15464 W Aster Dr, Surprise, AZ 85379<br>
-            Phone: (480) 255-5887 | Professional Remodeling Services
+            Phone: (602) 818-5834 | Professional Remodeling Services
           </p>
         </div>
       </div>

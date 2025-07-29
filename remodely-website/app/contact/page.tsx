@@ -25,7 +25,7 @@ const ContactPage = () => {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [companyData, setCompanyData] = useState<CompanyData>({
-        phone: '(480) 255-5887',
+        phone: '(602) 818-5834',
         email: 'help.remodely@gmail.com',
         address: '15464 W Aster Dr, Surprise, AZ 85379'
     })

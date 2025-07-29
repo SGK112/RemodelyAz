@@ -9,14 +9,14 @@ import { SITE_IMAGES } from '@/lib/site-images'
 const RemodelTimelineArticle = () => {
     const article = {
         id: 5,
-        title: 'Planning Your Remodel: A Complete Timeline Guide',
-        excerpt: 'Step-by-step breakdown of the remodeling process from initial consultation to project completion.',
+        title: 'Desert Landscaping: Creating Beautiful Arizona Outdoor Spaces',
+        excerpt: 'Transform your Arizona backyard with drought-resistant plants and stunning desert design elements that thrive in the Southwest climate.',
         image: SITE_IMAGES.blog.small_spaces,
         author: 'David Thompson',
-        date: 'February 22, 2024',
-        readTime: '9 min read',
-        category: 'Planning',
-        tags: ['Planning', 'Timeline', 'Process']
+        date: 'July 20, 2024',
+        readTime: '7 min read',
+        category: 'Landscaping',
+        tags: ['Desert Landscaping', 'Arizona', 'Outdoor Spaces']
     }
 
     const timelinePhases = [
@@ -105,6 +105,7 @@ const RemodelTimelineArticle = () => {
                             alt={article.title}
                             fill
                             className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 768px"
                         />
                     </div>
                 </motion.div>

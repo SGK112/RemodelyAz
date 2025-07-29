@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Users, Heart, TrendingUp, Award, DollarSign, Clock, Shield, Mail, Phone, MapPin } from 'lucide-react'
+import { ArrowRight, Clock, MapPin, DollarSign, Users, Award, Briefcase, Heart, Shield, TrendingUp, Mail, Phone } from 'lucide-react'
+import { PRODUCTION_IMAGES } from '@/lib/production-images'
 
 const CareersPage = () => {
   const openPositions = [
@@ -202,10 +203,11 @@ const CareersPage = () => {
               className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="https://res.cloudinary.com/drrwdgggx/image/upload/c_fill,w_800,h_600,q_auto,f_webp/remodely-career/team-meeting-1"
+                src={PRODUCTION_IMAGES.team_work}
                 alt="REMODELY LLC Team"
                 fill
                 className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-navy-900/20" />
             </motion.div>
@@ -463,7 +465,7 @@ const CareersPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-primary-100">
                 <div className="flex items-center justify-center">
                   <Phone className="w-5 h-5 mr-2" />
-                  <span>(480) 255-5887</span>
+                  <span>(602) 818-5834</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <Mail className="w-5 h-5 mr-2" />

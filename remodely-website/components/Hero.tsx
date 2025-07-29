@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Star, CheckCircle, Play } from 'lucide-react'
+import { PRODUCTION_IMAGES } from '@/lib/production-images'
 
 const Hero = () => {
     return (
@@ -11,11 +12,12 @@ const Hero = () => {
             {/* Background Hero Image */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1920&h=1080&fit=crop&crop=center"
+                    src={PRODUCTION_IMAGES.hero_kitchen}
                     alt="Luxury Kitchen Remodeling by RemodelyAz - Modern Design with Premium Finishes"
                     fill
                     className="object-cover"
                     priority
+                    sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-navy-900/80 via-navy-900/60 to-navy-900/40" />
             </div>
@@ -32,10 +34,11 @@ const Hero = () => {
                     <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 max-w-xs">
                         <div className="relative h-32 w-full rounded-lg overflow-hidden mb-3">
                             <Image
-                                src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=400&h=300&fit=crop&crop=center"
+                                src={PRODUCTION_IMAGES.bathroom_luxury}
                                 alt="Luxury Bathroom Remodel"
                                 fill
                                 className="object-cover"
+                                sizes="(max-width: 1024px) 0px, 320px"
                             />
                         </div>
                         <h4 className="text-white font-semibold text-sm mb-1">Latest Project</h4>
@@ -97,9 +100,10 @@ const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed"
                     >
-                        Transform your kitchen and bathroom with Arizona's premier remodeling experts.
+                        Transform your home with Arizona's trusted remodeling experts, backed by 7+ years 
+                        of proven quality through Surprise Granite.
                         <span className="block mt-2 text-lg text-accent-300 font-medium">
-                            Professional • Reliable • Quality Since 2019
+                            Quick • Friendly • Neighborly Service
                         </span>
                     </motion.p>
 

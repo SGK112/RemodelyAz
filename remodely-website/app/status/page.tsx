@@ -14,87 +14,17 @@ export default function StatusPage() {
     { name: 'Company API', status: 'loading', message: 'Checking...' },
     { name: 'Blog API', status: 'loading', message: 'Checking...' },
     { name: 'Images API', status: 'loading', message: 'Checking...' },
-    { name: 'Data Files', status: 'loading', message: 'Checking...' },
-    { name: 'Admin Panel', status: 'loading', message: 'Checking...' }
+    { name: 'Data Files', status: 'loading', message: 'Checking...' }
   ])
 
   const runHealthChecks = async () => {
     const newChecks: StatusCheck[] = []
 
-    // Check Company API
-    try {
-      const response = await fetch('/api/admin/company')
-      if (response.ok) {
-        const data = await response.json()
-        newChecks.push({
-          name: 'Company API',
-          status: 'success',
-          message: `Company: ${data.name}`
-        })
-      } else {
-        newChecks.push({
-          name: 'Company API',
-          status: 'error',
-          message: `HTTP ${response.status}`
-        })
-      }
-    } catch (error) {
-      newChecks.push({
-        name: 'Company API',
-        status: 'error',
-        message: 'Connection failed'
-      })
-    }
+    // ...existing code...
 
-    // Check Blog API
-    try {
-      const response = await fetch('/api/admin/blogs')
-      if (response.ok) {
-        const data = await response.json()
-        newChecks.push({
-          name: 'Blog API',
-          status: 'success',
-          message: `${data.length} blog posts found`
-        })
-      } else {
-        newChecks.push({
-          name: 'Blog API',
-          status: 'error',
-          message: `HTTP ${response.status}`
-        })
-      }
-    } catch (error) {
-      newChecks.push({
-        name: 'Blog API',
-        status: 'error',
-        message: 'Connection failed'
-      })
-    }
+    // ...existing code...
 
-    // Check Images API
-    try {
-      const response = await fetch('/api/admin/images')
-      if (response.ok) {
-        const data = await response.json()
-        newChecks.push({
-          name: 'Images API',
-          status: 'success',
-          message: `${data.length} images found`
-        })
-      } else {
-        newChecks.push({
-          name: 'Images API',
-          status: 'error',
-          message: `HTTP ${response.status}`
-        })
-      }
-    } catch (error) {
-      newChecks.push({
-        name: 'Images API',
-        status: 'error',
-        message: 'Connection failed'
-      })
-    }
+    // ...existing code...
 
     // Check Data Files (implied by successful API calls)
     const successfulAPIs = newChecks.filter(check => check.status === 'success').length
@@ -112,12 +42,7 @@ export default function StatusPage() {
       })
     }
 
-    // Check Admin Panel
-    newChecks.push({
-      name: 'Admin Panel',
-      status: 'success',
-      message: 'Interface loaded successfully'
-    })
+    // ...existing code...
 
     setChecks(newChecks)
   }
@@ -202,12 +127,7 @@ export default function StatusPage() {
         <div className="mt-12 bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Quick Actions</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <a
-              href="/admin"
-              className="bg-blue-600 text-white p-4 rounded-lg text-center hover:bg-blue-700 transition-colors"
-            >
-              Open Admin Panel
-            </a>
+            {/* ...existing code... */}
             <a
               href="/"
               className="bg-green-600 text-white p-4 rounded-lg text-center hover:bg-green-700 transition-colors"

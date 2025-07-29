@@ -4,14 +4,14 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle, Clock, DollarSign, Star, Users, Shield, Building, Briefcase, Store } from 'lucide-react'
-import { SITE_IMAGES } from '@/lib/site-images'
+import { PRODUCTION_IMAGES } from '@/lib/production-images'
 
 const CommercialRemodeling = () => {
   const service = {
     title: 'Commercial Remodeling',
     subtitle: 'Professional Spaces That Impress',
     description: 'Enhance your business environment with our commercial remodeling expertise. From office spaces to retail stores and restaurants, we create functional, attractive spaces that boost productivity and impress clients.',
-    image: SITE_IMAGES.projects.office,
+    image: PRODUCTION_IMAGES.commercial_office,
     price: 'Custom Quote',
     duration: '3-8 weeks',
     features: [
@@ -37,20 +37,38 @@ const CommercialRemodeling = () => {
     {
       id: 1,
       title: 'Modern Office Space',
-      image: SITE_IMAGES.projects.office,
+      image: PRODUCTION_IMAGES.commercial_office,
       description: 'Open concept office with collaborative spaces'
     },
     {
       id: 2,
-      title: 'Retail Store Design',
-      image: SITE_IMAGES.blog.home_value,
-      description: 'Modern retail space with premium fixtures'
+      title: 'Reception Area Design',
+      image: PRODUCTION_IMAGES.commercial_reception,
+      description: 'Professional reception area with premium materials'
     },
     {
       id: 3,
-      title: 'Restaurant Interior',
-      image: SITE_IMAGES.projects.bedroom,
-      description: 'Contemporary dining space with custom lighting'
+      title: 'Private Loft Office',
+      image: PRODUCTION_IMAGES.commercial_loft,
+      description: 'Modern loft space conversion for business use'
+    },
+    {
+      id: 4,
+      title: 'Commercial Space Design',
+      image: PRODUCTION_IMAGES.commercial_space,
+      description: 'Contemporary commercial space with custom solutions'
+    },
+    {
+      id: 5,
+      title: 'Professional Office Environment',
+      image: PRODUCTION_IMAGES.commercial_office,
+      description: 'Functional workspace design for maximum productivity'
+    },
+    {
+      id: 6,
+      title: 'Business Reception',
+      image: PRODUCTION_IMAGES.commercial_reception,
+      description: 'Welcoming reception area with premium finishes'
     }
   ]
 
@@ -152,6 +170,7 @@ const CommercialRemodeling = () => {
                 alt={service.title}
                 fill
                 className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </motion.div>
           </div>
