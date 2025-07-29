@@ -19,7 +19,7 @@ const searchData: SearchResult[] = [
     { title: 'Countertops', url: '/services', type: 'service', description: 'Premium countertop installation and replacement' },
     { title: 'Flooring', url: '/services', type: 'service', description: 'Professional flooring installation and refinishing' },
     { title: 'Commercial Remodeling', url: '/services', type: 'service', description: 'Business and commercial space renovation' },
-    
+
     // Pages
     { title: 'Gallery', url: '/gallery', type: 'page', description: 'View our completed projects and portfolio' },
     { title: 'About Us', url: '/about', type: 'page', description: 'Learn about REMODELY and our team' },
@@ -27,7 +27,7 @@ const searchData: SearchResult[] = [
     { title: 'Process', url: '/process', type: 'page', description: 'Our step-by-step remodeling process' },
     { title: 'Careers', url: '/careers', type: 'page', description: 'Join our team of professionals' },
     { title: 'Testimonials', url: '/testimonials', type: 'page', description: 'What our customers say about us' },
-    
+
     // Content
     { title: 'Free Quote', url: '/contact', type: 'content', description: 'Get a personalized estimate for your project' },
     { title: 'Surprise Granite', url: '/about', type: 'content', description: 'Our parent company with 7+ years experience' },
@@ -81,7 +81,7 @@ const SiteSearch = () => {
                             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
                             onClick={() => setIsOpen(false)}
                         />
-                        
+
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: -20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -133,13 +133,12 @@ const SiteSearch = () => {
                                                     <h4 className="font-semibold text-gray-900">
                                                         {result.title}
                                                     </h4>
-                                                    <span className={`px-2 py-1 text-xs rounded-full ${
-                                                        result.type === 'service' 
+                                                    <span className={`px-2 py-1 text-xs rounded-full ${result.type === 'service'
                                                             ? 'bg-blue-100 text-blue-700'
                                                             : result.type === 'page'
-                                                            ? 'bg-green-100 text-green-700'
-                                                            : 'bg-amber-100 text-amber-700'
-                                                    }`}>
+                                                                ? 'bg-green-100 text-green-700'
+                                                                : 'bg-amber-100 text-amber-700'
+                                                        }`}>
                                                         {result.type}
                                                     </span>
                                                 </div>

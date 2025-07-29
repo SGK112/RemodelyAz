@@ -85,7 +85,7 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
                             onClick={() => setShowExitIntent(false)}
                         />
-                        
+
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -109,9 +109,9 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                             <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">
                                 Wait! Don't Leave Yet
                             </h3>
-                            
+
                             <p className="text-gray-600 mb-6">
-                                You've spent {formatTime(timeOnSite)} exploring our services. 
+                                You've spent {formatTime(timeOnSite)} exploring our services.
                                 Get a free quote before you go - it only takes 2 minutes!
                             </p>
 
@@ -122,7 +122,7 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                                 >
                                     Get Quick Quote (2 min)
                                 </button>
-                                
+
                                 <div className="flex gap-2">
                                     <a
                                         href="tel:(602) 818-5834"
@@ -131,7 +131,7 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                                         <Phone className="w-4 h-4" />
                                         <span>Call Now</span>
                                     </a>
-                                    
+
                                     <button
                                         onClick={() => setShowExitIntent(false)}
                                         className="flex-1 bg-gray-200 text-gray-700 py-2 px-4 rounded-full font-medium hover:bg-gray-300 transition-colors"
@@ -172,7 +172,7 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                             <div className="bg-accent-100 rounded-full p-2 flex-shrink-0">
                                 <MessageCircle className="w-5 h-5 text-accent-600" />
                             </div>
-                            
+
                             <div className="flex-1">
                                 <h4 className="font-semibold text-gray-900 mb-2">
                                     Interested in Remodeling?
@@ -180,7 +180,7 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                                 <p className="text-sm text-gray-600 mb-3">
                                     You've been browsing for {formatTime(timeOnSite)}. Ready for a quick quote?
                                 </p>
-                                
+
                                 <div className="flex gap-2">
                                     <button
                                         onClick={handleTimePromptQuoteClick}
@@ -188,7 +188,7 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                                     >
                                         Get Quote
                                     </button>
-                                    
+
                                     <button
                                         onClick={() => setShowTimePrompt(false)}
                                         className="bg-gray-100 text-gray-700 text-sm py-2 px-3 rounded-lg font-medium hover:bg-gray-200 transition-colors"

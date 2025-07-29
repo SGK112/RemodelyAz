@@ -1,0 +1,241 @@
+[
+    {
+        "id": 1,
+        "title": "Modern Kitchen Renovation",
+        "url": "https://plus.unsplash.com/premium_photo-1680382578857-c331ead9ed51?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "modern",
+            "kitchen",
+            "renovation"
+        ],
+        "description": "Contemporary kitchen with premium finishes"
+    },
+    {
+        "id": 2,
+        "title": "Luxury Bathroom Remodel",
+        "url": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80",
+        "category": "bathroom",
+        "tags": [
+            "luxury",
+            "bathroom",
+            "remodel"
+        ],
+        "description": "Spa-inspired bathroom with elegant fixtures"
+    },
+    {
+        "id": 3,
+        "title": "Open Concept Kitchen",
+        "url": "https://images.unsplash.com/photo-1556909048-56e50c5e5462?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "open",
+            "concept",
+            "kitchen"
+        ],
+        "description": "Spacious open kitchen design"
+    },
+    {
+        "id": 4,
+        "title": "Custom Kitchen Island",
+        "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "custom",
+            "island",
+            "kitchen"
+        ],
+        "description": "Beautiful custom kitchen island"
+    },
+    {
+        "id": 5,
+        "title": "Master Bathroom Suite",
+        "url": "https://images.unsplash.com/photo-1552321554-26ceef880b6c?w=800&q=80",
+        "category": "bathroom",
+        "tags": [
+            "master",
+            "bathroom",
+            "suite"
+        ],
+        "description": "Luxurious master bathroom renovation"
+    },
+    {
+        "id": 6,
+        "title": "Traditional Kitchen Remodel",
+        "url": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "traditional",
+            "kitchen",
+            "remodel"
+        ],
+        "description": "Classic traditional kitchen design"
+    },
+    {
+        "id": 7,
+        "title": "Modern Bathroom Design",
+        "url": "https://images.unsplash.com/photo-1552321554-2b7cd0e9cfcc?w=800&q=80",
+        "category": "bathroom",
+        "tags": [
+            "modern",
+            "bathroom",
+            "design"
+        ],
+        "description": "Contemporary bathroom with clean lines"
+    },
+    {
+        "id": 8,
+        "title": "Gourmet Kitchen Renovation",
+        "url": "https://images.unsplash.com/photo-1556909048-6e50c5e5462?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "gourmet",
+            "kitchen",
+            "renovation"
+        ],
+        "description": "Professional-grade kitchen renovation"
+    },
+    {
+        "id": 9,
+        "title": "Spa Bathroom Retreat",
+        "url": "https://images.unsplash.com/photo-1552321554-7b77e2e4e7b9?w=800&q=80",
+        "category": "bathroom",
+        "tags": [
+            "spa",
+            "bathroom",
+            "retreat"
+        ],
+        "description": "Relaxing spa-inspired bathroom"
+    },
+    {
+        "id": 10,
+        "title": "Commercial Kitchen Remodel",
+        "url": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80",
+        "category": "commercial",
+        "tags": [
+            "commercial",
+            "kitchen",
+            "remodel"
+        ],
+        "description": "Professional commercial kitchen renovation"
+    },
+    {
+        "id": 11,
+        "title": "Farmhouse Kitchen Design",
+        "url": "https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "farmhouse",
+            "kitchen",
+            "design"
+        ],
+        "description": "Rustic farmhouse kitchen renovation"
+    },
+    {
+        "id": 12,
+        "title": "Contemporary Bathroom",
+        "url": "https://images.unsplash.com/photo-1552321554-8b18e2e5e7b9?w=800&q=80",
+        "category": "bathroom",
+        "tags": [
+            "contemporary",
+            "bathroom"
+        ],
+        "description": "Sleek contemporary bathroom design"
+    },
+    {
+        "id": 13,
+        "title": "Kitchen Island Addition",
+        "url": "https://images.unsplash.com/photo-1556909114-97b05d0b2e87?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "island",
+            "addition",
+            "kitchen"
+        ],
+        "description": "Custom kitchen island installation"
+    },
+    {
+        "id": 14,
+        "title": "Powder Room Renovation",
+        "url": "https://images.unsplash.com/photo-1584622781474-083f83fe00ee?w=800&q=80",
+        "category": "bathroom",
+        "tags": [
+            "powder",
+            "room",
+            "renovation"
+        ],
+        "description": "Elegant powder room transformation"
+    },
+    {
+        "id": 15,
+        "title": "White Kitchen Renovation",
+        "url": "https://plus.unsplash.com/premium_photo-1680382578857-c331ead9ed51?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "white",
+            "kitchen",
+            "renovation"
+        ],
+        "description": "Clean white kitchen renovation"
+    },
+    {
+        "id": 16,
+        "title": "Luxury Master Bath",
+        "url": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80",
+        "category": "bathroom",
+        "tags": [
+            "luxury",
+            "master",
+            "bath"
+        ],
+        "description": "Elegant master bathroom suite"
+    },
+    {
+        "id": 17,
+        "title": "Modern Kitchen Cabinets",
+        "url": "https://images.unsplash.com/photo-1556909048-56e50c5e5462?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "modern",
+            "cabinets",
+            "kitchen"
+        ],
+        "description": "Contemporary kitchen cabinet installation"
+    },
+    {
+        "id": 18,
+        "title": "Bathroom Tile Work",
+        "url": "https://images.unsplash.com/photo-1552321554-26ceef880b6c?w=800&q=80",
+        "category": "bathroom",
+        "tags": [
+            "tile",
+            "work",
+            "bathroom"
+        ],
+        "description": "Custom bathroom tile installation"
+    },
+    {
+        "id": 19,
+        "title": "Kitchen Backsplash Design",
+        "url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80",
+        "category": "kitchen",
+        "tags": [
+            "backsplash",
+            "design",
+            "kitchen"
+        ],
+        "description": "Beautiful kitchen backsplash renovation"
+    },
+    {
+        "id": 20,
+        "title": "Walk-in Shower Installation",
+        "url": "https://images.unsplash.com/photo-1552321554-2b7cd0e9cfcc?w=800&q=80",
+        "category": "bathroom",
+        "tags": [
+            "walk-in",
+            "shower",
+            "installation"
+        ],
+        "description": "Custom walk-in shower renovation"
+    }
+]

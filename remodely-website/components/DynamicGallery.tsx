@@ -27,7 +27,7 @@ const DynamicGalleryPage = () => {
         try {
             // Get projects from the image manager
             const allProjects = imageManager.getGalleryProjects()
-            
+
             // If no migrated projects, create some from available images
             if (allProjects.length === 0) {
                 const images = imageManager.getAllImages()
@@ -36,7 +36,7 @@ const DynamicGalleryPage = () => {
             } else {
                 setProjects(allProjects)
             }
-            
+
             // Update category counts
             const projectsByCategory = allProjects.reduce((acc, project) => {
                 acc[project.category] = (acc[project.category] || 0) + 1
@@ -47,7 +47,7 @@ const DynamicGalleryPage = () => {
                 ...cat,
                 count: cat.id === 'all' ? allProjects.length : (projectsByCategory[cat.id] || 0)
             })))
-            
+
         } catch (error) {
             console.error('Error loading gallery data:', error)
             // Fallback to static data
