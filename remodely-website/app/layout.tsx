@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import AppInitializer from '@/components/AppInitializer'
 import LeadEngagementWrapper from '@/components/LeadEngagementWrapper'
-import Breadcrumbs from '@/components/Breadcrumbs'
 import PerformanceOptimizer from '@/components/PerformanceOptimizer'
 
 const inter = Inter({
@@ -92,8 +91,7 @@ export default function RootLayout({
                 <AppInitializer />
                 <PerformanceOptimizer />
                 <Navbar />
-                <Breadcrumbs />
-                <main className="min-h-screen">
+                <main className="min-h-screen pt-14 sm:pt-16">
                     {children}
                 </main>
                 <Footer />

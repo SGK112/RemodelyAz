@@ -103,17 +103,18 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                  w-full max-w-lg sm:max-w-2xl max-h-[90vh] sm:max-h-[95vh] overflow-y-auto
                                  mx-auto my-auto"
                     >
-                        {/* Close Button - Mobile Optimized */}
+                        {/* Close Button - Enhanced Mobile Design */}
                         <button
                             onClick={handleClose}
-                            className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 
-                                     p-2 sm:p-3 rounded-full bg-white/90 hover:bg-white
-                                     border border-gray-200 hover:border-gray-300
+                            className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 
+                                     p-3 sm:p-3 rounded-full bg-gray-900/10 hover:bg-gray-900/20
+                                     backdrop-blur-sm border border-white/40 hover:border-white/60
                                      transition-all duration-200 touch-manipulation
-                                     flex items-center justify-center"
+                                     flex items-center justify-center shadow-lg
+                                     w-10 h-10 sm:w-12 sm:h-12"
                             aria-label="Close modal"
                         >
-                            <X className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+                            <X className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 font-bold stroke-2" />
                         </button>
 
                         {isSubmitted ? (
