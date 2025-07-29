@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useForm } from 'react-hook-form'
 import { X, Send, CheckCircle, Calculator, DollarSign } from 'lucide-react'
 import { leadAnalytics } from '@/lib/lead-analytics'
+import { popupPersistence } from '@/lib/popup-persistence'
 
 interface QuickQuoteData {
     name: string
@@ -37,9 +38,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
     // Handle close with persistence
     const handleClose = () => {
         if (!isSubmitting) {
-            // Set localStorage to remember modal was dismissed for 24 hours
-            const dismissUntil = Date.now() + (24 * 60 * 60 * 1000) // 24 hours
-            localStorage.setItem('quickQuoteModalDismissed', dismissUntil.toString())
+            popupPersistence.dismissPopup('quickQuoteModal', 24) // Use new persistence system
             setIsSubmitted(false)
             onClose()
         }

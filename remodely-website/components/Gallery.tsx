@@ -103,7 +103,7 @@ const Gallery = () => {
 
     if (isLoading) {
         return (
-            <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+            <section className="py-20 pt-24 bg-gradient-to-br from-slate-50 to-blue-50">
                 <div className="container mx-auto px-4">
                     <div className="text-center">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
@@ -115,7 +115,7 @@ const Gallery = () => {
     }
 
     return (
-        <section className="py-24 sm:py-32 bg-gradient-to-br from-gray-50 to-accent-50">
+        <section className="py-24 sm:py-32 pt-24 bg-gradient-to-br from-gray-50 to-accent-50">
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

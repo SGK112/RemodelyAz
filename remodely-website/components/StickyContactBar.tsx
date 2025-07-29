@@ -3,16 +3,23 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Phone, MessageSquare, Calculator, X } from 'lucide-react'
+import { popupPersistence } from '@/lib/popup-persistence'
 
 interface StickyContactBarProps {
     onQuickQuote?: () => void
 }
 
 const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
-    const [isVisible, setIsVisible] = useState(true)
+    const [isVisible, setIsVisible] = useState(false)
     const [isMinimized, setIsMinimized] = useState(false)
 
     useEffect(() => {
+        // Check if contact bar was dismissed
+        if (popupPersistence.isDismissed('stickyContactBar')) {
+            setIsVisible(false)
+            return
+        }
+
         // Show bar after 10 seconds
         const timer = setTimeout(() => {
             setIsVisible(true)
@@ -20,6 +27,11 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
 
         return () => clearTimeout(timer)
     }, [])
+
+    const handleDismiss = () => {
+        popupPersistence.dismissPopup('stickyContactBar', 24) // Dismiss for 24 hours
+        setIsVisible(false)
+    }
 
     if (!isVisible) return null
 
@@ -38,16 +50,27 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                                 <p className="text-sm font-semibold text-gray-900">Ready to Start Your Project?</p>
                                 <p className="text-xs text-gray-600">Get instant quote or call now</p>
                             </div>
-                            <button
-                                onClick={() => setIsMinimized(true)}
-                                className="px-3 py-1.5 rounded-lg bg-gray-600 hover:bg-gray-700 
-                                         text-white font-medium text-sm transition-all duration-200 
-                                         touch-manipulation shadow-md hover:shadow-lg
-                                         border border-gray-700 hover:border-gray-800"
-                                aria-label="Minimize contact bar"
-                            >
-                                Close
-                            </button>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => setIsMinimized(true)}
+                                    className="px-2 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 
+                                             text-gray-700 font-medium text-sm transition-all duration-200 
+                                             touch-manipulation shadow-sm hover:shadow-md"
+                                    aria-label="Minimize contact bar"
+                                >
+                                    _
+                                </button>
+                                <button
+                                    onClick={handleDismiss}
+                                    className="px-3 py-1.5 rounded-lg bg-gray-600 hover:bg-gray-700 
+                                             text-white font-medium text-sm transition-all duration-200 
+                                             touch-manipulation shadow-md hover:shadow-lg
+                                             border border-gray-700 hover:border-gray-800"
+                                    aria-label="Dismiss contact bar"
+                                >
+                                    ✕
+                                </button>
+                            </div>
                         </div>
                         
                         <div className="flex gap-2">
@@ -128,6 +151,16 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                                          border border-gray-300 hover:border-gray-400"
                             >
                                 Expand
+                            </button>
+                            
+                            <button
+                                onClick={handleDismiss}
+                                className="bg-gray-600 hover:bg-gray-700 text-white p-2 rounded-full 
+                                         transition-all duration-200 touch-manipulation text-xs
+                                         border border-gray-700 hover:border-gray-800"
+                                aria-label="Dismiss contact bar"
+                            >
+                                ✕
                             </button>
                         </div>
                     </div>

@@ -112,7 +112,7 @@ const ServicesPage = () => {
     ]
 
     return (
-        <div className="min-h-screen bg-gray-50 pt-16">
+        <div className="min-h-screen bg-gray-50">
             {/* Hero Section */}
             <section className="relative py-24 sm:py-32 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-accent-50 to-primary-50" />

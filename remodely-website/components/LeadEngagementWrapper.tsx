@@ -1,17 +1,25 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import LeadEngagementTracker from './LeadEngagementTracker'
 import QuickQuoteModal from './QuickQuoteModal'
 import StickyContactBar from './StickyContactBar'
+import { popupPersistence } from '@/lib/popup-persistence'
 
 const LeadEngagementWrapper = () => {
     const [showQuickQuote, setShowQuickQuote] = useState(false)
 
+    const handleQuickQuoteOpen = () => {
+        // Only show if not recently dismissed
+        if (!popupPersistence.isDismissed('quickQuoteModal')) {
+            setShowQuickQuote(true)
+        }
+    }
+
     return (
         <>
-            <LeadEngagementTracker onQuickQuote={() => setShowQuickQuote(true)} />
-            <StickyContactBar onQuickQuote={() => setShowQuickQuote(true)} />
+            <LeadEngagementTracker onQuickQuote={handleQuickQuoteOpen} />
+            <StickyContactBar onQuickQuote={handleQuickQuoteOpen} />
             <QuickQuoteModal 
                 isOpen={showQuickQuote} 
                 onClose={() => setShowQuickQuote(false)} 
