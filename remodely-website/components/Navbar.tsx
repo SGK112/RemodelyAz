@@ -41,7 +41,7 @@ const Navbar = () => {
         // Load company data from local data file instead of admin API
         setCompanyData({
             name: 'REMODELY LLC',
-            phone: '(623) 555-0123',
+            phone: '(602) 818-5834',
             email: 'info@remodely-az.com'
         })
     }, [])

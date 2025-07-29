@@ -32,7 +32,7 @@ export const SITE_IMAGES = {
 
   // Project Categories - Updated with high-quality Unsplash images
   projects: {
-    kitchen_modern: 'https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=800&h=600&fit=crop&crop=center&q=80',
+    kitchen_modern: 'https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=800&h=600&fit=crop&crop=center&q=80',
     kitchen_classic: 'https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=800&h=600&fit=crop&crop=center&q=80',
     bathroom_luxury: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop&crop=center&q=80',
     bathroom_modern: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=600&fit=crop&crop=center&q=80',
@@ -44,7 +44,7 @@ export const SITE_IMAGES = {
 
   // Blog/Content Images - Updated with high-quality Unsplash images
   blog: {
-    kitchen_trends: 'https://images.unsplash.com/photo-1556909114-8213a5b8eacd?w=800&h=400&fit=crop&crop=center&q=80',
+    kitchen_trends: 'https://images.unsplash.com/photo-1565182999561-18d7dc61c393?w=800&h=400&fit=crop&crop=center&q=80',
     bathroom_renovation: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=400&fit=crop&crop=center&q=80',
     home_value: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=400&fit=crop&crop=center&q=80',
     sustainable_materials: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&h=400&fit=crop&crop=center&q=80',
