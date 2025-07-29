@@ -115,7 +115,7 @@ const Gallery = () => {
     }
 
     return (
-        <section className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+        <section className="py-24 sm:py-32 bg-gradient-to-br from-gray-50 to-accent-50">
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -123,9 +123,9 @@ const Gallery = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-display font-bold text-navy mb-6">
-                        Our Project <span className="text-accent">Gallery</span>
-                    </h2>
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 mb-6">
+                        Our Project <span className="text-accent-600">Gallery</span>
+                    </h1>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                         Explore our portfolio of stunning kitchen renovations, bathroom remodels,
                         and commercial projects across Arizona

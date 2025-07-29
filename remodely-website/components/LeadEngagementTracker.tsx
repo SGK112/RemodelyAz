@@ -102,8 +102,8 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                                 Close
                             </button>
 
-                            <div className="bg-red-100 rounded-full p-4 w-fit mx-auto mb-6">
-                                <Clock className="w-8 h-8 text-red-600" />
+                            <div className="bg-accent-100 rounded-full p-4 w-fit mx-auto mb-6">
+                                <Clock className="w-8 h-8 text-accent-600" />
                             </div>
 
                             <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">
@@ -126,7 +126,7 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                                 <div className="flex gap-2">
                                     <a
                                         href="tel:(602) 818-5834"
-                                        className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-full font-medium hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
+                                        className="flex-1 bg-primary-600 text-white py-2 px-4 rounded-full font-medium hover:bg-primary-700 transition-colors flex items-center justify-center space-x-2"
                                     >
                                         <Phone className="w-4 h-4" />
                                         <span>Call Now</span>
@@ -156,7 +156,7 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                         initial={{ opacity: 0, x: 300 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 300 }}
-                        className="fixed bottom-6 right-6 z-40 bg-white rounded-xl shadow-2xl p-6 max-w-sm border border-gray-200"
+                        className="fixed bottom-20 right-6 z-40 bg-white rounded-xl shadow-2xl p-6 max-w-sm border border-gray-200"
                     >
                         <button
                             onClick={() => setShowTimePrompt(false)}
@@ -169,8 +169,8 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                         </button>
 
                         <div className="flex items-start space-x-3">
-                            <div className="bg-blue-100 rounded-full p-2 flex-shrink-0">
-                                <MessageCircle className="w-5 h-5 text-blue-600" />
+                            <div className="bg-accent-100 rounded-full p-2 flex-shrink-0">
+                                <MessageCircle className="w-5 h-5 text-accent-600" />
                             </div>
                             
                             <div className="flex-1">

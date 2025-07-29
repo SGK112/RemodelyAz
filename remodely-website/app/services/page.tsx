@@ -112,10 +112,10 @@ const ServicesPage = () => {
     ]
 
     return (
-        <div className="min-h-screen bg-gray-50 pt-20">
+        <div className="min-h-screen bg-gray-50 pt-16">
             {/* Hero Section */}
-            <section className="relative py-20 overflow-hidden">
-                <div className="absolute inset-0 bg-accent-100/30" />
+            <section className="relative py-24 sm:py-32 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent-50 to-primary-50" />
                 <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
