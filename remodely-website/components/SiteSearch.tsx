@@ -103,9 +103,11 @@ const SiteSearch = () => {
                                     />
                                     <button
                                         onClick={() => setIsOpen(false)}
-                                        className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                                        className="px-3 py-1 rounded bg-gray-600 hover:bg-gray-700 
+                                                 text-white font-medium text-sm transition-all duration-200 
+                                                 shadow-sm hover:shadow-md border border-gray-700 hover:border-gray-800"
                                     >
-                                        <X className="w-5 h-5 text-gray-400" />
+                                        Close
                                     </button>
                                 </div>
                             </div>

@@ -40,10 +40,13 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                             </div>
                             <button
                                 onClick={() => setIsMinimized(true)}
-                                className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors touch-manipulation"
+                                className="px-3 py-1.5 rounded-lg bg-gray-600 hover:bg-gray-700 
+                                         text-white font-medium text-sm transition-all duration-200 
+                                         touch-manipulation shadow-md hover:shadow-lg
+                                         border border-gray-700 hover:border-gray-800"
                                 aria-label="Minimize contact bar"
                             >
-                                <X className="w-4 h-4 text-gray-600" />
+                                Close
                             </button>
                         </div>
                         

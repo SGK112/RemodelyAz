@@ -94,9 +94,12 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                         >
                             <button
                                 onClick={() => setShowExitIntent(false)}
-                                className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                                className="absolute top-4 right-4 px-3 py-1.5 rounded-lg 
+                                         bg-gray-600 hover:bg-gray-700 text-white 
+                                         font-medium text-sm transition-all duration-200 
+                                         shadow-md hover:shadow-lg border border-gray-700 hover:border-gray-800"
                             >
-                                <X className="w-5 h-5 text-gray-600" />
+                                Close
                             </button>
 
                             <div className="bg-red-100 rounded-full p-4 w-fit mx-auto mb-6">
@@ -157,9 +160,12 @@ const LeadEngagementTracker = ({ onQuickQuote }: LeadEngagementTrackerProps) => 
                     >
                         <button
                             onClick={() => setShowTimePrompt(false)}
-                            className="absolute top-2 right-2 p-1 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                            className="absolute top-2 right-2 px-2 py-1 rounded text-xs 
+                                     bg-gray-600 hover:bg-gray-700 text-white 
+                                     font-medium transition-all duration-200 
+                                     shadow-sm hover:shadow-md border border-gray-700 hover:border-gray-800"
                         >
-                            <X className="w-4 h-4 text-gray-600" />
+                            Close
                         </button>
 
                         <div className="flex items-start space-x-3">

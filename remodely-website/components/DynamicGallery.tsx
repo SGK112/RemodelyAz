@@ -326,9 +326,12 @@ const DynamicGalleryPage = () => {
                         {/* Close Button */}
                         <button
                             onClick={() => setSelectedImage(null)}
-                            className="absolute top-4 right-4 z-10 bg-white/20 backdrop-blur-sm rounded-full p-3 text-white hover:bg-white/30 transition-colors"
+                            className="absolute top-4 right-4 z-10 px-4 py-2 rounded-lg 
+                                     bg-gray-800 hover:bg-gray-700 text-white 
+                                     font-medium text-sm transition-all duration-200 
+                                     shadow-lg hover:shadow-xl border border-gray-700 hover:border-gray-600"
                         >
-                            <X className="w-6 h-6" />
+                            Close
                         </button>
 
                         {/* Navigation Buttons */}
