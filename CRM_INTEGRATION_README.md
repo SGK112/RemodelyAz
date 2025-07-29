@@ -300,7 +300,8 @@ For technical support or questions about the CRM integration:
 - **Company**: REMODELY LLC
 - **License**: AzRoc #327266
 - **Email**: help.remodely@gmail.com
-- **Phone**: (480) 255-5887
+- **Phone**: (602) 818-5834
+- **Website**: www.remodely.com
 
 ## 📄 License
 
