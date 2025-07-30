@@ -458,19 +458,36 @@ html {
 
 /* Modal Styles */
 .modal-overlay {
-    background: rgba(0, 0, 0, 0.75);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-content {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.98) 100%);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(20px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 250, 252, 0.99) 100%);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(25px);
     border-radius: 20px;
     max-height: 90vh;
     overflow-y: auto;
+}
+
+/* Enhanced mobile support for modal */
+@media (max-width: 640px) {
+    .modal-overlay {
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(15px);
+    }
+    
+    .modal-content {
+        background: rgba(255, 255, 255, 0.99);
+        border: 1px solid rgba(226, 232, 240, 1);
+        box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(30px);
+        margin: 8px;
+        border-radius: 16px;
+    }
 }
 
 /* Search Bar Styles */

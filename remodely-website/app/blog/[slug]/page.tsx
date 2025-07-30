@@ -17,8 +17,8 @@ interface BlogPost {
   tags: string[]
   author: string
   publishedAt: string
-  featured: boolean
-  readTime: string
+  featured?: boolean
+  readingTime: number
 }
 
 export default function BlogPostPage() {
@@ -102,7 +102,7 @@ export default function BlogPostPage() {
             </div>
             <div className="flex items-center">
               <Clock className="w-4 h-4 mr-1" />
-              {post.readTime}
+              {post.readingTime} min read
             </div>
             <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-xs font-semibold">
               {post.category}
