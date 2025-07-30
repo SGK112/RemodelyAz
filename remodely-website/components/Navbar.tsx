@@ -73,7 +73,7 @@ const Navbar = () => {
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.8, delay: 1.5 }}
-                                    className="ml-1 px-1.5 py-0.5 rounded text-xs font-bold bg-accent-600 text-white"
+                                    className="ml-1 px-1.5 py-0.5 bg-accent-600 text-white rounded text-xs font-bold"
                                 >
                                     AZ
                                 </motion.div>

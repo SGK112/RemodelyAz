@@ -1,13 +1,16 @@
 services:
   - type: web
-    name: remodelyaz
+    name: remodelyaz-image-gallery
     env: node
-    plan: free
+    plan: starter
     buildCommand: ./build.sh
     startCommand: ./start.sh
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: 18.17.0
+      - key: NODE_ENV
+        value: production
       - key: NPM_CONFIG_REGISTRY
         value: https://registry.npmjs.org/
       - key: YARN_PRODUCTION
@@ -16,3 +19,23 @@ services:
         value: false
       - key: DISABLE_YARN
         value: true
+      # Image Management
+      - key: CLOUDINARY_CLOUD_NAME
+        fromSecret: cloudinary-cloud-name
+      - key: CLOUDINARY_API_KEY
+        fromSecret: cloudinary-api-key
+      - key: CLOUDINARY_API_SECRET
+        fromSecret: cloudinary-api-secret
+      # Database
+      - key: MONGODB_URI
+        fromSecret: mongodb-uri
+      # Email Configuration
+      - key: GMAIL_USER
+        fromSecret: gmail-user
+      - key: GMAIL_APP_PASSWORD
+        fromSecret: gmail-app-password
+      # Next.js Configuration
+      - key: NEXTAUTH_URL
+        value: https://remodelyaz-image-gallery.onrender.com
+      - key: NEXTAUTH_SECRET
+        fromSecret: nextauth-secret

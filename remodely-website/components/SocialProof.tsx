@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Star, CheckCircle, Users, ThumbsUp, Clock, Shield } from 'lucide-react'
 
@@ -153,9 +154,12 @@ const SocialProof = () => {
                         <p className="text-accent-100 mb-6">
                             Experience the quality and professionalism that has earned us Arizona's trust
                         </p>
-                        <button className="bg-white text-accent-600 px-8 py-3 rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                        <Link
+                            href="/contact"
+                            className="inline-block bg-white text-accent-600 px-8 py-3 rounded-lg font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 hover:bg-gray-50"
+                        >
                             Get Your Free Quote Today
-                        </button>
+                        </Link>
                     </div>
                 </motion.div>
             </div>

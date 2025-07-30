@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
-import { X, ChevronLeft, ChevronRight, ZoomIn, Search } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, ZoomIn, Search, Loader } from 'lucide-react'
+import SafeImage from './SafeImage'
 
 interface GalleryImage {
     id: string
@@ -15,25 +15,26 @@ interface GalleryImage {
     featured?: boolean
 }
 
+const IMAGES_PER_PAGE = 8
+const INITIAL_LOAD = 8
+
 const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState<number | null>(null)
     const [currentCategory, setCurrentCategory] = useState('all')
     const [searchTerm, setSearchTerm] = useState('')
     const [images, setImages] = useState<GalleryImage[]>([])
     const [isLoading, setIsLoading] = useState(true)
+    const [isLoadingMore, setIsLoadingMore] = useState(false)
+    const [displayCount, setDisplayCount] = useState(INITIAL_LOAD)
     const [imageLoadErrors, setImageLoadErrors] = useState<Set<string>>(new Set())
 
     useEffect(() => {
-        // Load images from API to get fresh data
+        // Load images from API with better caching
         const loadGalleryData = async () => {
             try {
                 setIsLoading(true)
                 const response = await fetch('/api/admin/gallery-projects', {
-                    cache: 'no-store',
-                    headers: {
-                        'Cache-Control': 'no-cache, no-store, must-revalidate',
-                        'Pragma': 'no-cache'
-                    }
+                    next: { revalidate: 300 }, // Cache for 5 minutes
                 })
 
                 if (response.ok) {
@@ -63,7 +64,8 @@ const Gallery = () => {
         loadGalleryData()
     }, [])
 
-    const categories = [
+    // Memoize categories for better performance
+    const categories = useMemo(() => [
         { id: 'all', name: 'All Projects', count: images.length },
         { id: 'kitchen', name: 'Kitchen Remodeling', count: images.filter(img => img.category === 'kitchen').length },
         { id: 'bathroom', name: 'Bathroom Renovation', count: images.filter(img => img.category === 'bathroom').length },
@@ -71,20 +73,43 @@ const Gallery = () => {
         { id: 'tile', name: 'Tile Work', count: images.filter(img => img.category === 'tile').length },
         { id: 'countertops', name: 'Countertops', count: images.filter(img => img.category === 'countertops').length },
         { id: 'cabinets', name: 'Custom Cabinets', count: images.filter(img => img.category === 'cabinets').length },
-    ]
+    ], [images])
 
-    const filteredImages = images.filter(image => {
-        const matchesCategory = currentCategory === 'all' || image.category.toLowerCase() === currentCategory.toLowerCase()
-        const matchesSearch = searchTerm === '' ||
-            image.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            (image as any).title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            image.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            image.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            (image as any).tags?.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
-        const notErrored = !imageLoadErrors.has(image.id)
+    // Memoize filtered images for better performance
+    const filteredImages = useMemo(() => {
+        return images.filter(image => {
+            const matchesCategory = currentCategory === 'all' || image.category.toLowerCase() === currentCategory.toLowerCase()
+            const matchesSearch = searchTerm === '' ||
+                image.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                (image as any).title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                image.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                image.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                (image as any).tags?.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+            const notErrored = !imageLoadErrors.has(image.id)
 
-        return matchesCategory && matchesSearch && notErrored
-    })
+            return matchesCategory && matchesSearch && notErrored
+        })
+    }, [images, currentCategory, searchTerm, imageLoadErrors])
+
+    // Get currently displayed images with pagination
+    const displayedImages = useMemo(() => {
+        return filteredImages.slice(0, displayCount)
+    }, [filteredImages, displayCount])
+
+    const hasMoreImages = filteredImages.length > displayCount
+
+    // Reset display count when category or search changes
+    useEffect(() => {
+        setDisplayCount(INITIAL_LOAD)
+    }, [currentCategory, searchTerm])
+
+    const handleLoadMore = async () => {
+        setIsLoadingMore(true)
+        // Simulate slight delay for smooth UX
+        await new Promise(resolve => setTimeout(resolve, 300))
+        setDisplayCount(prev => prev + IMAGES_PER_PAGE)
+        setIsLoadingMore(false)
+    }
 
     const handleImageError = useCallback((imageId: string) => {
         setImageLoadErrors(prev => {
@@ -177,7 +202,7 @@ const Gallery = () => {
                         {searchTerm && (
                             <button
                                 onClick={() => setSearchTerm('')}
-                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-accent-600 transition-colors p-1 rounded-full hover:bg-accent-50"
                                 aria-label="Clear search"
                             >
                                 <X className="w-4 h-4" />
@@ -205,7 +230,7 @@ const Gallery = () => {
                             <span>{category.name}</span>
                             <span className={`text-xs px-2 py-1 rounded-full font-semibold ${currentCategory === category.id
                                 ? 'bg-white/20 text-white'
-                                : 'bg-blue-100 text-blue-700'
+                                : 'bg-accent-100 text-accent-700'
                                 }`}>
                                 {category.count}
                             </span>
@@ -222,9 +247,9 @@ const Gallery = () => {
                 >
                     <p className="text-gray-600">
                         {searchTerm ? (
-                            <>Showing <span className="font-semibold">{filteredImages.length}</span> results for "<span className="font-semibold">{searchTerm}</span>"</>
+                            <>Showing <span className="font-semibold text-accent-600">{filteredImages.length}</span> results for "<span className="font-semibold text-accent-600">{searchTerm}</span>"</>
                         ) : (
-                            <>Showing <span className="font-semibold">{filteredImages.length}</span> {currentCategory === 'all' ? 'projects' : `${currentCategory} projects`}</>
+                            <>Showcasing <span className="font-semibold text-accent-600">{filteredImages.length}</span> premium {currentCategory === 'all' ? 'remodeling projects' : `${currentCategory} projects`}</>
                         )}
                     </p>
                 </motion.div>
@@ -236,7 +261,7 @@ const Gallery = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
                 >
-                    {filteredImages.map((image, index) => (
+                    {displayedImages.map((image, index) => (
                         <motion.div
                             key={image.id}
                             initial={{ opacity: 0, y: 20 }}
@@ -248,16 +273,14 @@ const Gallery = () => {
                             whileTap={{ scale: 0.98 }}
                         >
                             <div className="aspect-[4/3] relative">
-                                <Image
+                                <SafeImage
                                     src={image.url}
                                     alt={image.alt}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                                    onError={() => handleImageError(image.id)}
-                                    placeholder="blur"
-                                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                                    loading="lazy"
+                                    className="transition-transform duration-500 group-hover:scale-105"
+                                    aspectRatio="aspect-[4/3]"
+                                    priority={index < 8}
+                                    showPlaceholder={true}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -271,7 +294,7 @@ const Gallery = () => {
                                     <h3 className="text-lg font-display font-semibold mb-1 line-clamp-1">{image.name}</h3>
                                     <p className="text-sm opacity-90 line-clamp-2">{image.description}</p>
                                     <div className="mt-2">
-                                        <span className="inline-block px-2 py-1 bg-white shadow-lg border border-gray-200 rounded-full text-xs font-medium capitalize text-gray-700">
+                                        <span className="inline-block px-2 py-1 bg-accent-600 text-white rounded-full text-xs font-medium capitalize">
                                             {image.category}
                                         </span>
                                     </div>
@@ -280,6 +303,36 @@ const Gallery = () => {
                         </motion.div>
                     ))}
                 </motion.div>
+
+                {/* Load More Button */}
+                {hasMoreImages && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mt-12"
+                    >
+                        <button
+                            onClick={handleLoadMore}
+                            disabled={isLoadingMore}
+                            className="inline-flex items-center gap-3 bg-gradient-to-r from-primary-600 to-accent-600 text-white px-8 py-4 rounded-full font-semibold hover:from-primary-700 hover:to-accent-700 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                        >
+                            {isLoadingMore ? (
+                                <>
+                                    <Loader className="w-5 h-5 animate-spin" />
+                                    Loading More...
+                                </>
+                            ) : (
+                                <>
+                                    Load More Projects
+                                    <span className="bg-white/20 px-2 py-1 rounded-full text-sm">
+                                        +{Math.min(IMAGES_PER_PAGE, filteredImages.length - displayCount)}
+                                    </span>
+                                </>
+                            )}
+                        </button>
+                    </motion.div>
+                )}
 
                 {filteredImages.length === 0 && (
                     <motion.div
@@ -356,18 +409,18 @@ const Gallery = () => {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 className="relative"
                             >
-                                <Image
-                                    src={filteredImages[selectedImage].url}
-                                    alt={filteredImages[selectedImage].alt}
+                                <SafeImage
+                                    src={displayedImages[selectedImage].url}
+                                    alt={displayedImages[selectedImage].alt}
                                     width={1200}
                                     height={800}
-                                    className="max-w-full max-h-[80vh] object-contain rounded-lg"
-                                    onClick={(e) => e.stopPropagation()}
-                                    onError={() => handleImageError(filteredImages[selectedImage].id)}
+                                    className="max-w-full max-h-[80vh]"
+                                    aspectRatio=""
+                                    showPlaceholder={true}
                                 />
 
                                 {/* Navigation arrows */}
-                                {filteredImages.length > 1 && (
+                                {displayedImages.length > 1 && (
                                     <>
                                         <button
                                             onClick={(e) => {
@@ -400,13 +453,13 @@ const Gallery = () => {
                                 className="absolute bottom-0 left-0 right-0 text-white p-6 bg-gradient-to-t from-black/80 to-transparent rounded-b-lg"
                             >
                                 <h3 className="text-2xl font-display font-semibold mb-2">
-                                    {filteredImages[selectedImage].name}
+                                    {displayedImages[selectedImage].name}
                                 </h3>
                                 <p className="text-lg opacity-90 mb-2">
-                                    {filteredImages[selectedImage].description}
+                                    {displayedImages[selectedImage].description}
                                 </p>
                                 <span className="inline-block px-3 py-1 bg-accent-600/20 shadow-lg border border-accent-600/30 rounded-full text-sm font-medium capitalize text-accent-100">
-                                    {filteredImages[selectedImage].category}
+                                    {displayedImages[selectedImage].category}
                                 </span>
                             </motion.div>
                         </div>

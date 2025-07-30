@@ -87,9 +87,9 @@ const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.3 }}
                         className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white mb-6 leading-tight"
                     >
-                        Premium Remodeling
-                        <span className="block bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">
-                            Beyond Expectations
+                        Phoenix Kitchen & Bath
+                        <span className="block text-accent-400">
+                            Remodeling Experts
                         </span>
                     </motion.h1>
 
@@ -100,10 +100,10 @@ const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed"
                     >
-                        Transform your home with Arizona's trusted remodeling experts, backed by 7+ years 
-                        of proven quality through Surprise Granite.
-                        <span className="block mt-2 text-lg text-accent-300 font-medium">
-                            Quick • Friendly • Neighborly Service
+                        Serving Phoenix, Scottsdale, Surprise & the Valley.
+                        Licensed Arizona contractors delivering exceptional results.
+                        <span className="block mt-3 text-lg text-accent-300 font-medium">
+                            <strong>Remodely</strong> - Your local remodeling specialists.
                         </span>
                     </motion.p>
 

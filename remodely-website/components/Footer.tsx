@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { Facebook, Twitter, Instagram, Linkedin, Phone, Mail, MapPin } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { leadAnalytics } from '../lib/lead-analytics'
 
 interface CompanyData {
     name: string
@@ -15,6 +16,7 @@ interface CompanyData {
 
 const Footer = () => {
     const currentYear = new Date().getFullYear()
+    const [showPhone, setShowPhone] = useState(false)
     const [companyData, setCompanyData] = useState<CompanyData>({
         name: 'REMODELY LLC',
         phone: '(602) 818-5834',
@@ -58,7 +60,7 @@ const Footer = () => {
         <footer className="bg-gray-900 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 {/* Main Footer Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
                     {/* Company Info - Takes 2 columns on lg screens */}
                     <div className="lg:col-span-2">
                         <Link href="/" className="flex items-center space-x-2 mb-6">
@@ -82,20 +84,6 @@ const Footer = () => {
                             Your dream home is just a consultation away.
                         </p>
 
-                        {/* Investors CTA */}
-                        <div className="mb-6 p-4 bg-accent-600/10 border border-accent-600/20 rounded-lg">
-                            <h4 className="font-semibold text-accent-400 mb-2">Franchise Opportunities</h4>
-                            <p className="text-gray-300 text-sm mb-3">
-                                Join our nationwide expansion. Bringing Remodely to TX, CA, PA, SC, GA & beyond.
-                            </p>
-                            <Link
-                                href="/investors"
-                                className="inline-flex items-center text-accent-400 hover:text-accent-300 text-sm font-medium transition-colors"
-                            >
-                                Investor Relations →
-                            </Link>
-                        </div>
-
                         <div className="flex space-x-4">
                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                                 <Facebook className="w-5 h-5" />
@@ -109,6 +97,22 @@ const Footer = () => {
                             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                                 <Linkedin className="w-5 h-5" />
                             </a>
+                        </div>
+                    </div>
+
+                    {/* Franchise Opportunities */}
+                    <div>
+                        <h3 className="font-semibold text-lg mb-4 text-accent-400">Franchise</h3>
+                        <div className="p-4 bg-accent-600/10 border border-accent-600/20 rounded-lg">
+                            <p className="text-gray-300 text-sm mb-3">
+                                Join our nationwide expansion. Bringing Remodely to TX, CA, PA, SC, GA & beyond.
+                            </p>
+                            <Link
+                                href="/investors"
+                                className="inline-flex items-center text-accent-400 hover:text-accent-300 text-sm font-medium transition-colors"
+                            >
+                                Investor Relations →
+                            </Link>
                         </div>
                     </div>
 
@@ -170,7 +174,17 @@ const Footer = () => {
                         <div className="space-y-3">
                             <div className="flex items-center space-x-3">
                                 <Phone className="w-4 h-4 text-primary-400 flex-shrink-0" />
-                                <span className="text-gray-300 text-sm">{companyData.phone}</span>
+                                <button
+                                    onClick={() => {
+                                        setShowPhone(!showPhone)
+                                        if (!showPhone) {
+                                            leadAnalytics?.trackPhoneClick(companyData.phone)
+                                        }
+                                    }}
+                                    className="text-gray-300 text-sm hover:text-white transition-colors text-left"
+                                >
+                                    {showPhone ? companyData.phone : 'Click to reveal phone'}
+                                </button>
                             </div>
                             <div className="flex items-center space-x-3">
                                 <Mail className="w-4 h-4 text-primary-400 flex-shrink-0" />

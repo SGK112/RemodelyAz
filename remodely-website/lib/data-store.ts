@@ -43,6 +43,23 @@ export interface ImageData {
   category: string
   filename: string
   uploadedAt: string
+  name?: string
+  tags?: string[]
+  size?: number
+  width?: number
+  height?: number
+  format?: string
+  isActive?: boolean
+  source?: 'cloudinary' | 'local' | 'external'
+  cloudinary?: {
+    public_id: string
+    secure_url: string
+    width: number
+    height: number
+    format: string
+    created_at: string
+    tags: string[]
+  }
 }
 
 export interface ServiceData {

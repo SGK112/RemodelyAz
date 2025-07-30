@@ -14,9 +14,14 @@ const AdminNavigation = () => {
             icon: BarChart3
         },
         {
+            label: 'Image Manager',
+            href: '/admin/images',
+            icon: Image
+        },
+        {
             label: 'Gallery Manager',
             href: '/admin/gallery',
-            icon: Image
+            icon: FileText
         },
         {
             label: 'Blog Posts',
@@ -55,8 +60,8 @@ const AdminNavigation = () => {
                                         key={item.href}
                                         href={item.href}
                                         className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${isActive
-                                                ? 'bg-accent-100 text-accent-700'
-                                                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                                            ? 'bg-accent-100 text-accent-700'
+                                            : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
                                             }`}
                                     >
                                         <Icon className="w-4 h-4" />
