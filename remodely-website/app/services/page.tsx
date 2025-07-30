@@ -14,7 +14,7 @@ const ServicesPage = () => {
             subtitle: 'Transform Your Culinary Space',
             description: 'Create the kitchen of your dreams with our comprehensive remodeling services. From modern minimalist designs to traditional farmhouse styles, we bring your vision to life with premium materials and expert craftsmanship.',
             image: PRODUCTION_IMAGES.kitchen_modern,
-            price: 'Starting at $25,000',
+            price: 'From $180/sqft',
             duration: '2-4 weeks',
             features: [
                 'Custom Cabinet Design & Installation',
@@ -40,7 +40,7 @@ const ServicesPage = () => {
             subtitle: 'Create Your Personal Spa',
             description: 'Transform your bathroom into a luxurious retreat with our comprehensive remodeling services. Whether it\'s a powder room refresh or a complete master suite renovation, we deliver exceptional results.',
             image: PRODUCTION_IMAGES.bathroom_luxury,
-            price: 'Starting at $15,000',
+            price: 'From $150/sqft',
             duration: '1-3 weeks',
             features: [
                 'Custom Vanity Design & Installation',
@@ -66,7 +66,7 @@ const ServicesPage = () => {
             subtitle: 'Professional Spaces That Impress',
             description: 'Enhance your business environment with our commercial remodeling expertise. From office spaces to retail stores and restaurants, we create functional, attractive spaces that boost productivity and impress clients.',
             image: PRODUCTION_IMAGES.commercial_office,
-            price: 'Custom Quote',
+            price: 'From $120/sqft',
             duration: '3-8 weeks',
             features: [
                 'Office Space Design & Build-out',

@@ -12,7 +12,7 @@ const DesignServices = () => {
     subtitle: 'Bringing Your Vision to Life',
     description: 'Our expert design team creates stunning, functional spaces tailored to your lifestyle and preferences. From initial concept to final implementation, we guide you through every design decision.',
     image: PRODUCTION_IMAGES.design_consultation,
-    price: 'Starting at $2,500',
+    price: 'From $25/sqft',
     duration: '2-4 weeks',
     features: [
       '3D Design Visualization',

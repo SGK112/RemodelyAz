@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import { X, ChevronLeft, ChevronRight, ZoomIn, Search } from 'lucide-react'
-import galleryProjects from '@/data/gallery-projects.json'
 
 interface GalleryImage {
     id: string
@@ -25,18 +24,43 @@ const Gallery = () => {
     const [imageLoadErrors, setImageLoadErrors] = useState<Set<string>>(new Set())
 
     useEffect(() => {
-        // Load images from local data and convert to proper format
-        const convertedImages: GalleryImage[] = galleryProjects.map(project => ({
-            id: project.id.toString(),
-            name: project.title,
-            url: project.url,
-            category: project.category,
-            description: project.description,
-            alt: project.title,
-            featured: false
-        }))
-        setImages(convertedImages)
-        setIsLoading(false)
+        // Load images from API to get fresh data
+        const loadGalleryData = async () => {
+            try {
+                setIsLoading(true)
+                const response = await fetch('/api/admin/gallery-projects', {
+                    cache: 'no-store',
+                    headers: {
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache'
+                    }
+                })
+
+                if (response.ok) {
+                    const result = await response.json()
+                    const projects = result.data || result
+
+                    const convertedImages: GalleryImage[] = projects.map((project: any) => ({
+                        id: project.id.toString(),
+                        name: project.title,
+                        url: project.url,
+                        category: project.category,
+                        description: project.description,
+                        alt: project.title,
+                        featured: false
+                    }))
+                    setImages(convertedImages)
+                } else {
+                    console.error('Failed to load gallery data')
+                }
+            } catch (error) {
+                console.error('Error loading gallery:', error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+
+        loadGalleryData()
     }, [])
 
     const categories = [
@@ -53,8 +77,10 @@ const Gallery = () => {
         const matchesCategory = currentCategory === 'all' || image.category.toLowerCase() === currentCategory.toLowerCase()
         const matchesSearch = searchTerm === '' ||
             image.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (image as any).title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
             image.description?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            image.category.toLowerCase().includes(searchTerm.toLowerCase())
+            image.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            (image as any).tags?.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
         const notErrored = !imageLoadErrors.has(image.id)
 
         return matchesCategory && matchesSearch && notErrored
@@ -137,17 +163,26 @@ const Gallery = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.1 }}
-                    className="max-w-md mx-auto mb-8"
+                    className="max-w-lg mx-auto mb-8"
                 >
-                    <div className="relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                    <div className="search-container relative">
+                        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 pointer-events-none" />
                         <input
                             type="text"
-                            placeholder="Search projects..."
+                            placeholder="Search by project name, category, or tags..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
+                            className="search-input w-full"
                         />
+                        {searchTerm && (
+                            <button
+                                onClick={() => setSearchTerm('')}
+                                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors p-1 rounded-full hover:bg-gray-100"
+                                aria-label="Clear search"
+                            >
+                                <X className="w-4 h-4" />
+                            </button>
+                        )}
                     </div>
                 </motion.div>
 
@@ -165,15 +200,12 @@ const Gallery = () => {
                                 setCurrentCategory(category.id)
                                 setSearchTerm('') // Clear search when changing category
                             }}
-                            className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${currentCategory === category.id
-                                ? 'bg-accent-600 text-white shadow-lg transform scale-105'
-                                : 'bg-white/80 shadow-md text-gray-700 hover:bg-white hover:shadow-md border border-gray-200'
-                                }`}
+                            className={`category-button flex items-center gap-2 ${currentCategory === category.id ? 'active' : ''}`}
                         >
                             <span>{category.name}</span>
-                            <span className={`text-xs px-2 py-1 rounded-full ${currentCategory === category.id
-                                ? 'bg-white/95'
-                                : 'bg-gray-100'
+                            <span className={`text-xs px-2 py-1 rounded-full font-semibold ${currentCategory === category.id
+                                ? 'bg-white/20 text-white'
+                                : 'bg-blue-100 text-blue-700'
                                 }`}>
                                 {category.count}
                             </span>
@@ -230,8 +262,8 @@ const Gallery = () => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                                 {/* Zoom icon */}
-                                <div className="absolute top-4 right-4 bg-white/95 shadow-md rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <ZoomIn className="w-5 h-5 text-white" />
+                                <div className="absolute top-4 right-4 bg-white shadow-lg border border-gray-200 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <ZoomIn className="w-5 h-5 text-gray-700" />
                                 </div>
 
                                 {/* Project info overlay */}
@@ -239,7 +271,7 @@ const Gallery = () => {
                                     <h3 className="text-lg font-display font-semibold mb-1 line-clamp-1">{image.name}</h3>
                                     <p className="text-sm opacity-90 line-clamp-2">{image.description}</p>
                                     <div className="mt-2">
-                                        <span className="inline-block px-2 py-1 bg-white/95 shadow-md rounded-full text-xs font-medium capitalize">
+                                        <span className="inline-block px-2 py-1 bg-white shadow-lg border border-gray-200 rounded-full text-xs font-medium capitalize text-gray-700">
                                             {image.category}
                                         </span>
                                     </div>
@@ -342,7 +374,7 @@ const Gallery = () => {
                                                 e.stopPropagation()
                                                 prevImage()
                                             }}
-                                            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/40 hover:bg-black/60 shadow-md rounded-full p-3"
+                                            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/70 hover:bg-black/80 shadow-lg rounded-full p-3 border border-white/20"
                                             aria-label="Previous image"
                                         >
                                             <ChevronLeft className="w-6 h-6" />
@@ -352,7 +384,7 @@ const Gallery = () => {
                                                 e.stopPropagation()
                                                 nextImage()
                                             }}
-                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/40 hover:bg-black/60 shadow-md rounded-full p-3"
+                                            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-accent-400 transition-colors bg-black/70 hover:bg-black/80 shadow-lg rounded-full p-3 border border-white/20"
                                             aria-label="Next image"
                                         >
                                             <ChevronRight className="w-6 h-6" />
@@ -373,7 +405,7 @@ const Gallery = () => {
                                 <p className="text-lg opacity-90 mb-2">
                                     {filteredImages[selectedImage].description}
                                 </p>
-                                <span className="inline-block px-3 py-1 bg-accent/20 shadow-md rounded-full text-sm font-medium capitalize">
+                                <span className="inline-block px-3 py-1 bg-accent-600/20 shadow-lg border border-accent-600/30 rounded-full text-sm font-medium capitalize text-accent-100">
                                     {filteredImages[selectedImage].category}
                                 </span>
                             </motion.div>

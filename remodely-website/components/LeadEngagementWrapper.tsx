@@ -20,9 +20,9 @@ const LeadEngagementWrapper = () => {
         <>
             <LeadEngagementTracker onQuickQuote={handleQuickQuoteOpen} />
             <StickyContactBar onQuickQuote={handleQuickQuoteOpen} />
-            <QuickQuoteModal 
-                isOpen={showQuickQuote} 
-                onClose={() => setShowQuickQuote(false)} 
+            <QuickQuoteModal
+                isOpen={showQuickQuote}
+                onClose={() => setShowQuickQuote(false)}
             />
         </>
     )

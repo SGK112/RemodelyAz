@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Image Manager - RemodelyAz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .image-card {
+            transition: all 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .edit-btn {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            transform: translateY(0);
+            transition: all 0.2s ease;
+        }
+
+        .edit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.4);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans">
+    <div class="min-h-screen py-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-5xl font-bold text-gray-900 mb-4">
+                    🖼️ Gallery Image Manager
+                </h1>
+                <p class="text-xl text-gray-600 mb-2">
+                    Click the <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg font-bold">EDIT IMAGE</span>
+                    button to update any photo
+                </p>
+                <p class="text-lg text-gray-500">
+                    <span id="project-count">Loading...</span> projects loaded • Changes save to JSON file instantly
+                </p>
+            </div>
+
+            <!-- Success Message -->
+            <div id="message" class="hidden mb-6 p-4 bg-green-100 border-2 border-green-200 rounded-lg text-center">
+                <p class="text-green-800 font-bold text-lg" id="message-text"></p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be loaded here -->
+            </div>
+
+            <!-- Instructions -->
+            <div class="mt-16 bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-2xl p-8">
+                <h3 class="font-bold text-blue-900 mb-6 text-2xl flex items-center">
+                    📋 How to Update Images
+                </h3>
+                <div class="text-blue-800 space-y-4 text-lg">
+                    <div class="flex items-start space-x-4">
+                        <span
+                            class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">1</span>
+                        <p><strong>Find an image:</strong> Go to surprisegranite.com, right-click any image, select
+                            "Copy image address"</p>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <span
+                            class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">2</span>
+                        <p><strong>Click "EDIT IMAGE"</strong> on the project you want to update (blue button below each
+                            photo)</p>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <span
+                            class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">3</span>
+                        <p><strong>Paste the URL</strong> in the text box and click "Test URL" to verify it works</p>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <span
+                            class="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg font-bold">4</span>
+                        <p><strong>Click "Save"</strong> and the image will update immediately in your gallery!</p>
+                    </div>
+                </div>
+                <div class="mt-6 p-4 bg-yellow-100 border border-yellow-300 rounded-lg">
+                    <p class="text-yellow-800"><strong>💡 Pro Tip:</strong> You can also use images from Unsplash.com -
+                        just copy the image address and paste it here!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let projects = [];
+        let editingId = null;
+
+        // Load projects from API with cache busting
+        async function loadProjects() {
+            try {
+                const timestamp = new Date().getTime();
+                const response = await fetch(`/api/admin/gallery-projects?t=${timestamp}`, {
+                    cache: 'no-store',
+                    headers: {
+                        'Cache-Control': 'no-cache, no-store, must-revalidate',
+                        'Pragma': 'no-cache'
+                    }
+                });
+                const result = await response.json();
+                projects = result.data || result;
+                document.getElementById('project-count').textContent = `${projects.length}`;
+                renderProjects();
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                document.getElementById('project-count').textContent = 'Error loading';
+            }
+        }
+
+        // Render projects grid
+        function renderProjects() {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = projects.map(project => `
+                <div class="image-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <!-- Image -->
+                    <div class="relative h-64 bg-gray-100">
+                        <img 
+                            src="${project.url}" 
+                            alt="${project.title}"
+                            class="w-full h-full object-cover"
+                            onerror="this.src='https://via.placeholder.com/400x300?text=Image+Not+Found'"
+                        />
+                        <div class="absolute top-3 left-3 bg-black bg-opacity-70 text-white px-3 py-1 rounded-lg text-sm font-mono">
+                            ID: ${project.id}
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-6">
+                        <div class="mb-4">
+                            <h3 class="font-bold text-gray-900 mb-2 text-xl">
+                                ${project.title}
+                            </h3>
+                            <span class="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium uppercase">
+                                ${project.category}
+                            </span>
+                        </div>
+
+                        ${editingId === project.id ? `
+                            <!-- Edit Mode -->
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-2">
+                                        New Image URL:
+                                    </label>
+                                    <input
+                                        type="url"
+                                        id="edit-url-${project.id}"
+                                        value="${project.url}"
+                                        class="w-full border-2 border-gray-300 rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="https://images.unsplash.com/..."
+                                    />
+                                </div>
+                                
+                                <a
+                                    href="${project.url}"
+                                    target="_blank"
+                                    class="inline-flex items-center text-blue-600 hover:text-blue-700 text-sm font-medium"
+                                >
+                                    🔗 Test Current URL
+                                </a>
+
+                                <div class="flex space-x-3">
+                                    <button
+                                        onclick="saveProject(${project.id})"
+                                        class="flex-1 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 font-bold text-sm transition-all"
+                                    >
+                                        💾 Save Changes
+                                    </button>
+                                    <button
+                                        onclick="cancelEdit()"
+                                        class="px-6 py-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 text-sm font-medium transition-all"
+                                    >
+                                        ❌ Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        ` : `
+                            <!-- Display Mode -->
+                            <div>
+                                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                                    ${project.description}
+                                </p>
+                                
+                                <button
+                                    onclick="startEdit(${project.id})"
+                                    class="edit-btn w-full text-white px-6 py-4 rounded-xl font-bold text-lg shadow-lg"
+                                >
+                                    ✏️ EDIT IMAGE
+                                </button>
+                                
+                                <div class="mt-3 text-xs text-gray-400 break-all bg-gray-50 p-2 rounded">
+                                    ${project.url.substring(0, 60)}${project.url.length > 60 ? '...' : ''}
+                                </div>
+                            </div>
+                        `}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Start editing a project
+        function startEdit(id) {
+            editingId = id;
+            renderProjects();
+        }
+
+        // Cancel editing
+        function cancelEdit() {
+            editingId = null;
+            renderProjects();
+        }
+
+        // Save project changes
+        async function saveProject(id) {
+            const newUrl = document.getElementById(`edit-url-${id}`).value;
+            if (!newUrl) {
+                alert('Please enter an image URL');
+                return;
+            }
+
+            try {
+                // Update the project in memory
+                const projectIndex = projects.findIndex(p => p.id === id);
+                const oldUrl = projects[projectIndex].url;
+                projects[projectIndex].url = newUrl;
+
+                // Save to backend
+                const response = await fetch('/api/admin/gallery-projects', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Cache-Control': 'no-cache'
+                    },
+                    body: JSON.stringify({ projects })
+                });
+
+                if (response.ok) {
+                    editingId = null;
+                    // Reload fresh data from API
+                    await loadProjects();
+                    showMessage(`✅ Image updated successfully for "${projects[projectIndex].title}"!`);
+                } else {
+                    // Revert on error
+                    projects[projectIndex].url = oldUrl;
+                    throw new Error('Failed to save changes');
+                }
+            } catch (error) {
+                console.error('Error saving project:', error);
+                alert('❌ Failed to save changes. Please try again.');
+                renderProjects();
+            }
+        }
+
+        // Show success message
+        function showMessage(text) {
+            const messageDiv = document.getElementById('message');
+            const messageText = document.getElementById('message-text');
+            messageText.textContent = text;
+            messageDiv.classList.remove('hidden');
+            setTimeout(() => {
+                messageDiv.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Load projects when page loads
+        loadProjects();
+    </script>
+</body>
+
+</html>

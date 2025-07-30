@@ -47,7 +47,7 @@ export function useFadeInOnScroll(options: AnimationOptions = {}) {
           if (entry.isIntersecting) {
             target.style.opacity = '1'
             target.style.transform = 'translateY(0)'
-            
+
             if (triggerOnce) {
               observer.unobserve(entry.target)
             }
@@ -78,7 +78,7 @@ export function smoothScrollTo(elementId: string, offset: number = 80) {
   if (!element) return
 
   const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - offset
-  
+
   window.scrollTo({
     top: targetPosition,
     behavior: 'smooth'

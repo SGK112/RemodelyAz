@@ -79,9 +79,9 @@ const AboutPage = () => {
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Born from years of excellence in the countertop industry, REMODELY emerged from the 
-                expertise and reputation of Surprise Granite. Founded by Joshua Breese, who built a 
-                trusted countertop business over 7+ years, REMODELY expands that commitment to 
+                Born from years of excellence in the countertop industry, REMODELY emerged from the
+                expertise and reputation of Surprise Granite. Founded by Joshua Breese, who built a
+                trusted countertop business over 7+ years, REMODELY expands that commitment to
                 quality into full-service remodeling with the same neighborly, professional approach.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -178,13 +178,13 @@ const AboutPage = () => {
               <div className="space-y-6 text-gray-600 leading-relaxed">
                 <p>
                   REMODELY's story begins with Surprise Granite, a successful countertop business
-                  built by Joshua Breese over seven years. Through dedication to quality 
+                  built by Joshua Breese over seven years. Through dedication to quality
                   craftsmanship and genuine customer care, Surprise Granite earned a reputation
                   for excellence in the Arizona market.
                 </p>
                 <p>
                   Recognizing the need for comprehensive remodeling services that matched the same
-                  high standards, Joshua founded REMODELY to extend beyond countertops into 
+                  high standards, Joshua founded REMODELY to extend beyond countertops into
                   complete home transformations. The same neighborly approach and attention to
                   detail that made Surprise Granite successful now drives every REMODELY project.
                 </p>

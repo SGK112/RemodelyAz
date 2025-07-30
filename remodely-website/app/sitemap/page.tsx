@@ -10,7 +10,8 @@ const SitemapPage = () => {
             { name: 'Home', href: '/' },
             { name: 'About Us', href: '/about' },
             { name: 'Contact', href: '/contact' },
-            { name: 'Gallery', href: '/gallery' }
+            { name: 'Gallery', href: '/gallery' },
+            { name: 'Investors', href: '/investors' }
         ],
         services: [
             { name: 'All Services', href: '/services' },

@@ -11,7 +11,7 @@ const DesertLandscapingArticle = () => {
         id: 7,
         title: 'Desert Landscaping: Creating Beautiful Arizona Outdoor Spaces',
         excerpt: 'Transform your outdoor areas with drought-resistant plants and stunning desert-inspired design elements.',
-        image: SITE_IMAGES.projects.office,
+        image: SITE_IMAGES.projects.outdoor_patio,
         author: 'Marcus Rivera',
         date: 'March 12, 2024',
         readTime: '6 min read',

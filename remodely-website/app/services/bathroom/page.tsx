@@ -12,7 +12,7 @@ const BathroomRemodeling = () => {
         subtitle: 'Create Your Perfect Sanctuary',
         description: 'Transform your bathroom into a luxurious retreat with our expert remodeling services. From spa-like master baths to efficient powder rooms, we create beautiful, functional spaces.',
         image: PRODUCTION_IMAGES.bathroom_luxury,
-        price: 'Starting at $15,000',
+        price: 'From $150/sqft',
         duration: '1-3 weeks',
         features: [
             'Walk-in Tile Shower Installation',

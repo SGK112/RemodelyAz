@@ -237,5 +237,109 @@
             "installation"
         ],
         "description": "Custom walk-in shower renovation"
+    },
+    {
+        "id": 21,
+        "title": "Subway Tile Backsplash",
+        "url": "https://images.unsplash.com/photo-1556185781-a47769abb7ee?w=800&q=80",
+        "category": "tile",
+        "tags": [
+            "subway",
+            "tile",
+            "backsplash",
+            "kitchen"
+        ],
+        "description": "Classic subway tile backsplash installation"
+    },
+    {
+        "id": 22,
+        "title": "Marble Bathroom Floor",
+        "url": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
+        "category": "tile",
+        "tags": [
+            "marble",
+            "floor",
+            "bathroom",
+            "luxury"
+        ],
+        "description": "Elegant marble tile flooring"
+    },
+    {
+        "id": 23,
+        "title": "Mosaic Shower Wall",
+        "url": "https://images.unsplash.com/photo-1594398901394-4e34939a4fd0?w=800&q=80",
+        "category": "tile",
+        "tags": [
+            "mosaic",
+            "shower",
+            "wall",
+            "tile"
+        ],
+        "description": "Beautiful mosaic tile shower design"
+    },
+    {
+        "id": 24,
+        "title": "Porcelain Kitchen Floor",
+        "url": "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80",
+        "category": "tile",
+        "tags": [
+            "porcelain",
+            "kitchen",
+            "floor",
+            "modern"
+        ],
+        "description": "Sleek porcelain tile kitchen flooring"
+    },
+    {
+        "id": 25,
+        "title": "Natural Stone Backsplash",
+        "url": "https://images.unsplash.com/photo-1556228724-36c84734ad14?w=800&q=80",
+        "category": "tile",
+        "tags": [
+            "natural",
+            "stone",
+            "backsplash",
+            "rustic"
+        ],
+        "description": "Rustic natural stone backsplash"
+    },
+    {
+        "id": 26,
+        "title": "Geometric Tile Pattern",
+        "url": "https://images.unsplash.com/photo-1616137466211-f939a420be84?w=800&q=80",
+        "category": "tile",
+        "tags": [
+            "geometric",
+            "pattern",
+            "tile",
+            "modern"
+        ],
+        "description": "Contemporary geometric tile pattern"
+    },
+    {
+        "id": 27,
+        "title": "Ceramic Shower Surround",
+        "url": "https://images.unsplash.com/photo-1596178060810-4378de0c6e6b?w=800&q=80",
+        "category": "tile",
+        "tags": [
+            "ceramic",
+            "shower",
+            "surround",
+            "bathroom"
+        ],
+        "description": "Custom ceramic tile shower surround"
+    },
+    {
+        "id": 28,
+        "title": "Hexagon Bathroom Floor",
+        "url": "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&q=80",
+        "category": "tile",
+        "tags": [
+            "hexagon",
+            "bathroom",
+            "floor",
+            "vintage"
+        ],
+        "description": "Classic hexagon tile bathroom floor"
     }
 ]

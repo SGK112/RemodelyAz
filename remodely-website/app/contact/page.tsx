@@ -54,6 +54,8 @@ const ContactPage = () => {
             if (response.ok) {
                 setIsSubmitted(true)
                 reset()
+                // Scroll to top for mobile users to see thank you message
+                window.scrollTo({ top: 0, behavior: 'smooth' })
             } else {
                 throw new Error('Failed to send message')
             }
@@ -208,7 +210,7 @@ const ContactPage = () => {
                         transition={{ duration: 0.8, delay: 0.4 }}
                         className="lg:col-span-2"
                     >
-                        <form onSubmit={handleSubmit(onSubmit)} className="glass-card rounded-2xl p-8">
+                        <form onSubmit={handleSubmit(onSubmit)} className="form-container p-8">
                             <h3 className="text-2xl font-display font-bold text-gray-900 mb-6">
                                 Request Your Free Consultation
                             </h3>
@@ -216,23 +218,23 @@ const ContactPage = () => {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Name */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="form-label">
                                         Full Name *
                                     </label>
                                     <input
                                         type="text"
                                         {...register('name', { required: 'Name is required' })}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                                        className="form-input w-full"
                                         placeholder="Your full name"
                                     />
                                     {errors.name && (
-                                        <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                                        <p className="form-error">{errors.name.message}</p>
                                     )}
                                 </div>
 
                                 {/* Email */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="form-label">
                                         Email Address *
                                     </label>
                                     <input
@@ -244,53 +246,53 @@ const ContactPage = () => {
                                                 message: 'Invalid email address'
                                             }
                                         })}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                                        className="form-input w-full"
                                         placeholder="your.email@example.com"
                                     />
                                     {errors.email && (
-                                        <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                                        <p className="form-error">{errors.email.message}</p>
                                     )}
                                 </div>
 
                                 {/* Phone */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="form-label">
                                         Phone Number
                                     </label>
                                     <input
                                         type="tel"
                                         {...register('phone')}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                                        className="form-input w-full"
                                         placeholder="(555) 123-4567"
                                     />
                                 </div>
 
                                 {/* Property Type */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="form-label">
                                         Property Type *
                                     </label>
                                     <select
                                         {...register('propertyType', { required: 'Property type is required' })}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                                        className="form-select w-full"
                                     >
                                         <option value="">Select property type</option>
                                         <option value="residential">Residential</option>
                                         <option value="commercial">Commercial</option>
                                     </select>
                                     {errors.propertyType && (
-                                        <p className="text-red-500 text-sm mt-1">{errors.propertyType.message}</p>
+                                        <p className="form-error">{errors.propertyType.message}</p>
                                     )}
                                 </div>
 
                                 {/* Project Type */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="form-label">
                                         Project Type *
                                     </label>
                                     <select
                                         {...register('projectType', { required: 'Project type is required' })}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                                        className="form-select w-full"
                                     >
                                         <option value="">Select project type</option>
                                         <option value="kitchen">Kitchen Remodeling</option>
@@ -300,18 +302,18 @@ const ContactPage = () => {
                                         <option value="consultation">Design Consultation</option>
                                     </select>
                                     {errors.projectType && (
-                                        <p className="text-red-500 text-sm mt-1">{errors.projectType.message}</p>
+                                        <p className="form-error">{errors.projectType.message}</p>
                                     )}
                                 </div>
 
                                 {/* Budget */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label className="form-label">
                                         Budget Range *
                                     </label>
                                     <select
                                         {...register('budget', { required: 'Budget range is required' })}
-                                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                                        className="form-select w-full"
                                     >
                                         <option value="">Select budget range</option>
                                         <option value="under-25k">Under $25,000</option>
@@ -321,24 +323,24 @@ const ContactPage = () => {
                                         <option value="over-200k">Over $200,000</option>
                                     </select>
                                     {errors.budget && (
-                                        <p className="text-red-500 text-sm mt-1">{errors.budget.message}</p>
+                                        <p className="form-error">{errors.budget.message}</p>
                                     )}
                                 </div>
                             </div>
 
                             {/* Message */}
                             <div className="mt-6">
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                <label className="form-label">
                                     Project Details *
                                 </label>
                                 <textarea
                                     {...register('message', { required: 'Message is required' })}
                                     rows={5}
-                                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                                    className="form-textarea w-full"
                                     placeholder="Tell us about your project, timeline, specific requirements, and any questions you have..."
                                 />
                                 {errors.message && (
-                                    <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+                                    <p className="form-error">{errors.message.message}</p>
                                 )}
                             </div>
 
@@ -347,7 +349,7 @@ const ContactPage = () => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full bg-accent-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-accent-700 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2"
+                                    className="form-button w-full flex items-center justify-center space-x-2"
                                 >
                                     {isSubmitting ? (
                                         <>

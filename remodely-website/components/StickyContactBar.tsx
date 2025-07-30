@@ -72,7 +72,7 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                                 </button>
                             </div>
                         </div>
-                        
+
                         <div className="flex gap-2">
                             <button
                                 onClick={onQuickQuote}
@@ -85,7 +85,7 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                                 <Calculator className="w-4 h-4" />
                                 <span>Quick Quote</span>
                             </button>
-                            
+
                             <a
                                 href="tel:(602) 818-5834"
                                 className="flex-1 bg-primary-600 hover:bg-primary-700 text-white 
@@ -97,7 +97,7 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                                 <Phone className="w-4 h-4" />
                                 <span>Call Now</span>
                             </a>
-                            
+
                             <a
                                 href="/contact"
                                 className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 
@@ -123,7 +123,7 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                             >
                                 <Calculator className="w-5 h-5" />
                             </button>
-                            
+
                             <a
                                 href="tel:(602) 818-5834"
                                 className="bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full 
@@ -133,7 +133,7 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                             >
                                 <Phone className="w-5 h-5" />
                             </a>
-                            
+
                             <a
                                 href="/contact"
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-700 p-3 rounded-full 
@@ -143,7 +143,7 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                             >
                                 <MessageSquare className="w-5 h-5" />
                             </a>
-                            
+
                             <button
                                 onClick={() => setIsMinimized(false)}
                                 className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-3 rounded-full 
@@ -152,7 +152,7 @@ const StickyContactBar = ({ onQuickQuote }: StickyContactBarProps) => {
                             >
                                 Expand
                             </button>
-                            
+
                             <button
                                 onClick={handleDismiss}
                                 className="bg-gray-600 hover:bg-gray-700 text-white p-2 rounded-full 

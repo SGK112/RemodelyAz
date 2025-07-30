@@ -62,6 +62,8 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
             if (response.ok) {
                 setIsSubmitted(true)
                 reset()
+                // Scroll to top for mobile users to see thank you message
+                window.scrollTo({ top: 0, behavior: 'smooth' })
                 leadAnalytics?.trackFormSubmit('quick_quote', true)
                 // Auto-close after success
                 setTimeout(() => {
@@ -89,7 +91,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="absolute inset-0 bg-navy-900/80"
+                        className="modal-overlay absolute inset-0"
                         onClick={handleClose}
                     />
 
@@ -98,9 +100,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="relative bg-white/98 border border-gray-200 rounded-2xl shadow-2xl 
-                                 w-full max-w-lg sm:max-w-2xl max-h-[90vh] sm:max-h-[95vh] overflow-y-auto
-                                 mx-auto my-auto"
+                        className="modal-content relative w-full max-w-lg sm:max-w-2xl max-h-[90vh] sm:max-h-[95vh] overflow-y-auto mx-auto my-auto"
                     >
                         {/* Close Button - Traditional CTA Style */}
                         <button
@@ -148,24 +148,21 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                     {/* Personal Info */}
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            <label className="form-label">
                                                 Full Name *
                                             </label>
                                             <input
                                                 {...register('name', { required: 'Name is required' })}
-                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
-                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
-                                                         transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/95"
+                                                className="form-input w-full"
                                                 placeholder="Your name"
                                             />
                                             {errors.name && (
-                                                <p className="text-red-600 text-sm mt-1">{errors.name.message}</p>
+                                                <p className="form-error">{errors.name.message}</p>
                                             )}
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            <label className="form-label">
                                                 Email *
                                             </label>
                                             <input
@@ -177,29 +174,23 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                         message: 'Invalid email address'
                                                     }
                                                 })}
-                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
-                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
-                                                         transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/95"
+                                                className="form-input w-full"
                                                 placeholder="your@email.com"
                                             />
                                             {errors.email && (
-                                                <p className="text-red-600 text-sm mt-1">{errors.email.message}</p>
+                                                <p className="form-error">{errors.email.message}</p>
                                             )}
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label className="form-label">
                                             Phone
                                         </label>
                                         <input
                                             type="tel"
                                             {...register('phone')}
-                                            className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
-                                                     focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
-                                                     transition-all duration-200 text-base touch-manipulation
-                                                     bg-white/95"
+                                            className="form-input w-full"
                                             placeholder="(602) 123-4567"
                                         />
                                     </div>
@@ -207,15 +198,12 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                     {/* Project Details */}
                                     <div className="grid grid-cols-1 gap-4">
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            <label className="form-label">
                                                 Project Type *
                                             </label>
                                             <select
                                                 {...register('projectType', { required: 'Project type is required' })}
-                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
-                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
-                                                         transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/95 appearance-none cursor-pointer"
+                                                className="form-select w-full"
                                             >
                                                 <option value="">Select project type</option>
                                                 <option value="kitchen-remodel">Kitchen Remodel</option>
@@ -227,42 +215,36 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                 <option value="other">Other</option>
                                             </select>
                                             {errors.projectType && (
-                                                <p className="text-red-600 text-sm mt-1">{errors.projectType.message}</p>
+                                                <p className="form-error">{errors.projectType.message}</p>
                                             )}
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            <label className="form-label">
                                                 Property Type *
                                             </label>
                                             <select
                                                 {...register('propertyType', { required: 'Property type is required' })}
-                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
-                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
-                                                         transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/95 appearance-none cursor-pointer"
+                                                className="form-select w-full"
                                             >
                                                 <option value="">Select property type</option>
                                                 <option value="residential">Residential</option>
                                                 <option value="commercial">Commercial</option>
                                             </select>
                                             {errors.propertyType && (
-                                                <p className="text-red-600 text-sm mt-1">{errors.propertyType.message}</p>
+                                                <p className="form-error">{errors.propertyType.message}</p>
                                             )}
                                         </div>
                                     </div>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            <label className="form-label">
                                                 Timeframe *
                                             </label>
                                             <select
                                                 {...register('timeframe', { required: 'Timeframe is required' })}
-                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
-                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
-                                                         transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/95 appearance-none cursor-pointer"
+                                                className="form-select w-full"
                                             >
                                                 <option value="">Select timeframe</option>
                                                 <option value="asap">ASAP</option>
@@ -272,20 +254,17 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                 <option value="planning">Just planning</option>
                                             </select>
                                             {errors.timeframe && (
-                                                <p className="text-red-600 text-sm mt-1">{errors.timeframe.message}</p>
+                                                <p className="form-error">{errors.timeframe.message}</p>
                                             )}
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                            <label className="form-label">
                                                 Estimated Budget *
                                             </label>
                                             <select
                                                 {...register('estimatedBudget', { required: 'Budget range is required' })}
-                                                className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
-                                                         focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
-                                                         transition-all duration-200 text-base touch-manipulation
-                                                         bg-white/95 appearance-none cursor-pointer"
+                                                className="form-select w-full"
                                             >
                                                 <option value="">Select budget range</option>
                                                 <option value="under-10k">Under $10,000</option>
@@ -295,26 +274,23 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                                 <option value="over-100k">Over $100,000</option>
                                             </select>
                                             {errors.estimatedBudget && (
-                                                <p className="text-red-600 text-sm mt-1">{errors.estimatedBudget.message}</p>
+                                                <p className="form-error">{errors.estimatedBudget.message}</p>
                                             )}
                                         </div>
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                        <label className="form-label">
                                             Project Description *
                                         </label>
                                         <textarea
                                             {...register('projectDescription', { required: 'Project description is required' })}
                                             rows={4}
-                                            className="w-full px-4 py-3 sm:py-4 border border-gray-300 rounded-xl 
-                                                     focus:ring-2 focus:ring-accent-500 focus:border-accent-500 
-                                                     transition-all duration-200 text-base touch-manipulation
-                                                     bg-white/95 resize-none"
+                                            className="form-textarea w-full"
                                             placeholder="Describe your project, materials preferences, and any specific requirements..."
                                         />
                                         {errors.projectDescription && (
-                                            <p className="text-red-600 text-sm mt-1">{errors.projectDescription.message}</p>
+                                            <p className="form-error">{errors.projectDescription.message}</p>
                                         )}
                                     </div>
 
@@ -322,12 +298,7 @@ const QuickQuoteModal = ({ isOpen, onClose }: QuickQuoteModalProps) => {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full bg-accent-600 hover:bg-accent-700 text-white 
-                                                 py-3 sm:py-4 px-6 rounded-xl font-semibold text-base sm:text-lg 
-                                                 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed 
-                                                 transition-all duration-300 touch-manipulation
-                                                 flex items-center justify-center space-x-2 min-h-[48px]
-                                                 border border-accent-700 hover:border-accent-800"
+                                        className="form-button w-full flex items-center justify-center space-x-2"
                                     >
                                         {isSubmitting ? (
                                             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>

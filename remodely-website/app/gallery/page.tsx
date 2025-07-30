@@ -31,7 +31,7 @@ export default function GalleryPage() {
                             >
                                 Get Free Consultation
                             </a>
-                            <a 
+                            <a
                                 href="tel:(602) 818-5834"
                                 className="inline-block bg-accent-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-accent-700 transition-colors"
                             >

@@ -36,6 +36,7 @@ const Footer = () => {
         company: [
             { name: 'About Us', href: '/about' },
             { name: 'Our Process', href: '/process' },
+            { name: 'Investors', href: '/investors' },
             { name: 'Careers', href: '/careers' },
             { name: 'Contact', href: '/contact' },
         ],
@@ -45,14 +46,21 @@ const Footer = () => {
             { name: 'FAQs', href: '/faq' },
             { name: 'Testimonials', href: '/testimonials' },
         ],
+        quickLinks: [
+            { name: 'Get Quote', href: '/contact' },
+            { name: 'Free Consultation', href: '/contact' },
+            { name: 'Emergency Service', href: '/contact' },
+            { name: 'Status Check', href: '/status' },
+        ],
     }
 
     return (
         <footer className="bg-gray-900 text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Company Info */}
-                    <div className="lg:col-span-1">
+                {/* Main Footer Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+                    {/* Company Info - Takes 2 columns on lg screens */}
+                    <div className="lg:col-span-2">
                         <Link href="/" className="flex items-center space-x-2 mb-6">
                             <div className="w-10 h-10 bg-accent-600 rounded-lg flex items-center justify-center">
                                 <span className="text-white font-bold text-xl">R</span>
@@ -73,6 +81,21 @@ const Footer = () => {
                             Transforming spaces with premium kitchen and bathroom remodeling services.
                             Your dream home is just a consultation away.
                         </p>
+
+                        {/* Investors CTA */}
+                        <div className="mb-6 p-4 bg-accent-600/10 border border-accent-600/20 rounded-lg">
+                            <h4 className="font-semibold text-accent-400 mb-2">Franchise Opportunities</h4>
+                            <p className="text-gray-300 text-sm mb-3">
+                                Join our nationwide expansion. Bringing Remodely to TX, CA, PA, SC, GA & beyond.
+                            </p>
+                            <Link
+                                href="/investors"
+                                className="inline-flex items-center text-accent-400 hover:text-accent-300 text-sm font-medium transition-colors"
+                            >
+                                Investor Relations →
+                            </Link>
+                        </div>
+
                         <div className="flex space-x-4">
                             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                                 <Facebook className="w-5 h-5" />
@@ -123,29 +146,47 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Contact */}
+                    {/* Contact & Quick Links Combined */}
                     <div>
-                        <h3 className="font-semibold text-lg mb-4">Contact Info</h3>
+                        <h3 className="font-semibold text-lg mb-4">Contact & Quick Links</h3>
+
+                        {/* Quick Links */}
+                        <div className="mb-6">
+                            <ul className="space-y-2">
+                                {links.quickLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <Link
+                                            href={link.href}
+                                            className="text-gray-300 hover:text-accent-400 transition-colors font-medium"
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        {/* Contact Info */}
                         <div className="space-y-3">
                             <div className="flex items-center space-x-3">
-                                <Phone className="w-5 h-5 text-primary-400" />
-                                <span className="text-gray-300">{companyData.phone}</span>
+                                <Phone className="w-4 h-4 text-primary-400 flex-shrink-0" />
+                                <span className="text-gray-300 text-sm">{companyData.phone}</span>
                             </div>
                             <div className="flex items-center space-x-3">
-                                <Mail className="w-5 h-5 text-primary-400" />
-                                <span className="text-gray-300">{companyData.email}</span>
+                                <Mail className="w-4 h-4 text-primary-400 flex-shrink-0" />
+                                <span className="text-gray-300 text-sm">{companyData.email}</span>
                             </div>
                             <div className="flex items-start space-x-3">
-                                <MapPin className="w-5 h-5 text-primary-400 mt-1" />
-                                <span className="text-gray-300">
+                                <MapPin className="w-4 h-4 text-primary-400 mt-1 flex-shrink-0" />
+                                <span className="text-gray-300 text-sm">
                                     {companyData.address}
                                 </span>
                             </div>
                         </div>
 
-                        <div className="mt-6">
-                            <h4 className="font-medium mb-2">Business Hours</h4>
-                            <div className="text-gray-300 text-sm space-y-1">
+                        <div className="mt-4">
+                            <h4 className="font-medium mb-2 text-sm">Business Hours</h4>
+                            <div className="text-gray-300 text-xs space-y-1">
                                 <div>Mon - Fri: 8:00 AM - 6:00 PM</div>
                                 <div>Sat: 9:00 AM - 4:00 PM</div>
                                 <div>Sun: Closed</div>

@@ -73,7 +73,7 @@ const Services = () => {
                         </span>
                     </h2>
                     <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-                        Built on 7+ years of countertop expertise, REMODELY delivers complete home transformations 
+                        Built on 7+ years of countertop expertise, REMODELY delivers complete home transformations
                         with the same quality craftsmanship and neighborly service Arizona homeowners trust.
                     </p>
                 </motion.div>

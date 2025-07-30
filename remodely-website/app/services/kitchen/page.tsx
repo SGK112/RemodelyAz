@@ -12,7 +12,7 @@ const KitchenRemodeling = () => {
     subtitle: 'Transform Your Culinary Space',
     description: 'Create the kitchen of your dreams with our comprehensive remodeling services. From modern minimalist designs to traditional farmhouse styles, we bring your vision to life with premium materials and expert craftsmanship.',
     image: PRODUCTION_IMAGES.kitchen_modern,
-    price: 'Starting at $25,000',
+    price: 'From $180/sqft',
     duration: '2-4 weeks',
     features: [
       'Custom Cabinet Design & Installation',
