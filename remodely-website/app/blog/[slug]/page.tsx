@@ -35,7 +35,7 @@ export default function BlogPostPage() {
           notFound()
           return
         }
-        
+
         const foundPost = await response.json()
         setPost(foundPost)
       } catch (error) {
@@ -77,7 +77,7 @@ export default function BlogPostPage() {
     <div className="min-h-screen bg-gray-50 pt-20">
       <article className="max-w-4xl mx-auto px-4 py-12">
         {/* Back Button */}
-        <Link 
+        <Link
           href="/blog"
           className="inline-flex items-center text-primary-600 hover:text-primary-700 mb-8 transition-colors"
         >
@@ -108,11 +108,11 @@ export default function BlogPostPage() {
               {post.category}
             </span>
           </div>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             {post.title}
           </h1>
-          
+
           <p className="text-xl text-gray-600 leading-relaxed">
             {post.excerpt}
           </p>
@@ -131,10 +131,10 @@ export default function BlogPostPage() {
 
         {/* Article Content */}
         <div className="prose prose-lg max-w-none">
-          <div 
-            dangerouslySetInnerHTML={{ 
-              __html: post.content.replace(/\n/g, '<br />').replace(/## (.*)/g, '<h2>$1</h2>').replace(/### (.*)/g, '<h3>$1</h3>') 
-            }} 
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.content.replace(/\n/g, '<br />').replace(/## (.*)/g, '<h2>$1</h2>').replace(/### (.*)/g, '<h3>$1</h3>')
+            }}
           />
         </div>
 
@@ -145,7 +145,7 @@ export default function BlogPostPage() {
               <Tag className="w-4 h-4 text-gray-500" />
               <span className="text-gray-500 font-medium mr-2">Tags:</span>
               {post.tags.map((tag, index) => (
-                <span 
+                <span
                   key={index}
                   className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
                 >

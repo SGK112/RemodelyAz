@@ -7,17 +7,17 @@ export async function GET(
 ) {
   try {
     const { slug } = params
-    
+
     if (!slug) {
       return NextResponse.json({ error: 'Slug parameter is required' }, { status: 400 })
     }
-    
+
     const blog = blogsData.find(blog => blog.slug === slug)
-    
+
     if (!blog) {
       return NextResponse.json({ error: 'Blog post not found' }, { status: 404 })
     }
-    
+
     return NextResponse.json(blog)
   } catch (error) {
     console.error('Error fetching blog post:', error)

@@ -27,7 +27,7 @@ import {
 
 const InvestorsPage = () => {
     const [showInvestorPhone, setShowInvestorPhone] = useState(false)
-    
+
     const investmentModels = [
         {
             title: "Franchise Development Partnership",
@@ -47,7 +47,7 @@ const InvestorsPage = () => {
         {
             title: "Master License Opportunity",
             investment: "$500K - $1M",
-            roi: "45-65% ROI", 
+            roi: "45-65% ROI",
             timeline: "6-12 months to market entry",
             description: "Become the master licensee for entire state markets (TX, CA, PA, SC, GA, FL)",
             benefits: [
@@ -116,7 +116,7 @@ const InvestorsPage = () => {
         },
         {
             icon: <Zap className="w-6 h-6" />,
-            title: "Technology Edge", 
+            title: "Technology Edge",
             description: "Proprietary CRM, project management, and lead generation systems"
         },
         {
@@ -178,10 +178,10 @@ const InvestorsPage = () => {
                             </span>
                         </h1>
                         <p className="text-xl md:text-2xl text-primary-100 max-w-4xl mx-auto mb-8">
-                            Join the RemodelyAZ expansion with franchise opportunities, master licenses, 
+                            Join the RemodelyAZ expansion with franchise opportunities, master licenses,
                             or employee ownership. From Arizona&apos;s proven success to nationwide growth.
                         </p>
-                        
+
                         {/* Key Stats */}
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
                             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
@@ -227,7 +227,7 @@ const InvestorsPage = () => {
                             Massive Market Opportunity
                         </h2>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                            The remodeling industry is experiencing unprecedented growth driven by demographic shifts, 
+                            The remodeling industry is experiencing unprecedented growth driven by demographic shifts,
                             aging housing stock, and increased home values.
                         </p>
                     </div>
@@ -430,7 +430,7 @@ const InvestorsPage = () => {
                             Ready to Build Your Future?
                         </h2>
                         <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-                            Schedule a confidential discussion about franchise opportunities, master licenses, 
+                            Schedule a confidential discussion about franchise opportunities, master licenses,
                             or employee ownership with our investment team.
                         </p>
 
