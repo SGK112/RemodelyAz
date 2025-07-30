@@ -37,6 +37,10 @@ const SafeImage = ({
   const [hasError, setHasError] = useState(false)
   const [currentSrc, setCurrentSrc] = useState(src)
 
+  // Check if this is a CDN image that might cause 502 errors
+  const isCDNImage = src.includes('cdn.prod.website-files.com')
+  const shouldUseDirectImage = isCDNImage && process.env.NODE_ENV === 'production'
+
   useEffect(() => {
     setCurrentSrc(src)
     setHasError(false)
@@ -49,7 +53,6 @@ const SafeImage = ({
       setIsLoading(false)
     }, 50)
   }
-
   const handleError = () => {
     setIsLoading(false)
     setHasError(true)
@@ -70,6 +73,76 @@ const SafeImage = ({
       </text>
     </svg>
   `)}`
+
+  // For CDN images that might cause 502 errors, use direct img tag
+  if (shouldUseDirectImage) {
+    return (
+      <div
+        className={clsx('relative overflow-hidden bg-gray-100', aspectRatio, className)}
+        onClick={onClick}
+      >
+        {/* Loading/Error Placeholder */}
+        {(isLoading || hasError) && showPlaceholder && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+            {isLoading ? (
+              <div className="animate-pulse bg-gray-200 w-full h-full flex items-center justify-center">
+                <svg
+                  className="w-8 h-8 text-gray-400 animate-spin"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  />
+                </svg>
+              </div>
+            ) : (
+              <div className="text-center p-4">
+                <svg
+                  className="w-8 h-8 text-gray-400 mx-auto mb-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.728-.833-2.498 0L4.316 16.5c-.77.833.192 2.5 1.732 2.5z"
+                  />
+                </svg>
+                <p className="text-xs text-gray-500">Image not available</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Direct img tag for CDN images */}
+        {!hasError && (
+          <img
+            src={currentSrc}
+            alt={alt}
+            className={clsx(
+              'transition-opacity duration-300 w-full h-full object-cover',
+              isLoading ? 'opacity-0' : 'opacity-100'
+            )}
+            onLoad={handleLoad}
+            onError={handleError}
+          />
+        )}
+      </div>
+    )
+  }
 
   return (
     <div
@@ -122,7 +195,7 @@ const SafeImage = ({
         </div>
       )}
 
-      {/* Actual Image */}
+      {/* Next.js Image for other sources */}
       {!hasError && (
         <Image
           src={currentSrc}
